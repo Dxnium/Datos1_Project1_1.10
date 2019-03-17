@@ -1,4 +1,4 @@
-package programlogic;
+package game.logic;
 
 public class Player {//The player class has key attributes for game logic, such as the name of the player (graphical identifier), an array dock which will serve 
 							//as storage for the tiles that belong to the player, and the player score.

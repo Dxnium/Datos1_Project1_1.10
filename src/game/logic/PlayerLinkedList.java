@@ -1,4 +1,4 @@
-package programlogic;
+package game.logic;
 
 public class PlayerLinkedList {// A circular  linked list that will store nodes that use player objects as data, will be used for a player queue
 	PlayerLinkedListNode head;

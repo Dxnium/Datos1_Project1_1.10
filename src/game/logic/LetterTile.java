@@ -1,4 +1,4 @@
-package programlogic;
+package game.logic;
 
 public class LetterTile {//Class that will be used as a game tile, contains a string attribute with a letter, the score linked to that letter and the amount of
 	private String letter;//tiles of the same kind available

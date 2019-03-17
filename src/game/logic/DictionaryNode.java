@@ -1,4 +1,4 @@
-package programlogic;
+package game.logic;
 
 public class DictionaryNode {// a simple node for the dictionary linked list that stores a string data
 	private String data;

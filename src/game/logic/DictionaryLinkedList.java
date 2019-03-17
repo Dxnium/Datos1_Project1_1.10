@@ -1,4 +1,4 @@
-package programlogic;
+package game.logic;
 
 
 public class DictionaryLinkedList {// a simple linked list that takes dictionary nodes

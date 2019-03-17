@@ -1,4 +1,4 @@
-package programlogic;
+package game.logic;
 
 public class PlayerLinkedListNode {//node that takes a player object as data
 	private Player data;
