@@ -5,10 +5,39 @@ public class PlayerLinkedList {// A circular  linked list that will store nodes 
 	PlayerLinkedListNode tail;
 	
 	
+	public PlayerLinkedListNode getTail() {
+		return tail;
+	}
+
+
+
+
+	public void setTail(PlayerLinkedListNode tail) {
+		this.tail = tail;
+	}
+
+
+
+
+	public int getLength() {
+		return length;
+	}
+
+
+
+
+	public void setLength(int length) {
+		this.length = length;
+	}
+
+	int length;
+	
+	
 	public void append (Player data) {//adds a node at the end of the list
 		if (head == null) {
 			this.head = new PlayerLinkedListNode (data);
 			this.tail=this.head;
+			this.length++;
 			return;
 			
 		}
@@ -16,8 +45,11 @@ public class PlayerLinkedList {// A circular  linked list that will store nodes 
 		this.tail.setNext(newNode);
 		this.tail=newNode;
 		this.tail.setNext(head);
+		this.length++;
 
 	}
+	
+	
 	
 
 	public void eraseData(Player data) {//looks for a node via search criteria and breaks the link between the node and the rest of the list
