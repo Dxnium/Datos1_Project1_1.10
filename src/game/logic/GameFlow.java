@@ -103,14 +103,27 @@ public class GameFlow {
 		
 		
 		
-		
-		
-		
 	}
+	
 	 private static void matchStarter() {
 		 playOrder();
+		 dealTiles();
+		 
 	 }
 	
+	 private static void dealTiles() {
+		 int count=0;
+		 int index=0;
+		 for (PlayerLinkedListNode node=game.getPlayerList().getHead();count!=game.getPlayerList().getLength()*7;node=node.getNext()) {
+			 node.getData().getDock()[index]=randomTileGenerator();
+			 count++;
+			 if (count%4==0) {
+				 index++;
+			 }
+		 }
+	 }
+		
+
 	private static void playOrder() {
 		int count=0;
 		PlayerLinkedListNode currentNode=game.getPlayerList().getHead();
@@ -146,8 +159,15 @@ public class GameFlow {
 			
 	}
 		x=0;
+		out.println(" ");
 		for (PlayerLinkedListNode node=game.getPlayerList().getHead();x!=game.getPlayerList().getLength();node=node.getNext()) {
 			out.print( node.getData().getDock()[0].getLetter()+" ");
+			x++;
+		}
+		x=0;
+		out.println(" ");
+		for (PlayerLinkedListNode node=game.getPlayerList().getHead();x!=game.getPlayerList().getLength();node=node.getNext()) {
+			node.getData().getDock()[0]=null;
 			x++;
 		}
   }
