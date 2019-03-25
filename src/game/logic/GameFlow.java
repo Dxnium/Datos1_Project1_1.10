@@ -19,7 +19,7 @@ public class GameFlow {
 		System.out.println("----------------------------------------");
 		game.InitializeDeck();
 		System.out.println("----------------------------------------");
-		
+		promptGameStart();
 	
 		
 		
@@ -46,21 +46,19 @@ public class GameFlow {
 	}
 
 	private static void playerCreation() throws IOException {
-		if(game.getNumberOfPlayers()<=4) {
+		if(game.getPlayerList().getLength()<=4) {
 			out.println("Ingrese el nombre del nuevo jugador");
 			String name = in.readLine();
 			game.getPlayerList().append(new Player(name));
-			game.setNumberOfPlayers(game.getNumberOfPlayers()+1);
-			out.println(game.getNumberOfPlayers());
 			out.println("desea agregar otro jugador?");
 			String decision= in.readLine();
 			if (decision.equals("Y")||decision.equals("y")) {
-				if(game.getNumberOfPlayers()<=4) {
-					if(game.getNumberOfPlayers()==4) {
+				if(game.getPlayerList().getLength()<=4) {
+					if(game.getPlayerList().getLength()==4) {
 						System.out.println("no puede agregar mas jugadores");
-						//round start prompt
+						matchStarter();
 					}
-					if(game.getNumberOfPlayers()<4) {
+					if(game.getPlayerList().getLength()<4) {
 						playerCreation();
 					}
 				}
@@ -88,21 +86,91 @@ public class GameFlow {
 	}
 
 	
-	private static void randomTileGenerator(/*to take a player object*/) {//Method that generates a random letter tile, taking into consideration the amount
-		int positionCounter=0;																// of tiles per letter, the tiles bigger in amount have a bigger chance of dropping																					
+	private static  LetterTile randomTileGenerator() {//Method that generates a random letter tile, taking into consideration the amount
+		int positionCounter=0;																        // of tiles per letter, the tiles bigger in amount have a bigger chance of dropping																					
 		int index=0;																			
 		int randomNum = ThreadLocalRandom.current().nextInt(1, game.getDeckSize()+1);
-		out.println("random number "+ randomNum);
 		while(positionCounter<randomNum) {
-			out.println("sum of positions"+positionCounter);
 			positionCounter+=game.getDeck()[index].getAmount();
 			index++;
 		}
 		index-=1;
 		
 		out.println("La letra es: "+ game.getDeck()[index].getLetter());
+		game.setDeckSize(game.getDeckSize()-1);
+		game.getDeck()[index].setAmount(game.getDeck()[index].getAmount()-1);
+		return game.getDeck()[index];
+		
+		
 		
 	}
+	
+	 private static void matchStarter() {
+		 playOrder();
+		 dealTiles();
+		 
+	 }
+	
+	 private static void dealTiles() {
+		 int count=0;
+		 int index=0;
+		 for (PlayerLinkedListNode node=game.getPlayerList().getHead();count!=game.getPlayerList().getLength()*7;node=node.getNext()) {
+			 node.getData().getDock()[index]=randomTileGenerator();
+			 count++;
+			 if (count%4==0) {
+				 index++;
+			 }
+		 }
+	 }
+		
+
+	private static void playOrder() {
+		int count=0;
+		PlayerLinkedListNode currentNode=game.getPlayerList().getHead();
+		Player currentPlayer= currentNode.getData();
+		while (count!=game.getPlayerList().getLength()){
+			currentPlayer.getDock()[0]=randomTileGenerator();
+			out.println(currentPlayer.getName());
+			out.println(currentPlayer.getDock()[0].getLetter());
+			currentNode=currentNode.getNext();
+			currentPlayer=currentNode.getData();
+			count++;	
+		}
+		selectionSort();
+		
+	}
+	
+	private static void selectionSort() {
+		int x=0;
+		for (PlayerLinkedListNode node=game.getPlayerList().getHead();x!=game.getPlayerList().getLength();node=node.getNext()) {
+			out.print(node.getData().getDock()[0].getLetter()+" ");
+			x++;
+		}
+		for (PlayerLinkedListNode selected=game.getPlayerList().getHead();selected!=game.getPlayerList().getTail();selected=selected.getNext()) {
+			for(PlayerLinkedListNode selected2=selected.getNext();selected2!=game.getPlayerList().getHead();selected2=selected2.getNext()) {
+				if(selected2.getData().getDock()[0].getLetter().compareTo(selected.getData().getDock()[0].getLetter())<0) {
+					Player temp=selected.getData();
+					selected.setData(selected2.getData());
+					selected2.setData(temp);
+	
+				}
+		
+			}
+			
+	}
+		x=0;
+		out.println(" ");
+		for (PlayerLinkedListNode node=game.getPlayerList().getHead();x!=game.getPlayerList().getLength();node=node.getNext()) {
+			out.print( node.getData().getDock()[0].getLetter()+" ");
+			x++;
+		}
+		x=0;
+		out.println(" ");
+		for (PlayerLinkedListNode node=game.getPlayerList().getHead();x!=game.getPlayerList().getLength();node=node.getNext()) {
+			node.getData().getDock()[0]=null;
+			x++;
+		}
+  }
 	
 }
 

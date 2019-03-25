@@ -5,10 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class Board {//Manages most of the g
+public class Board {//Manages most of the board related methods
 
 	private Square[][] tableTop = new Square[15][15];
-	private int numberOfPlayers = 0;
 	private PlayerLinkedList playerList=new PlayerLinkedList();
 	private LetterTile[] deck = new LetterTile[29];
 	int deckSize=100;
@@ -33,13 +32,7 @@ public class Board {//Manages most of the g
 	public void setTableTop(Square[][] tableTop) {
 		this.tableTop = tableTop;
 	}
-	
-	public int getNumberOfPlayers() {
-		return numberOfPlayers;
-	}
-	public void setNumberOfPlayers(int numberOfPlayers) {
-		this.numberOfPlayers = numberOfPlayers;
-	}
+
 	
 	public PlayerLinkedList getPlayerList() {
 		return playerList;
@@ -79,6 +72,7 @@ public class Board {//Manages most of the g
 			
 		} catch (IOException error){
 			System.out.println("Error de lectura");
+			error.printStackTrace();
 		} finally {
 			try {
 				reader.close();
