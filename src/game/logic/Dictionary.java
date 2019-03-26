@@ -5,8 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Dictionary {//  This class contains the valid words used on the game, manages logical methods related to generation of data structures
+	
 	private DictionaryLinkedList wordBook = new DictionaryLinkedList();
-
+	
 	public DictionaryLinkedList getWordBook() {
 		return wordBook;
 	}

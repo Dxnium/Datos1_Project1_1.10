@@ -20,6 +20,9 @@ public class GameFlow {
 		game.InitializeDeck();
 		System.out.println("----------------------------------------");
 		promptGameStart();
+		
+		
+		
 	
 		
 		
@@ -65,7 +68,7 @@ public class GameFlow {
 
 
 			}else if(decision.equals("N")||decision.equals("n")) {
-				//Round start prompt
+				matchStarter();
 			}
 
 
@@ -87,7 +90,7 @@ public class GameFlow {
 
 	
 	private static  LetterTile randomTileGenerator() {//Method that generates a random letter tile, taking into consideration the amount
-		int positionCounter=0;																        // of tiles per letter, the tiles bigger in amount have a bigger chance of dropping																					
+		int positionCounter=0;									// of tiles per letter, the tiles bigger in amount have a bigger chance of dropping																					
 		int index=0;																			
 		int randomNum = ThreadLocalRandom.current().nextInt(1, game.getDeckSize()+1);
 		while(positionCounter<randomNum) {
@@ -116,6 +119,7 @@ public class GameFlow {
 		 int index=0;
 		 for (PlayerLinkedListNode node=game.getPlayerList().getHead();count!=game.getPlayerList().getLength()*7;node=node.getNext()) {
 			 node.getData().getDock()[index]=randomTileGenerator();
+			 node.getData().setMyTiles(node.getData().getMyTiles()+1);
 			 count++;
 			 if (count%4==0) {
 				 index++;
@@ -130,6 +134,8 @@ public class GameFlow {
 		Player currentPlayer= currentNode.getData();
 		while (count!=game.getPlayerList().getLength()){
 			currentPlayer.getDock()[0]=randomTileGenerator();
+			currentPlayer.getDock()[0].setAmount(currentPlayer.getDock()[0].getAmount()+1);
+			game.setDeckSize(game.getDeckSize()+1);
 			out.println(currentPlayer.getName());
 			out.println(currentPlayer.getDock()[0].getLetter());
 			currentNode=currentNode.getNext();

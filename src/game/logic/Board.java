@@ -11,9 +11,6 @@ public class Board {//Manages most of the board related methods
 	private PlayerLinkedList playerList=new PlayerLinkedList();
 	private LetterTile[] deck = new LetterTile[29];
 	int deckSize=100;
-	
-
-
 	private Dictionary dictionary = new Dictionary();
 	
 	
@@ -45,6 +42,7 @@ public class Board {//Manages most of the board related methods
 	public void setDeckSize(int deckSize) {
 		this.deckSize = deckSize;
 	}
+	
 	
 	
 	//GAME LOGIC METHODS

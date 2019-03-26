@@ -6,8 +6,15 @@ public class Player {//The player class has key attributes for game logic, such 
 	private String name;
 	private  LetterTile[] dock = new LetterTile[7];
 	int score;
+	int myTiles;
 	
 	
+	public int getMyTiles() {
+		return myTiles;
+	}
+	public void setMyTiles(int myTiles) {
+		this.myTiles = myTiles;
+	}
 	public int getScore() {
 		return score;
 	}
@@ -28,6 +35,9 @@ public class Player {//The player class has key attributes for game logic, such 
 		this.name = name;
 	}
 
-	
+	public void fillDock() {
+		
+		
+	}
 
 }
