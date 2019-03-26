@@ -21,12 +21,8 @@ public class GameFlow {
 		System.out.println("----------------------------------------");
 		promptGameStart();
 		//PRUEBA DE CAMBIO
-		
-		
-	
-		
-		
-		
+		playsHandler();
+
 
 	}
 
@@ -176,7 +172,33 @@ public class GameFlow {
 			node.getData().getDock()[0]=null;
 			x++;
 		}
+		
   }
+	public static void playsHandler() throws IOException{
+		 
+		System.out.println("&&&&&&&&&&&&&&&&&&");
+		
+		for (PlayerLinkedListNode node=game.getPlayerList().getHead();game.getDeckSize() != 0;node=node.getNext()) {
+			out.print( node.getData().getName());
+			System.out.println("\n");
+			System.out.println("¿Que desea hacer?"+"\n"+"1.Jugar"+"\n"+"2.Pasar");
+			
+			String action = in.readLine();
+			
+			if (action.equals("Jugar")||action.equals("jugar")) {
+				System.out.println("Aunque no lo creas, estás jugando...");
+
+			}else if(action.equals("Pasar")||action.equals("pasar")) {
+				System.out.println("Espero que no te arrepientas");
+			}
+
+			
+			
+		}
+		System.out.println("\n");
+		System.out.println("&&&&&&&&&&&&&&&&&&");
+		
+	}
 	
 }
 
