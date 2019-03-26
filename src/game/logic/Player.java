@@ -34,6 +34,8 @@ public class Player {//The player class has key attributes for game logic, such 
 	public Player(String name) {
 		this.name = name;
 	}
+	
+	
 
 	public void fillDock() {
 		

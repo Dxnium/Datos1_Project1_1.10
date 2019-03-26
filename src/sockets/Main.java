@@ -8,8 +8,7 @@ public class Main {
 		Thread hilo = new Thread(server);
 		hilo.start();
 		//
-		Cliente cliente = new Cliente();
-		System.out.println(cliente.getAddress());
+
 	}
 
 }
