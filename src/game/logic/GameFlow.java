@@ -179,7 +179,7 @@ public class GameFlow {
 		System.out.println("&&&&&&&&&&&&&&&&&&");
 		
 		for (PlayerLinkedListNode node=game.getPlayerList().getHead();game.getDeckSize() != 0;node=node.getNext()) {
-			out.print( node.getData().getName());
+			out.print( "Turno de:"+ node.getData().getName());
 			System.out.println("\n");
 			System.out.println("¿Que desea hacer?"+"\n"+"1.Jugar"+"\n"+"2.Pasar");
 			
