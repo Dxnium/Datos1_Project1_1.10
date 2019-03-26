@@ -20,7 +20,7 @@ public class GameFlow {
 		game.InitializeDeck();
 		System.out.println("----------------------------------------");
 		promptGameStart();
-		
+		//PRUEBA DE CAMBIO
 		
 		
 	
@@ -119,9 +119,9 @@ public class GameFlow {
 		 int index=0;
 		 for (PlayerLinkedListNode node=game.getPlayerList().getHead();count!=game.getPlayerList().getLength()*7;node=node.getNext()) {
 			 node.getData().getDock()[index]=randomTileGenerator();
-			 node.getData().setMyTiles(node.getData().getMyTiles()+1);
+			 //node.getData().setMyTiles(node.getData().getMyTiles()+1);
 			 count++;
-			 if (count%4==0) {
+			 if (count%game.getPlayerList().getLength()==0) {
 				 index++;
 			 }
 		 }
