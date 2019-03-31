@@ -21,7 +21,7 @@ public class GameFlow {
 		System.out.println("----------------------------------------");
 		promptGameStart();
 		//PRUEBA DE CAMBIO
-		playsHandler();
+		
 
 
 	}
@@ -34,7 +34,7 @@ public class GameFlow {
 		out.println("Y/N?");
 		String input = in.readLine();
 		if (input.equals("Y")||                    input.equals("y")) {
-			out.println("La partida puede tener un maximo de cuatro jugadores");
+			out.println("La partida puede tener un maximo de cuatro jugadores y un minimo de dos para poder empezar");
 			playerCreation();
 		}else if(input.equals("N")||input.equals("n")) {
 			out.println("hasta luego!");
@@ -45,30 +45,33 @@ public class GameFlow {
 	}
 
 	private static void playerCreation() throws IOException {
-		if(game.getPlayerList().getLength()<=4) {
+		if(game.getPlayerList().getLength()<4) {
 			out.println("Ingrese el nombre del nuevo jugador");
 			String name = in.readLine();
 			game.getPlayerList().append(new Player(name));
-			out.println("desea agregar otro jugador?");
-			String decision= in.readLine();
-			if (decision.equals("Y")||decision.equals("y")) {
-				if(game.getPlayerList().getLength()<=4) {
-					if(game.getPlayerList().getLength()==4) {
-						System.out.println("no puede agregar mas jugadores");
-						matchStarter();
-					}
-					if(game.getPlayerList().getLength()<4) {
-						playerCreation();
-					}
-				}
-
-
-			}else if(decision.equals("N")||decision.equals("n")) {
-				matchStarter();
-			}
-
-
 		}
+		
+		if(game.getPlayerList().getLength()==4) {
+			System.out.println("no puede agregar mas jugadores");
+			matchStarter();
+			}
+		
+		out.println("desea agregar otro jugador?");
+		String decision= in.readLine();
+		if (decision.equals("Y")||decision.equals("y")) {
+			playerCreation();	
+				
+		}else if(decision.equals("N")||decision.equals("n")) {
+			if(game.getPlayerList().getLength()>=2) {
+				matchStarter();
+			} else {
+				out.println("La partida puede empezar solo si hay 2 jugadores o mas");
+				playerCreation();
+			}
+			
+		}
+		
+		
 	}
 	
 	private static boolean verifyWord(String word)    {
@@ -104,9 +107,10 @@ public class GameFlow {
 		
 	}
 	
-	 private static void matchStarter() {
+	 private static void matchStarter() throws IOException {
 		 playOrder();
 		 dealTiles();
+		 playsHandler();
 		 
 	 }
 	
@@ -115,7 +119,7 @@ public class GameFlow {
 		 int index=0;
 		 for (PlayerLinkedListNode node=game.getPlayerList().getHead();count!=game.getPlayerList().getLength()*7;node=node.getNext()) {
 			 node.getData().getDock()[index]=randomTileGenerator();
-			 //node.getData().setMyTiles(node.getData().getMyTiles()+1);
+			 node.getData().setMyTiles(node.getData().getMyTiles()+1);
 			 count++;
 			 if (count%game.getPlayerList().getLength()==0) {
 				 index++;
