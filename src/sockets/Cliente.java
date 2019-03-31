@@ -11,6 +11,7 @@ public class Cliente {
 	String address = "localhost";
 	Socket socket;
 	String msg = null; //Mensaje resivido del servidor 
+	String password = "";
 	
 	
 	public Cliente() {
@@ -43,7 +44,9 @@ public class Cliente {
 		
 		
 	}
-
+// GameUpdate hace un decode del msj del server y 
+// llama a los metodos correspondientes para generar el update
+// tanto en la matriz de juego como en pantalla 
 	private void GameUpdate(String msg) {
 		if(msg!=null) {
 			System.out.println("Mensaje resivido, update juego");

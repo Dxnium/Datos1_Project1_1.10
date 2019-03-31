@@ -1,11 +1,11 @@
 package GUI;
 
-import java.awt.BorderLayout;
 import java.awt.Container;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JTextArea;
+import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
 
@@ -26,20 +26,24 @@ public class StartWindow extends JFrame {
 				startFrame.setVisible(true);
 				
 				//Set layout manager
-				setLayout(new BorderLayout());
+				startFrame.setLayout(null);
 				
 				
-			
-				//swing component  
-				JTextArea textarea = new JTextArea();
-				JButton button = new JButton("Click me");
+		
+				//swing component 
+				JLabel background=new JLabel(new ImageIcon("\\Datos1_Project1_1.10\\IMG\\Fondo.jpg"));
+				JButton buttonClient = new JButton("Cliente");
+				buttonClient.setBounds(760, 540, 200, 40);
+				JButton buttonServer = new JButton("Server");
+				buttonServer.setBounds(960, 540, 200, 40);
+
 				
 				
-				//add swing component to content pane 
+//				//add swing component to content pane 
 				Container c = startFrame.getContentPane();
-				c.add(textarea,BorderLayout.CENTER);
-				c.add(button,BorderLayout.SOUTH);
-				
+				c.add(background);
+				c.add(buttonClient);
+				c.add(buttonServer);
 				} 
 			});
 		
