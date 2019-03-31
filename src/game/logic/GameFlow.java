@@ -20,7 +20,7 @@ public class GameFlow {
 		game.InitializeDeck();
 		System.out.println("----------------------------------------");
 		promptGameStart();
-		//PRUEBA DE CAMBIO
+
 		
 
 
@@ -110,7 +110,7 @@ public class GameFlow {
 	 private static void matchStarter() throws IOException {
 		 playOrder();
 		 dealTiles();
-		 playsHandler();
+		 turnHandler();
 		 
 	 }
 	
@@ -178,7 +178,7 @@ public class GameFlow {
 		}
 		
   }
-	public static void playsHandler() throws IOException{
+	public static void turnHandler() throws IOException{
 		 
 		System.out.println("&&&&&&&&&&&&&&&&&&");
 		
