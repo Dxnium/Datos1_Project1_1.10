@@ -105,7 +105,7 @@ public class GameFlow {
 	private static void matchStarter() throws IOException {
 		playOrder();
 		dealTiles();
-		turnHandler();
+		turnHandler(game.getPlayerList().getHead());
 	}
 	
 
@@ -222,32 +222,84 @@ public class GameFlow {
 		
 		}
 	
-	public static void turnHandler() throws IOException{//class that server will use to manage the turns
+		
+	
+	public static void turnHandler(PlayerLinkedListNode node) throws IOException{//class that server will use to manage the turns
 
 		out.println("&&&&&&&&&&&&&&&&&&");
+		out.print( "Turno de:"+ node.getData().getName());
+		out.println("\n");
+		out.println("Sus fichas son:");
+		printPlayerDock(node);
+		out.println("¿Que desea hacer?"+"\n"+"1.Jugar"+"\n"+"2.Pasar");
 
-		for (PlayerLinkedListNode node=game.getPlayerList().getHead();game.getDeckSize() != 0;node=node.getNext()) {
-			out.print( "Turno de:"+ node.getData().getName());
-			out.println("\n");
-			out.println("Sus fichas son:");
-			printPlayerDock(node);
-			out.println("¿Que desea hacer?"+"\n"+"1.Jugar"+"\n"+"2.Pasar");
+		String action = in.readLine();
 
-			String action = in.readLine();
+		if (action.equals("Jugar")||action.equals("jugar")) {
+			game.setTurn(game.getTurn()+1);
+			String[][] selectedTiles = playTurn(node);
+			verifyOrientation(selectedTiles);
 
-			if (action.equals("Jugar")||action.equals("jugar")) {
-				game.setTurn(game.getTurn()+1);
-				playTurn(node);
-
+				
 			}else if(action.equals("Pasar")||action.equals("pasar")) {
 				out.println("Espero que no te arrepientas");
+				game.setTurn(game.getTurn()+1);
 			}
-		}
 		out.println("\n");
 		out.println("&&&&&&&&&&&&&&&&&&");
+		}
+	
+		
+	
+
+	private static String verifyOrientation(String[][] selectedTiles) {//determines the orientation of a word on the matrix(vertical, horizontal), else, determines invalid position
+		String orientation = null;
+		int index=0;
+		boolean vertical=false;
+		boolean horizontal=false;
+		boolean single=false;
+		
+		if(selectedTiles.length==1) {
+			single=true;
+			orientation= "single";
+		}
+		
+		while(index<selectedTiles.length-1) {
+			if(selectedTiles[index][1].equals(selectedTiles[index+1][1])) {
+				horizontal=true;
+			}else {
+				horizontal=false;
+			}
+			index++;
+		}
+		if (horizontal==true) {
+			orientation= "horizontal";
+		}
+		index=0;
+		while(index<selectedTiles.length-1) {
+			if(selectedTiles[index][2].equals(selectedTiles[index+1][2])) {
+				vertical=true;
+			}else {
+				vertical=false;
+			}
+			index++;
+		}
+		
+		if (vertical==true) {
+			orientation= "vertical";
+		}
+		
+		if(vertical==false&&horizontal==false&&single==false) {
+			orientation="invalid";
+		}
+		out.println("word orientation is "+orientation);
+		return orientation;
+	}
+		
+		
 	}
 
-}
+
 
 
 
