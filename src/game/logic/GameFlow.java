@@ -238,7 +238,12 @@ public class GameFlow {
 		if (action.equals("Jugar")||action.equals("jugar")) {
 			game.setTurn(game.getTurn()+1);
 			String[][] selectedTiles = playTurn(node);
-			verifyOrientation(selectedTiles);
+			if(verifyOrientation(selectedTiles).equals("invalid")) {
+				out.println("Invalid tile placement, please select a new action");
+				turnHandler(node);
+			}
+			sortSelectedTiles(verifyOrientation(selectedTiles),selectedTiles);
+			
 
 				
 			}else if(action.equals("Pasar")||action.equals("pasar")) {
@@ -252,6 +257,32 @@ public class GameFlow {
 		
 	
 
+	private static String[][] sortSelectedTiles(String orientation,String[][] selectedTiles) {//sorts tiles to play accordingly to the word orientation, uses bubblesort
+		int element=0;																							  //if the word is vertical, sorts ascendantly using the row number 
+		int length = selectedTiles.length; 																	 //if the word is horizontal, sorts ascendantly using the column number
+		String[] temp = null;
+		if (orientation.equals("vertical")) {
+			element=1;
+		}else {
+			element=2;
+		}
+		if(length>1) {
+			for(int subarray=0;subarray<length;subarray++) {
+				for(int comparison=subarray+1;comparison<length;comparison++) {
+					if(Integer.parseInt(selectedTiles[subarray][element])>Integer.parseInt(selectedTiles[comparison][element])) {
+						temp=selectedTiles[subarray];
+						selectedTiles[subarray]=selectedTiles[comparison];
+						selectedTiles[comparison]=temp;		
+					}
+				}
+			}
+		}
+		out.println(Arrays.deepToString(selectedTiles));
+		return selectedTiles;
+	}
+
+	
+	
 	private static String verifyOrientation(String[][] selectedTiles) {//determines the orientation of a word on the matrix(vertical, horizontal), else, determines invalid position
 		String orientation = null;
 		int index=0;
@@ -292,7 +323,6 @@ public class GameFlow {
 		if(vertical==false&&horizontal==false&&single==false) {
 			orientation="invalid";
 		}
-		out.println("word orientation is "+orientation);
 		return orientation;
 	}
 		
