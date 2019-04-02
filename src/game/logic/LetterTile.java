@@ -4,6 +4,7 @@ public class LetterTile {//Class that will be used as a game tile, contains a st
 	private String letter;//tiles of the same kind available
 	private int score;
 	private int amount;
+	private int playedOnTurn;
 	
 	public String getLetter() {
 		return letter;

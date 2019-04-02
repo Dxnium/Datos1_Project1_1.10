@@ -12,6 +12,7 @@ public class Board {//Manages most of the board related methods
 	private LetterTile[] deck = new LetterTile[29];
 	int deckSize=100;
 	private Dictionary dictionary = new Dictionary();
+	private int turn;
 	
 	
 	
@@ -45,11 +46,19 @@ public class Board {//Manages most of the board related methods
 	
 	
 	
+	
+	
 	//GAME LOGIC METHODS
 	
 	
 	
 	
+	public int getTurn() {
+		return turn;
+	}
+	public void setTurn(int turn) {
+		this.turn = turn;
+	}
 	public void initializeTableTop() {//reads from a .txt file on project root, parses a document that contains the board multiplier values and places them
 		BufferedReader reader = null;//on a Square object thats positioned on the matrix contained in the tableTop attribute
 		try {
