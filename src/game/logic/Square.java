@@ -17,7 +17,7 @@ public class Square {
 	public LetterTile getLetterTile() {
 		return letterTile;
 	}
-	public void setLetter(LetterTile letter) {
+	public void setLetterTile(LetterTile letter) {
 		this.letterTile = letter;
 	}
 	public int getMultiplier() {
