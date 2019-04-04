@@ -21,6 +21,7 @@ public class GameFlow {
 		game.InitializeDeck();
 		System.out.println("----------------------------------------");
 		promptGameStart();
+		
 
 	}
 
@@ -242,8 +243,8 @@ public class GameFlow {
 				out.println("Invalid tile placement, please select a new action");
 				turnHandler(node);
 			}
-			sortSelectedTiles(verifyOrientation(selectedTiles),selectedTiles);
-			
+			String [][] sortedTiles=sortSelectedTiles(verifyOrientation(selectedTiles),selectedTiles);
+			updateTableTop(sortedTiles);
 
 				
 			}else if(action.equals("Pasar")||action.equals("pasar")) {
@@ -254,10 +255,9 @@ public class GameFlow {
 		out.println("&&&&&&&&&&&&&&&&&&");
 		}
 	
-		
 	
 
-	private static String[][] sortSelectedTiles(String orientation,String[][] selectedTiles) {//sorts tiles to play accordingly to the word orientation, uses bubblesort
+	private static String[][] sortSelectedTiles(String orientation,String[][] selectedTiles) {//sorts tiles to play accordingly to the word orientation, uses bubblesort.
 		int element=0;																							  //if the word is vertical, sorts ascendantly using the row number 
 		int length = selectedTiles.length; 																	 //if the word is horizontal, sorts ascendantly using the column number
 		String[] temp = null;
@@ -326,8 +326,34 @@ public class GameFlow {
 		return orientation;
 	}
 		
+	private static void updateTableTop(String[][] sortedTiles) {
+		printTableTop();
 		
 	}
+
+	private static void printTableTop() {
+		for (int i = 0; i < game.getTableTop().length; i++) {
+		    for (int j = 0; j < game.getTableTop()[i].length; j++) {
+		        if(game.getTableTop()[i][j].getLetterTile()!=null) {
+		        	out.print(game.getTableTop()[i][j].getLetterTile().getLetter() + " ");	
+		        }else {
+		        	out.print("null"+" ");
+		        }
+		    	
+		    }
+		    System.out.println();
+		}
+		
+	}
+	
+	
+	
+	
+	}
+
+
+
+
 
 
 
