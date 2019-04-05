@@ -252,14 +252,13 @@ public class GameFlow {
 		String action = in.readLine();
 
 		if (action.equals("Jugar")||action.equals("jugar")) {
-			game.setTurn(game.getTurn()+1);
 			String[][] selectedTiles = playTurn(node);
 			if(verifyOrientation(selectedTiles).equals("invalid")) {
-				out.println("Invalid tile placement, please select a new action");
+				out.println("Posicion de ficha invalida, por favor intente de nuevo");
 				turnHandler(node);
 			}
-			sortSelectedTiles(verifyOrientation(selectedTiles),selectedTiles);
-			
+			String [][] sortedTiles=sortSelectedTiles(verifyOrientation(selectedTiles),selectedTiles);
+			updateTableTop(sortedTiles,node,verifyOrientation(selectedTiles));
 
 				
 			}else if(action.equals("Pasar")||action.equals("pasar")) {
@@ -270,10 +269,9 @@ public class GameFlow {
 		out.println("&&&&&&&&&&&&&&&&&&");
 		}
 	
-		
 	
 
-	private static String[][] sortSelectedTiles(String orientation,String[][] selectedTiles) {//sorts tiles to play accordingly to the word orientation, uses bubblesort
+	private static String[][] sortSelectedTiles(String orientation,String[][] selectedTiles) {//sorts tiles to play accordingly to the word orientation, uses bubblesort.
 		int element=0;																							  //if the word is vertical, sorts ascendantly using the row number 
 		int length = selectedTiles.length; 																	 //if the word is horizontal, sorts ascendantly using the column number
 		String[] temp = null;
@@ -342,8 +340,95 @@ public class GameFlow {
 		return orientation;
 	}
 		
-		
+	private static void updateTableTop(String[][] sortedTiles,PlayerLinkedListNode node, String orientation) throws IOException {
+		printTableTop();
+		if( game.getTurn()==0) {
+			if(checkFirstWord(sortedTiles,node,orientation)==true) {
+				placeFirstWord(node,sortedTiles);
+			}else{
+				turnHandler(node);
+			}
+		}
 	}
+
+	private static void placeFirstWord(PlayerLinkedListNode node, String[][] sortedTiles) {
+		for(int index=0;index!=sortedTiles.length;index++) {
+			int tile=Integer.parseInt(sortedTiles[index][0]);
+			int x=Integer.parseInt(sortedTiles[index][1]);
+			int y=Integer.parseInt(sortedTiles[index][2]);
+			game.getTableTop()[x][y].setLetterTile(node.getData().getDock()[tile]);
+		}
+		printTableTop();
+	}
+
+	private static boolean checkFirstWord(String[][] sortedTiles, PlayerLinkedListNode node, String orientation) throws IOException {
+		boolean check=false;
+		if(sortedTiles.length>=2) {
+			if((sortedTiles[0][1].equals("7")&&sortedTiles[0][2].equals("7"))||(sortedTiles[1][1].equals("7")&&sortedTiles[sortedTiles.length-1][2].equals("7"))) {
+				if (orientation.equals("vertical")) {
+					for(int index=0;index!=sortedTiles.length-1;index++) {
+						if(Integer.parseInt(sortedTiles[index+1][1])==Integer.parseInt(sortedTiles[index][1])+1) {
+							check=true;
+						}else{
+							check=false;
+							out.println("ERROR: debe de ingresar su primera palabra en una hilera");
+							break;
+						}
+					}
+				}else{
+					for(int index=0;index!=sortedTiles.length-1;index++) {
+						if(Integer.parseInt(sortedTiles[index+1][2])==Integer.parseInt(sortedTiles[index][2])+1) {
+							check=true;
+						}else{
+							out.println("ERROR: debe de ingresar su primera palabra en una hilera continua");
+							check=false;
+							break;
+						}
+					}
+					
+
+				}
+
+			}else {
+				out.println("Debe colocar su ficha inicial o final en el centro del tablero");
+				check=false;
+			}
+
+		}else {
+			out.println("Debe usar al menos dos fichas para la primera palabra");
+			check=false;
+		}
+		return check;
+	}
+		
+	
+
+	
+	
+	private static void printTableTop() {
+		for (int i = 0; i < game.getTableTop().length; i++) {
+		    for (int j = 0; j < game.getTableTop()[i].length; j++) {
+		        if(game.getTableTop()[i][j].getLetterTile()!=null) {
+		        	out.print("["+game.getTableTop()[i][j].getLetterTile().getLetter() + "] ");	
+		        }else {
+		        	
+		        	out.print("[ ]"+" ");
+		        }
+		    	
+		    }
+		    System.out.println();
+		}
+		out.println("=============================");
+	}
+	
+	
+	
+	
+	}
+
+
+
+
 
 
 
