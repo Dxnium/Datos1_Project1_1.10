@@ -329,20 +329,30 @@ public class GameFlow {
 		printTableTop();
 		if( game.getTurn()==0) {
 			if(checkFirstWord(sortedTiles,node,orientation)==true) {
-				
+				placeFirstWord(node,sortedTiles);
 			}else{
 				turnHandler(node);
 			}
 		}
 	}
 
+	private static void placeFirstWord(PlayerLinkedListNode node, String[][] sortedTiles) {
+		for(int index=0;index!=sortedTiles.length;index++) {
+			int tile=Integer.parseInt(sortedTiles[index][0]);
+			int x=Integer.parseInt(sortedTiles[index][1]);
+			int y=Integer.parseInt(sortedTiles[index][2]);
+			game.getTableTop()[x][y].setLetterTile(node.getData().getDock()[tile]);
+		}
+		printTableTop();
+	}
+
 	private static boolean checkFirstWord(String[][] sortedTiles, PlayerLinkedListNode node, String orientation) throws IOException {
 		boolean check=false;
 		if(sortedTiles.length>=2) {
-			if((sortedTiles[0][1].equals("8")&&sortedTiles[0][2].equals("8"))||(sortedTiles[1][1].equals("8")&&sortedTiles[sortedTiles.length-1][2].equals("8"))) {
+			if((sortedTiles[0][1].equals("7")&&sortedTiles[0][2].equals("7"))||(sortedTiles[1][1].equals("7")&&sortedTiles[sortedTiles.length-1][2].equals("7"))) {
 				if (orientation.equals("vertical")) {
 					for(int index=0;index!=sortedTiles.length-1;index++) {
-						if(Integer.parseInt(sortedTiles[index+1][2])==Integer.parseInt(sortedTiles[index][2])+1) {
+						if(Integer.parseInt(sortedTiles[index+1][1])==Integer.parseInt(sortedTiles[index][1])+1) {
 							check=true;
 						}else{
 							check=false;
@@ -352,7 +362,7 @@ public class GameFlow {
 					}
 				}else{
 					for(int index=0;index!=sortedTiles.length-1;index++) {
-						if(Integer.parseInt(sortedTiles[index+1][1])==Integer.parseInt(sortedTiles[index][1])+1) {
+						if(Integer.parseInt(sortedTiles[index+1][2])==Integer.parseInt(sortedTiles[index][2])+1) {
 							check=true;
 						}else{
 							out.println("ERROR: debe de ingresar su primera palabra en una hilera continua");
@@ -384,15 +394,16 @@ public class GameFlow {
 		for (int i = 0; i < game.getTableTop().length; i++) {
 		    for (int j = 0; j < game.getTableTop()[i].length; j++) {
 		        if(game.getTableTop()[i][j].getLetterTile()!=null) {
-		        	out.print(game.getTableTop()[i][j].getLetterTile().getLetter() + " ");	
+		        	out.print("["+game.getTableTop()[i][j].getLetterTile().getLetter() + "] ");	
 		        }else {
-		        	out.print("null"+" ");
+		        	
+		        	out.print("[ ]"+" ");
 		        }
 		    	
 		    }
 		    System.out.println();
 		}
-		
+		out.println("=============================");
 	}
 	
 	
