@@ -31,7 +31,7 @@ public class BoardGUI extends JPanel{
 		for(int f=1; f <= 15; f++) {
 			for(int c =1;c<= 15;c++) {
 				
-				g.setColor(Color.GREEN);
+				g.setColor(Color.BLUE);
 				g.drawString( matrix[c-1][f-1].getMultiplier().toString() ,(f*36)-17,(c*36)-17);
 						
 			}
