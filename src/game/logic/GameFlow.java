@@ -1,25 +1,40 @@
 package game.logic;
 import java.io.BufferedReader;
+
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
+import javax.swing.JFrame;
+
+import graphics.*;
+
+
 public class GameFlow {
 
 	static BufferedReader in= new BufferedReader (new InputStreamReader(System.in));
 	static PrintStream out=System.out;
 	private static Board game = new Board();
+	
 
 
 	public static void main(String[] args) throws IOException {
+		
+		
 		game.initializeTableTop();
 		System.out.println("----------------------------------------");
 		game.getDictionary().generateDictionaryBook();
 		System.out.println("----------------------------------------");
 		game.InitializeDeck();
 		System.out.println("----------------------------------------");
+		JFrame f = new JFrame("Scrabble");
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		BoardGUI board = new BoardGUI(game.getTableTop());
+		f.add(board);
+		f.setSize(1200, 800);
+		f.setVisible(true);
 		promptGameStart();
 		
 		

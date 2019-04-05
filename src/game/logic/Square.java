@@ -2,8 +2,13 @@ package game.logic;
 
 public class Square {
 	
+
+	private LetterTile letter;
+	private Integer multiplier;
+
 	private LetterTile letterTile;
-	private int multiplier;
+
+
 	private boolean activeFlag = false;
 	
 	public Square(int multiplier){
@@ -20,7 +25,7 @@ public class Square {
 	public void setLetterTile(LetterTile letter) {
 		this.letterTile = letter;
 	}
-	public int getMultiplier() {
+	public Integer getMultiplier() {
 		return multiplier;
 	}
 	public void setMultiplier(int multiplier) {
