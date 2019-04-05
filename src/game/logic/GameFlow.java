@@ -6,9 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
-
 import javax.swing.JFrame;
-
 import graphics.*;
 
 
@@ -137,6 +135,14 @@ public class GameFlow {
 				index++;
 			}
 		}
+	}
+	
+	private static void refillTiles(PlayerLinkedListNode node) {
+		for(int index=0;index!=node.getData().getDock().length;index++) {
+			if(node.getData().getDock()[index]==null) {
+				node.getData().getDock()[index]=randomTileGenerator();
+			}
+		}printPlayerDock(node);
 	}
 
 
@@ -377,6 +383,7 @@ public class GameFlow {
 			out.println("Puntos totales del jugador: "+node.getData().getScore());
 			printTableTop();
 			game.setTurn(game.getTurn()+1);
+			refillTiles(node);
 			//turnHandler(node.getNext());
 		}else{
 			out.println("La palabra es invalida");
