@@ -22,6 +22,7 @@ public class GameFlow {
 		System.out.println("----------------------------------------");
 		promptGameStart();
 		
+		
 
 	}
 
@@ -336,14 +337,43 @@ public class GameFlow {
 		}
 	}
 
-	private static void placeFirstWord(PlayerLinkedListNode node, String[][] sortedTiles) {
+	private static void placeFirstWord(PlayerLinkedListNode node, String[][] sortedTiles) throws IOException {
+		String word="";
+		int points=0;
+
 		for(int index=0;index!=sortedTiles.length;index++) {
 			int tile=Integer.parseInt(sortedTiles[index][0]);
 			int x=Integer.parseInt(sortedTiles[index][1]);
 			int y=Integer.parseInt(sortedTiles[index][2]);
 			game.getTableTop()[x][y].setLetterTile(node.getData().getDock()[tile]);
+			out.println("Punto de ficha: "+node.getData().getDock()[tile].getScore());
+			out.println("Multiplicador: "+game.getTableTop()[x][y].getMultiplier());
+			points+=node.getData().getDock()[tile].getScore()*game.getTableTop()[x][y].getMultiplier();
+			word=word+node.getData().getDock()[tile].getLetter().toLowerCase();
+			
 		}
-		printTableTop();
+		if(verifyWord(word)==true) {
+			for(int index=0;index!=sortedTiles.length;index++) {
+				int tile=Integer.parseInt(sortedTiles[index][0]);
+				node.getData().getDock()[tile]=null;
+			}
+			node.getData().setScore(node.getData().getScore()+points);
+			out.println("Puntos obtenidos por la palabra "+word+": "+points);
+			out.println("Puntos totales del jugador: "+node.getData().getScore());
+			printTableTop();
+			game.setTurn(game.getTurn()+1);
+			//turnHandler(node.getNext());
+		}else{
+			out.println("La palabra es invalida");
+			for(int index=0;index!=sortedTiles.length;index++) {
+				int x=Integer.parseInt(sortedTiles[index][1]);
+				int y=Integer.parseInt(sortedTiles[index][2]);
+				game.getTableTop()[x][y].setLetterTile(null);
+			}
+			printTableTop();
+			turnHandler(node);
+		}
+		
 	}
 
 	private static boolean checkFirstWord(String[][] sortedTiles, PlayerLinkedListNode node, String orientation) throws IOException {
@@ -397,7 +427,7 @@ public class GameFlow {
 		        	out.print("["+game.getTableTop()[i][j].getLetterTile().getLetter() + "] ");	
 		        }else {
 		        	
-		        	out.print("[ ]"+" ");
+		        	out.print("[  ]"+" ");
 		        }
 		    	
 		    }
