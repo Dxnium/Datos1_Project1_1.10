@@ -35,6 +35,14 @@ public class LetterTile {//Class that will be used as a game tile, contains a st
 		this.setAmount(amount);
 	}
 
+	public int getPlayedOnTurn() {
+		return playedOnTurn;
+	}
+
+	public void setPlayedOnTurn(int playedOnTurn) {
+		this.playedOnTurn = playedOnTurn;
+	}
+
 	
 
 	

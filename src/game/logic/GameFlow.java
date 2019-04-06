@@ -355,7 +355,16 @@ public class GameFlow {
 			}else{
 				turnHandler(node);
 			}
+		}else{
+			if(checkPlacedWord(sortedTiles,node,orientation)==true) {
+				
+			}
 		}
+	}
+
+	private static boolean checkPlacedWord(String[][] sortedTiles, PlayerLinkedListNode node, String orientation) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	private static void placeFirstWord(PlayerLinkedListNode node, String[][] sortedTiles) throws IOException {
@@ -367,6 +376,7 @@ public class GameFlow {
 			int x=Integer.parseInt(sortedTiles[index][1]);
 			int y=Integer.parseInt(sortedTiles[index][2]);
 			game.getTableTop()[x][y].setLetterTile(node.getData().getDock()[tile]);
+			game.getTableTop()[x][y].getLetterTile().setPlayedOnTurn(game.getTurn());
 			out.println("Punto de ficha: "+node.getData().getDock()[tile].getScore());
 			out.println("Multiplicador: "+game.getTableTop()[x][y].getMultiplier());
 			points+=node.getData().getDock()[tile].getScore()*game.getTableTop()[x][y].getMultiplier();
@@ -384,7 +394,7 @@ public class GameFlow {
 			printTableTop();
 			game.setTurn(game.getTurn()+1);
 			refillTiles(node);
-			//turnHandler(node.getNext());
+			turnHandler(node.getNext());
 		}else{
 			out.println("La palabra es invalida");
 			for(int index=0;index!=sortedTiles.length;index++) {
