@@ -6,7 +6,10 @@ import java.io.FileReader;
 
 public class MainTest {
 
-	@SuppressWarnings("resource")
+
 	public static void main(String[] args) throws FileNotFoundException {
-//		StartWindow inicio = new StartWindow();
+		StartWindow inicio = new StartWindow();
+
+}
+	
 }
