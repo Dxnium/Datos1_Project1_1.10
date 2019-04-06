@@ -1,6 +1,8 @@
 package GUI;
 
 import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -47,6 +49,26 @@ public class StartWindow extends JFrame {
 				c.add(background);
 				c.add(buttonClient);
 				c.add(buttonServer);
+				
+				buttonClient.addActionListener(new ActionListener() {
+		//Crea la instancia del cliente para que se una 		
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						System.out.println("Inicia el cliente");
+						
+					}
+				});
+		//Crear la instancia del cliente 		
+				buttonServer.addActionListener( new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						System.out.println("Inicia el Server");
+						
+						
+					}
+				});
+				
 				} 
 			});
 		
@@ -63,3 +85,5 @@ public class StartWindow extends JFrame {
 	}
 
 }
+
+	
