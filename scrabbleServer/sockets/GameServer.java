@@ -14,10 +14,10 @@ import org.json.simple.JSONArray;
 import JSON.Encode;
 import JSON.Juego;
 
-public class Server implements Runnable  {
+public class GameServer implements Runnable  {
 	ServerSocket server;  
 	Socket socket; 
-	final int port = 5000;
+	final int port = 9999;
 	
 
 	@Override
@@ -37,7 +37,7 @@ public class Server implements Runnable  {
 			
 			//Confirmacion de conexion con mensaje 
 			System.out.println("Confirmando conexion al cliente....");
-			salida.writeUTF(GetJMensaje());//toma el mensaje que se debe enviar al cliente 
+			salida.writeUTF("hola");//toma el mensaje que se debe enviar al cliente 
 	
 			//Recepcion de mensaje
 			String mensajeRecibido = entrada.readLine();

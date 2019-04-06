@@ -8,8 +8,8 @@ import java.net.UnknownHostException;
 
 public class Cliente {
 
-	final int port = 5000;
-	String address = "192.168.43.198";
+	final int port = 9999;
+	String address = "localhost";
 
 	Socket socket;
 	String msg = null; //Mensaje resivido del servidor 
