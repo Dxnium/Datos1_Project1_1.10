@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 
@@ -31,16 +32,18 @@ public class StartWindow extends JFrame {
 				
 		
 				//swing component 
-				JLabel background=new JLabel(new ImageIcon("\\Datos1_Project1_1.10\\IMG\\Fondo.jpg"));
+				JLabel background=new JLabel(new ImageIcon("\\IMG\\Fondo.jpg"));
 				JButton buttonClient = new JButton("Cliente");
-				buttonClient.setBounds(760, 540, 200, 40);
+				buttonClient.setBounds(560, 540, 200, 40);
 				JButton buttonServer = new JButton("Server");
-				buttonServer.setBounds(960, 540, 200, 40);
+				buttonServer.setBounds(1260, 540, 200, 40);
+				background.setBounds(100, 100, 1080, 1920);
 
 				
 				
 //				//add swing component to content pane 
 				Container c = startFrame.getContentPane();
+				System.out.println(background);
 				c.add(background);
 				c.add(buttonClient);
 				c.add(buttonServer);
