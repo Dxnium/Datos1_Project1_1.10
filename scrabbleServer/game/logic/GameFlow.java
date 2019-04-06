@@ -27,13 +27,13 @@ public class GameFlow {
 		System.out.println("----------------------------------------");
 		game.InitializeDeck();
 		System.out.println("----------------------------------------");
-		JFrame f = new JFrame("Scrabble");
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		BoardGUI board = new BoardGUI(game.getTableTop());
-		f.add(board);
-		f.setSize(1200, 800);
-		f.setVisible(true);
-		promptGameStart();
+//		JFrame f = new JFrame("Scrabble");
+//		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		BoardGUI board = new BoardGUI(game.getTableTop());
+//		f.add(board);
+//		f.setSize(1200, 800);
+//		f.setVisible(true);
+//		promptGameStart();
 		
 		
 
