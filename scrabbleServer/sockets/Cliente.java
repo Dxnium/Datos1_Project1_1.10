@@ -9,7 +9,6 @@ import java.net.UnknownHostException;
 public class Cliente {
 
 	final int port = 9999;
-//	String address = "172.18.182.130";
 	String address = "localhost";
 	
 
