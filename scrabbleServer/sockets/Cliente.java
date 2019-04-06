@@ -7,8 +7,13 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class Cliente {
+
 	final int port = 5000;
 	String address = "localhost";
+
+	final int port = 9999;
+	String address = "192.168.43.198";
+
 	Socket socket;
 	String msg = null; //Mensaje resivido del servidor 
 	String password = "";
