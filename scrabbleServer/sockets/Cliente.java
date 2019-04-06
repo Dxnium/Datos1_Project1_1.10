@@ -7,7 +7,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class Cliente {
-	final int port = 9999;
+	final int port = 5000;
 	String address = "192.168.43.198";
 	Socket socket;
 	String msg = null; //Mensaje resivido del servidor 
@@ -38,6 +38,7 @@ public class Cliente {
 			//IP failed 
 			System.out.println("Cannot find ip address");
 		} catch (IOException e) {
+			e.printStackTrace();
 			System.out.println("Cannot find server port");
 		}
 		

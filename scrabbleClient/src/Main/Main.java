@@ -1,6 +1,5 @@
 package Main;
 
-
 import Sockets.ClienteJugador;
 
 public class Main {
