@@ -17,7 +17,7 @@ import JSON.Juego;
 public class Server implements Runnable  {
 	ServerSocket server;  
 	Socket socket; 
-	final int port = 9999;
+	final int port = 5000;
 	
 
 	@Override
