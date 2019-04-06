@@ -1,11 +1,12 @@
 package Main;
 
-import Sockets.Cliente;
+
+import Sockets.ClienteJugador;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Cliente cliente = new Cliente();
+		ClienteJugador cliente = new ClienteJugador();
 
 	}
 
