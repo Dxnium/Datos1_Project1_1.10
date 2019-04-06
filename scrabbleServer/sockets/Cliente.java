@@ -42,6 +42,7 @@ public class Cliente {
 			//IP failed 
 			System.out.println("Cannot find ip address");
 		} catch (IOException e) {
+			e.printStackTrace();
 			System.out.println("Cannot find server port");
 		}
 		
