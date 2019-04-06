@@ -37,7 +37,7 @@ public class GameServer implements Runnable  {
 			
 			//Confirmacion de conexion con mensaje 
 			System.out.println("Confirmando conexion al cliente....");
-			salida.writeUTF("hola");//toma el mensaje que se debe enviar al cliente 
+			salida.writeUTF("Hola1234");//toma el mensaje que se debe enviar al cliente 
 	
 			//Recepcion de mensaje
 			String mensajeRecibido = entrada.readLine();
