@@ -9,6 +9,10 @@ import java.util.concurrent.ThreadLocalRandom;
 //import javax.swing.JFrame;
 //import graphics.*;
 
+import javax.swing.JFrame;
+
+import graphics.BoardGUI;
+
 
 public class GameFlow {
 
@@ -27,12 +31,12 @@ public class GameFlow {
 		System.out.println("----------------------------------------");
 		game.InitializeDeck();
 		System.out.println("----------------------------------------");
-//		JFrame f = new JFrame("Scrabble");
-//		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		BoardGUI board = new BoardGUI(game.getTableTop());
-//		f.add(board);
-//		f.setSize(1200, 800);
-//		f.setVisible(true);
+		JFrame f = new JFrame("Scrabble");
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		BoardGUI board = new BoardGUI(game.getTableTop());
+		f.add(board);
+		f.setSize(1200, 800);
+		f.setVisible(true);
 		promptGameStart();
 		
 		
