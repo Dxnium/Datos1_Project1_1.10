@@ -31,13 +31,15 @@ public class GameFlow {
 		System.out.println("----------------------------------------");
 		game.InitializeDeck();
 		System.out.println("----------------------------------------");
-		JFrame f = new JFrame("Scrabble");
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		BoardGUI board = new BoardGUI(game.getTableTop());
-		f.add(board);
-		f.setSize(1200, 800);
-		f.setVisible(true);
-		promptGameStart();
+//		JFrame f = new JFrame("Scrabble");
+//		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		BoardGUI board = new BoardGUI(game.getTableTop());
+//		f.add(board);
+//		f.setSize(1200, 800);
+//		f.setVisible(true);
+//		promptGameStart();
+		game.generateGameCode();
+		
 		
 		
 
@@ -360,16 +362,30 @@ public class GameFlow {
 				turnHandler(node);
 			}
 		}else{
-			if(checkPlacedWord(sortedTiles,node,orientation)==true) {
+			placeNewWord(sortedTiles,node,orientation);
 				
-			}
+			
 		}
 	}
 
-	private static boolean checkPlacedWord(String[][] sortedTiles, PlayerLinkedListNode node, String orientation) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	private static void placeNewWord(String[][] sortedTiles, PlayerLinkedListNode node, String orientation) {
+
+		//if(orientation.equals("horizontal")) {
+		for(int index=0;index!=sortedTiles.length;index++) {
+			int tile=Integer.parseInt(sortedTiles[index][0]);
+			int x=Integer.parseInt(sortedTiles[index][1]);
+			int y=Integer.parseInt(sortedTiles[index][2]);
+			if(game.getTableTop()[x][y].getLetterTile()==null) {
+				game.getTableTop()[x][y].setLetterTile(node.getData().getDock()[tile]);
+				game.getTableTop()[x][y].getLetterTile().setPlayedOnTurn(game.getTurn());
+				}
+				
+			}
+		
+		printTableTop();
+		}
+		
+	//}
 
 	private static void placeFirstWord(PlayerLinkedListNode node, String[][] sortedTiles) throws IOException {
 		String word="";

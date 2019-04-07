@@ -4,9 +4,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Board {//Manages most of the board related methods
-
+	private String gameCode;
 	private Square[][] tableTop = new Square[15][15];
 	private PlayerLinkedList playerList=new PlayerLinkedList();
 	private LetterTile[] deck = new LetterTile[29];
@@ -44,7 +45,12 @@ public class Board {//Manages most of the board related methods
 		this.deckSize = deckSize;
 	}
 	
-	
+	public String getGameCode() {
+		return gameCode;
+	}
+	public void setGameCode(String gameCode) {
+		this.gameCode = gameCode;
+	}
 	
 	
 	
@@ -118,6 +124,35 @@ public class Board {//Manages most of the board related methods
 		}
 	}
 	
-	
-	
+	public void generateGameCode() throws IOException {
+		BufferedReader reader = null;
+		reader= new BufferedReader(new FileReader("characters.txt"));
+		int count=0;
+		String line;
+		String letterArray[]= new String[26];
+		String numberArray[]= new String[10];
+		while((line = reader.readLine()) != null) {
+			if(count==0) {
+				letterArray = line.split(",");
+			}else{
+				numberArray=line.split(",");
+			}
+			count++;
+		}
+		reader.close();
+		String GameCode="";
+		int amount=0;
+		while(amount<6) {
+			if(amount<3) {
+				int randomLetter = ThreadLocalRandom.current().nextInt(1, 27);
+				GameCode=GameCode+letterArray[randomLetter];
+			}else{
+				int randomNum = ThreadLocalRandom.current().nextInt(1, 11);
+				GameCode=GameCode+numberArray[randomNum];
+			}
+			amount++;
+		}
+		System.out.println(GameCode);
+		this.setGameCode(GameCode);
+	}
 }
