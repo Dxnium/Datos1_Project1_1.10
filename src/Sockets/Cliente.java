@@ -13,7 +13,7 @@ public class Cliente {
 
 
 	final int port = 5555;
-	String address = "localhost";
+	String address = "172.18.210.124";
 
 	
 

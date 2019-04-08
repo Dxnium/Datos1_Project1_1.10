@@ -24,8 +24,8 @@ public class Ventana2 extends JFrame {
 				Ventana2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				Ventana2.setVisible(true);
 				Ventana2.setLocationRelativeTo(null);
-				Image labelImg = new ImageIcon(this.getClass().getResource("/img.png")).getImage(); 
-				Image reglasImg = new ImageIcon(this.getClass().getResource("/ayuda.png")).getImage();
+				Image labelImg = new ImageIcon("Images\\img.png").getImage(); 
+				Image reglasImg = new ImageIcon("Images\\ayuda.png").getImage();
 				
 				//Set layout manager
 				Ventana2.setLayout(null);
