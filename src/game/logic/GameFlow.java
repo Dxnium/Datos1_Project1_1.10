@@ -37,8 +37,8 @@ public class GameFlow {
 //		f.add(board);
 //		f.setSize(1200, 800);
 //		f.setVisible(true);
-//		promptGameStart();
-		game.generateGameCode();
+		promptGameStart();
+		
 		
 		
 		
@@ -369,8 +369,6 @@ public class GameFlow {
 	}
 
 	private static void placeNewWord(String[][] sortedTiles, PlayerLinkedListNode node, String orientation) {
-
-		//if(orientation.equals("horizontal")) {
 		for(int index=0;index!=sortedTiles.length;index++) {
 			int tile=Integer.parseInt(sortedTiles[index][0]);
 			int x=Integer.parseInt(sortedTiles[index][1]);
@@ -378,14 +376,132 @@ public class GameFlow {
 			if(game.getTableTop()[x][y].getLetterTile()==null) {
 				game.getTableTop()[x][y].setLetterTile(node.getData().getDock()[tile]);
 				game.getTableTop()[x][y].getLetterTile().setPlayedOnTurn(game.getTurn());
+			}else{
+				out.println("Error");
+			}
+			
+		}
+		printTableTop();
+		int firstX=Integer.parseInt(sortedTiles[0][1]);
+		int firstY=Integer.parseInt(sortedTiles[0][2]);
+		checkNewWord(sortedTiles,firstX,firstY,node,orientation);
+	}
+
+	private static void checkNewWord(String[][] sortedTiles,int x,int y, PlayerLinkedListNode node, String orientation) {
+		String word="";
+		int column=y;
+		int row=x;
+		LetterTile horizontalTile=game.getTableTop()[x][column].getLetterTile();
+		LetterTile verticalTile=game.getTableTop()[row][y].getLetterTile();
+			if(orientation.equals("horizontal")) {
+				while(horizontalTile!=null) {
+					word=horizontalTile.getLetter()+word;
+					column=column-1;
+					horizontalTile=game.getTableTop()[x][column].getLetterTile();
+				}
+				column=y;
+				horizontalTile=game.getTableTop()[x][column+1].getLetterTile();
+				while(horizontalTile!=null) {
+					word=word+horizontalTile.getLetter();
+					column=column+1;
+					horizontalTile=game.getTableTop()[x][column+1].getLetterTile();
 				}
 				
 			}
-		
-		printTableTop();
+			if(orientation.equals("vertical")) {
+				while(verticalTile!=null) {
+					word=verticalTile.getLetter()+word;
+					row=row-1;
+					verticalTile=game.getTableTop()[row][y].getLetterTile();
+				}
+				row=x;
+				verticalTile=game.getTableTop()[row+1][y].getLetterTile();
+				while(verticalTile!=null) {
+					word=word+verticalTile.getLetter();
+					row=row+1;
+					verticalTile=game.getTableTop()[row+1][y].getLetterTile();
+				}
+			}
+		if(checkNewPlacement(sortedTiles)==true) {
+			out.println(word);
+		}else{
+			out.println("Error de posicion");
 		}
 		
-	//}
+	}
+
+	private static boolean checkNewPlacement(String[][] sortedTiles) {
+		boolean isAdjacent=false;
+		for(int index=0;index!=sortedTiles.length;index++) {
+			int x=Integer.parseInt(sortedTiles[index][1]);
+			int y=Integer.parseInt(sortedTiles[index][2]);
+			if(game.getTableTop()[x+1][y].getLetterTile()!=null) {
+				if(game.getTableTop()[x+1][y].getLetterTile().getPlayedOnTurn()<game.getTurn()) {
+					isAdjacent=true;
+					game.getTableTop()[x][y].getLetterTile().setConected(true);
+					continue;
+				}else if(game.getTableTop()[x+1][y].getLetterTile().isConected()) {
+					isAdjacent=true;
+					game.getTableTop()[x][y].getLetterTile().setConected(true);
+					continue;
+				}else{
+					isAdjacent=false;
+				}
+				
+			}else{
+				isAdjacent=false;
+			}
+			if(game.getTableTop()[x][y-1].getLetterTile()!=null) {
+				if(game.getTableTop()[x][y-1].getLetterTile().getPlayedOnTurn()<game.getTurn()) {
+					isAdjacent=true;
+					game.getTableTop()[x][y].getLetterTile().setConected(true);
+					continue;
+				}else if(game.getTableTop()[x][y-1].getLetterTile().isConected()) {
+					isAdjacent=true;
+					game.getTableTop()[x][y].getLetterTile().setConected(true);
+					continue;
+				}else{
+					isAdjacent=false;
+				}
+				
+			}else{
+				isAdjacent=false;
+			}
+			if(game.getTableTop()[x-1][y].getLetterTile()!=null) {
+				if(game.getTableTop()[x-1][y].getLetterTile().getPlayedOnTurn()<game.getTurn()) {
+					isAdjacent=true;
+					game.getTableTop()[x][y].getLetterTile().setConected(true);
+					continue;
+				}else if(game.getTableTop()[x-1][y].getLetterTile().isConected()) {
+					isAdjacent=true;
+					game.getTableTop()[x][y].getLetterTile().setConected(true);
+					continue;
+				}else{
+					isAdjacent=false;
+				}
+				
+			}else{
+				isAdjacent=false;
+			}
+			if(game.getTableTop()[x][y+1].getLetterTile()!=null) {
+				if(game.getTableTop()[x][y+1].getLetterTile().getPlayedOnTurn()<game.getTurn()) {
+					isAdjacent=true;
+					game.getTableTop()[x][y].getLetterTile().setConected(true);
+					continue;
+				}else if(game.getTableTop()[x][y+1].getLetterTile().isConected()) {
+					isAdjacent=true;
+					game.getTableTop()[x][y].getLetterTile().setConected(true);
+					continue;
+				}else{
+					isAdjacent=false;
+				}
+				
+			}else{
+				isAdjacent=false;
+			}
+		}
+		return isAdjacent;
+	}
 
 	private static void placeFirstWord(PlayerLinkedListNode node, String[][] sortedTiles) throws IOException {
 		String word="";
@@ -400,6 +516,7 @@ public class GameFlow {
 			out.println("Punto de ficha: "+node.getData().getDock()[tile].getScore());
 			out.println("Multiplicador: "+game.getTableTop()[x][y].getMultiplier());
 			points+=node.getData().getDock()[tile].getScore()*game.getTableTop()[x][y].getMultiplier();
+			game.getTableTop()[x][y].setMultiplier(1);
 			word=word+node.getData().getDock()[tile].getLetter().toLowerCase();
 			
 		}
@@ -476,10 +593,10 @@ public class GameFlow {
 		for (int i = 0; i < game.getTableTop().length; i++) {
 		    for (int j = 0; j < game.getTableTop()[i].length; j++) {
 		        if(game.getTableTop()[i][j].getLetterTile()!=null) {
-		        	out.print("["+game.getTableTop()[i][j].getLetterTile().getLetter() + "] ");	
+		        	out.print(" ["+game.getTableTop()[i][j].getLetterTile().getLetter() + "] ");	
 		        }else {
 		        	
-		        	out.print("[  ]"+" ");
+		        	out.print(" "+"[_]"+" ");
 		        }
 		    	
 		    }
