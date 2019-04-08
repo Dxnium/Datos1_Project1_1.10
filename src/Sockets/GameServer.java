@@ -14,13 +14,17 @@ import org.json.simple.JSONArray;
 import JSON.Encode;
 import JSON.Juego;
 
-public class Server implements Runnable  {
+public class GameServer implements Runnable   {
 	ServerSocket server;  
 	Socket socket; 
 	final int port = 5555;
-	
-
-	@Override
+	 public GameServer(){
+		 System.out.println(">>Se inicia el server");
+		    Thread myThread = new Thread(this);
+		    myThread.start();
+		  }
+	 
+	 @Override 
 	public void run() {
 		try {
 			//server created in port 9999

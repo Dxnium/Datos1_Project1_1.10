@@ -8,8 +8,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+
+import Sockets.Cliente;
+import Sockets.GameServer;
 
 
 
@@ -55,8 +57,13 @@ public class StartWindow extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						System.out.println("Inicia el cliente");
-						
+						Cliente cliente = new Cliente();	
+						startFrame.dispose();
+						Ventana2 ventana2 = new Ventana2();
 					}
+					
+					
+					
 				});
 		//Crear la instancia del cliente 		
 				buttonServer.addActionListener( new ActionListener() {
@@ -64,6 +71,12 @@ public class StartWindow extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						System.out.println("Inicia el Server");
+						//New thread running the Server
+						GameServer hilo =  new GameServer();
+						startFrame.dispose();
+						Ventana2 ventana2 = new Ventana2();
+						
+						//
 						
 						
 					}
