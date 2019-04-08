@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Image;
 
@@ -22,8 +23,9 @@ public class Ventana2 extends JFrame {
 				Ventana2.setSize(Xsize,Ysize);
 				Ventana2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				Ventana2.setVisible(true);
-				Image labelImg = new ImageIcon(this.getClass().getResource("/img.png")).getImage(); 
-				Image reglasImg = new ImageIcon(this.getClass().getResource("/ayuda.png")).getImage();
+				Ventana2.setLocationRelativeTo(null);
+				Image labelImg = new ImageIcon("Images\\img.png").getImage(); 
+				Image reglasImg = new ImageIcon("Images\\ayuda.png").getImage();
 				
 				//Set layout manager
 				Ventana2.setLayout(null);
@@ -32,12 +34,11 @@ public class Ventana2 extends JFrame {
 				//swing component 
 				JLabel serverLabel = new JLabel("");
 				botonReglas reglas = new botonReglas();
-				reglas.setBounds(0,0,100,100);
+				reglas.setBounds(0,0,128,128);
 				serverLabel.setBounds(0, 0, 1720, 980);
 				reglas.setIcon(new ImageIcon(reglasImg));
 				serverLabel.setIcon(new ImageIcon(labelImg));
-				
-				
+
 				//add swing component to content pane 
 				//add swing component to content pane 
 				Container c = Ventana2.getContentPane();
