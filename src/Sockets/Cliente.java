@@ -20,6 +20,7 @@ public class Cliente {
 	Socket socket;
 	String msg = null; //Mensaje resivido del servidor 
 	String password = "";
+	String nombre = "";
 	
 	
 	public Cliente() {
@@ -31,7 +32,8 @@ public class Cliente {
 			DataOutputStream mensaje = new DataOutputStream(socket.getOutputStream());
 			
 			//enviamos el mensaje
-			mensaje.writeUTF("hola que tal!! desde cliente ");
+			setPassword("Hola");
+			mensaje.writeUTF(this.password.toLowerCase());
 			System.out.println("Cerrando conexión...Cliente");
 			
 			//leer mensaje
@@ -66,17 +68,13 @@ public class Cliente {
 		
 		
 	}
-
 	public String getAddress() {
 		return address;
 	}
-
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
-	
-	
-	
-
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }
