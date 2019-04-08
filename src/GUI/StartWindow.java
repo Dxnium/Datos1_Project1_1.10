@@ -32,8 +32,8 @@ public class StartWindow extends JFrame {
 				startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				startFrame.setVisible(true);
 				startFrame.setLocationRelativeTo(null);
-				Image fondoImg = new ImageIcon(this.getClass().getResource("/Fondo.jpg")).getImage();
-				
+				Image fondoImg = new ImageIcon("Images\\Fondo.JPG").getImage();
+			
 				//Set layout manager
 				startFrame.setLayout(null);
 				

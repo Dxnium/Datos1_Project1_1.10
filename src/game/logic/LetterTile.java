@@ -5,7 +5,16 @@ public class LetterTile {//Class that will be used as a game tile, contains a st
 	private int score;
 	private int amount;
 	private int playedOnTurn;
+	private boolean isConected;
 	
+	public boolean isConected() {
+		return isConected;
+	}
+
+	public void setConected(boolean isConected) {
+		this.isConected = isConected;
+	}
+
 	public String getLetter() {
 		return letter;
 	}
