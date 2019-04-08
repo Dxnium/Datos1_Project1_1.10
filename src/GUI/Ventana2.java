@@ -23,6 +23,7 @@ public class Ventana2 extends JFrame {
 				Ventana2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				Ventana2.setVisible(true);
 				Image labelImg = new ImageIcon(this.getClass().getResource("/img.png")).getImage(); 
+				Image reglasImg = new ImageIcon(this.getClass().getResource("/ayuda.png")).getImage();
 				
 				//Set layout manager
 				Ventana2.setLayout(null);
@@ -30,7 +31,10 @@ public class Ventana2 extends JFrame {
 				
 				//swing component 
 				JLabel serverLabel = new JLabel("");
+				botonReglas reglas = new botonReglas();
+				reglas.setBounds(0,0,100,100);
 				serverLabel.setBounds(0, 0, 1720, 980);
+				reglas.setIcon(new ImageIcon(reglasImg));
 				serverLabel.setIcon(new ImageIcon(labelImg));
 				
 				
@@ -38,6 +42,7 @@ public class Ventana2 extends JFrame {
 				//add swing component to content pane 
 				Container c = Ventana2.getContentPane();
 				c.add(serverLabel);
+				c.add(reglas);
 			}});
 	}
 }
