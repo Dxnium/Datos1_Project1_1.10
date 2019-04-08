@@ -1,6 +1,7 @@
 package GUI;
 
 import java.awt.Container;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -18,8 +19,8 @@ import Sockets.GameServer;
 
 public class StartWindow extends JFrame {
 	private boolean active = true;
-	private int Xsize = 1920;
-	private int Ysize = 1080;
+	private int Xsize = 1600;
+	private int Ysize = 900;
 	
 	
 	public StartWindow() {
@@ -30,6 +31,8 @@ public class StartWindow extends JFrame {
 				startFrame.setSize(Xsize,Ysize);
 				startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				startFrame.setVisible(true);
+				startFrame.setLocationRelativeTo(null);
+				Image fondoImg = new ImageIcon(this.getClass().getResource("/Fondo.jpg")).getImage();
 				
 				//Set layout manager
 				startFrame.setLayout(null);
@@ -37,19 +40,20 @@ public class StartWindow extends JFrame {
 				
 		
 				//swing component 
-				JLabel background=new JLabel(new ImageIcon("\\IMG\\Fondo.jpg"));
+				JLabel fondo=new JLabel("");
+				fondo.setBounds(0, 0, 1600, 900);
+				fondo.setIcon(new ImageIcon(fondoImg));
 				JButton buttonClient = new JButton("Cliente");
 				buttonClient.setBounds(560, 540, 200, 40);
 				JButton buttonServer = new JButton("Server");
 				buttonServer.setBounds(1260, 540, 200, 40);
-				background.setBounds(100, 100, 1080, 1920);
+				
 
 				
 				
 //				//add swing component to content pane 
 				Container c = startFrame.getContentPane();
-				System.out.println(background);
-				c.add(background);
+				c.add(fondo);
 				c.add(buttonClient);
 				c.add(buttonServer);
 				
