@@ -4,6 +4,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
@@ -35,6 +38,15 @@ public class Vent_Datos extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnNewButton.setBounds(161, 194, 89, 23);
 		contentPane.add(btnNewButton);
+		
+		btnNewButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent arg0) {
+				BoardJFrame boardJF = new BoardJFrame();
+				boardJF.setVisible(true);
+				
+				Vent_Datos.this.dispose();				
+			}
+		});
 	}
 
 }

@@ -8,9 +8,11 @@ import game.logic.*;
 
 
 public class BoardGUI extends JPanel{
-	Square[][] matrix;
-	public BoardGUI(Square[][] matrix){
+	String[][] matrix;
+	public BoardGUI(String[][] matrix){
 		this.matrix = matrix;
+		setVisible(true);
+		setBounds(0, 0, 1200, 800);
 		
 	}
 	public void paintComponent(Graphics g) {
@@ -22,7 +24,7 @@ public class BoardGUI extends JPanel{
 		g.setColor(Color.BLACK);
 		for(int f=0; f < 15; f++){
 			for(int c =0;c< 15;c++) {
-				g.drawRect((f*36),(c*36),36,36);
+				g.drawRect((f*50),(c*50),50,50);
 				
 				
 			}
@@ -32,7 +34,7 @@ public class BoardGUI extends JPanel{
 			for(int c =1;c<= 15;c++) {
 				
 				g.setColor(Color.BLUE);
-				g.drawString( matrix[c-1][f-1].getMultiplier().toString() ,(f*36)-17,(c*36)-17);
+				g.drawString( matrix[c-1][f-1],(f*50)-25,(c*50)-25);
 						
 			}
 		}

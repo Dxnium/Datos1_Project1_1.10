@@ -15,6 +15,7 @@ public class Vent_Codigo extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField_Codigo;
+	private JTextField textField_IP;
 
 	public Vent_Codigo() {
 		setTitle("Scrabble");
@@ -25,20 +26,32 @@ public class Vent_Codigo extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblDigiteElCdigo = new JLabel("Digite el c\u00F3digo de invitaci\u00F3n");
+		JLabel lblDigiteElCdigo = new JLabel("Digite el c\u00F3digo de invitaci\u00F3n:");
 		lblDigiteElCdigo.setHorizontalAlignment(SwingConstants.LEFT);
 		lblDigiteElCdigo.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblDigiteElCdigo.setBounds(98, 27, 266, 31);
+		lblDigiteElCdigo.setBounds(98, 10, 266, 31);
 		contentPane.add(lblDigiteElCdigo);
 		
 		textField_Codigo = new JTextField();
-		textField_Codigo.setBounds(148, 104, 140, 31);
+		textField_Codigo.setBounds(148, 44, 140, 31);
 		contentPane.add(textField_Codigo);
 		textField_Codigo.setColumns(10);
 		
+		JLabel lbIP = new JLabel("Digite la IP:");
+		lbIP.setHorizontalAlignment(SwingConstants.LEFT);
+		lbIP.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lbIP.setBounds(98, 94, 266, 31);
+		contentPane.add(lbIP);
+		
+		textField_IP = new JTextField();
+		textField_IP.setBounds(148, 124, 140, 31);
+		contentPane.add(textField_IP);
+		textField_IP.setColumns(10);
+		
+		
 		JButton btnContinuar = new JButton("Unirse");
 		btnContinuar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnContinuar.setBounds(171, 174, 102, 31);
+		btnContinuar.setBounds(171, 194, 102, 31);
 		btnContinuar.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 				Vent_Datos Vent_2_2 = new Vent_Datos();
