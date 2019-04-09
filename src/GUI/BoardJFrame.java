@@ -18,18 +18,19 @@ import game.logic.Square;
 public class BoardJFrame extends JFrame {
 	LetterGUI letterGUI = new LetterGUI();
 	String[][] matrix = new String[15][15];
-
+	//Hola
 
 	ArrayList<LetterGUI> lettersList = new ArrayList<LetterGUI>();
 	public BoardJFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("Scrabble a jugar");
+		setTitle("Scrabble - Juego");
 		setSize(1200, 800);
 		setLocationRelativeTo(null);
 		setVisible(true);
 		setLayout(new BorderLayout());
 		initializeTableTop();
 		BoardGUI board = new BoardGUI(matrix);
+		
 		this.add(board);
 	}
 
