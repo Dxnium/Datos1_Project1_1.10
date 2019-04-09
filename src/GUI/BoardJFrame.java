@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -26,7 +27,7 @@ public class BoardJFrame extends JFrame {
 		setSize(1200, 800);
 		setLocationRelativeTo(null);
 		setVisible(true);
-		setLayout(null);
+		setLayout(new BorderLayout());
 		initializeTableTop();
 		BoardGUI board = new BoardGUI(matrix);
 		this.add(board);
