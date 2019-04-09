@@ -17,7 +17,7 @@ import game.logic.Square;
 public class BoardJFrame extends JFrame {
 	LetterGUI letterGUI = new LetterGUI();
 	String[][] matrix = new String[15][15];
-	//Hola
+	
 
 	ArrayList<LetterGUI> lettersList = new ArrayList<LetterGUI>();
 	public BoardJFrame() {
@@ -51,7 +51,7 @@ public class BoardJFrame extends JFrame {
 
 			}
 			System.out.println("Tabletop Initialized");
-			System.out.println(Arrays.deepToString(matrix));
+			
 		
 
 		} catch (IOException error){
