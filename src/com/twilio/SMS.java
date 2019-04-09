@@ -7,8 +7,8 @@ import com.twilio.type.PhoneNumber;
 public class SMS {
 
 	// Find your Account Sid and Token at twilio.com/user/account
-	  public static final String ACCOUNT_SID = "AC90e3ad16d45e359e3ec4736138798bea";
-	  public static final String AUTH_TOKEN = "f2a6cef38ab0df1d24249f964af2428f";
+	  public static final String ACCOUNT_SID = System.getenv("Twilio_SID");
+	  public static final String AUTH_TOKEN = System.getenv("Twilio_Token");;
 	  //public String MensajeSMS;
 	  //public String NumeroDestino;
 
