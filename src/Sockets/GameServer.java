@@ -24,7 +24,8 @@ public class GameServer implements Runnable   {
 	final int port = 5555;
 	String password;
 	private boolean verPassword = false;
-	public InetAddress address; 
+	public InetAddress ip; 
+	
 	
 	
 	 public GameServer(){
@@ -42,8 +43,8 @@ public class GameServer implements Runnable   {
 			//server created in port 9999
 			server = new ServerSocket( port);
 			System.out.println("New server started");
-			this.address = InetAddress.getLocalHost();
-			System.out.println(this.address);
+			this.ip = InetAddress.getLocalHost();
+			System.out.println(this.ip);
 			
 			while(true) {
 			socket = server.accept();//Waiting for a client 
@@ -57,14 +58,19 @@ public class GameServer implements Runnable   {
 					
 					//Confirmacion de conexion con mensaje 
 					System.out.println(">>Enviando update al cliente");
-					salida.writeUTF(GetJMensaje());//toma el mensaje que se debe enviar al cliente 
-			
+					if(verPassword) {
+						salida.writeUTF(GetJMensaje());
+					}else {
+						salida.writeUTF(this.password+","+GetJMensaje());//toma el mensaje que se debe enviar al cliente 
+						}			
+					
 					//Recepcion de mensaje
 					String mensajeRecibido = entrada.readLine();
+					System.out.println(">>Mensaje recibido: "+ mensajeRecibido);
 					if(!verPassword) {
-						this.verPassword = verificarPassword(mensajeRecibido);
-						System.out.println("Mensaje desde el cliente:"+mensajeRecibido);
+						verPassword = verificarPassword(mensajeRecibido);
 					}
+
 				}
 				
 			
@@ -79,8 +85,9 @@ public class GameServer implements Runnable   {
 	}
 //Verifica el password para establecer la conexion 
 	private boolean verificarPassword(String mensajeRecibido) {
-		if(mensajeRecibido.toLowerCase().contains(this.password)) {
-			System.out.println(">>password correcto");
+		if(mensajeRecibido.toLowerCase().contains((this.password))) {
+			System.out.println(">>password correcto"+mensajeRecibido.toLowerCase());
+			
 			return true;
 		}
 		System.out.println(">>password incorrecto");
@@ -89,6 +96,7 @@ public class GameServer implements Runnable   {
 	}
 
 	private String GetJMensaje() {
+		if(verPassword) {
 		Encode datos = new Encode();
 		//Crea el arreglo con los datos de la Clase 
 		JSONArray arr = datos.arrayData(new Juego("Daniel",22));
@@ -100,6 +108,8 @@ public class GameServer implements Runnable   {
 			
 		}String out1 = out.toString();
 		return out1;
+	 }
+		return "Conexion invalida ";
 	}
 
 }
