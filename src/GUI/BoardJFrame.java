@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -22,13 +23,14 @@ public class BoardJFrame extends JFrame {
 	ArrayList<LetterGUI> lettersList = new ArrayList<LetterGUI>();
 	public BoardJFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("Scrabble a jugar");
+		setTitle("Scrabble - Juego");
 		setSize(1200, 800);
 		setLocationRelativeTo(null);
 		setVisible(true);
-		setLayout(null);
+		setLayout(new BorderLayout());
 		initializeTableTop();
 		BoardGUI board = new BoardGUI(matrix);
+		
 		this.add(board);
 	}
 
