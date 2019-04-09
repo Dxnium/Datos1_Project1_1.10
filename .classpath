@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/danie/Documents/TEC2019/Datos/Datos1_Project1_1.10/Libaries/json-simple-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/kabar/Desktop/Respaldo/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="Libaries/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/aloria_CDB/eclipse-workspace/my_Jars/twilio-7.9.1-alpha-1-jar-with-dependencies.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
