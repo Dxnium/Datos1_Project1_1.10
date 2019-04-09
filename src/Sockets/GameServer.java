@@ -13,7 +13,7 @@ import java.net.Socket;
 import org.json.simple.JSONArray;
 
 import JSON.Encode;
-import JSON.Juego;
+import Msg.Message;
 import queue.myQueue;
 
 public class GameServer implements Runnable   {
@@ -25,6 +25,7 @@ public class GameServer implements Runnable   {
 	String password;
 	private boolean verPassword = false;
 	public InetAddress ip; 
+	private String msjDatos = "Vacio";
 	
 	
 	
@@ -99,7 +100,7 @@ public class GameServer implements Runnable   {
 		if(verPassword) {
 		Encode datos = new Encode();
 		//Crea el arreglo con los datos de la Clase 
-		JSONArray arr = datos.arrayData(new Juego("Daniel",22));
+		JSONArray arr = datos.arrayData(new Message(this.msjDatos));
 		Writer out = new StringWriter();//crear un variable de tipo Writer para almacenar el array y poder mostarlo en pantalla 
 		try {
 			arr.writeJSONString(out); //guardar el JSONArray en un string 
@@ -110,6 +111,11 @@ public class GameServer implements Runnable   {
 		return out1;
 	 }
 		return "Conexion invalida ";
+	}
+	
+	public void setMensaje(String newMsj) {
+		this.msjDatos = newMsj;
+		
 	}
 
 }

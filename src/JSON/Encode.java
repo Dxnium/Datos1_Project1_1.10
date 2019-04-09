@@ -6,10 +6,12 @@ import java.io.StringWriter;
 
 import org.json.simple.JSONArray;
 
+import Msg.Message;
+
 public class Encode {
 	//acceso a los datos (atributos) de la clase 
 	//Almacenar en un JSONArray
-	public JSONArray arrayData(Juego obj) {
+	public JSONArray arrayData(Message obj) {
 		JSONArray array = new JSONArray();
 			array.add(obj);
 		return array;
@@ -18,7 +20,7 @@ public class Encode {
 	public static void main(String[] args) {
 	Encode datos = new Encode();
 	//Crea el arreglo con los datos de la Clase 
-	JSONArray arr = datos.arrayData(new Juego("Daniel",22));
+	JSONArray arr = datos.arrayData(new Message("Vacia"));
 	
 	StringWriter out = new StringWriter();//crear un variable de tipo Writer para almacenar el array y poder mostarlo en pantalla 
 	try {
@@ -32,5 +34,6 @@ public class Encode {
 	Decode decode = new Decode(out);
 	
 	}
+
 
 }
