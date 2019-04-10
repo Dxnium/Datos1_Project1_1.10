@@ -16,15 +16,35 @@ public class BoardGUI extends JPanel{
 	Image labelImg = new ImageIcon("Images\\img.png").getImage(); 
 	Image reglasImg = new ImageIcon("Images\\ayuda.png").getImage();
 	
+	
 	public BoardGUI(String[][] matrix){
 		botonReglas reglas = new botonReglas();
 		reglas.setBounds(1000,10,128,128);
 		reglas.setIcon(new ImageIcon(reglasImg));
 		this.add(reglas);
+		
+		JButton btnScrabble = new JButton("Scrabble");
+		btnScrabble.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnScrabble.setBounds(1000, 500, 102, 31);
+		btnScrabble.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent arg0) {
+			getWordsLocation();
+		}});
+		this.add(btnScrabble);
+		JButton btnNext = new JButton("Next");
+		btnNext.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNext.setBounds(1000, 600, 102, 31);
+		btnNext.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent arg0) {
+			
+		}});
+		this.add(btnNext);
 		this.matrix = matrix;
 		setVisible(true);
 		setBounds(0, 0, 1200, 800);
 		setLayout(null);
+		
+		
 
 		this.letterGUI = new LetterGUI("A",1);
 		lettersList.add(letterGUI);
@@ -40,6 +60,11 @@ public class BoardGUI extends JPanel{
 		this.add(letterGUI);
 
 
+	}
+	public void getWordsLocation() {
+		for(int i = 0; i < lettersList.size();i++) {
+			System.out.println("Objeto: "+lettersList.get(i)+"\n"+"PosX: "+lettersList.get(i).getX()+"\n"+"PosY: "+lettersList.get(i).getY());
+		}
 	}
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
