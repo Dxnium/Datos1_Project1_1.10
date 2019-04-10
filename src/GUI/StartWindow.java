@@ -62,7 +62,7 @@ public class StartWindow extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						System.out.println("Inicia el cliente");
-						Cliente cliente = new Cliente();	
+						Cliente cliente = new Cliente("localhost");	
 						startFrame.dispose();
 						Ventana2 ventana2 = new Ventana2();
 					}
