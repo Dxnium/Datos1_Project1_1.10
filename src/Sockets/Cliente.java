@@ -93,9 +93,9 @@ private String msjSalida() {
 // tanto en la matriz de juego como en pantalla 
 	private void GameUpdate(String msg) {
 		if(msg!=null) {
-			System.out.println("Mensaje resivido, update juego");
+			System.out.println("Mensaje recibido, update juego");
 		}else {
-			System.out.println("Ningun mensaje resivido");
+			System.out.println("Ningun mensaje recibido");
 		}
 		
 		

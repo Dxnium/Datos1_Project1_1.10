@@ -14,10 +14,12 @@ public class Board {//Manages most of the board related methods
 	int deckSize=100;
 	private Dictionary dictionary = new Dictionary();
 	private int turn;
+	private PlayedWordList playedWords=new PlayedWordList();
 	
 	
 	
 	
+
 	//GETTERS AND SETTERS
 	public Dictionary getDictionary() {
 		return dictionary;
@@ -52,6 +54,12 @@ public class Board {//Manages most of the board related methods
 		this.gameCode = gameCode;
 	}
 	
+	public PlayedWordList getPlayedWords() {
+		return playedWords;
+	}
+	public void setPlayedWords(PlayedWordList playedWords) {
+		this.playedWords = playedWords;
+	}
 	
 	
 	//GAME LOGIC METHODS

@@ -2,15 +2,15 @@ package game.logic;
 
 public class WordListNode {
 	
-	String data;
+	String[] data;
 	WordListNode next;
 	
-	public String getData() {
+	public String[] getData() {
 		return data;
 	}
 
 
-	public void setData(String data) {
+	public void setData(String[] data) {
 		this.data = data;
 	}
 
@@ -23,9 +23,9 @@ public class WordListNode {
 	public void setNext(WordListNode next) {
 		this.next = next;
 	}
+	
 
-
-	public WordListNode(String data) {
+	public WordListNode(String[] data) {
 		this.data=data;
 	}
 

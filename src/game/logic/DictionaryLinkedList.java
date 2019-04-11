@@ -13,7 +13,8 @@ public class DictionaryLinkedList {// a simple linked list that takes dictionary
 			DictionaryNode current = head;
 			while (current.getNext() != null) {
 				current = current.getNext();
-			}current.setNext( new DictionaryNode(data)) ;
+			}
+			current.setNext( new DictionaryNode(data));
 
 		}
 
