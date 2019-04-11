@@ -17,6 +17,8 @@ public class Board {//Manages most of the board related methods
 	private int maxPlayers;
 	private int currentConection;
 	
+	private PlayedWordList playedWords=new PlayedWordList();
+	//hola
 	
 	
 	
