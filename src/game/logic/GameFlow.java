@@ -130,6 +130,7 @@ public class GameFlow {
 	public static void dealTiles() {
 		int count=0;
 		int index=0;
+		String[][] listaLetras= new String[game.getMaxPlayers()][8];
 		for (PlayerLinkedListNode node=game.getPlayerList().getHead();count!=game.getPlayerList().getLength()*7;node=node.getNext()) {
 			node.getData().getDock()[index]=randomTileGenerator();
 			node.getData().setMyTiles(node.getData().getMyTiles()+1);
@@ -137,6 +138,21 @@ public class GameFlow {
 			if (count%game.getPlayerList().getLength()==0) {
 				index++;
 			}
+			
+			for(int index1=0;index!=listaLetras.length;index++) {
+				for (PlayerLinkedListNode node1=game.getPlayerList().getHead();count!=game.getPlayerList().getLength()*7;node=node.getNext()) {
+					listaLetras[index1][0]=node1.getData().getName();
+					listaLetras[index1][1]=node1.getData().getDock()[0].getLetter();
+					listaLetras[index1][2]=node1.getData().getDock()[1].getLetter();
+					listaLetras[index1][3]=listaLetras[index1][0]=node1.getData().getDock()[2].getLetter();
+					listaLetras[index1][4]=node1.getData().getDock()[3].getLetter();
+					listaLetras[index1][5]=node1.getData().getDock()[4].getLetter();
+					listaLetras[index1][6]=node1.getData().getDock()[5].getLetter();
+					listaLetras[index1][7]=node1.getData().getDock()[6].getLetter();
+				}
+				out.println(Arrays.deepToString(listaLetras));
+			}
+			
 		}
 	}
 	
