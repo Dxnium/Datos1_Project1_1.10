@@ -58,12 +58,14 @@ public class BoardGUI extends JPanel{
 		this.letterGUI = new LetterGUI("D",4);
 		lettersList.add(letterGUI);
 		this.add(letterGUI);
-
+		this.letterGUI = new LetterGUI("RR",300,450);
+		this.add(letterGUI);
 
 	}
 	public void getWordsLocation() {
 		for(int i = 0; i < lettersList.size();i++) {
-			System.out.println("Objeto: "+lettersList.get(i)+"\n"+"PosX: "+lettersList.get(i).getX()+"\n"+"PosY: "+lettersList.get(i).getY());
+			//System.out.println("Objeto: "+lettersList.get(i)+"\n"+"Letra: "+lettersList.get(i).getLetterAsigned()+"\n"+"PosX: "+lettersList.get(i).getX()+"\n"+"PosY: "+lettersList.get(i).getY());
+			System.out.println("Columna: "+lettersList.get(i).getPosC()+"\n"+"Fila: "+lettersList.get(i).getPosF()+"\n"+"Letra: "+lettersList.get(i).getLetterAsigned()+"\n"+"PosX: "+lettersList.get(i).getX()+"\n"+"PosY: "+lettersList.get(i).getY());
 		}
 	}
 	public void paintComponent(Graphics g) {
@@ -80,6 +82,8 @@ public class BoardGUI extends JPanel{
 				for(int p = 0; p<lettersList.size(); p++) {
 					if(rect.contains(lettersList.get(p).getX(),lettersList.get(p).getY())) {
 						lettersList.get(p).setLocation((f*50),(c*50));
+						lettersList.get(p).setPosC(Integer.toString(f));
+						lettersList.get(p).setPosF(Integer.toString(c));
 						
 					}
 				}
