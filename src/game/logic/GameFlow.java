@@ -56,7 +56,7 @@ public class GameFlow {
 		String input = in.readLine();
 		if (input.equals("Y")||                    input.equals("y")) {
 			out.println("La partida puede tener un maximo de cuatro jugadores y un minimo de dos para poder empezar");
-			playerCreation();
+			//playerCreation();
 		}else if(input.equals("N")||input.equals("n")) {
 			out.println("hasta luego!");
 
@@ -65,30 +65,14 @@ public class GameFlow {
 
 	}
 
-	private static void playerCreation() throws IOException {
-		if(game.getPlayerList().getLength()<4) {
-			out.println("Ingrese el nombre del nuevo jugador");
-			String name = in.readLine();
+	public static void playerCreation(String name) throws IOException {
+		if(game.getCurrentConection()<game.getMaxPlayers()) {
 			game.getPlayerList().append(new Player(name));
 		}
 
-		if(game.getPlayerList().getLength()==4) {
+		if(game.getCurrentConection()==game.getMaxPlayers()) {
 			System.out.println("no puede agregar mas jugadores");
-			matchStarter();
-		}
-
-		out.println("desea agregar otro jugador?");
-		String decision= in.readLine();
-		if (decision.equals("Y")||decision.equals("y")) {
-			playerCreation();	
-
-		}else if(decision.equals("N")||decision.equals("n")) {
-			if(game.getPlayerList().getLength()>=2) {
-				matchStarter();
-			} else {
-				out.println("La partida puede empezar solo si hay 2 jugadores o mas");
-				playerCreation();
-			}
+			
 		}
 	}
 
