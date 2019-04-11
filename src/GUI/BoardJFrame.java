@@ -18,7 +18,7 @@ import game.logic.Square;
 public class BoardJFrame extends JFrame {
 	LetterGUI letterGUI = new LetterGUI();
 	String[][] matrix = new String[15][15];
-	
+	public String name;
 
 	ArrayList<LetterGUI> lettersList = new ArrayList<LetterGUI>();
 	public BoardJFrame() {
@@ -30,6 +30,7 @@ public class BoardJFrame extends JFrame {
 		setLayout(new BorderLayout());
 		initializeTableTop();
 		BoardGUI board = new BoardGUI(matrix);
+		board.myName = this.name;
 		
 		this.add(board);
 	}

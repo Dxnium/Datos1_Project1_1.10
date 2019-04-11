@@ -129,7 +129,16 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 			if(this.gameFlow.getGame().getCurrentConection() == this.gameFlow.getGame().getMaxPlayers()) {
 				this.gameFlow.playOrder();
 				this.gameFlow.dealTiles();
+//				setMensaje(gameFlow.getGame().getPlayerList().get);
+				
 			}
+			if(mensajeRecibido.contains("checkTurno")) {
+				GameUpdate(mensajeRecibido);
+				if(gameFlow.getGame().getPlayerList().getHead().getData().getName().equals(decode.datos[1])) {
+					System.out.println("turno de jugador: "+decode.datos[1]);
+					
+				}
+				}
 		}
 	}
 

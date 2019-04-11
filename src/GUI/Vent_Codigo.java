@@ -78,6 +78,7 @@ public class Vent_Codigo extends JFrame {
 					Cliente cliente2 = new Cliente(textField_Nombre.getText(), "agregarJugador,"+textField_IP.getText());
 					Cliente cliente3 = new Cliente(textField_Nombre.getText(), "playOrder");
 					BoardJFrame boardJF = new BoardJFrame();
+					boardJF.name= textField_IP.getText();
 					boardJF.setVisible(true);
 					Vent_Codigo.this.dispose();
 				}
