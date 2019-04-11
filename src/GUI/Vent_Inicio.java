@@ -39,8 +39,8 @@ public class Vent_Inicio extends JFrame {
 	
 
 	private boolean active = true;
-	private int Xsize = 1600;
-	private int Ysize = 900;
+	private int Xsize = 1200;
+	private int Ysize = 775;
 	
 	public Vent_Inicio() {
 		setTitle("Scrabble");
@@ -54,12 +54,12 @@ public class Vent_Inicio extends JFrame {
 		contentPane2 = new JPanel();
 		contentPane2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane2.setLayout(null);
-		contentPane2.setBounds(600, 102, 154, 50);
+		contentPane2.setBounds(550, 300, 154, 50);
 		
 		contentPane3 = new JPanel();
 		contentPane3.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane3.setLayout(null);
-		contentPane3.setBounds(600, 172, 154, 50);
+		contentPane3.setBounds(550, 370, 154, 50);
 		
 		
 		
@@ -67,7 +67,7 @@ public class Vent_Inicio extends JFrame {
 		//Conexión Cliente - Servidor (GUI)
 		Image fondoImg = new ImageIcon("Images\\Fondo.JPG").getImage();
 		JLabel fondo=new JLabel("");
-		fondo.setBounds(0, 0, 1600, 900);
+		fondo.setBounds(0, 0, 1200, 775);
 		fondo.setIcon(new ImageIcon(fondoImg));
 		JButton buttonClient = new JButton("Cliente");
 		

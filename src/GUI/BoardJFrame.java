@@ -24,7 +24,7 @@ public class BoardJFrame extends JFrame {
 	public BoardJFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Scrabble - Juego");
-		setSize(1200, 800);
+		setSize(1200, 775);
 		setLocationRelativeTo(null);
 		setVisible(true);
 		setLayout(new BorderLayout());

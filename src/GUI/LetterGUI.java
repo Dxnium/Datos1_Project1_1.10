@@ -15,6 +15,20 @@ public class LetterGUI extends JLabel implements MouseMotionListener{
 	String posC;
 	String posF;
 	Boolean canBeRepositioned = true;
+	int posInicialX;
+	int posInicialY;
+	public int getPosInicialX() {
+		return posInicialX;
+	}
+	public void setPosInicialX(int posInicialX) {
+		this.posInicialX = posInicialX;
+	}
+	public int getPosInicialY() {
+		return posInicialY;
+	}
+	public void setPosInicialY(int posInicialY) {
+		this.posInicialY = posInicialY;
+	}
 	public String getPosC() {
 		return posC;
 	}
@@ -45,6 +59,8 @@ public class LetterGUI extends JLabel implements MouseMotionListener{
 			if(letter.equals(alphabet.get(i))) {
 				setIcon(alphabetIMG.get(alphabet.indexOf(alphabet.get(i))));
 				setBounds(700+((x*50)), 100, 50, 50);
+				this.setPosInicialX(this.getX());
+				this.setPosInicialY(this.getY());
 
 			}
 		}
