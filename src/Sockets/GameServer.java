@@ -63,6 +63,8 @@ public class GameServer implements Runnable   {
 					System.out.println(">>Enviando update al cliente");
 					System.out.println("hola44");
 					salida.writeUTF(GetJMensaje().toString());
+					
+					
 				
 					
 					//Recepcion de mensaje
@@ -116,13 +118,19 @@ public class GameServer implements Runnable   {
 		
 	}
 
-	private void GameUpdate(String msg) {
+	private void GameUpdate(String msg) throws IOException {
 		System.out.println("Hola");
 		StringWriter toJson = new StringWriter();
 		toJson = toJson.append(msg, 2, msg.length());
 		System.out.println(toJson.toString());
 		Decode decode = new Decode(toJson);
 		
+		if(decode.command == 2) {
+			System.out.println("comando2");
+		String currentConnection = Integer.toString(decode.getCurrentConnection());
+		String Maxplayers = Integer.toString(decode.getMaxPlayers());
+		setMensaje(currentConnection+","+Maxplayers);
+		}
 		
 	}
 

@@ -1,23 +1,24 @@
 package GUI;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import com.google.common.net.InetAddresses;
-
-import Sockets.Cliente;
-
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.StringWriter;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+import Sockets.Cliente;
 
 public class Vent_Datos extends JFrame {
 
@@ -57,6 +58,13 @@ public class Vent_Datos extends JFrame {
 				try {
 					System.out.println(!textField.getText().isEmpty());
 					if(!textField.getText().isEmpty()) {
+						Cliente cliente = new Cliente("localhost","2,"+textField.getText());
+//						Cliente cliente2 = new Cliente("localhost","3");
+//						if(!verificar(cliente2.msg)) {
+//							System.out.println(">>loop");
+//							Cliente cliente3 = new Cliente("localhost","3");
+//							System.out.println(cliente2.msg);
+//						}
 						BoardJFrame boardJF = new BoardJFrame();
 						boardJF.setVisible(true);
 						Vent_Datos.this.dispose();
@@ -70,6 +78,41 @@ public class Vent_Datos extends JFrame {
 		});
 		contentPane.add(btnNewButton);
 	}
+	public boolean verificar(String msg) {
+		JSONObject jsonData;
+		StringWriter toJson = new StringWriter();
+		toJson = toJson.append(msg, 2, msg.length());
+	
+		jsonData =  new JSONObject();
+		jsonData.put("Datos", toJson);
+
+		JSONParser data_parser = new JSONParser();
+
+		try {
+			JSONObject objDatos = (JSONObject) data_parser.parse(jsonData.toJSONString());
+			JSONArray arrayDatos = (JSONArray) objDatos.get("Datos");
+
+			for (int i =0; i<arrayDatos.size(); i++) {
+				
+				JSONObject juego = (JSONObject) arrayDatos.get(i);
+				if(juego.containsKey("Matriz")) {
+					String matriz = juego.get("Matriz").toString();
+					System.out.println(matriz + "\t");
+					String[] datos = matriz.split(",");
+					if(Integer.parseInt(datos[0])<Integer.parseInt(datos[1])) {
+						System.out.println("faltan jugadores");
+						return false;
+					}else {
+						return true; 
+					}
+	
+			}
+		}
+	}finally {
+		return false;
+	}
 
 
+}
+	
 }
