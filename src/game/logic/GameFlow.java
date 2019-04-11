@@ -139,19 +139,20 @@ public class GameFlow {
 				index++;
 			}
 			
-			for(int index1=0;index!=listaLetras.length;index++) {
-				for (PlayerLinkedListNode node1=game.getPlayerList().getHead();count!=game.getPlayerList().getLength()*7;node=node.getNext()) {
+			
+			int index1=0;
+				for (PlayerLinkedListNode node1=game.getPlayerList().getHead();index1!=game.getMaxPlayers();node=node.getNext()) {
 					listaLetras[index1][0]=node1.getData().getName();
 					listaLetras[index1][1]=node1.getData().getDock()[0].getLetter();
 					listaLetras[index1][2]=node1.getData().getDock()[1].getLetter();
-					listaLetras[index1][3]=listaLetras[index1][0]=node1.getData().getDock()[2].getLetter();
+					listaLetras[index1][3]=node1.getData().getDock()[2].getLetter();
 					listaLetras[index1][4]=node1.getData().getDock()[3].getLetter();
 					listaLetras[index1][5]=node1.getData().getDock()[4].getLetter();
 					listaLetras[index1][6]=node1.getData().getDock()[5].getLetter();
 					listaLetras[index1][7]=node1.getData().getDock()[6].getLetter();
-				}
-				out.println(Arrays.deepToString(listaLetras));
+					index1++;
 			}
+				out.println(Arrays.deepToString(listaLetras));
 			
 		}
 	}
