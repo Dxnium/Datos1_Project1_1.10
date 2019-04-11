@@ -8,15 +8,14 @@ import java.io.Writer;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
-
 import JSON.Decode;
+
 
 public class Cliente {
 
 
 
-	final int port = 4500;
+	final int port = 5555;
 	String address = "";
 
 	Socket socket;
@@ -40,8 +39,8 @@ public class Cliente {
 			System.out.println("Cerrando conexión...Cliente");
 			
 			//leer mensaje
-			System.out.println("AAAAAAAA");
 			msg = entradaDatos.readUTF();
+			System.out.println("decode");
 			System.out.println(msg);
 			GameUpdate(msg);
 		
@@ -93,9 +92,18 @@ public class Cliente {
 		
 	}
 		//metodo que genera el mensaje de salida para el server
-private String msjSalida() {
-			return "msjSalida";
-		}
+		private Writer GetJMensaje() {
+			Encode datos = new Encode();
+			//Crea el arreglo con los datos de la Clase 
+			JSONArray arr = datos.arrayData(msjDatos);
+			Writer out = new StringWriter();//crear un variable de tipo Writer para almacenar el array y poder mostarlo en pantalla 
+			try {
+				arr.writeJSONString(out); //guardar el JSONArray en un string 
+			} catch (IOException e) {
+				e.printStackTrace();
+				
+			}
+			return out;
 
 
 // GameUpdate hace un decode del msj del server y 
