@@ -8,7 +8,11 @@ import java.io.Writer;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import org.json.simple.JSONArray;
+
+import JSON.Encode;
 import JSON.Decode;
+import Msg.Message;
 
 
 public class Cliente {
@@ -23,9 +27,11 @@ public class Cliente {
 	public String msg = null; //Mensaje resivido del servidor 
 	String password = "";
 	String nombre = "";
+	public Message msjDatos = new Message("vacio");
 	
 	//constructor que envia el password para verificar la conexcion con el server
-	public Cliente(String address,String password) {
+	public Cliente(String address,String mensaje1) {
+		setMensaje(mensaje1);
 		this.address = address;
 		try {
 			socket = new Socket(address,port);
@@ -35,12 +41,11 @@ public class Cliente {
 			DataOutputStream mensaje = new DataOutputStream(socket.getOutputStream());
 			
 			//enviamos el mensaje
-			mensaje.writeUTF(password);
+			mensaje.writeUTF(GetJMensaje().toString());
 			System.out.println("Cerrando conexión...Cliente");
 			
 			//leer mensaje
 			msg = entradaDatos.readUTF();
-			System.out.println("decode");
 			System.out.println(msg);
 			GameUpdate(msg);
 		
@@ -67,7 +72,7 @@ public class Cliente {
 				DataOutputStream mensaje = new DataOutputStream(socket.getOutputStream());
 				
 				//enviamos el mensaje
-				mensaje.writeUTF(msjSalida());
+				mensaje.writeUTF(GetJMensaje().toString());
 				System.out.println("Cerrando conexión...Cliente");
 				
 				//leer mensaje
@@ -75,7 +80,6 @@ public class Cliente {
 				
 				System.out.println(msg);
 				System.out.println("*****************DECODE*****************");
-				System.out.println("HOLA");
 				GameUpdate(msg);
 			
 				//cerramos la conexión
@@ -104,6 +108,7 @@ public class Cliente {
 				
 			}
 			return out;
+		}
 
 
 // GameUpdate hace un decode del msj del server y 
@@ -124,5 +129,9 @@ public class Cliente {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public void setMensaje(String newMsj) {
+		this.msjDatos.setMatriz(newMsj);
+		
 	}
 }

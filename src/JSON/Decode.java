@@ -1,6 +1,7 @@
 package JSON;
 
 import java.io.Writer;
+import java.util.Arrays;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -24,6 +25,9 @@ public class Decode {
 				if(juego.containsKey("Matriz")) {
 					String matriz = juego.get("Matriz").toString();
 					System.out.println(matriz + "\t");
+					String[] datos  = matriz.split(",");
+					System.out.println(Arrays.deepToString(datos));
+					
 				}
 				
 
