@@ -7,8 +7,6 @@ public class Main {
 		//New thread running the Server
 		GameServer hilo = new GameServer();
 		hilo.password = "password";
-		
-		
 		//
 
 	}

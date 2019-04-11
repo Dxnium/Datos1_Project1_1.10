@@ -3,8 +3,13 @@ package Sockets;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.net.Socket;
 import java.net.UnknownHostException;
+
+import JSON.Decode;
+
 
 public class Cliente {
 
@@ -15,7 +20,7 @@ public class Cliente {
 
 	Socket socket;
 	String mensajeSalida;
-	String msg = null; //Mensaje resivido del servidor 
+	public String msg = null; //Mensaje resivido del servidor 
 	String password = "";
 	String nombre = "";
 	
@@ -35,6 +40,7 @@ public class Cliente {
 			
 			//leer mensaje
 			msg = entradaDatos.readUTF();
+			System.out.println("decode");
 			System.out.println(msg);
 			GameUpdate(msg);
 		
@@ -66,7 +72,10 @@ public class Cliente {
 				
 				//leer mensaje
 				msg = entradaDatos.readUTF();
+				
 				System.out.println(msg);
+				System.out.println("*****************DECODE*****************");
+				System.out.println("HOLA");
 				GameUpdate(msg);
 			
 				//cerramos la conexión
@@ -83,21 +92,27 @@ public class Cliente {
 		
 	}
 		//metodo que genera el mensaje de salida para el server
-private String msjSalida() {
-			return "msjSalida";
-		}
+		private Writer GetJMensaje() {
+			Encode datos = new Encode();
+			//Crea el arreglo con los datos de la Clase 
+			JSONArray arr = datos.arrayData(msjDatos);
+			Writer out = new StringWriter();//crear un variable de tipo Writer para almacenar el array y poder mostarlo en pantalla 
+			try {
+				arr.writeJSONString(out); //guardar el JSONArray en un string 
+			} catch (IOException e) {
+				e.printStackTrace();
+				
+			}
+			return out;
 
 
 // GameUpdate hace un decode del msj del server y 
 // llama a los metodos correspondientes para generar el update
 // tanto en la matriz de juego como en pantalla 
 	private void GameUpdate(String msg) {
-		if(msg!=null) {
-			System.out.println("Mensaje resivido, update juego");
-		}else {
-			System.out.println("Ningun mensaje resivido");
-		}
-		
+		StringWriter toJson = new StringWriter();
+		toJson = toJson.append(msg, 0, msg.length());
+		Decode decode = new Decode(toJson);
 		
 		
 	}

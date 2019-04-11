@@ -21,10 +21,11 @@ public class Decode {
 
 			for (int i =0; i<arrayDatos.size(); i++) {
 				JSONObject juego = (JSONObject) arrayDatos.get(i);
-				String name = juego.get("Name").toString();
-				String fichas = (String) juego.get("Fichas");
-
-				System.out.println(name + "\t" + fichas);
+				if(juego.containsKey("Matriz")) {
+					String matriz = juego.get("Matriz").toString();
+					System.out.println(matriz + "\t");
+				}
+				
 
 			}
 			

@@ -37,8 +37,9 @@ public class GameFlow {
 //		f.add(board);
 //		f.setSize(1200, 800);
 //		f.setVisible(true);
-		promptGameStart();
+		//promptGameStart();
 		
+
 		
 		
 		
@@ -369,7 +370,7 @@ public class GameFlow {
 		}
 	}
 
-	private static void placeNewWord(String[][] sortedTiles, PlayerLinkedListNode node, String orientation) {
+	private static void placeNewWord(String[][] sortedTiles, PlayerLinkedListNode node, String orientation) throws IOException {
 		for(int index=0;index!=sortedTiles.length;index++) {
 			int tile=Integer.parseInt(sortedTiles[index][0]);
 			int x=Integer.parseInt(sortedTiles[index][1]);
@@ -383,27 +384,38 @@ public class GameFlow {
 			
 		}
 		printTableTop();
-		int firstX=Integer.parseInt(sortedTiles[0][1]);
-		int firstY=Integer.parseInt(sortedTiles[0][2]);
-		checkNewWord(sortedTiles,firstX,firstY,node,orientation);
+//		int firstX=Integer.parseInt(sortedTiles[0][1]);
+//		int firstY=Integer.parseInt(sortedTiles[0][2]);
+//		checkNewWord(sortedTiles,firstX,firstY,node,orientation);
+		for(int element=0;element!=sortedTiles.length;element++) {
+			String[] horizontal=checkNewWord(sortedTiles,Integer.parseInt(sortedTiles[element][1]),Integer.parseInt(sortedTiles[element][2]),node,"horizontal");
+			String[] vertical=checkNewWord(sortedTiles,Integer.parseInt(sortedTiles[element][1]),Integer.parseInt(sortedTiles[element][2]),node,"vertical");
+			game.getPlayedWords().append(horizontal);
+			game.getPlayedWords().append(vertical);
+		}		
+		processPlayedWords(sortedTiles,node);
 	}
 
-	private static void checkNewWord(String[][] sortedTiles,int x,int y, PlayerLinkedListNode node, String orientation) {
+	private static String[] checkNewWord(String[][] sortedTiles,int x,int y, PlayerLinkedListNode node, String orientation) throws IOException {
+		String[] data=new String[2];
 		String word="";
 		int column=y;
 		int row=x;
+		int points=0;
 		LetterTile horizontalTile=game.getTableTop()[x][column].getLetterTile();
 		LetterTile verticalTile=game.getTableTop()[row][y].getLetterTile();
 			if(orientation.equals("horizontal")) {
 				while(horizontalTile!=null) {
-					word=horizontalTile.getLetter()+word;
+					word=horizontalTile.getLetter().toLowerCase()+word;
+					points=points+horizontalTile.getScore()*game.getTableTop()[x][column].getMultiplier();
 					column=column-1;
 					horizontalTile=game.getTableTop()[x][column].getLetterTile();
 				}
 				column=y;
 				horizontalTile=game.getTableTop()[x][column+1].getLetterTile();
 				while(horizontalTile!=null) {
-					word=word+horizontalTile.getLetter();
+					word=word+horizontalTile.getLetter().toLowerCase();
+					points=points+horizontalTile.getScore()*game.getTableTop()[x][column].getMultiplier();
 					column=column+1;
 					horizontalTile=game.getTableTop()[x][column+1].getLetterTile();
 				}
@@ -411,24 +423,56 @@ public class GameFlow {
 			}
 			if(orientation.equals("vertical")) {
 				while(verticalTile!=null) {
-					word=verticalTile.getLetter()+word;
+					word=verticalTile.getLetter().toLowerCase()+word;
+					points=points+verticalTile.getScore()*game.getTableTop()[row][y].getMultiplier();
 					row=row-1;
 					verticalTile=game.getTableTop()[row][y].getLetterTile();
 				}
 				row=x;
 				verticalTile=game.getTableTop()[row+1][y].getLetterTile();
 				while(verticalTile!=null) {
-					word=word+verticalTile.getLetter();
+					word=word+verticalTile.getLetter().toLowerCase();
+					points=points+verticalTile.getScore()*game.getTableTop()[row][y].getMultiplier();
 					row=row+1;
 					verticalTile=game.getTableTop()[row+1][y].getLetterTile();
 				}
 			}
-		if(checkNewPlacement(sortedTiles)==true) {
-			out.println(word);
-		}else{
-			out.println("Error de posicion");
+		if(checkNewPlacement(sortedTiles)==false) {
+			return null;
 		}
-		
+		data[0]=word;
+		data[1]=Integer.toString(points);
+		return data;
+	}
+
+	private static void processPlayedWords(String[][] sortedTiles,PlayerLinkedListNode node) throws IOException {
+		int index=0;
+		WordListNode current= game.getPlayedWords().getHead();
+		while(index<game.getPlayedWords().getLength()) {
+			out.print("1: ");
+			out.println(Arrays.deepToString(current.getData()));
+			current=current.getNext();
+			index++;
+		}
+//		for(WordListNode wordNode=game.getPlayedWords().getHead();wordNode.getNext()!=null;wordNode=wordNode.getNext()) {
+//			for(WordListNode wordNode2=wordNode.getNext();wordNode2.getNext()!=null;wordNode2=wordNode2.getNext()) {
+//				if((wordNode.getData()[0].equals(wordNode2.getNext().getData()[0])&&(wordNode.getData()[1].equals(wordNode2.getNext().getData()[1])))){
+//					wordNode2.setNext(wordNode2.getNext());
+//				}
+			//}
+		//}	
+//		int index1=0;
+//		WordListNode current1= game.getPlayedWords().getHead();
+//		while(index1<game.getPlayedWords().getLength()) {
+//			out.println(Arrays.deepToString(current1.getData()));
+//			current1=current1.getNext();
+//			index1++;
+//		}
+		eraseUsedTiles(sortedTiles, node);
+		refillTiles(node);
+		game.setTurn(game.getTurn()+1);
+		game.getPlayedWords().setHead(null);
+		turnHandler(node.getNext());
 	}
 
 	private static boolean checkNewPlacement(String[][] sortedTiles) {
@@ -507,7 +551,6 @@ public class GameFlow {
 	private static void placeFirstWord(PlayerLinkedListNode node, String[][] sortedTiles) throws IOException {
 		String word="";
 		int points=0;
-
 		for(int index=0;index!=sortedTiles.length;index++) {
 			int tile=Integer.parseInt(sortedTiles[index][0]);
 			int x=Integer.parseInt(sortedTiles[index][1]);
@@ -517,15 +560,11 @@ public class GameFlow {
 			out.println("Punto de ficha: "+node.getData().getDock()[tile].getScore());
 			out.println("Multiplicador: "+game.getTableTop()[x][y].getMultiplier());
 			points+=node.getData().getDock()[tile].getScore()*game.getTableTop()[x][y].getMultiplier();
-			game.getTableTop()[x][y].setMultiplier(1);
 			word=word+node.getData().getDock()[tile].getLetter().toLowerCase();
 			
 		}
 		if(verifyWord(word)==true) {
-			for(int index=0;index!=sortedTiles.length;index++) {
-				int tile=Integer.parseInt(sortedTiles[index][0]);
-				node.getData().getDock()[tile]=null;
-			}
+			eraseUsedTiles(sortedTiles,node);
 			node.getData().setScore(node.getData().getScore()+points);
 			out.println("Puntos obtenidos por la palabra "+word+": "+points);
 			out.println("Puntos totales del jugador: "+node.getData().getScore());
@@ -535,13 +574,25 @@ public class GameFlow {
 			turnHandler(node.getNext());
 		}else{
 			out.println("La palabra es invalida");
-			for(int index=0;index!=sortedTiles.length;index++) {
-				int x=Integer.parseInt(sortedTiles[index][1]);
-				int y=Integer.parseInt(sortedTiles[index][2]);
-				game.getTableTop()[x][y].setLetterTile(null);
-			}
+			erasePlacedTiles(sortedTiles);
 			printTableTop();
 			turnHandler(node);
+		}
+		
+	}
+
+	private static void erasePlacedTiles(String[][] sortedTiles) {
+		for(int index=0;index!=sortedTiles.length;index++) {
+			int x=Integer.parseInt(sortedTiles[index][1]);
+			int y=Integer.parseInt(sortedTiles[index][2]);
+			game.getTableTop()[x][y].setLetterTile(null);
+		}		
+	}
+
+	private static void eraseUsedTiles(String[][] sortedTiles, PlayerLinkedListNode node) {
+		for(int index=0;index!=sortedTiles.length;index++) {
+			int tile=Integer.parseInt(sortedTiles[index][0]);
+			node.getData().getDock()[tile]=null;
 		}
 		
 	}

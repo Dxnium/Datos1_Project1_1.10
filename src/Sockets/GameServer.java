@@ -13,7 +13,6 @@ import java.net.Socket;
 import org.json.simple.JSONArray;
 
 import JSON.Encode;
-import Msg.Message;
 import queue.myQueue;
 
 public class GameServer implements Runnable   {
@@ -21,11 +20,13 @@ public class GameServer implements Runnable   {
 	private myQueue<Socket> clientsQueue = new myQueue<Socket>();
 	ServerSocket server;  
 	Socket socket; 
+
 	final int port = 5555;
 	String password;
+
 	private boolean verPassword = false;
 	public InetAddress ip; 
-	private String msjDatos = "Vacio";
+	private Msg.Message msjDatos = new Msg.Message("vacio");
 	
 	
 	
@@ -59,11 +60,8 @@ public class GameServer implements Runnable   {
 					
 					//Confirmacion de conexion con mensaje 
 					System.out.println(">>Enviando update al cliente");
-					if(verPassword) {
-						salida.writeUTF(GetJMensaje());
-					}else {
-						salida.writeUTF(this.password+","+GetJMensaje());//toma el mensaje que se debe enviar al cliente 
-						}			
+					salida.writeUTF(GetJMensaje().toString());
+				
 					
 					//Recepcion de mensaje
 					String mensajeRecibido = entrada.readLine();
@@ -96,26 +94,24 @@ public class GameServer implements Runnable   {
 		
 	}
 
-	private String GetJMensaje() {
-		if(verPassword) {
+	private Writer GetJMensaje() {
 		Encode datos = new Encode();
 		//Crea el arreglo con los datos de la Clase 
-		JSONArray arr = datos.arrayData(new Message(this.msjDatos));
+		JSONArray arr = datos.arrayData(msjDatos);
 		Writer out = new StringWriter();//crear un variable de tipo Writer para almacenar el array y poder mostarlo en pantalla 
 		try {
 			arr.writeJSONString(out); //guardar el JSONArray en un string 
 		} catch (IOException e) {
 			e.printStackTrace();
 			
-		}String out1 = out.toString();
-		return out1;
-	 }
-		return "Conexion invalida ";
+		}
+		return out;
 	}
 	
 	public void setMensaje(String newMsj) {
-		this.msjDatos = newMsj;
+		this.msjDatos.setMatriz(newMsj);
 		
 	}
 
 }
+

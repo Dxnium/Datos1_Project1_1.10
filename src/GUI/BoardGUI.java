@@ -17,6 +17,7 @@ public class BoardGUI extends JPanel{
 	Image reglasImg = new ImageIcon("Images\\ayuda.png").getImage();
 	
 	
+	
 	public BoardGUI(String[][] matrix){
 		botonReglas reglas = new botonReglas();
 		reglas.setBounds(1000,10,128,128);
