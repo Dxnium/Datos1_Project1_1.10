@@ -15,37 +15,36 @@ public class BoardGUI extends JPanel{
 	ArrayList<LetterGUI> lettersList = new ArrayList<LetterGUI>();
 	Image labelImg = new ImageIcon("Images\\img.png").getImage(); 
 	Image reglasImg = new ImageIcon("Images\\botonAyuda.png").getImage();
-	
-	
-	
+
+
 	public BoardGUI(String[][] matrix){
 		botonReglas reglas = new botonReglas();
 		reglas.setBounds(1000,10,128,128);
 		reglas.setIcon(new ImageIcon(reglasImg));
 		this.add(reglas);
-		
+
 		JButton btnScrabble = new JButton("Scrabble");
 		btnScrabble.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnScrabble.setBounds(1000, 500, 102, 31);
 		btnScrabble.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent arg0) {
-			getWordsLocation();
-		}});
+			public void actionPerformed(ActionEvent arg0) {
+				getWordsLocation();
+			}});
 		this.add(btnScrabble);
 		JButton btnNext = new JButton("Next");
 		btnNext.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnNext.setBounds(1000, 600, 102, 31);
 		btnNext.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent arg0) {
-			
-		}});
+			public void actionPerformed(ActionEvent arg0) {
+
+			}});
 		this.add(btnNext);
 		this.matrix = matrix;
 		setVisible(true);
 		setBounds(0, 0, 1200, 800);
 		setLayout(null);
-		
-		
+
+
 
 		this.letterGUI = new LetterGUI("A",1);
 		lettersList.add(letterGUI);
@@ -82,9 +81,11 @@ public class BoardGUI extends JPanel{
 				g.drawRect((f*50),(c*50),50,50);
 				for(int p = 0; p<lettersList.size(); p++) {
 					if(rect.contains(lettersList.get(p).getX(),lettersList.get(p).getY())) {
-						lettersList.get(p).setLocation((f*50),(c*50));
-						lettersList.get(p).setPosC(Integer.toString(f));
-						lettersList.get(p).setPosF(Integer.toString(c));
+						
+							lettersList.get(p).setLocation((f*50),(c*50));
+							lettersList.get(p).setPosC(Integer.toString(f));
+							lettersList.get(p).setPosF(Integer.toString(c));
+		
 						
 					}
 				}
@@ -97,7 +98,7 @@ public class BoardGUI extends JPanel{
 
 				g.setColor(Color.BLUE);
 				g.drawString( matrix[c-1][f-1],(f*50)-25,(c*50)-25);
-								
+
 			}
 		}
 		for(int f=0; f < 15; f++) {
@@ -105,15 +106,15 @@ public class BoardGUI extends JPanel{
 
 				if(matrix[c][f].equals("1")) {
 					g.drawImage(new ImageIcon("Images\\square.png").getImage(), f*50,c*50, null);
-					
+
 				}else if(matrix[c][f].equals("2")) {
 					g.drawImage(new ImageIcon("Images\\square2.png").getImage(), f*50,c*50, null);
-					
+
 				}else if(matrix[c][f].equals("3")) {
 					g.drawImage(new ImageIcon("Images\\square3.png").getImage(), f*50,c*50, null);
-					
+
 				}
-								
+
 
 			}
 		}
