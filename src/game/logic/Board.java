@@ -55,9 +55,11 @@ public class Board {//Manages most of the board related methods
 	}
 	
 	public PlayedWordList getPlayedWords() {
+		//getter
 		return playedWords;
 	}
 	public void setPlayedWords(PlayedWordList playedWords) {
+		//setter
 		this.playedWords = playedWords;
 	}
 	
