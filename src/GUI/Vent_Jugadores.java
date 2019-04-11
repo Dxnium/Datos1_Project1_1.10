@@ -10,6 +10,7 @@ import game.logic.GameFlow;
 
 import javax.swing.JLabel;
 import java.awt.event.*;
+import java.net.UnknownHostException;
 import java.awt.Font;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -74,9 +75,16 @@ public class Vent_Jugadores extends JFrame implements ActionListener {
 				GameServer server = new GameServer();
 				server.password = CodigoInvitacion.getText();
 				Cliente cliente = new Cliente("localhost","1,"+Integer.toString(numeroJugadores));
-				Vent_Datos Vent_2_2 = new Vent_Datos();
-				Vent_2_2.setVisible(true);
-				Vent_Jugadores.this.dispose();				
+				Vent_Datos Vent_2_2;
+				try {
+					Vent_2_2 = new Vent_Datos();
+					Vent_2_2.setVisible(true);
+					Vent_Jugadores.this.dispose();
+				} catch (UnknownHostException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+								
 			}
 		});
 		contentPane.add(btnContinuar);
