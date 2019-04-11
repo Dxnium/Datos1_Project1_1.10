@@ -45,7 +45,7 @@ public class Vent_Inicio extends JFrame {
 	public Vent_Inicio() {
 		setTitle("Scrabble");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, Xsize, Ysize);
+		setBounds(0, 0, Xsize, Ysize);
 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -54,12 +54,12 @@ public class Vent_Inicio extends JFrame {
 		contentPane2 = new JPanel();
 		contentPane2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane2.setLayout(null);
-		contentPane2.setBounds(152, 102, 154, 50);
+		contentPane2.setBounds(600, 102, 154, 50);
 		
 		contentPane3 = new JPanel();
 		contentPane3.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane3.setLayout(null);
-		contentPane3.setBounds(152, 172, 154, 50);
+		contentPane3.setBounds(600, 172, 154, 50);
 		
 		
 		

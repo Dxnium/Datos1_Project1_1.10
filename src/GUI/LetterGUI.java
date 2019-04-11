@@ -50,10 +50,6 @@ public class LetterGUI extends JLabel implements MouseMotionListener{
 		}
 		addMouseMotionListener(this);
 
-
-
-
-
 	}
 	public LetterGUI(String letter, int posX, int posY){
 		this.canBeRepositioned = false;
@@ -77,10 +73,23 @@ public class LetterGUI extends JLabel implements MouseMotionListener{
 	}
 	@Override
 	public void mouseDragged(MouseEvent e) {
+		
 		if(this.canBeRepositioned == true) {
 			setLocation(this.getX()+e.getX()-this.getWidth()/2,this.getY()+e.getY()-this.getHeight()/2);
 		}
-
+		if(this.getX() <= 0 ){
+			setLocation(0,this.getY()+e.getY()-this.getHeight()/2);
+		}
+		if(this.getY() <= 0) {
+			setLocation(this.getX()+e.getX()-this.getWidth()/2,0);
+		}
+		if(this.getX() >= 1100) {
+			setLocation(1100,this.getY()+e.getY()-this.getHeight()/2);
+		}
+		if( this.getY() >= 800) {
+			setLocation(this.getX()+e.getX()-this.getWidth()/2,800);
+		}
+		
 	}
 
 	@Override
