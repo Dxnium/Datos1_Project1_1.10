@@ -14,7 +14,7 @@ public class BoardGUI extends JPanel{
 	LetterGUI letterGUI = new LetterGUI();
 	ArrayList<LetterGUI> lettersList = new ArrayList<LetterGUI>();
 	Image labelImg = new ImageIcon("Images\\img.png").getImage(); 
-	Image reglasImg = new ImageIcon("Images\\ayuda.png").getImage();
+	Image reglasImg = new ImageIcon("Images\\botonAyuda.png").getImage();
 	
 	
 	
