@@ -22,6 +22,14 @@ public class GameFlow {
 	
 
 
+	public static Board getGame() {
+		return game;
+	}
+
+	public static void setGame(Board game) {
+		GameFlow.game = game;
+	}
+
 	public static void main(String[] args) throws IOException {
 		
 		
@@ -65,7 +73,7 @@ public class GameFlow {
 
 	}
 
-	private static void playerCreation() throws IOException {
+	public static void playerCreation() throws IOException {
 		if(game.getPlayerList().getLength()<4) {
 			out.println("Ingrese el nombre del nuevo jugador");
 			String name = in.readLine();

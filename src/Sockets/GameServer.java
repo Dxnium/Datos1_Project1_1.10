@@ -61,6 +61,7 @@ public class GameServer implements Runnable   {
 					
 					//Confirmacion de conexion con mensaje 
 					System.out.println(">>Enviando update al cliente");
+					System.out.println("hola44");
 					salida.writeUTF(GetJMensaje().toString());
 				
 					
@@ -118,7 +119,8 @@ public class GameServer implements Runnable   {
 	private void GameUpdate(String msg) {
 		System.out.println("Hola");
 		StringWriter toJson = new StringWriter();
-		toJson = toJson.append(msg, 0, msg.length());
+		toJson = toJson.append(msg, 2, msg.length());
+		System.out.println(toJson.toString());
 		Decode decode = new Decode(toJson);
 		
 		
