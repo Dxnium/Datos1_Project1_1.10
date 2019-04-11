@@ -31,7 +31,7 @@ public class Message extends Observable implements JSONStreamAware {
 	@Override
 	public void writeJSONString(Writer out) throws IOException {
 		LinkedHashMap<String, String> obj = new LinkedHashMap<String, String>();
-		obj.put("Matriz", matriz);
+		obj.put("mensaje", matriz);
 		JSONValue.writeJSONString(obj, out);
 		
 	}

@@ -61,7 +61,7 @@ public class Vent_Datos extends JFrame {
 				try {
 					System.out.println(!textField.getText().isEmpty());
 					if(!textField.getText().isEmpty()) {
-						Cliente cliente = new Cliente("localhost","2,"+textField.getText());
+						Cliente cliente = new Cliente("localhost","agregarJugador,"+textField.getText());
 //						Cliente cliente2 = new Cliente("localhost","3");
 //						if(!verificar(cliente2.msg)) {
 //							System.out.println(">>loop");

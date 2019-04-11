@@ -78,7 +78,7 @@ public class Vent_Jugadores extends JFrame implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 				GameServer server = new GameServer();
 				server.password = CodigoInvitacion.getText();
-				Cliente cliente = new Cliente("localhost","1,"+Integer.toString(numeroJugadores));
+				Cliente cliente = new Cliente("localhost","startgame,"+Integer.toString(numeroJugadores));
 				Vent_Datos Vent_2_2;
 				try {
 					Vent_2_2 = new Vent_Datos(server);

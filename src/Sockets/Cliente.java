@@ -41,6 +41,7 @@ public class Cliente {
 			DataOutputStream mensaje = new DataOutputStream(socket.getOutputStream());
 			
 			//enviamos el mensaje
+			System.out.println(GetJMensaje().toString());
 			mensaje.writeUTF(GetJMensaje().toString());
 			System.out.println("Cerrando conexión...Cliente");
 			mensaje.flush();
@@ -49,7 +50,7 @@ public class Cliente {
 			//leer mensaje
 			msg = entradaDatos.readUTF();
 			System.out.println(msg);
-			GameUpdate(msg);
+//			GameUpdate(msg);
 		
 			//cerramos la conexión
 			entradaDatos.close();
@@ -81,8 +82,8 @@ public class Cliente {
 				msg = entradaDatos.readUTF();
 				
 				System.out.println(msg);
-				System.out.println("*****************DECODE*****************");
-				GameUpdate(msg);
+//				System.out.println("*****************DECODE*****************");
+//				GameUpdate(msg);
 			
 				//cerramos la conexión
 				entradaDatos.close();
