@@ -129,6 +129,7 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 			if(this.gameFlow.getGame().getCurrentConection() == this.gameFlow.getGame().getMaxPlayers()) {
 				this.gameFlow.playOrder();
 				this.gameFlow.dealTiles();
+				this.gameFlow.sendTiles();
 			}
 		}
 	}

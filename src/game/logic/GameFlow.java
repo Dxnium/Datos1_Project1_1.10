@@ -138,23 +138,27 @@ public class GameFlow {
 			if (count%game.getPlayerList().getLength()==0) {
 				index++;
 			}
-			
-			
-			int index1=0;
-				for (PlayerLinkedListNode node1=game.getPlayerList().getHead();index1!=game.getMaxPlayers();node=node.getNext()) {
-					listaLetras[index1][0]=node1.getData().getName();
-					listaLetras[index1][1]=node1.getData().getDock()[0].getLetter();
-					listaLetras[index1][2]=node1.getData().getDock()[1].getLetter();
-					listaLetras[index1][3]=node1.getData().getDock()[2].getLetter();
-					listaLetras[index1][4]=node1.getData().getDock()[3].getLetter();
-					listaLetras[index1][5]=node1.getData().getDock()[4].getLetter();
-					listaLetras[index1][6]=node1.getData().getDock()[5].getLetter();
-					listaLetras[index1][7]=node1.getData().getDock()[6].getLetter();
-					index1++;
-			}
-				out.println(Arrays.deepToString(listaLetras));
-			
 		}
+
+	}
+		
+	public static String[][] sendTiles(){
+		int index=0;
+		String[][] listaLetras= new String[game.getPlayerList().getLength()][8];
+		for (PlayerLinkedListNode node=game.getPlayerList().getHead();index!=game.getPlayerList().getLength();node=node.getNext()) {
+			listaLetras[index][0]=node.getData().getName();
+			listaLetras[index][1]=node.getData().getDock()[0].getLetter();
+			listaLetras[index][2]=node.getData().getDock()[1].getLetter();
+			listaLetras[index][3]=node.getData().getDock()[2].getLetter();
+			listaLetras[index][4]=node.getData().getDock()[3].getLetter();
+			listaLetras[index][5]=node.getData().getDock()[4].getLetter();
+			listaLetras[index][6]=node.getData().getDock()[5].getLetter();
+			listaLetras[index][7]=node.getData().getDock()[6].getLetter();
+			index++;
+	}
+		return listaLetras;
+		
+		
 	}
 	
 	private static void refillTiles(PlayerLinkedListNode node) {
