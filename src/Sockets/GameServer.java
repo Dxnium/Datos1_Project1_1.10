@@ -1,6 +1,7 @@
 package Sockets;
 
 import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,6 +15,7 @@ import org.json.simple.JSONArray;
 
 import JSON.Decode;
 import JSON.Encode;
+import game.logic.GameFlow;
 import queue.myQueue;
 
 public class GameServer implements Runnable   {
@@ -21,14 +23,15 @@ public class GameServer implements Runnable   {
 	private myQueue<Socket> clientsQueue = new myQueue<Socket>();
 	ServerSocket server;  
 	Socket socket; 
-
+	private GameFlow gameFlow;
+	Decode decode;
 	final int port = 5555;
-	public String password;
+	public String password = "none";
 
 	private boolean verPassword = false;
 	public InetAddress ip; 
 	private Msg.Message msjDatos = new Msg.Message("vacio");
-	
+	private boolean verfication = true; 
 	
 	
 	 public GameServer(){
@@ -56,24 +59,31 @@ public class GameServer implements Runnable   {
 				while(clientsQueue.hasItems()) {
 					Socket cliente = clientsQueue.dequeue();
 					//Canales de entrada y salida 
-					BufferedReader entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream())); 
+					DataInputStream entradaDatos = new DataInputStream(socket.getInputStream()); 
 					DataOutputStream salida = new DataOutputStream(cliente.getOutputStream());
+					
+					
+					//Recepcion de mensaje
+					String mensajeRecibido = entradaDatos.readUTF();
+					
+					while(verfication) {
+						reponseClient(mensajeRecibido);
+						this.verfication = false;
+						
+					}
+					System.out.println(">>Mensaje recibido: "+ mensajeRecibido);
+					
 					
 					//Confirmacion de conexion con mensaje 
 					System.out.println(">>Enviando update al cliente");
 					System.out.println("hola44");
 					salida.writeUTF(GetJMensaje().toString());
-					
+					salida.flush();
+					this.verfication = true;
 					
 				
 					
-					//Recepcion de mensaje
-					String mensajeRecibido = entrada.readLine();
-					System.out.println(">>Mensaje recibido: "+ mensajeRecibido);
-					GameUpdate(mensajeRecibido);
-					if(!verPassword) {
-						verPassword = verificarPassword(mensajeRecibido);
-					}
+					
 
 				}
 				
@@ -85,8 +95,34 @@ public class GameServer implements Runnable   {
 			
 		} catch (IOException e) {
 			System.out.println("Connetion failed");
-		}
+		} 
 	}
+private void reponseClient(String mensajeRecibido) throws IOException {
+	if(mensajeRecibido.contains("password")) {
+		System.out.println("password: "+ this.password);
+		setMensaje(this.password);
+	}
+	//se crea el juego
+		if(mensajeRecibido.contains("startgame")) {
+			System.out.println(">>iniciando juego");
+			gameFlow = new GameFlow();
+			System.out.println(mensajeRecibido);
+			GameUpdate(mensajeRecibido);
+			System.out.println("numero de jugadores: "+ this.decode.datos[1]);
+			this.gameFlow.getGame().setMaxPlayers(Integer.parseInt(this.decode.datos[1]));
+			this.gameFlow.getGame().InitializeDeck();
+			this.gameFlow.getGame().initializeTableTop();
+			this.gameFlow.getGame().getDictionary().generateDictionaryBook();
+		}
+		if(mensajeRecibido.contains("agregarJugador")) {
+			GameUpdate(mensajeRecibido);
+			System.out.println(">>Agregando jugador: "+ decode.datos[1] );
+			gameFlow.playerCreation(decode.datos[1]);
+		}
+		
+	}
+
+
 //Verifica el password para establecer la conexion 
 	private boolean verificarPassword(String mensajeRecibido) {
 		if(mensajeRecibido.toLowerCase().contains((this.password))) {
@@ -119,18 +155,11 @@ public class GameServer implements Runnable   {
 	}
 
 	private void GameUpdate(String msg) throws IOException {
-		System.out.println("Hola");
 		StringWriter toJson = new StringWriter();
-		toJson = toJson.append(msg, 2, msg.length());
+		toJson = toJson.append(msg, 0, msg.length());
 		System.out.println(toJson.toString());
-		Decode decode = new Decode(toJson);
+		 this.decode = new Decode(toJson);
 		
-		if(decode.command == 2) {
-			System.out.println("comando2");
-		String currentConnection = Integer.toString(decode.getCurrentConnection());
-		String Maxplayers = Integer.toString(decode.getMaxPlayers());
-		setMensaje(currentConnection+","+Maxplayers);
-		}
 		
 	}
 

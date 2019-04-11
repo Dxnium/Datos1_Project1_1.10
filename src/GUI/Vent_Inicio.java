@@ -2,6 +2,10 @@ package GUI;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -107,4 +111,7 @@ public class Vent_Inicio extends JFrame {
 		this.add(contentPane);
 		
 	}
+	
 }
+
+

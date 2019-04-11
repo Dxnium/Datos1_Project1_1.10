@@ -31,7 +31,12 @@ public class Encode {
 	System.out.println("*****************ENCODE*****************");
 	System.out.println(out);
 	System.out.println("*****************DECODE*****************");
-	Decode decode = new Decode(out);
+	try {
+		Decode decode = new Decode(out);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	
 	}
 

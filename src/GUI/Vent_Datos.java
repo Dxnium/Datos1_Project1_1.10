@@ -19,13 +19,16 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import Sockets.Cliente;
+import Sockets.GameServer;
 
 public class Vent_Datos extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	public GameServer server;
 
-	public Vent_Datos() throws UnknownHostException {
+	public Vent_Datos(GameServer server) throws UnknownHostException {
+		this.server = server;
 		setTitle("Scrabble");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -58,7 +61,7 @@ public class Vent_Datos extends JFrame {
 				try {
 					System.out.println(!textField.getText().isEmpty());
 					if(!textField.getText().isEmpty()) {
-						Cliente cliente = new Cliente("localhost","2,"+textField.getText());
+						Cliente cliente = new Cliente("localhost","agregarJugador,"+textField.getText());
 //						Cliente cliente2 = new Cliente("localhost","3");
 //						if(!verificar(cliente2.msg)) {
 //							System.out.println(">>loop");
