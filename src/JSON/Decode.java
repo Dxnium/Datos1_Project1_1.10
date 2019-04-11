@@ -1,5 +1,6 @@
 package JSON;
 
+import java.io.IOException;
 import java.io.Writer;
 import java.util.Arrays;
 
@@ -12,7 +13,7 @@ import game.logic.GameFlow;
 
 public class Decode {
 	JSONObject jsonData;
-	public Decode(Writer out) {
+	public Decode(Writer out) throws IOException {
 		jsonData =  new JSONObject();
 		jsonData.put("Datos", out);
 
@@ -42,6 +43,11 @@ public class Decode {
 						GameFlow.getGame().InitializeDeck();
 						GameFlow.getGame().initializeTableTop();
 						GameFlow.getGame().getDictionary().generateDictionaryBook();
+						break;
+					case 2:
+						System.out.println(Arrays.deepToString(datos));
+						GameFlow.playerCreation(datos[1]);
+						break;		
 					}
 					}
 					

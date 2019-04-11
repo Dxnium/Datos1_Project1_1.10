@@ -116,7 +116,7 @@ public class GameServer implements Runnable   {
 		
 	}
 
-	private void GameUpdate(String msg) {
+	private void GameUpdate(String msg) throws IOException {
 		System.out.println("Hola");
 		StringWriter toJson = new StringWriter();
 		toJson = toJson.append(msg, 2, msg.length());

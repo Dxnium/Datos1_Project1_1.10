@@ -2,6 +2,9 @@ package GUI;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Sockets.Cliente;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -41,8 +44,10 @@ public class Vent_Datos extends JFrame {
 		
 		btnNewButton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
+				Cliente cliente = new Cliente("localhost","2,"+textField.getText());
 				BoardJFrame boardJF = new BoardJFrame();
 				boardJF.setVisible(true);
+				
 				
 				Vent_Datos.this.dispose();				
 			}

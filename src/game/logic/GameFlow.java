@@ -83,6 +83,7 @@ public class GameFlow {
 			System.out.println("no puede agregar mas jugadores");
 			
 		}
+		System.out.println("Se ha agregado el jugador "+game.getPlayerList().getHead().getData().getName());
 	}
 
 	

@@ -114,7 +114,7 @@ public class Cliente {
 // GameUpdate hace un decode del msj del server y 
 // llama a los metodos correspondientes para generar el update
 // tanto en la matriz de juego como en pantalla 
-	private void GameUpdate(String msg) {
+	private void GameUpdate(String msg) throws IOException {
 		StringWriter toJson = new StringWriter();
 		toJson = toJson.append(msg, 0, msg.length());
 		Decode decode = new Decode(toJson);
