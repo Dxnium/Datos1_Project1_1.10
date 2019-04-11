@@ -22,6 +22,14 @@ public class GameFlow {
 	
 
 
+	public static Board getGame() {
+		return game;
+	}
+
+	public static void setGame(Board game) {
+		GameFlow.game = game;
+	}
+
 	public static void main(String[] args) throws IOException {
 		
 		
@@ -64,6 +72,7 @@ public class GameFlow {
 
 
 	}
+
 
 	public static void playerCreation(String name) throws IOException {
 		if(game.getCurrentConection()<game.getMaxPlayers()) {

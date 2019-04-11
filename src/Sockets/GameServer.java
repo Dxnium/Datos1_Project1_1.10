@@ -12,6 +12,7 @@ import java.net.Socket;
 
 import org.json.simple.JSONArray;
 
+import JSON.Decode;
 import JSON.Encode;
 import queue.myQueue;
 
@@ -22,7 +23,7 @@ public class GameServer implements Runnable   {
 	Socket socket; 
 
 	final int port = 5555;
-	String password;
+	public String password;
 
 	private boolean verPassword = false;
 	public InetAddress ip; 
@@ -60,12 +61,14 @@ public class GameServer implements Runnable   {
 					
 					//Confirmacion de conexion con mensaje 
 					System.out.println(">>Enviando update al cliente");
+					System.out.println("hola44");
 					salida.writeUTF(GetJMensaje().toString());
 				
 					
 					//Recepcion de mensaje
 					String mensajeRecibido = entrada.readLine();
 					System.out.println(">>Mensaje recibido: "+ mensajeRecibido);
+					GameUpdate(mensajeRecibido);
 					if(!verPassword) {
 						verPassword = verificarPassword(mensajeRecibido);
 					}
@@ -110,6 +113,16 @@ public class GameServer implements Runnable   {
 	
 	public void setMensaje(String newMsj) {
 		this.msjDatos.setMatriz(newMsj);
+		
+	}
+
+	private void GameUpdate(String msg) {
+		System.out.println("Hola");
+		StringWriter toJson = new StringWriter();
+		toJson = toJson.append(msg, 2, msg.length());
+		System.out.println(toJson.toString());
+		Decode decode = new Decode(toJson);
+		
 		
 	}
 
