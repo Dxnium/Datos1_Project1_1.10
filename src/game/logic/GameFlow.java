@@ -77,13 +77,13 @@ public class GameFlow {
 	public static void playerCreation(String name) throws IOException {
 		if(game.getCurrentConection()<game.getMaxPlayers()) {
 			game.getPlayerList().append(new Player(name));
+			out.println(game.getPlayerList().getHead().getData().getName());
 		}
 
 		if(game.getCurrentConection()==game.getMaxPlayers()) {
 			System.out.println("no puede agregar mas jugadores");
 			
 		}
-		System.out.println("Se ha agregado el jugador "+game.getPlayerList().getHead().getData().getName());
 	}
 
 	

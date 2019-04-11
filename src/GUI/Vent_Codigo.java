@@ -2,6 +2,7 @@ package GUI;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.StringWriter;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import JSON.De;
 import Sockets.Cliente;
 
 public class Vent_Codigo extends JFrame {
@@ -63,12 +65,21 @@ public class Vent_Codigo extends JFrame {
 		btnContinuar.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			try {
-				Cliente cliente = new Cliente(textField_IP.getText());
-				if(cliente.msg.contains("true")) {
-					Vent_Datos Vent_2_2 = new Vent_Datos();
+				System.out.println(textField_IP.getText());
+				Cliente cliente = new Cliente(textField_Nombre.getText(),"4,"+textField_IP.getText()+","+textField_Codigo.getText());
+				Cliente cliente2 = new Cliente(textField_IP.getText());
+				String msgdelServer = cliente2.msg;
+				StringWriter toJson = new StringWriter();
+				toJson = toJson.append(msgdelServer, 2, msgdelServer.length());
+				De aaa = new De(toJson);
+				if(aaa.dato.equals(textField_Codigo.getText()) ) {
+					System.out.println("Contraseña correcta");
+				}
+				
+		
+					Vent_Datos Vent_2_2 = new Vent_Datos(null);
 					Vent_2_2.setVisible(true);
 					Vent_Codigo.this.dispose();
-				}
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(contentPane,"error de conexion"); 
 			}

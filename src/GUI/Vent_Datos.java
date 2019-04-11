@@ -19,13 +19,16 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import Sockets.Cliente;
+import Sockets.GameServer;
 
 public class Vent_Datos extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	public GameServer server;
 
-	public Vent_Datos() throws UnknownHostException {
+	public Vent_Datos(GameServer server) throws UnknownHostException {
+		this.server = server;
 		setTitle("Scrabble");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

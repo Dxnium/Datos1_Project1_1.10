@@ -1,6 +1,7 @@
 package Sockets;
 
 import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -56,24 +57,28 @@ public class GameServer implements Runnable   {
 				while(clientsQueue.hasItems()) {
 					Socket cliente = clientsQueue.dequeue();
 					//Canales de entrada y salida 
-					BufferedReader entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream())); 
+					DataInputStream entradaDatos = new DataInputStream(socket.getInputStream()); 
 					DataOutputStream salida = new DataOutputStream(cliente.getOutputStream());
+					
+					
+					//Recepcion de mensaje
+					String mensajeRecibido = entradaDatos.readUTF();
+					System.out.println(">>Mensaje recibido: "+ mensajeRecibido);
+					
 					
 					//Confirmacion de conexion con mensaje 
 					System.out.println(">>Enviando update al cliente");
 					System.out.println("hola44");
 					salida.writeUTF(GetJMensaje().toString());
-					
+					salida.flush();
 					
 				
 					
-					//Recepcion de mensaje
-					String mensajeRecibido = entrada.readLine();
-					System.out.println(">>Mensaje recibido: "+ mensajeRecibido);
-					GameUpdate(mensajeRecibido);
-					if(!verPassword) {
-						verPassword = verificarPassword(mensajeRecibido);
-					}
+					
+//					GameUpdate(mensajeRecibido);
+//					if(!verPassword) {
+//						verPassword = verificarPassword(mensajeRecibido);
+//					}
 
 				}
 				
@@ -126,12 +131,15 @@ public class GameServer implements Runnable   {
 		Decode decode = new Decode(toJson);
 		
 		if(decode.command == 2) {
-			System.out.println("comando2");
+		System.out.println("comando2");
 		String currentConnection = Integer.toString(decode.getCurrentConnection());
 		String Maxplayers = Integer.toString(decode.getMaxPlayers());
 		setMensaje(currentConnection+","+Maxplayers);
 		}
-		
+		if (decode.command == 4) {
+			System.out.println(">>comando4");
+			setMensaje(this.password);
+		}
 	}
 
 }

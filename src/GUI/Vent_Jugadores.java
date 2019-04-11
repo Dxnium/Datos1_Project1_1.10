@@ -81,7 +81,7 @@ public class Vent_Jugadores extends JFrame implements ActionListener {
 				Cliente cliente = new Cliente("localhost","1,"+Integer.toString(numeroJugadores));
 				Vent_Datos Vent_2_2;
 				try {
-					Vent_2_2 = new Vent_Datos();
+					Vent_2_2 = new Vent_Datos(server);
 					Vent_2_2.setVisible(true);
 					Vent_Jugadores.this.dispose();
 				} catch (UnknownHostException e) {
@@ -101,7 +101,7 @@ public class Vent_Jugadores extends JFrame implements ActionListener {
 	
 	
 	public void actionPerformed(ActionEvent e) {
-//		   numeroJugadores = Integer.parseInt(e.getActionCommand());
+		   numeroJugadores = Integer.parseInt(e.getActionCommand());
 			try {
 				CodigoInvitacion.setText( generateGameCode());
 			} catch (IOException e1) {

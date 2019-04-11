@@ -62,7 +62,9 @@ public class Decode {
 						break;
 					case 2:
 						System.out.println(Arrays.deepToString(datos));
+						System.out.println(datos[1]);
 						GameFlow.playerCreation(datos[1]);
+						
 						int currentConnection = GameFlow.getGame().getCurrentConection();
 						setCurrentConnection(currentConnection);
 						int maxPlayers = GameFlow.getGame().getMaxPlayers();
@@ -70,6 +72,8 @@ public class Decode {
 						break;	
 					case 3:
 						break;
+					case 4:
+						
 						
 					}
 					

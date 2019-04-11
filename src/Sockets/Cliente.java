@@ -43,6 +43,8 @@ public class Cliente {
 			//enviamos el mensaje
 			mensaje.writeUTF(GetJMensaje().toString());
 			System.out.println("Cerrando conexión...Cliente");
+			mensaje.flush();
+			
 			
 			//leer mensaje
 			msg = entradaDatos.readUTF();
