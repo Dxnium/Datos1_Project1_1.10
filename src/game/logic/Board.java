@@ -15,7 +15,7 @@ public class Board {//Manages most of the board related methods
 	private Dictionary dictionary = new Dictionary();
 	private int turn;
 	private PlayedWordList playedWords=new PlayedWordList();
-	
+	//hola
 	
 	
 	
