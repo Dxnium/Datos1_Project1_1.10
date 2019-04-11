@@ -3,6 +3,11 @@ package GUI;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Sockets.Cliente;
+import Sockets.GameServer;
+import game.logic.GameFlow;
+
 import javax.swing.JLabel;
 import java.awt.event.*;
 import java.awt.Font;
@@ -66,6 +71,10 @@ public class Vent_Jugadores extends JFrame implements ActionListener {
 		btnContinuar.setBounds(169, 194, 106, 38);
 		btnContinuar.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
+				GameServer server = new GameServer();
+				server.password = CodigoInvitacion.getText();
+				server.setMensaje());	
+				Cliente cliente = new Cliente("localhost");
 				Vent_Datos Vent_2_2 = new Vent_Datos();
 				Vent_2_2.setVisible(true);
 				Vent_Jugadores.this.dispose();				

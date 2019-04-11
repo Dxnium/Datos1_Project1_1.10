@@ -14,12 +14,24 @@ public class Board {//Manages most of the board related methods
 	int deckSize=100;
 	private Dictionary dictionary = new Dictionary();
 	private int turn;
-	private PlayedWordList playedWords=new PlayedWordList();
+	private int maxPlayers;
+	private int currentConection;
 	
 	
 	
 	
-
+	public int getCurrentConection() {
+		return currentConection;
+	}
+	public void setCurrentConection() {
+		this.currentConection = currentConection+1;
+	}
+	public int getMaxPlayers() {
+		return maxPlayers;
+	}
+	public void setMaxPlayers(int maxPlayers) {
+		this.maxPlayers = maxPlayers;
+	}
 	//GETTERS AND SETTERS
 	public Dictionary getDictionary() {
 		return dictionary;
@@ -54,12 +66,6 @@ public class Board {//Manages most of the board related methods
 		this.gameCode = gameCode;
 	}
 	
-	public PlayedWordList getPlayedWords() {
-		return playedWords;
-	}
-	public void setPlayedWords(PlayedWordList playedWords) {
-		this.playedWords = playedWords;
-	}
 	
 	
 	//GAME LOGIC METHODS
