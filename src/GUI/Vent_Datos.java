@@ -18,6 +18,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import JSON.Decode;
 import Sockets.Cliente;
 import Sockets.GameServer;
 
@@ -26,6 +27,8 @@ public class Vent_Datos extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	public GameServer server;
+	public Decode decode;
+	
 
 	public Vent_Datos(GameServer server) throws UnknownHostException {
 		this.server = server;
@@ -59,19 +62,15 @@ public class Vent_Datos extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
+					
 					System.out.println(!textField.getText().isEmpty());
 					if(!textField.getText().isEmpty()) {
 						Cliente cliente = new Cliente("localhost","agregarJugador,"+textField.getText());
-//						Cliente cliente2 = new Cliente("localhost","3");
-//						if(!verificar(cliente2.msg)) {
-//							System.out.println(">>loop");
-//							Cliente cliente3 = new Cliente("localhost","3");
-//							System.out.println(cliente2.msg);
-//						}
 						BoardJFrame boardJF = new BoardJFrame();
 						boardJF.setVisible(true);
 						Vent_Datos.this.dispose();
-					}else {
+					}
+					else {
 						JOptionPane.showMessageDialog(contentPane,"Debe digitar un nombre"); 
 					}
 				} catch (Exception e) {
@@ -81,41 +80,5 @@ public class Vent_Datos extends JFrame {
 		});
 		contentPane.add(btnNewButton);
 	}
-	public boolean verificar(String msg) {
-		JSONObject jsonData;
-		StringWriter toJson = new StringWriter();
-		toJson = toJson.append(msg, 2, msg.length());
-	
-		jsonData =  new JSONObject();
-		jsonData.put("Datos", toJson);
-
-		JSONParser data_parser = new JSONParser();
-
-		try {
-			JSONObject objDatos = (JSONObject) data_parser.parse(jsonData.toJSONString());
-			JSONArray arrayDatos = (JSONArray) objDatos.get("Datos");
-
-			for (int i =0; i<arrayDatos.size(); i++) {
-				
-				JSONObject juego = (JSONObject) arrayDatos.get(i);
-				if(juego.containsKey("Matriz")) {
-					String matriz = juego.get("Matriz").toString();
-					System.out.println(matriz + "\t");
-					String[] datos = matriz.split(",");
-					if(Integer.parseInt(datos[0])<Integer.parseInt(datos[1])) {
-						System.out.println("faltan jugadores");
-						return false;
-					}else {
-						return true; 
-					}
-	
-			}
-		}
-	}finally {
-		return false;
-	}
-
-
-}
 	
 }

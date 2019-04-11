@@ -119,7 +119,11 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 			System.out.println(">>Agregando jugador: "+ decode.datos[1] );
 			gameFlow.playerCreation(decode.datos[1]);
 		}
-		
+		if(mensajeRecibido.contains("currentConection")) {
+			GameUpdate(mensajeRecibido);
+			int current = GameFlow.getGame().getCurrentConection();
+			setMensaje(Integer.toString(current));
+		}
 	}
 
 
