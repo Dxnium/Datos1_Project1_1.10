@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import JSON.De;
+import JSON.Decode;
 import Sockets.Cliente;
 
 public class Vent_Codigo extends JFrame {
@@ -21,7 +21,7 @@ public class Vent_Codigo extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField_Codigo;
 	private JTextField textField_IP;
-
+	public Decode decode; 
 	public Vent_Codigo() {
 		setTitle("Scrabble");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,21 +65,25 @@ public class Vent_Codigo extends JFrame {
 		btnContinuar.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			try {
-				System.out.println(textField_IP.getText());
-				Cliente cliente = new Cliente(textField_Nombre.getText(),"4,"+textField_IP.getText()+","+textField_Codigo.getText());
-				Cliente cliente2 = new Cliente(textField_IP.getText());
-				String msgdelServer = cliente2.msg;
+				String password;
+				System.out.println("Nombre"+textField_IP.getText());
+				System.out.println("Codigo"+textField_Codigo.getText());
+				System.out.println("IP"+textField_Nombre.getText());
+				Cliente cliente = new Cliente(textField_Nombre.getText(),"password,none");
 				StringWriter toJson = new StringWriter();
-				toJson = toJson.append(msgdelServer, 2, msgdelServer.length());
-				De aaa = new De(toJson);
-				if(aaa.dato.equals(textField_Codigo.getText()) ) {
-					System.out.println("Contraseña correcta");
-				}
-				
-		
-					Vent_Datos Vent_2_2 = new Vent_Datos(null);
-					Vent_2_2.setVisible(true);
+				toJson = toJson.append(cliente.msg , 0, cliente.msg.length());
+				Decode decode = new Decode(toJson);
+				System.out.println(decode.datos[0]);
+				if (textField_Codigo.getText().equals(decode.datos[0])) {
+					Cliente cliente2 = new Cliente(textField_Nombre.getText(), "agregarJugador,"+textField_IP.getText());
+					Cliente cliente3 = new Cliente(textField_Nombre.getText(), "playOrder");
+					BoardJFrame boardJF = new BoardJFrame();
+					boardJF.setVisible(true);
 					Vent_Codigo.this.dispose();
+				}
+				else {
+					JOptionPane.showMessageDialog(contentPane,"Codigo Invalido"); 
+				}
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(contentPane,"error de conexion"); 
 			}

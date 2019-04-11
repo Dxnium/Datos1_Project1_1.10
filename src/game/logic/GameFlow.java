@@ -78,6 +78,7 @@ public class GameFlow {
 		if(game.getCurrentConection()<game.getMaxPlayers()) {
 			game.getPlayerList().append(new Player(name));
 			out.println(game.getPlayerList().getHead().getData().getName());
+			System.out.println("Se ha agregado al jugador: "+name);
 		}
 
 		if(game.getCurrentConection()==game.getMaxPlayers()) {
@@ -126,7 +127,7 @@ public class GameFlow {
 	}
 	
 
-	private static void dealTiles() {
+	public static void dealTiles() {
 		int count=0;
 		int index=0;
 		for (PlayerLinkedListNode node=game.getPlayerList().getHead();count!=game.getPlayerList().getLength()*7;node=node.getNext()) {
@@ -148,7 +149,7 @@ public class GameFlow {
 	}
 
 
-	private static void playOrder() {
+	public static void playOrder() {
 		int count=0;
 		PlayerLinkedListNode currentNode=game.getPlayerList().getHead();
 		Player currentPlayer= currentNode.getData();

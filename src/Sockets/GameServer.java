@@ -118,8 +118,19 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 			GameUpdate(mensajeRecibido);
 			System.out.println(">>Agregando jugador: "+ decode.datos[1] );
 			gameFlow.playerCreation(decode.datos[1]);
+			gameFlow.getGame().setCurrentConection();
 		}
-		
+		if(mensajeRecibido.contains("currentConection")) {
+			GameUpdate(mensajeRecibido);
+			int current = GameFlow.getGame().getCurrentConection();
+			setMensaje(Integer.toString(current));
+		}
+		if(mensajeRecibido.contains("playOrder")) {
+			if(this.gameFlow.getGame().getCurrentConection() == this.gameFlow.getGame().getMaxPlayers()) {
+				this.gameFlow.playOrder();
+				this.gameFlow.dealTiles();
+			}
+		}
 	}
 
 

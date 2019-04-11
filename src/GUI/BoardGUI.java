@@ -1,15 +1,27 @@
 package GUI;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import game.logic.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+import com.sun.security.ntlm.Client;
+
+import Sockets.Cliente;
 
 
 
 public class BoardGUI extends JPanel{
+	public String myName;
 	String[][] matrix;
 	LetterGUI letterGUI = new LetterGUI();
 	ArrayList<LetterGUI> lettersList = new ArrayList<LetterGUI>();
@@ -18,6 +30,7 @@ public class BoardGUI extends JPanel{
 	
 
 	public BoardGUI(String[][] matrix){
+		
 		botonReglas reglas = new botonReglas();
 		reglas.setBounds(1000,10,128,128);
 		reglas.setIcon(new ImageIcon(reglasImg));
@@ -30,6 +43,17 @@ public class BoardGUI extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				getWordsLocation();
 			}});
+		//------------------------------------------------------------------------
+		JButton btnConsulta = new JButton("Consulta");
+		btnConsulta.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnConsulta.setBounds(1000, 400, 102, 31);
+		btnConsulta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("consulta");
+				Cliente cliente = new Cliente("localhost","checkTurno,"+ myName);
+			}});
+		this.add(btnConsulta);
+		//--------------------------------------------------------------------------
 		this.add(btnScrabble);
 		JButton btnNext = new JButton("Next");
 		btnNext.setFont(new Font("Tahoma", Font.BOLD, 11));
