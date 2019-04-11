@@ -32,7 +32,7 @@ public class Vent_Codigo extends JFrame {
 		JLabel lblDigiteElCdigo = new JLabel("Digite el c\u00F3digo de invitaci\u00F3n:");
 		lblDigiteElCdigo.setHorizontalAlignment(SwingConstants.LEFT);
 		lblDigiteElCdigo.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblDigiteElCdigo.setBounds(98, 10, 266, 31);
+		lblDigiteElCdigo.setBounds(80, 22, 266, 31);
 		contentPane.add(lblDigiteElCdigo);
 		
 		textField_Codigo = new JTextField();
@@ -41,25 +41,25 @@ public class Vent_Codigo extends JFrame {
 		textField_Codigo.setColumns(10);
 		
 		JTextField textField_Nombre = new JTextField();
-		textField_Nombre.setBounds(148, 104, 140, 31);
+		textField_Nombre.setBounds(148, 134, 140, 31);
 		contentPane.add(textField_Nombre);
 		textField_Nombre.setColumns(10);
 		
 		JLabel lbIP = new JLabel("Digite la IP:");
 		lbIP.setHorizontalAlignment(SwingConstants.LEFT);
 		lbIP.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lbIP.setBounds(98, 134, 266, 31);
+		lbIP.setBounds(80, 102, 266, 31);
 		contentPane.add(lbIP);
 		
 		textField_IP = new JTextField();
-		textField_IP.setBounds(148, 144, 140, 31);
+		textField_IP.setBounds(148, 226, 140, 31);
 		contentPane.add(textField_IP);
 		textField_IP.setColumns(10);
 		
 		
 		JButton btnContinuar = new JButton("Unirse");
 		btnContinuar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnContinuar.setBounds(171, 194, 102, 31);
+		btnContinuar.setBounds(167, 299, 102, 31);
 		btnContinuar.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			try {
@@ -77,6 +77,10 @@ public class Vent_Codigo extends JFrame {
 		});
 		
 		contentPane.add(btnContinuar);
+		
+		JLabel lblDigiteElNombre = new JLabel("Digite el nombre de jugador");
+		lblDigiteElNombre.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblDigiteElNombre.setBounds(81, 189, 281, 26);
+		contentPane.add(lblDigiteElNombre);
 	}
-
 }
