@@ -129,8 +129,10 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 			if(this.gameFlow.getGame().getCurrentConection() == this.gameFlow.getGame().getMaxPlayers()) {
 				this.gameFlow.playOrder();
 				this.gameFlow.dealTiles();
-//				setMensaje(gameFlow.getGame().getPlayerList().get);
-				
+				String matrizLetras = this.gameFlow.sendTiles().toString();
+				String str = String.join(",", matrizLetras);
+				System.out.println(">>Nuevo mensaje+ "+str);
+				setMensaje(str); 
 			}
 			if(mensajeRecibido.contains("checkTurno")) {
 				GameUpdate(mensajeRecibido);
@@ -173,6 +175,8 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 		this.msjDatos.setMatriz(newMsj);
 		
 	}
+	
+	
 
 	private void GameUpdate(String msg) throws IOException {
 		StringWriter toJson = new StringWriter();
