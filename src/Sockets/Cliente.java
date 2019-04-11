@@ -15,7 +15,7 @@ public class Cliente {
 
 	Socket socket;
 	String mensajeSalida;
-	String msg = null; //Mensaje resivido del servidor 
+	public String msg = null; //Mensaje resivido del servidor 
 	String password = "";
 	String nombre = "";
 	

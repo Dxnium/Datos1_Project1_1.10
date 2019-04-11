@@ -1,15 +1,18 @@
 package GUI;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import Sockets.Cliente;
 
 public class Vent_Codigo extends JFrame {
 
@@ -54,9 +57,17 @@ public class Vent_Codigo extends JFrame {
 		btnContinuar.setBounds(171, 194, 102, 31);
 		btnContinuar.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
-				Vent_Datos Vent_2_2 = new Vent_Datos();
-				Vent_2_2.setVisible(true);
-				Vent_Codigo.this.dispose();				
+			try {
+				Cliente cliente = new Cliente(textField_IP.getText());
+				if(cliente.msg.contains("true")) {
+					Vent_Datos Vent_2_2 = new Vent_Datos();
+					Vent_2_2.setVisible(true);
+					Vent_Codigo.this.dispose();
+				}
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(contentPane,"error de conexion"); 
+			}
+								
 			}
 		});
 		

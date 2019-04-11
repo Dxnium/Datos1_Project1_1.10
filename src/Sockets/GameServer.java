@@ -22,7 +22,7 @@ public class GameServer implements Runnable   {
 	ServerSocket server;  
 	Socket socket; 
 	final int port = 5555;
-	String password;
+	public String password;
 	private boolean verPassword = false;
 	public InetAddress ip; 
 	private String msjDatos = "Vacio";
@@ -62,7 +62,8 @@ public class GameServer implements Runnable   {
 					if(verPassword) {
 						salida.writeUTF(GetJMensaje());
 					}else {
-						salida.writeUTF(this.password+","+GetJMensaje());//toma el mensaje que se debe enviar al cliente 
+//						salida.writeUTF(this.password+","+GetJMensaje());//toma el mensaje que se debe enviar al cliente 
+						salida.writeUTF("true");
 						}			
 					
 					//Recepcion de mensaje
