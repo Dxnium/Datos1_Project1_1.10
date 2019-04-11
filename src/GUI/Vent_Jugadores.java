@@ -10,7 +10,11 @@ import game.logic.GameFlow;
 
 import javax.swing.JLabel;
 import java.awt.event.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.UnknownHostException;
+import java.util.concurrent.ThreadLocalRandom;
 import java.awt.Font;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -97,8 +101,46 @@ public class Vent_Jugadores extends JFrame implements ActionListener {
 	
 	
 	public void actionPerformed(ActionEvent e) {
-		   numeroJugadores = Integer.parseInt(e.getActionCommand());
-		   CodigoInvitacion.setText("match_" + e.getActionCommand());
+//		   numeroJugadores = Integer.parseInt(e.getActionCommand());
+			try {
+				CodigoInvitacion.setText( generateGameCode());
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+		
+	}
+	public String generateGameCode() throws IOException {
+		BufferedReader reader = null;
+		reader= new BufferedReader(new FileReader("characters.txt"));
+		int count=0;
+		String line;
+		String letterArray[]= new String[26];
+		String numberArray[]= new String[10];
+		while((line = reader.readLine()) != null) {
+			if(count==0) {
+				letterArray = line.split(",");
+			}else{
+				numberArray=line.split(",");
+			}
+			count++;
+		}
+		reader.close();
+		String GameCode="";
+		int amount=0;
+		while(amount<6) {
+			if(amount<3) {
+				int randomLetter = ThreadLocalRandom.current().nextInt(1, 26);
+				GameCode=GameCode+letterArray[randomLetter];
+			}else{
+				int randomNum = ThreadLocalRandom.current().nextInt(1, 10);
+				GameCode=GameCode+numberArray[randomNum];
+			}
+			amount++;
+		}
+		System.out.println(GameCode);
+		return GameCode;
 	}
 	
 }

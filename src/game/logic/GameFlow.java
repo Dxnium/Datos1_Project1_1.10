@@ -46,7 +46,7 @@ public class GameFlow {
 //		f.setSize(1200, 800);
 //		f.setVisible(true);
 		//promptGameStart();
-		
+		//game.generateGameCode();
 
 		
 		

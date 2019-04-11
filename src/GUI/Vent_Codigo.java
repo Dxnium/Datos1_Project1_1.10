@@ -23,7 +23,7 @@ public class Vent_Codigo extends JFrame {
 	public Vent_Codigo() {
 		setTitle("Scrabble");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -36,18 +36,23 @@ public class Vent_Codigo extends JFrame {
 		contentPane.add(lblDigiteElCdigo);
 		
 		textField_Codigo = new JTextField();
-		textField_Codigo.setBounds(148, 44, 140, 31);
+		textField_Codigo.setBounds(148, 64, 140, 31);
 		contentPane.add(textField_Codigo);
 		textField_Codigo.setColumns(10);
+		
+		JTextField textField_Nombre = new JTextField();
+		textField_Nombre.setBounds(148, 104, 140, 31);
+		contentPane.add(textField_Nombre);
+		textField_Nombre.setColumns(10);
 		
 		JLabel lbIP = new JLabel("Digite la IP:");
 		lbIP.setHorizontalAlignment(SwingConstants.LEFT);
 		lbIP.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lbIP.setBounds(98, 94, 266, 31);
+		lbIP.setBounds(98, 134, 266, 31);
 		contentPane.add(lbIP);
 		
 		textField_IP = new JTextField();
-		textField_IP.setBounds(148, 124, 140, 31);
+		textField_IP.setBounds(148, 144, 140, 31);
 		contentPane.add(textField_IP);
 		textField_IP.setColumns(10);
 		
