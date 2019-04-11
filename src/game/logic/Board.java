@@ -67,8 +67,15 @@ public class Board {//Manages most of the board related methods
 	public void setGameCode(String gameCode) {
 		this.gameCode = gameCode;
 	}
-	
-	
+
+	public PlayedWordList getPlayedWords() {
+		//getter
+		return playedWords;
+	}
+	public void setPlayedWords(PlayedWordList playedWords) {
+		//setter
+		this.playedWords = playedWords;
+	}
 	
 	//GAME LOGIC METHODS
 	
