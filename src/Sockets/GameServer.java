@@ -21,7 +21,7 @@ public class GameServer implements Runnable   {
 	private myQueue<Socket> clientsQueue = new myQueue<Socket>();
 	ServerSocket server;  
 	Socket socket; 
-	final int port = 5555;
+	final int port = 4500;
 	public String password;
 	private boolean verPassword = false;
 	public InetAddress ip; 

@@ -37,7 +37,7 @@ public class GameFlow {
 //		f.add(board);
 //		f.setSize(1200, 800);
 //		f.setVisible(true);
-		promptGameStart();
+		//promptGameStart();
 		
 		
 		
