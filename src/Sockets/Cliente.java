@@ -16,7 +16,7 @@ public class Cliente {
 
 
 
-	final int port = 5555;
+	final int port = 4500;
 	String address = "";
 
 	Socket socket;
@@ -40,6 +40,7 @@ public class Cliente {
 			System.out.println("Cerrando conexión...Cliente");
 			
 			//leer mensaje
+			System.out.println("AAAAAAAA");
 			msg = entradaDatos.readUTF();
 			System.out.println(msg);
 			GameUpdate(msg);
