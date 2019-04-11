@@ -15,7 +15,7 @@ public class BoardGUI extends JPanel{
 	ArrayList<LetterGUI> lettersList = new ArrayList<LetterGUI>();
 	Image labelImg = new ImageIcon("Images\\img.png").getImage(); 
 	Image reglasImg = new ImageIcon("Images\\botonAyuda.png").getImage();
-
+	
 
 	public BoardGUI(String[][] matrix){
 		botonReglas reglas = new botonReglas();
@@ -81,13 +81,12 @@ public class BoardGUI extends JPanel{
 				g.drawRect((f*50),(c*50),50,50);
 				for(int p = 0; p<lettersList.size(); p++) {
 					if(rect.contains(lettersList.get(p).getX(),lettersList.get(p).getY())) {
-						
+				
 							lettersList.get(p).setLocation((f*50),(c*50));
 							lettersList.get(p).setPosC(Integer.toString(f));
-							lettersList.get(p).setPosF(Integer.toString(c));
-		
-						
+							lettersList.get(p).setPosF(Integer.toString(c));	
 					}
+					
 				}
 
 			}

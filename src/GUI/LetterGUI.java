@@ -1,5 +1,7 @@
 package GUI;
 
+import java.awt.Rectangle;
+import java.awt.Shape;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -8,7 +10,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class LetterGUI extends JLabel implements MouseMotionListener{
+public class LetterGUI extends JLabel implements MouseMotionListener,MouseListener{
 	ArrayList<String> alphabet = new ArrayList<String>();
 	ArrayList<ImageIcon> alphabetIMG = new ArrayList<ImageIcon>();
 	String letterAsigned;
@@ -17,6 +19,8 @@ public class LetterGUI extends JLabel implements MouseMotionListener{
 	Boolean canBeRepositioned = true;
 	int posInicialX;
 	int posInicialY;
+	ArrayList<Shape> fichasPosList = new ArrayList<Shape>();
+	
 	public int getPosInicialX() {
 		return posInicialX;
 	}
@@ -65,6 +69,7 @@ public class LetterGUI extends JLabel implements MouseMotionListener{
 			}
 		}
 		addMouseMotionListener(this);
+		addMouseListener(this);
 
 	}
 	public LetterGUI(String letter, int posX, int posY){
@@ -81,6 +86,7 @@ public class LetterGUI extends JLabel implements MouseMotionListener{
 			}
 		}
 		addMouseMotionListener(this);
+		addMouseListener(this);
 
 
 
@@ -106,12 +112,41 @@ public class LetterGUI extends JLabel implements MouseMotionListener{
 			setLocation(this.getX()+e.getX()-this.getWidth()/2,800);
 		}
 		
+		
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		Shape rect2 = new Rectangle(this.getX(),this.getY());
+		fichasPosList.add(rect2);
+		System.out.println("Size: "+ fichasPosList.size());
+		
+		
 	}
 	public void alphabetFill() {
 		alphabet.add("A");
@@ -176,5 +211,6 @@ public class LetterGUI extends JLabel implements MouseMotionListener{
 		alphabetIMG.add(new ImageIcon("Images\\Z.PNG"));
 		alphabetIMG.add(new ImageIcon("Images\\BLANK.PNG"));
 	}
+	
 
 }
