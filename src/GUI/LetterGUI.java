@@ -14,14 +14,16 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 	ArrayList<String> alphabet = new ArrayList<String>();
 	ArrayList<ImageIcon> alphabetIMG = new ArrayList<ImageIcon>();
 	String letterAsigned;
-	String posC;
-	String posF;
+	String posC = "0";
+	String posF = "0";
 	Boolean canBeRepositioned = true;
 	int posInicialX;
 	int posInicialY;
-	ArrayList<Shape> fichasPosList = new ArrayList<Shape>();
+	ArrayList<Integer> fichasPosCList = new ArrayList<Integer>();
+	ArrayList<Integer> fichasPosFList = new ArrayList<Integer>();
 	Boolean alreadyPlaced = false;
 	int cont=0;
+	Boolean isMoved;
 
 	public int getPosInicialX() {
 		return posInicialX;
@@ -56,6 +58,12 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 	public LetterGUI() {
 
 	}
+	public Boolean getIsMoved() {
+		return isMoved;
+	}
+	public void setIsMoved(Boolean isMoved) {
+		this.isMoved = isMoved;
+	}
 	public LetterGUI(String letter, int x){
 		alphabetFill();
 		alphabetIMGFill();
@@ -86,8 +94,8 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 				setBounds(posX, posY, 50, 50);
 				this.setPosC(Integer.toString(posY/50));
 				this.setPosF(Integer.toString(posX/50));
-				Shape rect2 = new Rectangle(posX, posY,50,50);
-				fichasPosList.add(rect2);
+				//Shape rect2 = new Rectangle(posX, posY,50,50);
+				//fichasPosList.add(rect2);
 
 			}
 		}
@@ -102,8 +110,8 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		
-		
 		if(this.canBeRepositioned == true) {
+			
 			setLocation(this.getX()+e.getX()-this.getWidth()/2,this.getY()+e.getY()-this.getHeight()/2);
 		}
 		if(this.getX() <= 0 ){
@@ -118,6 +126,7 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 		if( this.getY() >= 800) {
 			setLocation(this.getX()+e.getX()-this.getWidth()/2,800);
 		}
+		
 
 	}
 
@@ -129,35 +138,8 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		Shape rect2 = new Rectangle(Integer.parseInt(this.getPosF())*50, Integer.parseInt(this.getPosC())*50,50,50);
-		fichasPosList.add(rect2);
-		System.out.println(fichasPosList.toString());
-		for(int i = 0; i< fichasPosList.size();i++) {
-			Shape valueToCompare= fichasPosList.get(i).getBounds();
-			for(int i2 = 0; i2< fichasPosList.size();i2++){
-				
-				if(valueToCompare.equals(fichasPosList.get(i2).getBounds()) && i != i2) {
-					
-					cont++;
-				}
-				
-				if(cont == 2){
-					cont = 0;
-					System.out.println("Holiwix");
-					//System.out.println("C"+this.getPosC());
-					//System.out.println("F"+this.getPosF());	
-					if(this.canBeRepositioned == true) {
-						setLocation(this.getPosInicialX(),this.getPosInicialY());
-						fichasPosList.remove(i2);
-					}
-					
-				}else {
-					System.out.println("You are free to goo");
-					
-				}
-			}
+		
 
-		}
 
 	}
 	@Override
@@ -173,30 +155,26 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 	@Override
 	public void mousePressed(MouseEvent e) {
 
-		if(this.canBeRepositioned == true) {
-			setLocation(this.getX()+e.getX()-this.getWidth()/2,this.getY()+e.getY()-this.getHeight()/2);
-		}
-		if(this.getX() <= 0 ){
-			setLocation(0,this.getY()+e.getY()-this.getHeight()/2);
-		}
-		if(this.getY() <= 0) {
-			setLocation(this.getX()+e.getX()-this.getWidth()/2,0);
-		}
-		if(this.getX() >= 1100) {
-			setLocation(1100,this.getY()+e.getY()-this.getHeight()/2);
-		}
-		if( this.getY() >= 800) {
-			setLocation(this.getX()+e.getX()-this.getWidth()/2,800);
-		}
+
+
 
 	}
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		
 		
-
+		System.out.println("Hola"+"La dejó en C:"+this.getPosC()+"y en F:"+this.getPosF());
+		arrayListFiller(getPosC(), getPosF());
+		
 
 	}
+	public void arrayListFiller(String C, String F) {
+		fichasPosCList.add(Integer.parseInt(C));
+		fichasPosFList.add(Integer.parseInt(F));
+		System.out.println("C: "+fichasPosCList.toString());
+		System.out.println("F: "+fichasPosFList.toString());
+	}
+	
 	public void alphabetFill() {
 		alphabet.add("A");
 		alphabet.add("B");

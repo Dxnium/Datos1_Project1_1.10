@@ -29,8 +29,8 @@ public class BoardGUI extends JPanel{
 	ArrayList<LetterGUI> lettersList = new ArrayList<LetterGUI>();
 	Image labelImg = new ImageIcon("Images\\img.png").getImage(); 
 	Image reglasImg = new ImageIcon("Images\\botonAyuda.png").getImage();
-	
-	
+
+
 
 	public BoardGUI(String[][] matrix,String name){
 		this.myName = name;
@@ -80,20 +80,20 @@ public class BoardGUI extends JPanel{
 
 
 
-//		this.letterGUI = new LetterGUI("A",1);
-//		lettersList.add(letterGUI);
-//		this.add(letterGUI);
-//		this.letterGUI = new LetterGUI("B",2);
-//		lettersList.add(letterGUI);
-//		this.add(letterGUI);
-//		this.letterGUI = new LetterGUI("C",3);
-//		lettersList.add(letterGUI);
-//		this.add(letterGUI);
-//		this.letterGUI = new LetterGUI("D",4);
-//		lettersList.add(letterGUI);
-//		this.add(letterGUI);
-//		this.letterGUI = new LetterGUI("RR",300,450);
-//		this.add(letterGUI);
+		//		this.letterGUI = new LetterGUI("A",1);
+		//		lettersList.add(letterGUI);
+		//		this.add(letterGUI);
+		//		this.letterGUI = new LetterGUI("B",2);
+		//		lettersList.add(letterGUI);
+		//		this.add(letterGUI);
+		//		this.letterGUI = new LetterGUI("C",3);
+		//		lettersList.add(letterGUI);
+		//		this.add(letterGUI);
+		//		this.letterGUI = new LetterGUI("D",4);
+		//		lettersList.add(letterGUI);
+		//		this.add(letterGUI);
+		//		this.letterGUI = new LetterGUI("RR",300,450);
+		//		this.add(letterGUI);
 
 	}
 	public void getWordsLocation() {
@@ -111,10 +111,10 @@ public class BoardGUI extends JPanel{
 				lettersList.add(letterGUI);
 				this.add(letterGUI);
 			}else {
-			System.out.println(titles[i].substring(1,2));
-			this.letterGUI = new LetterGUI(titles[i].substring(1, 2),i);
-			lettersList.add(letterGUI);
-			this.add(letterGUI);
+				System.out.println(titles[i].substring(1,2));
+				this.letterGUI = new LetterGUI(titles[i].substring(1, 2),i);
+				lettersList.add(letterGUI);
+				this.add(letterGUI);
 			}
 		}this.repaint();
 	}
@@ -129,20 +129,43 @@ public class BoardGUI extends JPanel{
 			for(int c =0;c< 15;c++) {
 				Shape rect = new Rectangle((f*50),(c*50),50,50);
 				g.drawRect((f*50),(c*50),50,50);
-				
+
 				for(int p = 0; p<lettersList.size(); p++) {
 					if(rect.contains(lettersList.get(p).getX(),lettersList.get(p).getY())) {
-						
 						lettersList.get(p).setLocation((f*50),(c*50));
 						lettersList.get(p).setPosC(Integer.toString(f));
-						lettersList.get(p).setPosF(Integer.toString(c));	
+						lettersList.get(p).setPosF(Integer.toString(c));
+						for(int j= 0;j<lettersList.size();j++) {
+							for(int n =0;n<lettersList.size();n++) {
+							
+								
+								if(!lettersList.get(n).getPosC().equals("0") && !lettersList.get(n).getPosF().equals("0")) {
+									if(lettersList.get(j).getPosC().equals(lettersList.get(n).getPosC()) && lettersList.get(j).getPosF().equals(lettersList.get(n).getPosF()) && j != n) {
+										lettersList.get(n).setLocation(lettersList.get(n).getPosInicialX(),lettersList.get(n).getPosInicialY());
+										lettersList.get(n).setPosC("0");
+										lettersList.get(n).setPosF("0");
+									}
+								}
+							}
+
+						}
+
+
 					}
-					
+					else {
+
+					}
+
 				}
+				
+
 
 			}
 
 		}
+
+		
+
 		for(int f=1; f <= 15; f++) {
 			for(int c =1;c<= 15;c++) {
 
