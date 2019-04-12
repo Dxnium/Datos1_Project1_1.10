@@ -6,72 +6,176 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Board {//Manages most of the board related methods
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Board.
+ */
+public class Board {/** The game code. */
+//Manages most of the board related methods
 	private String gameCode;
+	
+	/** The table top. */
 	private Square[][] tableTop = new Square[15][15];
+	
+	/** The player list. */
 	private PlayerLinkedList playerList=new PlayerLinkedList();
+	
+	/** The deck. */
 	private LetterTile[] deck = new LetterTile[29];
+	
+	/** The deck size. */
 	int deckSize=100;
+	
+	/** The dictionary. */
 	private Dictionary dictionary = new Dictionary();
+	
+	/** The turn. */
 	private int turn;
+	
+	/** The max players. */
 	private int maxPlayers;
+	
+	/** The current conection. */
 	private int currentConection;
 	
+	/** The played words. */
 	private PlayedWordList playedWords=new PlayedWordList();
 	//hola
 	
 	
 	
+	/**
+	 * Gets the current conection.
+	 *
+	 * @return the current conection
+	 */
 	public int getCurrentConection() {
 		return currentConection;
 	}
+	
+	/**
+	 * Sets the current conection.
+	 */
 	public void setCurrentConection() {
 		this.currentConection = currentConection+1;
 	}
+	
+	/**
+	 * Gets the max players.
+	 *
+	 * @return the max players
+	 */
 	public int getMaxPlayers() {
 		return maxPlayers;
 	}
+	
+	/**
+	 * Sets the max players.
+	 *
+	 * @param maxPlayers the new max players
+	 */
 	public void setMaxPlayers(int maxPlayers) {
 		this.maxPlayers = maxPlayers;
 	}
+	
+	/**
+	 * Gets the dictionary.
+	 *
+	 * @return the dictionary
+	 */
 	//GETTERS AND SETTERS
 	public Dictionary getDictionary() {
 		return dictionary;
 	}
+	
+	/**
+	 * Gets the deck.
+	 *
+	 * @return the deck
+	 */
 	public LetterTile[] getDeck() {
 		return deck;
 	}
+	
+	/**
+	 * Gets the table top.
+	 *
+	 * @return the table top
+	 */
 	public Square[][] getTableTop() {
 		return tableTop;
 	}
+	
+	/**
+	 * Sets the table top.
+	 *
+	 * @param tableTop the new table top
+	 */
 	public void setTableTop(Square[][] tableTop) {
 		this.tableTop = tableTop;
 	}
 
 	
+	/**
+	 * Gets the player list.
+	 *
+	 * @return the player list
+	 */
 	public PlayerLinkedList getPlayerList() {
 		return playerList;
 	}
 	
+	/**
+	 * Gets the deck size.
+	 *
+	 * @return the deck size
+	 */
 	public int getDeckSize() {
 		return deckSize;
 	}
 	
+	/**
+	 * Sets the deck size.
+	 *
+	 * @param deckSize the new deck size
+	 */
 	public void setDeckSize(int deckSize) {
 		this.deckSize = deckSize;
 	}
 	
+	/**
+	 * Gets the game code.
+	 *
+	 * @return the game code
+	 */
 	public String getGameCode() {
 		return gameCode;
 	}
+	
+	/**
+	 * Sets the game code.
+	 *
+	 * @param gameCode the new game code
+	 */
 	public void setGameCode(String gameCode) {
 		this.gameCode = gameCode;
 	}
 
+	/**
+	 * Gets the played words.
+	 *
+	 * @return the played words
+	 */
 	public PlayedWordList getPlayedWords() {
 		//getter
 		return playedWords;
 	}
+	
+	/**
+	 * Sets the played words.
+	 *
+	 * @param playedWords the new played words
+	 */
 	public void setPlayedWords(PlayedWordList playedWords) {
 		//setter
 		this.playedWords = playedWords;
@@ -82,12 +186,27 @@ public class Board {//Manages most of the board related methods
 	
 	
 	
+	/**
+	 * Gets the turn.
+	 *
+	 * @return the turn
+	 */
 	public int getTurn() {
 		return turn;
 	}
+	
+	/**
+	 * Sets the turn.
+	 *
+	 * @param turn the new turn
+	 */
 	public void setTurn(int turn) {
 		this.turn = turn;
 	}
+	
+	/**
+	 * Initialize table top.
+	 */
 	public void initializeTableTop() {//reads from a .txt file on project root, parses a document that contains the board multiplier values and places them
 		BufferedReader reader = null;//on a Square object thats positioned on the matrix contained in the tableTop attribute
 		try {
@@ -120,6 +239,9 @@ public class Board {//Manages most of the board related methods
 	}
 	
 
+	/**
+	 * Initialize deck.
+	 */
 	public void InitializeDeck(){//this method parses the .txt file containing the valid words to use and appends one DictionaryLinkedListNode
 		BufferedReader reader = null;//that contains a single word on its data attribute to the linked list on the attribute wordBook of this class.
 		try {
@@ -147,6 +269,11 @@ public class Board {//Manages most of the board related methods
 		}
 	}
 	
+	/**
+	 * Generate game code.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void generateGameCode() throws IOException {
 		BufferedReader reader = null;
 		reader= new BufferedReader(new FileReader("characters.txt"));

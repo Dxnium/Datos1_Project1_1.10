@@ -15,12 +15,29 @@ import javax.swing.*;
 
 import game.logic.Square;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BoardJFrame.
+ */
 public class BoardJFrame extends JFrame {
+	
+	/** The letter GUI. */
 	LetterGUI letterGUI = new LetterGUI();
+	
+	/** The matrix. */
 	String[][] matrix = new String[15][15];
+	
+	/** The name. */
 	public String name;
 
+	/** The letters list. */
 	ArrayList<LetterGUI> lettersList = new ArrayList<LetterGUI>();
+	
+	/**
+	 * Instantiates a new board J frame.
+	 *
+	 * @param name the name
+	 */
 	public BoardJFrame(String name) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Scrabble - Juego");
@@ -37,6 +54,9 @@ public class BoardJFrame extends JFrame {
 	}
 
 
+	/**
+	 * Initialize table top.
+	 */
 	public void initializeTableTop() {//reads from a .txt file on project root, parses a document that contains the board multiplier values and places them
 		BufferedReader reader = null;//on a Square object thats positioned on the matrix contained in the tableTop attribute
 		try {

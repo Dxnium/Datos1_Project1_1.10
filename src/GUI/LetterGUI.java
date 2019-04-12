@@ -10,61 +10,176 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class LetterGUI.
+ */
 public class LetterGUI extends JLabel implements MouseMotionListener,MouseListener{
+	
+	/** The alphabet. */
 	ArrayList<String> alphabet = new ArrayList<String>();
+	
+	/** The alphabet IMG. */
 	ArrayList<ImageIcon> alphabetIMG = new ArrayList<ImageIcon>();
+	
+	/** The letter asigned. */
 	String letterAsigned;
+
 	String posC = "0";
 	String posF = "0";
+
+	
+	/** The pos C. */
+	String posC;
+	
+	/** The pos F. */
+	String posF;
+	
+	/** The can be repositioned. */
+
 	Boolean canBeRepositioned = true;
+	
+	/** The pos inicial X. */
 	int posInicialX;
+	
+	/** The pos inicial Y. */
 	int posInicialY;
+
 	ArrayList<Integer> fichasPosCList = new ArrayList<Integer>();
 	ArrayList<Integer> fichasPosFList = new ArrayList<Integer>();
+
+	
+	/** The fichas pos list. */
+	ArrayList<Shape> fichasPosList = new ArrayList<Shape>();
+	
+	/** The already placed. */
+
 	Boolean alreadyPlaced = false;
+	
+	/** The cont. */
 	int cont=0;
+
 	Boolean isMoved;
 
+	
+	/** The pos deck. */
+	public int posDeck;
+
+
+	/**
+	 * Gets the pos inicial X.
+	 *
+	 * @return the pos inicial X
+	 */
 	public int getPosInicialX() {
 		return posInicialX;
 	}
+	
+	/**
+	 * Sets the pos inicial X.
+	 *
+	 * @param posInicialX the new pos inicial X
+	 */
 	public void setPosInicialX(int posInicialX) {
 		this.posInicialX = posInicialX;
 	}
+	
+	/**
+	 * Gets the pos inicial Y.
+	 *
+	 * @return the pos inicial Y
+	 */
 	public int getPosInicialY() {
 		return posInicialY;
 	}
+	
+	/**
+	 * Sets the pos inicial Y.
+	 *
+	 * @param posInicialY the new pos inicial Y
+	 */
 	public void setPosInicialY(int posInicialY) {
 		this.posInicialY = posInicialY;
 	}
+	
+	/**
+	 * Gets the pos C.
+	 *
+	 * @return the pos C
+	 */
 	public String getPosC() {
 		return posC;
 	}
+	
+	/**
+	 * Sets the pos C.
+	 *
+	 * @param posC the new pos C
+	 */
 	public void setPosC(String posC) {
 		this.posC = posC;
 	}
+	
+	/**
+	 * Gets the pos F.
+	 *
+	 * @return the pos F
+	 */
 	public String getPosF() {
 		return posF;
 	}
+	
+	/**
+	 * Sets the pos F.
+	 *
+	 * @param posF the new pos F
+	 */
 	public void setPosF(String posF) {
 		this.posF = posF;
 	}
+	
+	/**
+	 * Gets the letter asigned.
+	 *
+	 * @return the letter asigned
+	 */
 	public String getLetterAsigned() {
 		return letterAsigned;
 	}
+	
+	/**
+	 * Sets the letter asigned.
+	 *
+	 * @param letterAsigned the new letter asigned
+	 */
 	public void setLetterAsigned(String letterAsigned) {
 		this.letterAsigned = letterAsigned;
 	}
+	
+	/**
+	 * Instantiates a new letter GUI.
+	 */
 	public LetterGUI() {
 
 	}
+
 	public Boolean getIsMoved() {
 		return isMoved;
 	}
 	public void setIsMoved(Boolean isMoved) {
 		this.isMoved = isMoved;
 	}
+
+	
+	/**
+	 * Instantiates a new letter GUI.
+	 *
+	 * @param letter the letter
+	 * @param x the x
+	 */
+
 	public LetterGUI(String letter, int x){
+		this.posDeck = x;
 		alphabetFill();
 		alphabetIMGFill();
 		this.setLetterAsigned(letter);
@@ -82,6 +197,14 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 		addMouseListener(this);
 
 	}
+	
+	/**
+	 * Instantiates a new letter GUI.
+	 *
+	 * @param letter the letter
+	 * @param posX the pos X
+	 * @param posY the pos Y
+	 */
 	public LetterGUI(String letter, Integer posX, Integer posY){
 		this.canBeRepositioned = false;
 		alphabetFill();
@@ -107,6 +230,10 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 
 
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseMotionListener#mouseDragged(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		
@@ -130,11 +257,18 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseMotionListener#mouseMoved(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -142,16 +276,28 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 
 
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseExited(MouseEvent e) {
 
 
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 
@@ -159,6 +305,10 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 
 
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		
@@ -168,6 +318,7 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 		
 
 	}
+
 	public void arrayListFiller(String C, String F) {
 		fichasPosCList.add(Integer.parseInt(C));
 		fichasPosFList.add(Integer.parseInt(F));
@@ -175,6 +326,12 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 		System.out.println("F: "+fichasPosFList.toString());
 	}
 	
+
+	
+	/**
+	 * Alphabet fill.
+	 */
+
 	public void alphabetFill() {
 		alphabet.add("A");
 		alphabet.add("B");
@@ -208,6 +365,10 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 		alphabet.add("Z");
 		alphabet.add("BLANK");
 	}
+	
+	/**
+	 * Alphabet IMG fill.
+	 */
 	public void alphabetIMGFill() {
 		alphabetIMG.add(new ImageIcon("Images\\A.PNG"));
 		alphabetIMG.add(new ImageIcon("Images\\B.PNG"));

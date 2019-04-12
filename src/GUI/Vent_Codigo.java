@@ -16,12 +16,27 @@ import javax.swing.border.EmptyBorder;
 import JSON.Decode;
 import Sockets.Cliente;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Vent_Codigo.
+ */
 public class Vent_Codigo extends JFrame {
 
+	/** The content pane. */
 	private JPanel contentPane;
+	
+	/** The text field codigo. */
 	private JTextField textField_Codigo;
+	
+	/** The text field IP. */
 	private JTextField textField_IP;
+	
+	/** The decode. */
 	public Decode decode; 
+	
+	/**
+	 * Instantiates a new vent codigo.
+	 */
 	public Vent_Codigo() {
 		setTitle("Scrabble");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

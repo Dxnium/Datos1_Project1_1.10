@@ -8,7 +8,9 @@ import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.io.StringWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -16,21 +18,62 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import org.json.simple.JSONArray;
+
 import JSON.Decode;
+import JSON.Encode;
+import Msg.Message;
 import Sockets.Cliente;
 
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BoardGUI.
+ */
 public class BoardGUI extends JPanel{
+	
+	/** The my name. */
 	public String myName;
+	
+	/** The titles. */
 	String[] titles;
+	
+	/** The matrix. */
 	String[][] matrix;
+	
+	/** The letter GUI. */
 	LetterGUI letterGUI = new LetterGUI();
+	
+	/** The letters list. */
 	ArrayList<LetterGUI> lettersList = new ArrayList<LetterGUI>();
+	
+	/** The label img. */
 	Image labelImg = new ImageIcon("Images\\img.png").getImage(); 
+	
+	/** The reglas img. */
 	Image reglasImg = new ImageIcon("Images\\botonAyuda.png").getImage();
 
 
+
+
+
+	
+	/** The cliente. */
+	Cliente cliente;
+	
+	/** The msg. */
+	Message msg = new Message("");
+	
+	/** The encode. */
+	Encode encode;
+
+	/**
+	 * Instantiates a new board GUI.
+	 *
+	 * @param matrix the matrix
+	 * @param name the name
+	 */
 
 	public BoardGUI(String[][] matrix,String name){
 		this.myName = name;
@@ -96,16 +139,54 @@ public class BoardGUI extends JPanel{
 		//		this.add(letterGUI);
 
 	}
+	
+	/**
+	 * Gets the words location.
+	 *
+	 * @return the words location
+	 */
 	public void getWordsLocation() {
-		for(int i = 0; i < lettersList.size();i++) {
+		String[][] fichas = new String[8][3];
+		for(int i = 1; i < 8 ;i++) {
+			if(lettersList.get(i).getPosF()!=null) {
+				System.out.println(i);
+				fichas[i][0] = Integer.toString(lettersList.get(i).posDeck);
+				fichas[i][1] = lettersList.get(i).posF;
+				fichas[i][2] = lettersList.get(i).getPosC();
+			}
+			}
+			fichas[0][0] = this.myName;
+			System.out.println(Arrays.deepToString(fichas));
+			this.msg.setMatrizdoble(fichas);
+			StringBuilder builder = new StringBuilder();
+			for(String[] s : fichas) {
+				for(String i : s) {
+			    builder.append(s);
+			}
+			}
+			String str = builder.toString();
+			System.out.println(Arrays.deepToString(fichas)+"Writer");
+			this.cliente = new Cliente("localhost", "posicionLetras,"+Arrays.deepToString(fichas));
+			
 			//System.out.println("Objeto: "+lettersList.get(i)+"\n"+"Letra: "+lettersList.get(i).getLetterAsigned()+"\n"+"PosX: "+lettersList.get(i).getX()+"\n"+"PosY: "+lettersList.get(i).getY());
-			System.out.println("Columna: "+lettersList.get(i).getPosC()+"\n"+"Fila: "+lettersList.get(i).getPosF()+"\n"+"Letra: "+lettersList.get(i).getLetterAsigned()+"\n"+"PosX: "+lettersList.get(i).getX()+"\n"+"PosY: "+lettersList.get(i).getY());
+//			System.out.println("Columna: "+lettersList.get(i).getPosC()+"\n"+"Fila: "+lettersList.get(i).getPosF()+"\n"+"Letra: "+lettersList.get(i).getLetterAsigned()+"\n"+"PosX: "+lettersList.get(i).getX()+"\n"+"PosY: "+lettersList.get(i).getY());
 		}
-	}
+	
+	/**
+	 * Crear titles.
+	 *
+	 * @param titles the titles
+	 */
 	public void crearTitles(String[] titles) {
 		for(int i=1;i<8;i++) {
 			System.out.println(Arrays.deepToString(titles));
 			if(titles[i].length()>3) {
+				if(titles[i].contains("]")) {
+					System.out.println(titles[i].substring(1,2));
+					this.letterGUI = new LetterGUI(titles[i].substring(1, 2),i);
+					lettersList.add(letterGUI);
+					this.add(letterGUI);
+				}
 				System.out.println(titles[i].substring(1,3));
 				this.letterGUI = new LetterGUI(titles[i].substring(1, 3),i);
 				lettersList.add(letterGUI);
@@ -118,6 +199,10 @@ public class BoardGUI extends JPanel{
 			}
 		}this.repaint();
 	}
+	
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		this.setBackground(Color.WHITE);
