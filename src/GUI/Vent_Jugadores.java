@@ -87,7 +87,7 @@ public class Vent_Jugadores extends JFrame implements ActionListener {
 		CodigoInvitacion.setColumns(10);
 		
 		JButton btnContinuar = new JButton();
-		btnContinuar.setIcon(new ImageIcon("Images\\continuar.png)"));
+		btnContinuar.setIcon(new ImageIcon("Images\\continuar.png"));
 		btnContinuar.setBounds(169, 194, 106, 38);
 		btnContinuar.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
