@@ -27,6 +27,7 @@ public class BoardGUI extends JPanel{
 	ArrayList<LetterGUI> lettersList = new ArrayList<LetterGUI>();
 	Image labelImg = new ImageIcon("Images\\img.png").getImage(); 
 	Image reglasImg = new ImageIcon("Images\\botonAyuda.png").getImage();
+	ArrayList<letterOnMatrix> letterPosList = new ArrayList<letterOnMatrix>();
 	
 
 	public BoardGUI(String[][] matrix){
@@ -103,12 +104,13 @@ public class BoardGUI extends JPanel{
 			for(int c =0;c< 15;c++) {
 				Shape rect = new Rectangle((f*50),(c*50),50,50);
 				g.drawRect((f*50),(c*50),50,50);
+				
 				for(int p = 0; p<lettersList.size(); p++) {
 					if(rect.contains(lettersList.get(p).getX(),lettersList.get(p).getY())) {
-				
-							lettersList.get(p).setLocation((f*50),(c*50));
-							lettersList.get(p).setPosC(Integer.toString(f));
-							lettersList.get(p).setPosF(Integer.toString(c));	
+						
+						lettersList.get(p).setLocation((f*50),(c*50));
+						lettersList.get(p).setPosC(Integer.toString(f));
+						lettersList.get(p).setPosF(Integer.toString(c));	
 					}
 					
 				}
