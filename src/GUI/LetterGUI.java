@@ -58,6 +58,7 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 
 	}
 	public LetterGUI(String letter, int x){
+		this.posDeck = x;
 		alphabetFill();
 		alphabetIMGFill();
 		this.setLetterAsigned(letter);
