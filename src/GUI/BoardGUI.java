@@ -158,15 +158,24 @@ public class BoardGUI extends JPanel{
 			fichas[0][0] = this.myName;
 			System.out.println(Arrays.deepToString(fichas));
 			this.msg.setMatrizdoble(fichas);
-			StringBuilder builder = new StringBuilder();
-			for(String[] s : fichas) {
-				for(String i : s) {
-			    builder.append(s);
+//			StringBuilder builder = new StringBuilder();
+//			for(String[] s : fichas) {
+//				for(String i : s) {
+//			    builder.append(s);
+//			}
+//			}
+//			String str = builder.toString();
+			Encode encode = new Encode();
+			JSONArray arr = encode.arrayData(this.msg);
+			Writer out = new StringWriter();//crear un variable de tipo Writer para almacenar el array y poder mostarlo en pantalla 
+			try {
+				arr.writeJSONString(out); //guardar el JSONArray en un string 
+			} catch (IOException e) {
+				e.printStackTrace();
+				
 			}
-			}
-			String str = builder.toString();
-			System.out.println(Arrays.deepToString(fichas)+"Writer");
-			this.cliente = new Cliente("localhost", "posicionLetras,"+Arrays.deepToString(fichas));
+			System.out.println(Arrays.deepToString(fichas)+out);
+			this.cliente = new Cliente("localhost", "posicionLetras,"+";"+out.toString());
 			
 			//System.out.println("Objeto: "+lettersList.get(i)+"\n"+"Letra: "+lettersList.get(i).getLetterAsigned()+"\n"+"PosX: "+lettersList.get(i).getX()+"\n"+"PosY: "+lettersList.get(i).getY());
 //			System.out.println("Columna: "+lettersList.get(i).getPosC()+"\n"+"Fila: "+lettersList.get(i).getPosF()+"\n"+"Letra: "+lettersList.get(i).getLetterAsigned()+"\n"+"PosX: "+lettersList.get(i).getX()+"\n"+"PosY: "+lettersList.get(i).getY());

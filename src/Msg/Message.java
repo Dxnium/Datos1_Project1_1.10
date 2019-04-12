@@ -7,9 +7,11 @@ import java.util.LinkedHashMap;
 import java.util.Observable;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.JSONStreamAware;
 import org.json.simple.JSONValue;
 
+import com.fasterxml.jackson.core.io.JsonStringEncoder;
 import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 
@@ -57,11 +59,13 @@ public class Message extends Observable implements JSONStreamAware {
 	 *
 	 * @param matriz1 the new matrizdoble
 	 */
+	@SuppressWarnings("unchecked")
 	public void setMatrizdoble(String[][] matriz1) {
+		System.out.println("MatrizDOble");
 		JSONArray list = new JSONArray();
 		for(String[] i : matriz1) {
 			for(String j : i) {
-				list.add(i);
+				list.add(j);
 			}
 		this.matrizJson = list;
 	}

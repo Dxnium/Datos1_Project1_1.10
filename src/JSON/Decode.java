@@ -9,7 +9,7 @@ import org.json.simple.parser.ParseException;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Decode.
+ * The Class Decode read JSON code.
  */
 public class Decode {
 	
@@ -23,9 +23,9 @@ public class Decode {
 	JSONObject jsonData;
 	
 	/**
-	 * Instantiates a new decode.
+	 * Instantiates a new decode to read a JSON message .
 	 *
-	 * @param out the out
+	 * @param msj in json to be decode
 	 */
 	public Decode(Writer out) {
 		jsonData =  new JSONObject();
@@ -46,7 +46,7 @@ public class Decode {
 				}
 				if(juego.containsKey("MatrizJson")) {
 					String Jsonmatriz = juego.get("MatrizJson").toString();
-					System.out.println(Jsonmatriz + "\t");
+					System.out.println(">>MatrizJson: "+Jsonmatriz + "\t");
 					this.titles = Jsonmatriz;
 					System.out.println(Jsonmatriz.split(","));
 				}
