@@ -21,21 +21,23 @@ import queue.myQueue;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class GameServer.
+ * The Class GameServer creates a new SocektServer async.
  */
 public class GameServer implements Runnable   {
 	
-	/** The clients queue. */
-	//atributos
+	/** The clients queue.
+	 * Creates a new Queque of clients connected to GameServer
+	 *  */
+	//
 	private myQueue<Socket> clientsQueue = new myQueue<Socket>();
 	
 	/** The server. */
 	ServerSocket server;  
 	
-	/** The socket. */
+	/** The client. */
 	Socket socket; 
 	
-	/** The game flow. */
+	/** The gameFlow, game logic. */
 	private GameFlow gameFlow;
 	
 	/** The decode. */
@@ -44,22 +46,19 @@ public class GameServer implements Runnable   {
 	/** The port. */
 	final int port = 5555;
 	
-	/** The password. */
+	/** The password random requested for conetion. */
 	public String password = "none";
 
-	/** The ver password. */
-	private boolean verPassword = false;
-	
-	/** The ip. */
+	/** The Localhost ip running the server. */
 	public InetAddress ip; 
 	
-	/** The msj datos. */
+	/** Msj to send to clientes. */
 	private Msg.Message msjDatos = new Msg.Message("vacio");
 	
 	/** The verfication. */
 	private boolean verfication = true; 
 	
-	/** The matriz letras. */
+	/** The matrizLetras. */
 	public String[][] matrizLetras; 
 	
 	/** The str. */
@@ -67,7 +66,7 @@ public class GameServer implements Runnable   {
 	
 	
 	 /**
- 	 * Instantiates a new game server.
+ 	 * Instantiates a new game server in other thread.
  	 */
  	public GameServer(){
 		 
@@ -126,7 +125,7 @@ public class GameServer implements Runnable   {
 				}
 				
 			
-			//Cerrando conexion 
+//Cerrando conexion 
 //			System.out.println("Cerrando conexión...Server"); 
 //			socket.close(); //se cierra la conexion 
 			}
@@ -137,9 +136,9 @@ public class GameServer implements Runnable   {
 	}
 
 /**
- * Reponse client.
+ * ReponseClient.
  *
- * @param mensajeRecibido the mensaje recibido
+ * @param Takes the request from client and perform a response.
  * @throws IOException Signals that an I/O exception has occurred.
  */
 private void reponseClient(String mensajeRecibido) throws IOException {
@@ -193,17 +192,19 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 					}
 					}
 				}if(mensajeRecibido.contains("posicionLetras")) {
+					System.out.println(">>posicionletras");
 					String[][] mensaje = new String[8][3];
 					GameUpdate(mensajeRecibido);
-					String data = "";
-					for(int i = 1; i < 25 ;i+=3) {
-						data += decode.datos[i]+",";
-						data += decode.datos[i+1]+",";
-						data += decode.datos[i+2]+";";
-					}
 					
-				data = data.substring(2,data.length()-3);
-				
+//					String data = "";
+//					for(int i = 1; i < 25 ;i+=3) {
+//						data += decode.datos[i]+",";
+//						data += decode.datos[i+1]+",";
+//						data += decode.datos[i+2]+";";
+//					}
+					
+//				data = data.substring(2,data.length()-3);
+//				
 //				String[] data2 = data.split(";");
 //				for(int y = 0; y < 8 ;y++) {
 //					for(String i : data2) {
@@ -216,9 +217,7 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 //					}
 //						
 //			}
-				
-					System.out.println(Arrays.deepToString(mensaje));
-					
+					System.out.println(">>Lista de posiciones de letra: "+ mensajeRecibido.split(";")[1].split(":")[2]);
 					
 //					
 //					gameFlow.playTurn(data);
@@ -227,9 +226,9 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 		}
 	
 	/**
-	 * My matriz.
+	 * Mymatriz search the speficic matrizLetras for a player with the name given.
 	 *
-	 * @param name the name
+	 * @param name of player to search matriz titles
 	 * @return the string[]
 	 */
 	public String[] myMatriz(String name) {
@@ -244,28 +243,12 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 
 
 
-/**
- * Verificar password.
- *
- * @param mensajeRecibido the mensaje recibido
- * @return true, if successful
- */
-//Verifica el password para establecer la conexion 
-	private boolean verificarPassword(String mensajeRecibido) {
-		if(mensajeRecibido.toLowerCase().contains((this.password))) {
-			System.out.println(">>password correcto"+mensajeRecibido.toLowerCase());
-			
-			return true;
-		}
-		System.out.println(">>password incorrecto");
-		return false;
-		
-	}
+
 	
 	
 
 	/**
-	 * Gets the J mensaje.
+	 * GetJmensaje, provided the msj to send in Json encoding.
 	 *
 	 * @return the writer
 	 */
@@ -286,7 +269,7 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 	/**
 	 * Sets the mensaje.
 	 *
-	 * @param newMsj the new mensaje
+	 * @param newMsj the new Mensaje to send
 	 */
 	public void setMensaje(String newMsj) {
 		this.msjDatos.setMatriz(newMsj);
@@ -294,7 +277,7 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 	}
 	
 	/**
-	 * Sets the mensaje 1.
+	 * Sets the matriz of titles.
 	 *
 	 * @param matriz1 the new mensaje 1
 	 */
@@ -309,6 +292,7 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 
 	/**
 	 * Game update.
+	 *Decode the information given by the client 
 	 *
 	 * @param msg the msg
 	 * @throws IOException Signals that an I/O exception has occurred.
