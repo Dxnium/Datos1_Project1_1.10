@@ -28,20 +28,36 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Vent_Inicio.
+ */
 public class Vent_Inicio extends JFrame {
 
+	/** The content pane. */
 	private JPanel contentPane;
 
+	/** The content pane 2. */
 	private JPanel contentPane2;
+	
+	/** The content pane 3. */
 	private JPanel contentPane3;
 
 
 	
 
+	/** The active. */
 	private boolean active = true;
+	
+	/** The Xsize. */
 	private int Xsize = 1200;
+	
+	/** The Ysize. */
 	private int Ysize = 775;
 	
+	/**
+	 * Instantiates a new vent inicio.
+	 */
 	public Vent_Inicio() {
 		setTitle("Scrabble");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -20,13 +20,27 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Vent_Jugadores.
+ */
 public class Vent_Jugadores extends JFrame implements ActionListener {
 
+	/** The content pane. */
 	private JPanel contentPane;
+	
+	/** The Codigo invitacion. */
 	private JTextField CodigoInvitacion;
+	
+	/** The numero jugadores. */
 	public int numeroJugadores;
+	
+	/** The codigo juego. */
 	public String codigoJuego;
 
+	/**
+	 * Instantiates a new vent jugadores.
+	 */
 	public Vent_Jugadores() {
 		
 		setTitle("Scrabble");
@@ -100,6 +114,9 @@ public class Vent_Jugadores extends JFrame implements ActionListener {
 	}
 	
 	
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	public void actionPerformed(ActionEvent e) {
 		   numeroJugadores = Integer.parseInt(e.getActionCommand());
 			try {
@@ -111,6 +128,13 @@ public class Vent_Jugadores extends JFrame implements ActionListener {
 			
 		
 	}
+	
+	/**
+	 * Generate game code.
+	 *
+	 * @return the string
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public String generateGameCode() throws IOException {
 		BufferedReader reader = null;
 		reader= new BufferedReader(new FileReader("characters.txt"));

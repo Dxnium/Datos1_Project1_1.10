@@ -1,7 +1,15 @@
 package game.logic;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PlayedWordList.
+ */
 public class PlayedWordList {
+	
+	/** The head. */
 	WordListNode head;
+	
+	/** The length. */
 	int length;
 	
 	
@@ -9,6 +17,11 @@ public class PlayedWordList {
 
 
 
+	/**
+	 * Append.
+	 *
+	 * @param data the data
+	 */
 	public void append (String[] data) {//adds a node at the end of the list
 		if (head == null) {
 			if(data[0].length()>1) {
@@ -32,6 +45,9 @@ public class PlayedWordList {
 	}
 
 
+	/**
+	 * Removes the duplicates.
+	 */
 	void removeDuplicates() { 
         WordListNode ptr1 = null, ptr2 = null, dup = null; 
         ptr1 = head; 
@@ -62,19 +78,39 @@ public class PlayedWordList {
 
 
 
+	/**
+	 * Sets the head.
+	 *
+	 * @param head the new head
+	 */
 	public void setHead(WordListNode head) {
 		this.head = head;
 	}
 
+	/**
+	 * Gets the head.
+	 *
+	 * @return the head
+	 */
 	public WordListNode getHead() {
 		return head;
 	}
 	
+	/**
+	 * Gets the length.
+	 *
+	 * @return the length
+	 */
 	public int getLength() {
 		return length;
 	}
 
 
+	/**
+	 * Sets the length.
+	 *
+	 * @param length the new length
+	 */
 	public void setLength(int length) {
 		this.length = length;
 	}

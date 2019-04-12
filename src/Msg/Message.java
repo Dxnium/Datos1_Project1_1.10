@@ -13,16 +13,36 @@ import org.json.simple.JSONValue;
 import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Message.
+ */
 public class Message extends Observable implements JSONStreamAware {
+	
+	/** The matriz. */
 	public String matriz;
+	
+	/** The matriz 1. */
 	public String[][] matriz1;
+	
+	/** The matriz json. */
 	JSONArray matrizJson;
 	
+	/**
+	 * Gets the matriz 1.
+	 *
+	 * @return the matriz 1
+	 */
 	public String[][] getMatriz1() {
 		
 		return matriz1;
 	}
 
+	/**
+	 * Sets the matriz 1.
+	 *
+	 * @param matriz1 the new matriz 1
+	 */
 	@SuppressWarnings("unchecked")
 	public void setMatriz1(String[] matriz1) {
 		JSONArray list = new JSONArray();
@@ -31,6 +51,12 @@ public class Message extends Observable implements JSONStreamAware {
 			}
 		this.matrizJson = list;
 	}
+	
+	/**
+	 * Sets the matrizdoble.
+	 *
+	 * @param matriz1 the new matrizdoble
+	 */
 	public void setMatrizdoble(String[][] matriz1) {
 		JSONArray list = new JSONArray();
 		for(String[] i : matriz1) {
@@ -41,14 +67,29 @@ public class Message extends Observable implements JSONStreamAware {
 	}
 	}
 
+	/**
+	 * Instantiates a new message.
+	 *
+	 * @param matriz the matriz
+	 */
 	public Message (String matriz) {
 		this.matriz = matriz;
 	}
 
+	/**
+	 * Gets the matriz.
+	 *
+	 * @return the matriz
+	 */
 	public String getMatriz() {
 		return matriz;
 	}
 
+	/**
+	 * Sets the matriz.
+	 *
+	 * @param message the new matriz
+	 */
 	public void setMatriz(String message) {
 		this.matriz = message;
 		//Indica que el mensaje ha cambiado 
@@ -57,6 +98,9 @@ public class Message extends Observable implements JSONStreamAware {
 		this.notifyObservers(this.getMatriz());
 	}
 
+	/* (non-Javadoc)
+	 * @see org.json.simple.JSONStreamAware#writeJSONString(java.io.Writer)
+	 */
 	@Override
 	public void writeJSONString(Writer out) throws IOException {
 		LinkedHashMap<String, String> obj = new LinkedHashMap<String, String>();

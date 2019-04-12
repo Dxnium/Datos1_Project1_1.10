@@ -22,14 +22,31 @@ import JSON.Decode;
 import Sockets.Cliente;
 import Sockets.GameServer;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Vent_Datos.
+ */
 public class Vent_Datos extends JFrame {
 
+	/** The content pane. */
 	private JPanel contentPane;
+	
+	/** The text field. */
 	private JTextField textField;
+	
+	/** The server. */
 	public GameServer server;
+	
+	/** The decode. */
 	public Decode decode;
 	
 
+	/**
+	 * Instantiates a new vent datos.
+	 *
+	 * @param server the server
+	 * @throws UnknownHostException the unknown host exception
+	 */
 	public Vent_Datos(GameServer server) throws UnknownHostException {
 		this.server = server;
 		setTitle("Scrabble");

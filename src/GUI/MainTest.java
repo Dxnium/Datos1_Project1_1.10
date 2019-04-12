@@ -3,11 +3,21 @@ package GUI;
 
 import java.io.FileNotFoundException;
 
+// TODO: Auto-generated Javadoc
 //import Sockets.Server;
 
+/**
+ * The Class MainTest.
+ */
 public class MainTest {
 
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 * @throws FileNotFoundException the file not found exception
+	 */
 	public static void main(String[] args) throws FileNotFoundException {
 //		StartWindow inicio = new StartWindow();
 

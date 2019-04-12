@@ -27,18 +27,48 @@ import Sockets.Cliente;
 
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BoardGUI.
+ */
 public class BoardGUI extends JPanel{
+	
+	/** The my name. */
 	public String myName;
+	
+	/** The titles. */
 	String[] titles;
+	
+	/** The matrix. */
 	String[][] matrix;
+	
+	/** The letter GUI. */
 	LetterGUI letterGUI = new LetterGUI();
+	
+	/** The letters list. */
 	ArrayList<LetterGUI> lettersList = new ArrayList<LetterGUI>();
+	
+	/** The label img. */
 	Image labelImg = new ImageIcon("Images\\img.png").getImage(); 
+	
+	/** The reglas img. */
 	Image reglasImg = new ImageIcon("Images\\botonAyuda.png").getImage();
+	
+	/** The cliente. */
 	Cliente cliente;
+	
+	/** The msg. */
 	Message msg = new Message("");
+	
+	/** The encode. */
 	Encode encode;
 
+	/**
+	 * Instantiates a new board GUI.
+	 *
+	 * @param matrix the matrix
+	 * @param name the name
+	 */
 	public BoardGUI(String[][] matrix,String name){
 		this.myName = name;
 		botonReglas reglas = new botonReglas();
@@ -103,6 +133,12 @@ public class BoardGUI extends JPanel{
 //		this.add(letterGUI);
 
 	}
+	
+	/**
+	 * Gets the words location.
+	 *
+	 * @return the words location
+	 */
 	public void getWordsLocation() {
 		String[][] fichas = new String[8][3];
 		for(int i = 1; i < 8 ;i++) {
@@ -130,6 +166,11 @@ public class BoardGUI extends JPanel{
 //			System.out.println("Columna: "+lettersList.get(i).getPosC()+"\n"+"Fila: "+lettersList.get(i).getPosF()+"\n"+"Letra: "+lettersList.get(i).getLetterAsigned()+"\n"+"PosX: "+lettersList.get(i).getX()+"\n"+"PosY: "+lettersList.get(i).getY());
 		}
 	
+	/**
+	 * Crear titles.
+	 *
+	 * @param titles the titles
+	 */
 	public void crearTitles(String[] titles) {
 		for(int i=1;i<8;i++) {
 			System.out.println(Arrays.deepToString(titles));
@@ -152,6 +193,10 @@ public class BoardGUI extends JPanel{
 			}
 		}this.repaint();
 	}
+	
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		this.setBackground(Color.WHITE);

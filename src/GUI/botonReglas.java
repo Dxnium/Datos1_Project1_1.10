@@ -12,23 +12,58 @@ import javax.swing.JLabel;
 
 import com.sun.org.apache.xerces.internal.util.URI.MalformedURIException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class botonReglas.
+ */
 @SuppressWarnings("serial")
 public class botonReglas extends JLabel {
+	
+	/** The link. */
 	private String link = "http://www.redeletras.com/rules.play.php";
+	
+	/** The inside. */
 	private boolean inside;
 	
-	 public String getLink() {
+	 /**
+ 	 * Gets the link.
+ 	 *
+ 	 * @return the link
+ 	 */
+ 	public String getLink() {
 		return link;
 	}
+	
+	/**
+	 * Sets the link.
+	 *
+	 * @param link the new link
+	 */
 	public void setLink(String link) {
 		this.link = link;
 	}
+	
+	/**
+	 * Checks if is inside.
+	 *
+	 * @return true, if is inside
+	 */
 	public boolean isInside() {
 		return inside;
 	}
+	
+	/**
+	 * Sets the inside.
+	 *
+	 * @param inside the new inside
+	 */
 	public void setInside(boolean inside) {
 		this.inside = inside;
 	}
+	
+	/**
+	 * Instantiates a new boton reglas.
+	 */
 	public botonReglas() {
 		 addMouseListener(new MouseAdapter() {
 			 @Override
@@ -52,7 +87,13 @@ public class botonReglas extends JLabel {
 		});
 		 
 	 }
-	 public void openLink() throws URISyntaxException {
+	 
+ 	/**
+ 	 * Open link.
+ 	 *
+ 	 * @throws URISyntaxException the URI syntax exception
+ 	 */
+ 	public void openLink() throws URISyntaxException {
 		 try {
 			Desktop.getDesktop().browse(new java.net.URI(link));
 		} catch (MalformedURIException e) {
@@ -62,7 +103,10 @@ public class botonReglas extends JLabel {
 		}
 	 }
 	 
-	 @Override
+	 /* (non-Javadoc)
+ 	 * @see javax.swing.JComponent#paint(java.awt.Graphics)
+ 	 */
+ 	@Override
 	public void paint(Graphics g) {
 		 Graphics2D gd = (Graphics2D) g;
 		 

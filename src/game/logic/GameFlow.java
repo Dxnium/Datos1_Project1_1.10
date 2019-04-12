@@ -14,22 +14,47 @@ import javax.swing.JFrame;
 
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GameFlow.
+ */
 public class GameFlow {
 
+	/** The in. */
 	static BufferedReader in= new BufferedReader (new InputStreamReader(System.in));
+	
+	/** The out. */
 	static PrintStream out=System.out;
+	
+	/** The game. */
 	private static Board game = new Board();
 	
 
 
+	/**
+	 * Gets the game.
+	 *
+	 * @return the game
+	 */
 	public static Board getGame() {
 		return game;
 	}
 
+	/**
+	 * Sets the game.
+	 *
+	 * @param game the new game
+	 */
 	public static void setGame(Board game) {
 		GameFlow.game = game;
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void main(String[] args) throws IOException {
 		
 		
@@ -55,6 +80,11 @@ public class GameFlow {
 
 	}
 
+	/**
+	 * Prompt game start.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void promptGameStart() throws IOException{
 		System.out.println("----------------------------------------");
 		System.out.println("----------------------------------------");
@@ -74,6 +104,12 @@ public class GameFlow {
 	}
 
 
+	/**
+	 * Player creation.
+	 *
+	 * @param name the name
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void playerCreation(String name) throws IOException {
 		if(game.getCurrentConection()<game.getMaxPlayers()) {
 			game.getPlayerList().append(new Player(name));
@@ -88,6 +124,12 @@ public class GameFlow {
 	}
 
 	
+	/**
+	 * Verify word.
+	 *
+	 * @param word the word
+	 * @return true, if successful
+	 */
 	private static boolean verifyWord(String word)    {
 		DictionaryNode current;
 
@@ -102,6 +144,11 @@ public class GameFlow {
 	}
 
 
+	/**
+	 * Random tile generator.
+	 *
+	 * @return the letter tile
+	 */
 	private static  LetterTile randomTileGenerator() {//Method that generates a random letter tile, taking into consideration the amount
 		int positionCounter=0;									// of tiles per letter, the tiles bigger in amount have a bigger chance of dropping																					
 		int index=0;																			
@@ -119,6 +166,11 @@ public class GameFlow {
 
 	}
 	
+	/**
+	 * Iniciar.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private static void iniciar() throws IOException {
 		Player jugador1 =new Player("kevin");
 		Player jugador2 =new Player("erick");
@@ -126,6 +178,12 @@ public class GameFlow {
 		game.getPlayerList().append(jugador2);
 		matchStarter();
 	}
+	
+	/**
+	 * Match starter.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private static void matchStarter() throws IOException {
 		playOrder();
 		dealTiles();
@@ -133,6 +191,9 @@ public class GameFlow {
 	}
 	
 
+	/**
+	 * Deal tiles.
+	 */
 	public static void dealTiles() {
 		int count=0;
 		int index=0;
@@ -148,6 +209,11 @@ public class GameFlow {
 
 	}
 		
+	/**
+	 * Send tiles.
+	 *
+	 * @return the string[][]
+	 */
 	public static String[][] sendTiles(){
 		int index=0;
 		String[][] listaLetras= new String[game.getPlayerList().getLength()][8];
@@ -167,6 +233,11 @@ public class GameFlow {
 		
 	}
 	
+	/**
+	 * Refill tiles.
+	 *
+	 * @param node the node
+	 */
 	private static void refillTiles(PlayerLinkedListNode node) {
 		for(int index=0;index!=node.getData().getDock().length;index++) {
 			if(node.getData().getDock()[index]==null) {
@@ -176,6 +247,9 @@ public class GameFlow {
 	}
 
 
+	/**
+	 * Play order.
+	 */
 	public static void playOrder() {
 		int count=0;
 		PlayerLinkedListNode currentNode=game.getPlayerList().getHead();
@@ -194,6 +268,9 @@ public class GameFlow {
 
 	}
 
+	/**
+	 * Selection sort.
+	 */
 	private static void selectionSort() {
 		int x=0;
 		for (PlayerLinkedListNode node=game.getPlayerList().getHead();x!=game.getPlayerList().getLength();node=node.getNext()) {
@@ -226,6 +303,12 @@ public class GameFlow {
 		}
 
 	}
+	
+	/**
+	 * Prints the player dock.
+	 *
+	 * @param node the node
+	 */
 	public static void printPlayerDock(PlayerLinkedListNode node) {
 		for(int x=0;x<7;x++) {
 			out.print(node.getData().getDock()[x].getLetter()+" ");
@@ -233,6 +316,13 @@ public class GameFlow {
 	}
 	
 	
+	/**
+	 * Play turn.
+	 *
+	 * @param tilesToUse the tiles to use
+	 * @return the string[][]
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static String[][] playTurn(String[][] tilesToUse) throws IOException {//class that the client will use to select tiles and positions on the matrix
 //		int index=0;
 //		String[][] tilesToUse= new String[7][3];	
@@ -281,6 +371,12 @@ public class GameFlow {
 	
 		
 	
+	/**
+	 * Turn handler.
+	 *
+	 * @param node the node
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void turnHandler(PlayerLinkedListNode node) throws IOException{//class that server will use to manage the turns
 
 		out.println("&&&&&&&&&&&&&&&&&&");
@@ -312,6 +408,13 @@ public class GameFlow {
 	
 	
 
+	/**
+	 * Sort selected tiles.
+	 *
+	 * @param orientation the orientation
+	 * @param selectedTiles the selected tiles
+	 * @return the string[][]
+	 */
 	private static String[][] sortSelectedTiles(String orientation,String[][] selectedTiles) {//sorts tiles to play accordingly to the word orientation, uses bubblesort.
 		int element=0;																							  //if the word is vertical, sorts ascendantly using the row number 
 		int length = selectedTiles.length; 																	 //if the word is horizontal, sorts ascendantly using the column number
@@ -338,6 +441,12 @@ public class GameFlow {
 
 	
 	
+	/**
+	 * Verify orientation.
+	 *
+	 * @param selectedTiles the selected tiles
+	 * @return the string
+	 */
 	private static String verifyOrientation(String[][] selectedTiles) {//determines the orientation of a word on the matrix(vertical, horizontal), else, determines invalid position
 		String orientation = null;
 		int index=0;
@@ -381,6 +490,14 @@ public class GameFlow {
 		return orientation;
 	}
 		
+	/**
+	 * Update table top.
+	 *
+	 * @param sortedTiles the sorted tiles
+	 * @param node the node
+	 * @param orientation the orientation
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private static void updateTableTop(String[][] sortedTiles,PlayerLinkedListNode node, String orientation) throws IOException {
 		printTableTop();
 		if( game.getTurn()==0) {
@@ -396,6 +513,14 @@ public class GameFlow {
 		}
 	}
 
+	/**
+	 * Place new word.
+	 *
+	 * @param sortedTiles the sorted tiles
+	 * @param node the node
+	 * @param orientation the orientation
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private static void placeNewWord(String[][] sortedTiles, PlayerLinkedListNode node, String orientation) throws IOException {
 		for(int index=0;index!=sortedTiles.length;index++) {
 			int tile=Integer.parseInt(sortedTiles[index][0]);
@@ -422,6 +547,17 @@ public class GameFlow {
 		processPlayedWords(sortedTiles,node);
 	}
 
+	/**
+	 * Check new word.
+	 *
+	 * @param sortedTiles the sorted tiles
+	 * @param x the x
+	 * @param y the y
+	 * @param node the node
+	 * @param orientation the orientation
+	 * @return the string[]
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private static String[] checkNewWord(String[][] sortedTiles,int x,int y, PlayerLinkedListNode node, String orientation) throws IOException {
 		String[] data=new String[2];
 		String word="";
@@ -471,6 +607,13 @@ public class GameFlow {
 		return data;
 	}
 
+	/**
+	 * Process played words.
+	 *
+	 * @param sortedTiles the sorted tiles
+	 * @param node the node
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private static void processPlayedWords(String[][] sortedTiles,PlayerLinkedListNode node) throws IOException {
 	
 //		for(WordListNode wordNode=game.getPlayedWords().getHead();wordNode.getNext()!=null;wordNode=wordNode.getNext()) {
@@ -495,6 +638,12 @@ public class GameFlow {
 		turnHandler(node.getNext());
 	}
 
+	/**
+	 * Check new placement.
+	 *
+	 * @param sortedTiles the sorted tiles
+	 * @return true, if successful
+	 */
 	private static boolean checkNewPlacement(String[][] sortedTiles) {
 		boolean isAdjacent=false;
 		for(int index=0;index!=sortedTiles.length;index++) {
@@ -568,6 +717,13 @@ public class GameFlow {
 		return isAdjacent;
 	}
 
+	/**
+	 * Place first word.
+	 *
+	 * @param node the node
+	 * @param sortedTiles the sorted tiles
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private static void placeFirstWord(PlayerLinkedListNode node, String[][] sortedTiles) throws IOException {
 		String word="";
 		int points=0;
@@ -601,6 +757,11 @@ public class GameFlow {
 		
 	}
 
+	/**
+	 * Erase placed tiles.
+	 *
+	 * @param sortedTiles the sorted tiles
+	 */
 	private static void erasePlacedTiles(String[][] sortedTiles) {
 		for(int index=0;index!=sortedTiles.length;index++) {
 			int x=Integer.parseInt(sortedTiles[index][1]);
@@ -609,6 +770,12 @@ public class GameFlow {
 		}		
 	}
 
+	/**
+	 * Erase used tiles.
+	 *
+	 * @param sortedTiles the sorted tiles
+	 * @param node the node
+	 */
 	private static void eraseUsedTiles(String[][] sortedTiles, PlayerLinkedListNode node) {
 		for(int index=0;index!=sortedTiles.length;index++) {
 			int tile=Integer.parseInt(sortedTiles[index][0]);
@@ -617,6 +784,15 @@ public class GameFlow {
 		
 	}
 
+	/**
+	 * Check first word.
+	 *
+	 * @param sortedTiles the sorted tiles
+	 * @param node the node
+	 * @param orientation the orientation
+	 * @return true, if successful
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private static boolean checkFirstWord(String[][] sortedTiles, PlayerLinkedListNode node, String orientation) throws IOException {
 		boolean check=false;
 		if(sortedTiles.length>=2) {
@@ -661,6 +837,9 @@ public class GameFlow {
 
 	
 	
+	/**
+	 * Prints the table top.
+	 */
 	private static void printTableTop() {
 		for (int i = 0; i < game.getTableTop().length; i++) {
 		    for (int j = 0; j < game.getTableTop()[i].length; j++) {

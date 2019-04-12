@@ -11,9 +11,24 @@ import org.json.simple.parser.ParseException;
 
 import game.logic.GameFlow;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class De.
+ */
 public class De {
+	
+	/** The json data. */
 	JSONObject jsonData;
+	
+	/** The dato. */
 	public String dato;
+	
+	/**
+	 * Instantiates a new de.
+	 *
+	 * @param out the out
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public De(Writer out) throws IOException {
 		jsonData =  new JSONObject();
 		jsonData.put("Datos", out);

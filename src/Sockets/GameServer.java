@@ -19,26 +19,57 @@ import JSON.Encode;
 import game.logic.GameFlow;
 import queue.myQueue;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GameServer.
+ */
 public class GameServer implements Runnable   {
+	
+	/** The clients queue. */
 	//atributos
 	private myQueue<Socket> clientsQueue = new myQueue<Socket>();
+	
+	/** The server. */
 	ServerSocket server;  
+	
+	/** The socket. */
 	Socket socket; 
+	
+	/** The game flow. */
 	private GameFlow gameFlow;
+	
+	/** The decode. */
 	Decode decode;
+	
+	/** The port. */
 	final int port = 5555;
+	
+	/** The password. */
 	public String password = "none";
 
+	/** The ver password. */
 	private boolean verPassword = false;
+	
+	/** The ip. */
 	public InetAddress ip; 
+	
+	/** The msj datos. */
 	private Msg.Message msjDatos = new Msg.Message("vacio");
+	
+	/** The verfication. */
 	private boolean verfication = true; 
 	
+	/** The matriz letras. */
 	public String[][] matrizLetras; 
+	
+	/** The str. */
 	public String str;
 	
 	
-	 public GameServer(){
+	 /**
+ 	 * Instantiates a new game server.
+ 	 */
+ 	public GameServer(){
 		 
 		 System.out.println(">>Se inicia el server");
 		    Thread myThread = new Thread(this);
@@ -46,7 +77,10 @@ public class GameServer implements Runnable   {
 		  }
 	 
 	 
-	 @Override 
+	 /* (non-Javadoc)
+ 	 * @see java.lang.Runnable#run()
+ 	 */
+ 	@Override 
 	public void run() {
 		try {
 			
@@ -101,6 +135,13 @@ public class GameServer implements Runnable   {
 			System.out.println("Connetion failed");
 		} 
 	}
+
+/**
+ * Reponse client.
+ *
+ * @param mensajeRecibido the mensaje recibido
+ * @throws IOException Signals that an I/O exception has occurred.
+ */
 private void reponseClient(String mensajeRecibido) throws IOException {
 	if(mensajeRecibido.contains("password")) {
 		System.out.println("password: "+ this.password);
@@ -159,6 +200,13 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 					System.out.println(data);
 				}
 		}
+	
+	/**
+	 * My matriz.
+	 *
+	 * @param name the name
+	 * @return the string[]
+	 */
 	public String[] myMatriz(String name) {
 		for(String[]i:this.matrizLetras) {
 			System.out.println(Arrays.deepToString(i));
@@ -171,6 +219,12 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 
 
 
+/**
+ * Verificar password.
+ *
+ * @param mensajeRecibido the mensaje recibido
+ * @return true, if successful
+ */
 //Verifica el password para establecer la conexion 
 	private boolean verificarPassword(String mensajeRecibido) {
 		if(mensajeRecibido.toLowerCase().contains((this.password))) {
@@ -185,6 +239,11 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 	
 	
 
+	/**
+	 * Gets the J mensaje.
+	 *
+	 * @return the writer
+	 */
 	private Writer GetJMensaje() {
 		Encode datos = new Encode();
 		//Crea el arreglo con los datos de la Clase 
@@ -199,10 +258,21 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 		return out;
 	}
 	
+	/**
+	 * Sets the mensaje.
+	 *
+	 * @param newMsj the new mensaje
+	 */
 	public void setMensaje(String newMsj) {
 		this.msjDatos.setMatriz(newMsj);
 		
 	}
+	
+	/**
+	 * Sets the mensaje 1.
+	 *
+	 * @param matriz1 the new mensaje 1
+	 */
 	public void setMensaje1(String[] matriz1) {
 		this.msjDatos.setMatriz("");
 		this.msjDatos.setMatriz1(matriz1);
@@ -212,6 +282,12 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 	
 	
 
+	/**
+	 * Game update.
+	 *
+	 * @param msg the msg
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private void GameUpdate(String msg) throws IOException {
 		StringWriter toJson = new StringWriter();
 		toJson = toJson.append(msg, 0, msg.length());

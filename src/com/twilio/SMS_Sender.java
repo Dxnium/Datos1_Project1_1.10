@@ -15,13 +15,22 @@ import java.awt.event.ActionListener;
 
 import javax.swing.DefaultComboBoxModel;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SMS_Sender.
+ */
 public class SMS_Sender extends JFrame {
 
+	/** The content pane. */
 	private JPanel contentPane;
+	
+	/** The Mensaje. */
 	private JTextField Mensaje;
 
 	/**
 	 * Launch the application.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
