@@ -31,6 +31,15 @@ public class Message extends Observable implements JSONStreamAware {
 			}
 		this.matrizJson = list;
 	}
+	public void setMatrizdoble(String[][] matriz1) {
+		JSONArray list = new JSONArray();
+		for(String[] i : matriz1) {
+			for(String j : i) {
+				list.add(i);
+			}
+		this.matrizJson = list;
+	}
+	}
 
 	public Message (String matriz) {
 		this.matriz = matriz;

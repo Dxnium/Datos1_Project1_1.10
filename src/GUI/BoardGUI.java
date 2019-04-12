@@ -8,7 +8,9 @@ import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.io.StringWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -16,7 +18,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import org.json.simple.JSONArray;
+
 import JSON.Decode;
+import JSON.Encode;
+import Msg.Message;
 import Sockets.Cliente;
 
 
@@ -29,8 +35,9 @@ public class BoardGUI extends JPanel{
 	ArrayList<LetterGUI> lettersList = new ArrayList<LetterGUI>();
 	Image labelImg = new ImageIcon("Images\\img.png").getImage(); 
 	Image reglasImg = new ImageIcon("Images\\botonAyuda.png").getImage();
-	
-	
+	Cliente cliente;
+	Message msg = new Message("");
+	Encode encode;
 
 	public BoardGUI(String[][] matrix,String name){
 		this.myName = name;
@@ -97,15 +104,27 @@ public class BoardGUI extends JPanel{
 
 	}
 	public void getWordsLocation() {
-		String[][] fichas = new String[7][3];
-		for(int i = 0; i < 7 ;i++) {
+		String[][] fichas = new String[8][3];
+		for(int i = 1; i < 8 ;i++) {
 			if(lettersList.get(i).getPosF()!=null) {
 				System.out.println(i);
 				fichas[i][0] = Integer.toString(lettersList.get(i).posDeck);
 				fichas[i][1] = lettersList.get(i).posF;
 				fichas[i][2] = lettersList.get(i).getPosC();
 			}
-			}System.out.println(Arrays.deepToString(fichas));
+			}
+			fichas[0][0] = this.myName;
+			System.out.println(Arrays.deepToString(fichas));
+			this.msg.setMatrizdoble(fichas);
+			StringBuilder builder = new StringBuilder();
+			for(String[] s : fichas) {
+				for(String i : s) {
+			    builder.append(s);
+			}
+			}
+			String str = builder.toString();
+			System.out.println(Arrays.deepToString(fichas)+"Writer");
+			this.cliente = new Cliente("localhost", "posicionLetras,"+Arrays.deepToString(fichas));
 			
 			//System.out.println("Objeto: "+lettersList.get(i)+"\n"+"Letra: "+lettersList.get(i).getLetterAsigned()+"\n"+"PosX: "+lettersList.get(i).getX()+"\n"+"PosY: "+lettersList.get(i).getY());
 //			System.out.println("Columna: "+lettersList.get(i).getPosC()+"\n"+"Fila: "+lettersList.get(i).getPosF()+"\n"+"Letra: "+lettersList.get(i).getLetterAsigned()+"\n"+"PosX: "+lettersList.get(i).getX()+"\n"+"PosY: "+lettersList.get(i).getY());

@@ -150,6 +150,13 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 						setMensaje("");
 					}
 					}
+				}if(mensajeRecibido.contains("posicionLetras")) {
+					GameUpdate(mensajeRecibido);
+					String data = "";
+					for(int i = 1; i < 25 ;i++) {
+						data += decode.datos[i]+",";
+					}data = data.substring(0, data.length());
+					System.out.println(data);
 				}
 		}
 	public String[] myMatriz(String name) {
