@@ -66,7 +66,7 @@ public class Vent_Datos extends JFrame {
 					System.out.println(!textField.getText().isEmpty());
 					if(!textField.getText().isEmpty()) {
 						Cliente cliente = new Cliente("localhost","agregarJugador,"+textField.getText());
-						BoardJFrame boardJF = new BoardJFrame();
+						BoardJFrame boardJF = new BoardJFrame(textField.getText());
 						boardJF.setVisible(true);
 						Vent_Datos.this.dispose();
 					}

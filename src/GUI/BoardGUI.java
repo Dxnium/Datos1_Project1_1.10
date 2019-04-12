@@ -8,20 +8,22 @@ import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import com.sun.security.ntlm.Client;
-
+import JSON.Decode;
 import Sockets.Cliente;
 
 
 
 public class BoardGUI extends JPanel{
 	public String myName;
+	String[] titles;
 	String[][] matrix;
 	LetterGUI letterGUI = new LetterGUI();
 	ArrayList<LetterGUI> lettersList = new ArrayList<LetterGUI>();
@@ -30,8 +32,8 @@ public class BoardGUI extends JPanel{
 	ArrayList<letterOnMatrix> letterPosList = new ArrayList<letterOnMatrix>();
 	
 
-	public BoardGUI(String[][] matrix){
-		
+	public BoardGUI(String[][] matrix,String name){
+		this.myName = name;
 		botonReglas reglas = new botonReglas();
 		reglas.setBounds(1000,10,128,128);
 		reglas.setIcon(new ImageIcon(reglasImg));
@@ -52,6 +54,13 @@ public class BoardGUI extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("consulta");
 				Cliente cliente = new Cliente("localhost","checkTurno,"+ myName);
+				if(cliente.msg.contains("MatrizJson")) {
+					StringWriter toJson = new StringWriter();
+					toJson = toJson.append(cliente.msg, 0,cliente.msg.length());
+					Decode decode = new Decode(toJson);
+					titles = decode.titles.split(",");
+					crearTitles(titles);
+				}
 			}});
 		this.add(btnConsulta);
 		//--------------------------------------------------------------------------
@@ -71,20 +80,20 @@ public class BoardGUI extends JPanel{
 
 
 
-		this.letterGUI = new LetterGUI("A",1);
-		lettersList.add(letterGUI);
-		this.add(letterGUI);
-		this.letterGUI = new LetterGUI("B",2);
-		lettersList.add(letterGUI);
-		this.add(letterGUI);
-		this.letterGUI = new LetterGUI("C",3);
-		lettersList.add(letterGUI);
-		this.add(letterGUI);
-		this.letterGUI = new LetterGUI("D",4);
-		lettersList.add(letterGUI);
-		this.add(letterGUI);
-		this.letterGUI = new LetterGUI("RR",300,450);
-		this.add(letterGUI);
+//		this.letterGUI = new LetterGUI("A",1);
+//		lettersList.add(letterGUI);
+//		this.add(letterGUI);
+//		this.letterGUI = new LetterGUI("B",2);
+//		lettersList.add(letterGUI);
+//		this.add(letterGUI);
+//		this.letterGUI = new LetterGUI("C",3);
+//		lettersList.add(letterGUI);
+//		this.add(letterGUI);
+//		this.letterGUI = new LetterGUI("D",4);
+//		lettersList.add(letterGUI);
+//		this.add(letterGUI);
+//		this.letterGUI = new LetterGUI("RR",300,450);
+//		this.add(letterGUI);
 
 	}
 	public void getWordsLocation() {
@@ -92,6 +101,22 @@ public class BoardGUI extends JPanel{
 			//System.out.println("Objeto: "+lettersList.get(i)+"\n"+"Letra: "+lettersList.get(i).getLetterAsigned()+"\n"+"PosX: "+lettersList.get(i).getX()+"\n"+"PosY: "+lettersList.get(i).getY());
 			System.out.println("Columna: "+lettersList.get(i).getPosC()+"\n"+"Fila: "+lettersList.get(i).getPosF()+"\n"+"Letra: "+lettersList.get(i).getLetterAsigned()+"\n"+"PosX: "+lettersList.get(i).getX()+"\n"+"PosY: "+lettersList.get(i).getY());
 		}
+	}
+	public void crearTitles(String[] titles) {
+		for(int i=1;i<8;i++) {
+			System.out.println(Arrays.deepToString(titles));
+			if(titles[i].length()>3) {
+				System.out.println(titles[i].substring(1,3));
+				this.letterGUI = new LetterGUI(titles[i].substring(1, 3),i);
+				lettersList.add(letterGUI);
+				this.add(letterGUI);
+			}else {
+			System.out.println(titles[i].substring(1,2));
+			this.letterGUI = new LetterGUI(titles[i].substring(1, 2),i);
+			lettersList.add(letterGUI);
+			this.add(letterGUI);
+			}
+		}this.repaint();
 	}
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);

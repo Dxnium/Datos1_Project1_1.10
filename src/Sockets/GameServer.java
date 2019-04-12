@@ -10,6 +10,7 @@ import java.io.Writer;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Arrays;
 
 import org.json.simple.JSONArray;
 
@@ -32,6 +33,9 @@ public class GameServer implements Runnable   {
 	public InetAddress ip; 
 	private Msg.Message msjDatos = new Msg.Message("vacio");
 	private boolean verfication = true; 
+	
+	public String[][] matrizLetras; 
+	public String str;
 	
 	
 	 public GameServer(){
@@ -129,9 +133,35 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 			if(this.gameFlow.getGame().getCurrentConection() == this.gameFlow.getGame().getMaxPlayers()) {
 				this.gameFlow.playOrder();
 				this.gameFlow.dealTiles();
+				 this.matrizLetras = this.gameFlow.sendTiles();
+//				 setMensaje(matrizLetras);
+				 
 			}
 		}
+			if(mensajeRecibido.contains("checkTurno")) {
+				System.out.println("gameTurno");
+				GameUpdate(mensajeRecibido);
+				if(gameFlow.getGame().getPlayerList().getHead().getData().getName().toLowerCase().equals(decode.datos[1].toLowerCase())) {
+					System.out.println("turno de jugador: "+decode.datos[1]);
+					System.out.println(Arrays.deepToString(myMatriz(decode.datos[1])));
+					if(myMatriz(decode.datos[1]) != null) {
+						setMensaje1(myMatriz(decode.datos[1]));
+					}else {
+						setMensaje("");
+					}
+					}
+				}
+		}
+	public String[] myMatriz(String name) {
+		for(String[]i:this.matrizLetras) {
+			System.out.println(Arrays.deepToString(i));
+			if(i[0].toLowerCase().equals(name)) {
+				return i;
+			}
+		}
+		return null;
 	}
+
 
 
 //Verifica el password para establecer la conexion 
@@ -145,6 +175,8 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 		return false;
 		
 	}
+	
+	
 
 	private Writer GetJMensaje() {
 		Encode datos = new Encode();
@@ -164,6 +196,14 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 		this.msjDatos.setMatriz(newMsj);
 		
 	}
+	public void setMensaje1(String[] matriz1) {
+		this.msjDatos.setMatriz("");
+		this.msjDatos.setMatriz1(matriz1);
+		
+	}
+	
+	
+	
 
 	private void GameUpdate(String msg) throws IOException {
 		StringWriter toJson = new StringWriter();
