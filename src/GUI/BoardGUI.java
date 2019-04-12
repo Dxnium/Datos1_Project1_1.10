@@ -29,29 +29,29 @@ import Sockets.Cliente;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class BoardGUI.
+ * The Class BoardGUI is a JPanel that contains all the graphical elements created.
  */
 public class BoardGUI extends JPanel{
 	
 	/** The my name. */
 	public String myName;
 	
-	/** The titles. */
+	/** An array of strings that contains letters of the player's deck */
 	String[] titles;
 	
-	/** The matrix. */
+	/** The matrix that contains the multiplier of the */
 	String[][] matrix;
 	
-	/** The letter GUI. */
+	/** An instantiation of letterGUI class. */
 	LetterGUI letterGUI = new LetterGUI();
 	
-	/** The letters list. */
+	/** The letters list that contains objects of the class LetterGUI */
 	ArrayList<LetterGUI> lettersList = new ArrayList<LetterGUI>();
 	
-	/** The label img. */
+	/** The labelImg contains an ImageIcon. */
 	Image labelImg = new ImageIcon("Images\\img.png").getImage(); 
 	
-	/** The reglas img. */
+	/** The reglasImg contains an ImageIcon. */
 	Image reglasImg = new ImageIcon("Images\\botonAyuda.png").getImage();
 
 
@@ -69,7 +69,7 @@ public class BoardGUI extends JPanel{
 	Encode encode;
 
 	/**
-	 * Instantiates a new board GUI.
+	 * Instantiates a new boardGUI that contains the game board where you can put tiles.
 	 *
 	 * @param matrix the matrix
 	 * @param name the name
@@ -141,7 +141,7 @@ public class BoardGUI extends JPanel{
 	}
 	
 	/**
-	 * Gets the words location.
+	 * Gets the words location on the screen and on the matrix.
 	 *
 	 * @return the words location
 	 */
@@ -173,7 +173,7 @@ public class BoardGUI extends JPanel{
 		}
 	
 	/**
-	 * Crear titles.
+	 * CrearTitles subtract of a json message the letter that will be assigned to the tile.
 	 *
 	 * @param titles the titles
 	 */

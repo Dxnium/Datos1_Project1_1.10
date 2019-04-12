@@ -13,143 +13,134 @@ import javax.swing.JLabel;
 // TODO: Auto-generated Javadoc
 /**
  * The Class LetterGUI.
+ * LetterGUI is the class in charge of defining the main characteristics such as position on screen, letter assigned
+ * and position on matrix of a tile
  */
 public class LetterGUI extends JLabel implements MouseMotionListener,MouseListener{
+	//Atributos
+	/**  The alphabet. */
+	private ArrayList<String> alphabet = new ArrayList<String>();
 	
-	/** The alphabet. */
-	ArrayList<String> alphabet = new ArrayList<String>();
+	/** The alphabet images. */
+	private ArrayList<ImageIcon> alphabetIMG = new ArrayList<ImageIcon>();
 	
-	/** The alphabet IMG. */
-	ArrayList<ImageIcon> alphabetIMG = new ArrayList<ImageIcon>();
+	/**  The letter assigned to the tile. */
+	private String letterAssigned;
 	
-	/** The letter asigned. */
-	String letterAsigned;
-
-	String posC = "19";
-	String posF = "19";
-
+	/**  Column where the tile was placed. */
+	protected String posC = "19";
 	
-
-	
-	/** The can be repositioned. */
-
-	Boolean canBeRepositioned = true;
-	
-	/** The pos inicial X. */
-	int posInicialX;
-	
-	/** The pos inicial Y. */
-	int posInicialY;
-
-	ArrayList<Integer> fichasPosCList = new ArrayList<Integer>();
-	ArrayList<Integer> fichasPosFList = new ArrayList<Integer>();
+	/**  Row where the tile was placed. */
+	protected String posF = "19";
 
 	
-	/** The fichas pos list. */
-	ArrayList<Shape> fichasPosList = new ArrayList<Shape>();
-	
-	/** The already placed. */
-
-	Boolean alreadyPlaced = false;
-	
-	/** The cont. */
-	int cont=0;
-
-	Boolean isMoved;
 
 	
-	/** The pos deck. */
+	/**  Indicates if the tile can be repositioned. */
+
+	protected Boolean canBeRepositioned = true;
+	
+	/** The initial position in X. */
+	protected int posInicialX;
+	
+	/** The initial position in Y. */
+	protected int posInicialY;
+	
+
+	
+	/** Position in Deck */
 	public int posDeck;
 
-
+	//Metodos publicos
+	
 	/**
-	 * Gets the pos inicial X.
+	 * Gets the initial position X.
 	 *
-	 * @return the pos inicial X
+	 * @return the initial position X
 	 */
 	public int getPosInicialX() {
 		return posInicialX;
 	}
 	
 	/**
-	 * Sets the pos inicial X.
+	 * Sets the initial position X.
 	 *
-	 * @param posInicialX the new pos inicial X
+	 * @param posInicialX the new initial position X
 	 */
 	public void setPosInicialX(int posInicialX) {
 		this.posInicialX = posInicialX;
 	}
 	
 	/**
-	 * Gets the pos inicial Y.
+	 * Gets the initial position Y.
 	 *
-	 * @return the pos inicial Y
+	 * @return the initial position Y
 	 */
 	public int getPosInicialY() {
 		return posInicialY;
 	}
 	
 	/**
-	 * Sets the pos inicial Y.
+	 * Sets the initial position Y.
 	 *
-	 * @param posInicialY the new pos inicial Y
+	 * @param posInicialY the new initial position Y
 	 */
 	public void setPosInicialY(int posInicialY) {
 		this.posInicialY = posInicialY;
 	}
 	
 	/**
-	 * Gets the pos C.
+	 * Gets the position in Columns.
 	 *
-	 * @return the pos C
+	 * @return the position in Columns
 	 */
 	public String getPosC() {
 		return posC;
 	}
 	
 	/**
-	 * Sets the pos C.
+	 * Sets the position in Columns.
 	 *
-	 * @param posC the new pos C
+	 * @param posC the new position in Columns
 	 */
 	public void setPosC(String posC) {
 		this.posC = posC;
 	}
 	
 	/**
-	 * Gets the pos F.
+	 * Gets the position in rows.
 	 *
-	 * @return the pos F
+	 * @return the position in rows
 	 */
 	public String getPosF() {
 		return posF;
 	}
 	
 	/**
-	 * Sets the pos F.
+	 * Sets the position in rows.
 	 *
-	 * @param posF the new pos F
+	 * @param posF the new position in rows
 	 */
 	public void setPosF(String posF) {
 		this.posF = posF;
 	}
 	
 	/**
-	 * Gets the letter asigned.
+	 * Gets the letter assigned.
 	 *
-	 * @return the letter asigned
+	 * @return the letter assigned
 	 */
-	public String getLetterAsigned() {
-		return letterAsigned;
+	public String getLetterAssigned() {
+		return letterAssigned;
 	}
 	
 	/**
-	 * Sets the letter asigned.
+	 * Sets the letter assigned.
 	 *
-	 * @param letterAsigned the new letter asigned
+	 * @param letterAsigned the new letter assigned
 	 */
-	public void setLetterAsigned(String letterAsigned) {
-		this.letterAsigned = letterAsigned;
+	public void setLetterAssigned(String letterAssigned) {
+		this.letterAssigned = letterAssigned;
 	}
 	
 	/**
@@ -159,12 +150,6 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 
 	}
 
-	public Boolean getIsMoved() {
-		return isMoved;
-	}
-	public void setIsMoved(Boolean isMoved) {
-		this.isMoved = isMoved;
-	}
 
 	
 	/**
@@ -178,7 +163,7 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 		this.posDeck = x;
 		alphabetFill();
 		alphabetIMGFill();
-		this.setLetterAsigned(letter);
+		this.setLetterAssigned(letter);
 		for(int i= 0;i<alphabet.size();i++) {
 
 			if(letter.equals(alphabet.get(i))) {
@@ -195,7 +180,7 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 	}
 	
 	/**
-	 * Instantiates a new letter GUI.
+	 * Instantiates a new letter GUI in a specific position and declares false in canBeReposition in order not to allow replacing the tile.
 	 *
 	 * @param letter the letter
 	 * @param posX the pos X
@@ -205,7 +190,7 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 		this.canBeRepositioned = false;
 		alphabetFill();
 		alphabetIMGFill();
-		this.setLetterAsigned(letter);
+		this.setLetterAssigned(letter);
 		for(int i= 0;i<alphabet.size();i++) {
 
 			if(letter.equals(alphabet.get(i))) {
@@ -220,10 +205,6 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 		}
 		addMouseMotionListener(this);
 		addMouseListener(this);
-
-
-
-
 
 	}
 	
@@ -310,22 +291,12 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 		
 		
 		System.out.println("Hola"+"La dejó en C:"+this.getPosC()+"y en F:"+this.getPosF());
-		arrayListFiller(getPosC(), getPosF());
 		
 
 	}
-
-	public void arrayListFiller(String C, String F) {
-		fichasPosCList.add(Integer.parseInt(C));
-		fichasPosFList.add(Integer.parseInt(F));
-		System.out.println("C: "+fichasPosCList.toString());
-		System.out.println("F: "+fichasPosFList.toString());
-	}
-	
-
 	
 	/**
-	 * Alphabet fill.
+	 * AlphabetFill fills an array with the alphabet.
 	 */
 
 	public void alphabetFill() {
@@ -363,7 +334,7 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 	}
 	
 	/**
-	 * Alphabet IMG fill.
+	 * AlphabetIMGFill fills an array with the alphabet images.
 	 */
 	public void alphabetIMGFill() {
 		alphabetIMG.add(new ImageIcon("Images\\A.PNG"));
