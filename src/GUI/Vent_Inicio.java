@@ -80,8 +80,9 @@ public class Vent_Inicio extends JFrame {
 		lblBienvenidosAScrabble.setBounds(45, 11, 358, 37);
 		contentPane.add(lblBienvenidosAScrabble);
 		
-		JButton btnIniciar = new JButton("Iniciar nuevo juego");
-		btnIniciar.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JButton btnIniciar = new JButton();
+		
+		btnIniciar.setIcon(new ImageIcon("Images\\crear.png"));
 		btnIniciar.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 				Vent_Jugadores Vent_2_1 = new Vent_Jugadores();
@@ -89,12 +90,13 @@ public class Vent_Inicio extends JFrame {
 				Vent_Inicio.this.dispose();				
 			}
 		});
-		btnIniciar.setBounds(0, 0, 154, 50);
+		btnIniciar.setBounds(0, 0, 165, 57);
 		contentPane2.add(btnIniciar);
 		
 		
-		JButton btnUnirse = new JButton("Unirse a una partida");
-		btnUnirse.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JButton btnUnirse = new JButton();
+		
+		btnUnirse.setIcon(new ImageIcon("Images\\unirse.png"));
 		btnUnirse.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {				
 				Vent_Codigo Vent_2 = new Vent_Codigo();
@@ -102,7 +104,7 @@ public class Vent_Inicio extends JFrame {
 				Vent_Inicio.this.dispose();	
 			}
 		});
-		btnUnirse.setBounds(0, 0, 154, 50);
+		btnUnirse.setBounds(0, 0, 165, 57);
 		contentPane3.add(btnUnirse);
 		
 		
