@@ -139,6 +139,7 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 			}
 		}
 			if(mensajeRecibido.contains("checkTurno")) {
+				
 				System.out.println("gameTurno");
 				GameUpdate(mensajeRecibido);
 				if(gameFlow.getGame().getPlayerList().getHead().getData().getName().toLowerCase().equals(decode.datos[1].toLowerCase())) {
@@ -151,13 +152,37 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 					}
 					}
 				}if(mensajeRecibido.contains("posicionLetras")) {
+					String[][] mensaje = new String[8][3];
 					GameUpdate(mensajeRecibido);
 					String data = "";
-					for(int i = 1; i < 25 ;i++) {
+					for(int i = 1; i < 25 ;i+=3) {
 						data += decode.datos[i]+",";
-					}data = data.substring(0, data.length());
-					System.out.println(data);
-				}
+						data += decode.datos[i+1]+",";
+						data += decode.datos[i+2]+";";
+					}
+					
+				data = data.substring(2,data.length()-3);
+				
+//				String[] data2 = data.split(";");
+//				for(int y = 0; y < 8 ;y++) {
+//					for(String i : data2) {
+//						String[] data3 = i.split(",");
+//						for(int x = 0; x < 3 ;x++) {
+//							for(String j: data3) {
+//								mensaje[y][x] = j;
+//							}
+//						}
+//					}
+//						
+//			}
+				
+					System.out.println(Arrays.deepToString(mensaje));
+					
+					
+//					
+//					gameFlow.playTurn(data);
+				}		
+				
 		}
 	public String[] myMatriz(String name) {
 		for(String[]i:this.matrizLetras) {
