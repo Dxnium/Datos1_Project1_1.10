@@ -55,7 +55,7 @@ public class Vent_Inicio extends JFrame {
 	
 		contentPane2.setLayout(null);
 		contentPane2.setBounds(550, 300, 167, 59);
-		contentPane2.setBackground(Color.BLACK);
+		contentPane2.setBackground(new Color(0, 85, 106));
 		
 		contentPane3 = new JPanel();
 		contentPane3.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -93,9 +93,11 @@ public class Vent_Inicio extends JFrame {
 			}
 		});
 		btnIniciar.setBounds(0, 0, 167, 59);
-
+		btnIniciar.setFocusPainted(false);
+		btnIniciar.setContentAreaFilled(false);
+		btnIniciar.setBorderPainted(false);
 		
-		contentPane.add(btnIniciar);
+		contentPane2.add(btnIniciar);
 
 	
 
@@ -111,10 +113,13 @@ public class Vent_Inicio extends JFrame {
 			}
 		});
 		btnUnirse.setBounds(0, 0, 167, 59);
+		btnUnirse.setFocusPainted(false);
+		btnUnirse.setContentAreaFilled(false);
+		btnUnirse.setBorderPainted(false);
 	
-	
-		contentPane.add(btnUnirse);
-
+		contentPane3.add(btnUnirse);
+		contentPane3.setBackground(null);
+		contentPane3.setOpaque(false);
 		
 		this.add(contentPane2);
 		this.add(contentPane3);
