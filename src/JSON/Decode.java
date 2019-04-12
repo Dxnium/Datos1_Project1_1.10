@@ -27,6 +27,10 @@ public class Decode {
 					System.out.println(matriz + "\t");
 					this.datos = matriz.split(",");
 				}
+				if(juego.containsKey("MatrizJson")) {
+					String Jsonmatriz = juego.get("MatrizJson").toString();
+					System.out.println(Jsonmatriz + "\t");
+				}
 				
 
 			}
