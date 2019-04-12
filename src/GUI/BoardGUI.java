@@ -224,11 +224,11 @@ public class BoardGUI extends JPanel{
 							for(int n =0;n<lettersList.size();n++) {
 							
 								
-								if(!lettersList.get(n).getPosC().equals("0") && !lettersList.get(n).getPosF().equals("0")) {
+								if(!lettersList.get(n).getPosC().equals("19") && !lettersList.get(n).getPosF().equals("19")) {
 									if(lettersList.get(j).getPosC().equals(lettersList.get(n).getPosC()) && lettersList.get(j).getPosF().equals(lettersList.get(n).getPosF()) && j != n) {
 										lettersList.get(n).setLocation(lettersList.get(n).getPosInicialX(),lettersList.get(n).getPosInicialY());
-										lettersList.get(n).setPosC("0");
-										lettersList.get(n).setPosF("0");
+										lettersList.get(n).setPosC("19");
+										lettersList.get(n).setPosF("19");
 									}
 								}
 							}

@@ -25,15 +25,11 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 	/** The letter asigned. */
 	String letterAsigned;
 
-	String posC = "0";
-	String posF = "0";
+	String posC = "19";
+	String posF = "19";
 
 	
-	/** The pos C. */
-	String posC;
-	
-	/** The pos F. */
-	String posF;
+
 	
 	/** The can be repositioned. */
 
