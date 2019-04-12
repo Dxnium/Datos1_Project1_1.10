@@ -159,7 +159,7 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 				return i;
 			}
 		}
-		return null;
+		return this.matrizLetras[0];
 	}
 
 

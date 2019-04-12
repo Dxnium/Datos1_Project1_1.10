@@ -22,6 +22,7 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 	ArrayList<Shape> fichasPosList = new ArrayList<Shape>();
 	Boolean alreadyPlaced = false;
 	int cont=0;
+	public int posDeck;
 
 	public int getPosInicialX() {
 		return posInicialX;
@@ -57,6 +58,7 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 
 	}
 	public LetterGUI(String letter, int x){
+		this.posDeck = x;
 		alphabetFill();
 		alphabetIMGFill();
 		this.setLetterAsigned(letter);
@@ -102,7 +104,7 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		
-
+		
 		if(this.canBeRepositioned == true) {
 			setLocation(this.getX()+e.getX()-this.getWidth()/2,this.getY()+e.getY()-this.getHeight()/2);
 		}
@@ -167,12 +169,27 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 	}
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
+
 
 	}
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
+
+		if(this.canBeRepositioned == true) {
+			setLocation(this.getX()+e.getX()-this.getWidth()/2,this.getY()+e.getY()-this.getHeight()/2);
+		}
+		if(this.getX() <= 0 ){
+			setLocation(0,this.getY()+e.getY()-this.getHeight()/2);
+		}
+		if(this.getY() <= 0) {
+			setLocation(this.getX()+e.getX()-this.getWidth()/2,0);
+		}
+		if(this.getX() >= 1100) {
+			setLocation(1100,this.getY()+e.getY()-this.getHeight()/2);
+		}
+		if( this.getY() >= 800) {
+			setLocation(this.getX()+e.getX()-this.getWidth()/2,800);
+		}
 
 	}
 	@Override
@@ -198,6 +215,7 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 		alphabet.add("L");
 		alphabet.add("LL");
 		alphabet.add("N");
+		alphabet.add("M");
 		alphabet.add("Ñ");
 		alphabet.add("O");
 		alphabet.add("P");
@@ -212,6 +230,7 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 		alphabet.add("X");
 		alphabet.add("Y");
 		alphabet.add("Z");
+		alphabet.add("BLANK");
 	}
 	public void alphabetIMGFill() {
 		alphabetIMG.add(new ImageIcon("Images\\A.PNG"));
@@ -229,6 +248,7 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 		alphabetIMG.add(new ImageIcon("Images\\L.PNG"));
 		alphabetIMG.add(new ImageIcon("Images\\LL.PNG"));
 		alphabetIMG.add(new ImageIcon("Images\\N.PNG"));
+		alphabetIMG.add(new ImageIcon("Images\\M.PNG"));
 		alphabetIMG.add(new ImageIcon("Images\\Ñ.PNG"));
 		alphabetIMG.add(new ImageIcon("Images\\O.PNG"));
 		alphabetIMG.add(new ImageIcon("Images\\P.PNG"));
