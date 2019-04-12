@@ -47,7 +47,7 @@ public class GameFlow {
 //		f.setVisible(true);
 		//promptGameStart();
 		//game.generateGameCode();
-
+		//iniciar();
 		
 		
 		
@@ -119,7 +119,13 @@ public class GameFlow {
 
 	}
 	
-
+	private static void iniciar() throws IOException {
+		Player jugador1 =new Player("kevin");
+		Player jugador2 =new Player("erick");
+		game.getPlayerList().append(jugador1 );
+		game.getPlayerList().append(jugador2);
+		matchStarter();
+	}
 	private static void matchStarter() throws IOException {
 		playOrder();
 		dealTiles();
@@ -226,44 +232,48 @@ public class GameFlow {
 		}
 	}
 	
-	public static String[][] playTurn(PlayerLinkedListNode node) throws IOException {//class that the client will use to select tiles and positions on the matrix
-		int index=0;
-		String[][] tilesToUse= new String[7][3];
-		while(index<7) {
-			out.println("Cual ficha desea usar");
-			String selection = in.readLine();
-			out.println("En que posicion desea colocarla?");
-			out.println("Fila:");
-			String positionX=in.readLine();
-			out.println("Columna:");
-			String positionY=in.readLine();
-			tilesToUse[index][0]=selection;
-			tilesToUse[index][1]=positionX;
-			tilesToUse[index][2]=positionY;
-			out.println("Desea poner otra ficha?   (Y/N)");
-			String decision=in.readLine();
-			if(decision.equals("N")||decision.equals("n")) {
-				break;
+	
+	public static String[][] playTurn(String[][] tilesToUse) throws IOException {//class that the client will use to select tiles and positions on the matrix
+//		int index=0;
+//		String[][] tilesToUse= new String[7][3];
+//		while(index<7) {
+//			out.println("Cual ficha desea usar");
+//			String selection = in.readLine();
+//			out.println("En que posicion desea colocarla?");
+//			out.println("Fila:");									NO BORRAR.
+//			String positionX=in.readLine();
+//			out.println("Columna:");
+//			String positionY=in.readLine();
+//			tilesToUse[index][0]=selection;
+//			tilesToUse[index][1]=positionX;
+//			tilesToUse[index][2]=positionY;
+//			out.println("Desea poner otra ficha?   (Y/N)");
+//			String decision=in.readLine();
+//			if(decision.equals("N")||decision.equals("n")) {
+//				break;
+//			}
+//			
+//			index++;
+//		}
+		int count=0;
+		String playerName=tilesToUse[0][0];
+		for(int index=0;index!=tilesToUse.length;index++) {
+			if(tilesToUse[index][1]!=null) {
+				count++;
 			}
 			
-			index++;
-		}
-		
-		int count=0;
-		while(tilesToUse[count][0]!=null) {
-			count++;
 		}
 		String[][] finalTilesToUse= new String [count][3];
-		int newElement=0;
-		while(newElement<=count-1) {
-			finalTilesToUse[newElement][0]=tilesToUse[newElement][0];
-			finalTilesToUse[newElement][1]=tilesToUse[newElement][1];
-			finalTilesToUse[newElement][2]=tilesToUse[newElement][2];
-			newElement++;
+		for(int index=0;index!=tilesToUse.length;index++) {
+			if(tilesToUse[index][1]!=null) {
+				finalTilesToUse[index][0]=tilesToUse[index][0];
+				finalTilesToUse[index][1]=tilesToUse[index][1];
+				finalTilesToUse[index][2]=tilesToUse[index][2];
+			}
 		}
 		out.println(Arrays.deepToString(finalTilesToUse));
 		out.println(" ");
-		return finalTilesToUse;
+		//return finalTilesToUse; NO BORRAR
 		
 		
 		
@@ -293,8 +303,8 @@ public class GameFlow {
 
 				
 			}else if(action.equals("Pasar")||action.equals("pasar")) {
-				out.println("Espero que no te arrepientas");
 				game.setTurn(game.getTurn()+1);
+				turnHandler(node.getNext());
 			}
 		out.println("\n");
 		out.println("&&&&&&&&&&&&&&&&&&");
@@ -462,13 +472,12 @@ public class GameFlow {
 	}
 
 	private static void processPlayedWords(String[][] sortedTiles,PlayerLinkedListNode node) throws IOException {
-		int index=0;
-		WordListNode current= game.getPlayedWords().getHead();
-		while(index<game.getPlayedWords().getLength()) {
-			out.print("1: ");
-			out.println(Arrays.deepToString(current.getData()));
-			current=current.getNext();
-			index++;
+		
+		for(WordListNode current= game.getPlayedWords().getHead();current.getNext()!=null;current.getNext()) {
+			if(current.getData()[0].length()==1) {
+				game.getPlayedWords().eraseData(current.getData());
+			}
+		
 		}
 //		for(WordListNode wordNode=game.getPlayedWords().getHead();wordNode.getNext()!=null;wordNode=wordNode.getNext()) {
 //			for(WordListNode wordNode2=wordNode.getNext();wordNode2.getNext()!=null;wordNode2=wordNode2.getNext()) {
