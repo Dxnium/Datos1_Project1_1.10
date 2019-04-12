@@ -8,14 +8,30 @@ import org.json.simple.JSONArray;
 
 import Msg.Message;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Encode.
+ */
 public class Encode {
 	//acceso a los datos (atributos) de la clase 
+	/**
+	 * Array data.
+	 *
+	 * @param obj the obj
+	 * @return the JSON array
+	 */
 	//Almacenar en un JSONArray
 	public JSONArray arrayData(Message obj) {
 		JSONArray array = new JSONArray();
 			array.add(obj);
 		return array;
 	}
+	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	//Main de prueba 
 	public static void main(String[] args) {
 	Encode datos = new Encode();

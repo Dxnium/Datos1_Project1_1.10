@@ -7,10 +7,26 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Decode.
+ */
 public class Decode {
+	
+	/** The datos. */
 	public String[] datos;
+	
+	/** The titles. */
 	public String titles;
+	
+	/** The json data. */
 	JSONObject jsonData;
+	
+	/**
+	 * Instantiates a new decode.
+	 *
+	 * @param out the out
+	 */
 	public Decode(Writer out) {
 		jsonData =  new JSONObject();
 		jsonData.put("Datos", out);

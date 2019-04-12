@@ -8,11 +8,24 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Ventana2.
+ */
 public class Ventana2 extends JFrame {
+	
+	/** The active. */
 	private boolean active = false;
+	
+	/** The Xsize. */
 	private int Xsize = 1920;
+	
+	/** The Ysize. */
 	private int Ysize = 1080;
 	
+	/**
+	 * Instantiates a new ventana 2.
+	 */
 	public Ventana2() {
 
 		SwingUtilities.invokeLater(new Runnable() {

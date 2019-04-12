@@ -17,12 +17,25 @@ import Sockets.GameServer;
 
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class StartWindow.
+ */
 public class StartWindow extends JFrame {
+	
+	/** The active. */
 	private boolean active = true;
+	
+	/** The Xsize. */
 	private int Xsize = 1600;
+	
+	/** The Ysize. */
 	private int Ysize = 900;
 	
 	
+	/**
+	 * Instantiates a new start window.
+	 */
 	public StartWindow() {
 
 		SwingUtilities.invokeLater(new Runnable() {
@@ -93,11 +106,19 @@ public class StartWindow extends JFrame {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see java.awt.Window#isActive()
+	 */
 	public boolean isActive() {
 		return active;
 	}
 
 
+	/**
+	 * Sets the active.
+	 *
+	 * @param active the new active
+	 */
 	public void setActive(boolean active) {
 		this.active = active;
 	}
