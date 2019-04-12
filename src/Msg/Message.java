@@ -24,13 +24,11 @@ public class Message extends Observable implements JSONStreamAware {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void setMatriz1(String[][] matriz1) {
+	public void setMatriz1(String[] matriz1) {
 		JSONArray list = new JSONArray();
-		for(String[] i : matriz1) {
-			for(String j : i) {
-				list.add(j);
+		for(String i : matriz1) {
+				list.add(i);
 			}
-		}
 		this.matrizJson = list;
 	}
 

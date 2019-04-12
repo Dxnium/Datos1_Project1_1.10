@@ -9,6 +9,7 @@ import org.json.simple.parser.ParseException;
 
 public class Decode {
 	public String[] datos;
+	public String titles;
 	JSONObject jsonData;
 	public Decode(Writer out) {
 		jsonData =  new JSONObject();
@@ -30,6 +31,8 @@ public class Decode {
 				if(juego.containsKey("MatrizJson")) {
 					String Jsonmatriz = juego.get("MatrizJson").toString();
 					System.out.println(Jsonmatriz + "\t");
+					this.titles = Jsonmatriz;
+					System.out.println(Jsonmatriz.split(","));
 				}
 				
 

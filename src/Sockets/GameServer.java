@@ -134,7 +134,7 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 				this.gameFlow.playOrder();
 				this.gameFlow.dealTiles();
 				 this.matrizLetras = this.gameFlow.sendTiles();
-				 setMensaje(matrizLetras);
+//				 setMensaje(matrizLetras);
 				 
 			}
 		}
@@ -143,10 +143,24 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 				GameUpdate(mensajeRecibido);
 				if(gameFlow.getGame().getPlayerList().getHead().getData().getName().toLowerCase().equals(decode.datos[1].toLowerCase())) {
 					System.out.println("turno de jugador: "+decode.datos[1]);
-				}
+					System.out.println(Arrays.deepToString(myMatriz(decode.datos[1])));
+					if(myMatriz(decode.datos[1]) != null) {
+						setMensaje1(myMatriz(decode.datos[1]));
+					}else {
+						setMensaje("");
+					}
+					}
 				}
 		}
-
+	public String[] myMatriz(String name) {
+		for(String[]i:this.matrizLetras) {
+			System.out.println(Arrays.deepToString(i));
+			if(i[0].toLowerCase().equals(name)) {
+				return i;
+			}
+		}
+		return null;
+	}
 
 
 
@@ -182,7 +196,7 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 		this.msjDatos.setMatriz(newMsj);
 		
 	}
-	public void setMensaje(String[][] matriz1) {
+	public void setMensaje1(String[] matriz1) {
 		this.msjDatos.setMatriz("");
 		this.msjDatos.setMatriz1(matriz1);
 		
