@@ -22,6 +22,7 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 	ArrayList<Shape> fichasPosList = new ArrayList<Shape>();
 	Boolean alreadyPlaced = false;
 	int cont=0;
+	public int posDeck;
 
 	public int getPosInicialX() {
 		return posInicialX;

@@ -97,11 +97,20 @@ public class BoardGUI extends JPanel{
 
 	}
 	public void getWordsLocation() {
+		String[][] fichas = new String[7][3];
 		for(int i = 0; i < lettersList.size();i++) {
+			while(lettersList.get(i).getPosF()!=null) {
+				System.out.println("while");
+				fichas[i][0] = Integer.toString(lettersList.get(i).posDeck);
+				fichas[i][1] = lettersList.get(i).posF;
+				fichas[i][2] = lettersList.get(i).getPosC();
+			}
+			}System.out.println(Arrays.deepToString(fichas));
+			
 			//System.out.println("Objeto: "+lettersList.get(i)+"\n"+"Letra: "+lettersList.get(i).getLetterAsigned()+"\n"+"PosX: "+lettersList.get(i).getX()+"\n"+"PosY: "+lettersList.get(i).getY());
-			System.out.println("Columna: "+lettersList.get(i).getPosC()+"\n"+"Fila: "+lettersList.get(i).getPosF()+"\n"+"Letra: "+lettersList.get(i).getLetterAsigned()+"\n"+"PosX: "+lettersList.get(i).getX()+"\n"+"PosY: "+lettersList.get(i).getY());
+//			System.out.println("Columna: "+lettersList.get(i).getPosC()+"\n"+"Fila: "+lettersList.get(i).getPosF()+"\n"+"Letra: "+lettersList.get(i).getLetterAsigned()+"\n"+"PosX: "+lettersList.get(i).getX()+"\n"+"PosY: "+lettersList.get(i).getY());
 		}
-	}
+	
 	public void crearTitles(String[] titles) {
 		for(int i=1;i<8;i++) {
 			System.out.println(Arrays.deepToString(titles));
