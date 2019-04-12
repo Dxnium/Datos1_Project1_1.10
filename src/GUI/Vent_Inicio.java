@@ -52,15 +52,16 @@ public class Vent_Inicio extends JFrame {
 		contentPane.setLayout(null);
 		
 		contentPane2 = new JPanel();
-		contentPane2.setBorder(new EmptyBorder(5, 5, 5, 5));
+	
 		contentPane2.setLayout(null);
-		contentPane2.setBounds(550, 300, 154, 50);
+		contentPane2.setBounds(550, 300, 167, 59);
+		contentPane2.setBackground(Color.BLACK);
 		
 		contentPane3 = new JPanel();
 		contentPane3.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane3.setLayout(null);
-		contentPane3.setBounds(550, 370, 154, 50);
-		
+		contentPane3.setBounds(550, 370, 167, 59);
+		contentPane3.setBackground(new Color(0, 85, 106));
 		
 		
 		
@@ -74,6 +75,7 @@ public class Vent_Inicio extends JFrame {
 		JButton buttonServer = new JButton("Server");
 		
 		contentPane.add(fondo);
+		contentPane.setOpaque(false);
 		//*************************************************
 		JLabel lblBienvenidosAScrabble = new JLabel("Bienvenidos a Scrabble");
 		lblBienvenidosAScrabble.setFont(new Font("Tahoma", Font.BOLD, 30));
@@ -90,9 +92,13 @@ public class Vent_Inicio extends JFrame {
 				Vent_Inicio.this.dispose();				
 			}
 		});
-		btnIniciar.setBounds(0, 0, 165, 57);
-		contentPane2.add(btnIniciar);
+		btnIniciar.setBounds(0, 0, 167, 59);
+
 		
+		contentPane.add(btnIniciar);
+
+	
+
 		
 		JButton btnUnirse = new JButton();
 		
@@ -104,9 +110,11 @@ public class Vent_Inicio extends JFrame {
 				Vent_Inicio.this.dispose();	
 			}
 		});
-		btnUnirse.setBounds(0, 0, 165, 57);
-		contentPane3.add(btnUnirse);
-		
+		btnUnirse.setBounds(0, 0, 167, 59);
+	
+	
+		contentPane.add(btnUnirse);
+
 		
 		this.add(contentPane2);
 		this.add(contentPane3);
