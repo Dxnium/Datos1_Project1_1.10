@@ -29,7 +29,7 @@ public class BoardGUI extends JPanel{
 	ArrayList<LetterGUI> lettersList = new ArrayList<LetterGUI>();
 	Image labelImg = new ImageIcon("Images\\img.png").getImage(); 
 	Image reglasImg = new ImageIcon("Images\\botonAyuda.png").getImage();
-	ArrayList<letterOnMatrix> letterPosList = new ArrayList<letterOnMatrix>();
+	
 	
 
 	public BoardGUI(String[][] matrix,String name){

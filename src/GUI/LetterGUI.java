@@ -129,26 +129,6 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-
-	}
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		
 		Shape rect2 = new Rectangle(Integer.parseInt(this.getPosF())*50, Integer.parseInt(this.getPosC())*50,50,50);
 		fichasPosList.add(rect2);
 		System.out.println(fichasPosList.toString());
@@ -178,6 +158,27 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 			}
 
 		}
+
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		
+		
 
 
 	}
