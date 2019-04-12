@@ -18,6 +18,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.awt.Font;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 // TODO: Auto-generated Javadoc
@@ -85,8 +86,8 @@ public class Vent_Jugadores extends JFrame implements ActionListener {
 		contentPane.add(CodigoInvitacion);
 		CodigoInvitacion.setColumns(10);
 		
-		JButton btnContinuar = new JButton("Continuar");
-		btnContinuar.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JButton btnContinuar = new JButton();
+		btnContinuar.setIcon(new ImageIcon("Images\\continuar.png)"));
 		btnContinuar.setBounds(169, 194, 106, 38);
 		btnContinuar.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {

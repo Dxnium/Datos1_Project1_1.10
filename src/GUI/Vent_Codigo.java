@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.StringWriter;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -74,8 +75,8 @@ public class Vent_Codigo extends JFrame {
 		textField_IP.setColumns(10);
 		
 		
-		JButton btnContinuar = new JButton("Unirse");
-		btnContinuar.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JButton btnContinuar = new JButton();
+		btnContinuar.setIcon(new ImageIcon("Images\\continuar.png)"));
 		btnContinuar.setBounds(167, 299, 102, 31);
 		btnContinuar.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {

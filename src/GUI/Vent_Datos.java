@@ -6,6 +6,7 @@ import java.io.StringWriter;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -72,8 +73,8 @@ public class Vent_Datos extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 
-		JButton btnNewButton = new JButton("Continuar");
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JButton btnNewButton = new JButton();
+		btnNewButton.setIcon(new ImageIcon("Images\\continuar.png)"));
 		btnNewButton.setBounds(161, 194, 89, 23);
 
 		btnNewButton.addActionListener(new ActionListener() {
