@@ -5,6 +5,8 @@ public class WordListNode {
 	String[] data;
 	WordListNode next;
 	
+
+
 	public String[] getData() {
 		return data;
 	}

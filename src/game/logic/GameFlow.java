@@ -47,7 +47,7 @@ public class GameFlow {
 //		f.setVisible(true);
 		//promptGameStart();
 		//game.generateGameCode();
-		//iniciar();
+		iniciar();
 		
 		
 		
@@ -235,14 +235,14 @@ public class GameFlow {
 	
 	public static String[][] playTurn(String[][] tilesToUse) throws IOException {//class that the client will use to select tiles and positions on the matrix
 //		int index=0;
-//		String[][] tilesToUse= new String[7][3];
+//		String[][] tilesToUse= new String[7][3];	
 //		while(index<7) {
 //			out.println("Cual ficha desea usar");
 //			String selection = in.readLine();
 //			out.println("En que posicion desea colocarla?");
-//			out.println("Fila:");									NO BORRAR.
+//			out.println("Fila:");									
 //			String positionX=in.readLine();
-//			out.println("Columna:");
+//			out.println("Columna:");							NO BORRAR DESCOMENTAR PARA LOCAL
 //			String positionY=in.readLine();
 //			tilesToUse[index][0]=selection;
 //			tilesToUse[index][1]=positionX;
@@ -256,24 +256,24 @@ public class GameFlow {
 //			index++;
 //		}
 		int count=0;
-		String playerName=tilesToUse[0][0];
-		for(int index=0;index!=tilesToUse.length;index++) {
-			if(tilesToUse[index][1]!=null) {
+		//String playerName=tilesToUse[0][0];
+		for(int index2=0;index2!=tilesToUse.length;index2++) {
+			if(tilesToUse[index2][1]!=null) {
 				count++;
 			}
 			
 		}
 		String[][] finalTilesToUse= new String [count][3];
-		for(int index=0;index!=tilesToUse.length;index++) {
-			if(tilesToUse[index][1]!=null) {
-				finalTilesToUse[index][0]=tilesToUse[index][0];
-				finalTilesToUse[index][1]=tilesToUse[index][1];
-				finalTilesToUse[index][2]=tilesToUse[index][2];
+		for(int index1=0;index1!=tilesToUse.length;index1++) {
+			if(tilesToUse[index1][1]!=null) {
+				finalTilesToUse[index1][0]=tilesToUse[index1][0];
+				finalTilesToUse[index1][1]=tilesToUse[index1][1];
+				finalTilesToUse[index1][2]=tilesToUse[index1][2];
 			}
 		}
 		out.println(Arrays.deepToString(finalTilesToUse));
 		out.println(" ");
-		//return finalTilesToUse; NO BORRAR
+		return finalTilesToUse;
 		
 		
 		
@@ -293,13 +293,13 @@ public class GameFlow {
 		String action = in.readLine();
 
 		if (action.equals("Jugar")||action.equals("jugar")) {
-			String[][] selectedTiles = playTurn(node);
-			if(verifyOrientation(selectedTiles).equals("invalid")) {
-				out.println("Posicion de ficha invalida, por favor intente de nuevo");
-				turnHandler(node);
-			}
-			String [][] sortedTiles=sortSelectedTiles(verifyOrientation(selectedTiles),selectedTiles);
-			updateTableTop(sortedTiles,node,verifyOrientation(selectedTiles));
+			//String[][] selectedTiles = playTurn(node);  DESCOMENTAR PARA LOCAL
+//			if(verifyOrientation(selectedTiles).equals("invalid")) {
+//				out.println("Posicion de ficha invalida, por favor intente de nuevo");
+//				turnHandler(node);
+//			}
+//			String [][] sortedTiles=sortSelectedTiles(verifyOrientation(selectedTiles),selectedTiles); DESCOMENTAR PARA LOCAL
+//			updateTableTop(sortedTiles,node,verifyOrientation(selectedTiles));
 
 				
 			}else if(action.equals("Pasar")||action.equals("pasar")) {
@@ -472,13 +472,7 @@ public class GameFlow {
 	}
 
 	private static void processPlayedWords(String[][] sortedTiles,PlayerLinkedListNode node) throws IOException {
-		
-		for(WordListNode current= game.getPlayedWords().getHead();current.getNext()!=null;current.getNext()) {
-			if(current.getData()[0].length()==1) {
-				game.getPlayedWords().eraseData(current.getData());
-			}
-		
-		}
+	
 //		for(WordListNode wordNode=game.getPlayedWords().getHead();wordNode.getNext()!=null;wordNode=wordNode.getNext()) {
 //			for(WordListNode wordNode2=wordNode.getNext();wordNode2.getNext()!=null;wordNode2=wordNode2.getNext()) {
 //				if((wordNode.getData()[0].equals(wordNode2.getNext().getData()[0])&&(wordNode.getData()[1].equals(wordNode2.getNext().getData()[1])))){
@@ -486,14 +480,15 @@ public class GameFlow {
 //				}
 			//}
 		//}	
-//		int index1=0;
-//		WordListNode current1= game.getPlayedWords().getHead();
-//		while(index1<game.getPlayedWords().getLength()) {
-//			out.println(Arrays.deepToString(current1.getData()));
-//			current1=current1.getNext();
-//			index1++;
-//		}
-		eraseUsedTiles(sortedTiles, node);
+		game.getPlayedWords().removeDuplicates();
+		int index=0;
+		WordListNode current= game.getPlayedWords().getHead();
+		while(index<game.getPlayedWords().getLength()) {
+			out.println(Arrays.deepToString(current.getData()));
+			current=current.getNext();
+			index++;
+		}
+		eraseUsedTiles(sortedTiles,node);
 		refillTiles(node);
 		game.setTurn(game.getTurn()+1);
 		game.getPlayedWords().setHead(null);
