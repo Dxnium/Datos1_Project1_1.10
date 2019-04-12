@@ -74,7 +74,7 @@ public class Vent_Datos extends JFrame {
 		textField.setColumns(10);
 
 		JButton btnNewButton = new JButton();
-		btnNewButton.setIcon(new ImageIcon("Images\\continuar.png)"));
+		btnNewButton.setIcon(new ImageIcon("Images\\continuar.png"));
 		btnNewButton.setBounds(161, 194, 89, 23);
 
 		btnNewButton.addActionListener(new ActionListener() {

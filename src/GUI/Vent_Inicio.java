@@ -30,7 +30,7 @@ import java.awt.event.ActionEvent;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Vent_Inicio.
+ * The Class Vent_Inicio es la ventana
  */
 public class Vent_Inicio extends JFrame {
 
