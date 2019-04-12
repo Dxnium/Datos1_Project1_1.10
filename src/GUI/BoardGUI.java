@@ -35,13 +35,13 @@ public class BoardGUI extends JPanel{
 	public BoardGUI(String[][] matrix,String name){
 		this.myName = name;
 		botonReglas reglas = new botonReglas();
-		reglas.setBounds(1000,10,128,128);
+		reglas.setBounds(1000,10,167,59);
 		reglas.setIcon(new ImageIcon(reglasImg));
 		this.add(reglas);
 
-		JButton btnScrabble = new JButton("Scrabble");
-		btnScrabble.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnScrabble.setBounds(1000, 500, 102, 31);
+		JButton btnScrabble = new JButton();
+		btnScrabble.setIcon(new ImageIcon("Images\\scrabble.png"));
+		btnScrabble.setBounds(1000, 500, 167, 59);
 		btnScrabble.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				getWordsLocation();
@@ -65,9 +65,9 @@ public class BoardGUI extends JPanel{
 		this.add(btnConsulta);
 		//--------------------------------------------------------------------------
 		this.add(btnScrabble);
-		JButton btnNext = new JButton("Next");
-		btnNext.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNext.setBounds(1000, 600, 102, 31);
+		JButton btnNext = new JButton();
+		btnNext.setIcon(new ImageIcon("Images\\pasar.png"));
+		btnNext.setBounds(1000, 600, 167, 59);
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
