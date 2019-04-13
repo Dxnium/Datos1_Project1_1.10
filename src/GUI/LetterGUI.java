@@ -198,8 +198,7 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 				setBounds(posX, posY, 50, 50);
 				this.setPosC(Integer.toString(posY/50));
 				this.setPosF(Integer.toString(posX/50));
-				//Shape rect2 = new Rectangle(posX, posY,50,50);
-				//fichasPosList.add(rect2);
+				
 
 			}
 		}

@@ -27,7 +27,7 @@ public class BoardJFrame extends JFrame {
 	/** The matrix is for writing the multipliers of the game board  */
 	String[][] matrix = new String[15][15];
 	
-	/** The name. */
+	/** The name is the player's name. */
 	public String name;
 	
 	/** The name. */

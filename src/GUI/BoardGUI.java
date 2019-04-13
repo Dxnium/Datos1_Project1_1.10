@@ -126,22 +126,6 @@ public class BoardGUI extends JPanel{
 		setLayout(null);
 
 
-
-		//		this.letterGUI = new LetterGUI("A",1);
-		//		lettersList.add(letterGUI);
-		//		this.add(letterGUI);
-		//		this.letterGUI = new LetterGUI("B",2);
-		//		lettersList.add(letterGUI);
-		//		this.add(letterGUI);
-		//		this.letterGUI = new LetterGUI("C",3);
-		//		lettersList.add(letterGUI);
-		//		this.add(letterGUI);
-		//		this.letterGUI = new LetterGUI("D",4);
-		//		lettersList.add(letterGUI);
-		//		this.add(letterGUI);
-		//		this.letterGUI = new LetterGUI("RR",300,450);
-		//		this.add(letterGUI);
-
 	}
 	
 	/**
@@ -181,8 +165,6 @@ public class BoardGUI extends JPanel{
 			System.out.println(Arrays.deepToString(fichas)+out);
 			this.cliente = new Cliente("localhost", "posicionLetras,"+";"+out.toString());
 			
-			//System.out.println("Objeto: "+lettersList.get(i)+"\n"+"Letra: "+lettersList.get(i).getLetterAsigned()+"\n"+"PosX: "+lettersList.get(i).getX()+"\n"+"PosY: "+lettersList.get(i).getY());
-//			System.out.println("Columna: "+lettersList.get(i).getPosC()+"\n"+"Fila: "+lettersList.get(i).getPosF()+"\n"+"Letra: "+lettersList.get(i).getLetterAsigned()+"\n"+"PosX: "+lettersList.get(i).getX()+"\n"+"PosY: "+lettersList.get(i).getY());
 		}
 	
 	/**
