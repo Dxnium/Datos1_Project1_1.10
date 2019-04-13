@@ -14,12 +14,12 @@ import com.sun.org.apache.xerces.internal.util.URI.MalformedURIException;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class botonReglas.
+ * The Class botonReglas contains the specific characteristics of a button and the methods for addressing to a Web page when clicked.
  */
 @SuppressWarnings("serial")
 public class botonReglas extends JLabel {
 	
-	/** The link. */
+	/** The link to a web page which contains the rules of Scrabble. */
 	private String link = "http://www.redeletras.com/rules.play.php";
 	
 	/** The inside. */
