@@ -20,7 +20,7 @@ import com.sun.org.apache.xerces.internal.util.URI.MalformedURIException;
 public class botonReglas extends JLabel {
 	
 	/** The link to a web page which contains the rules of Scrabble. */
-	private String link = "http://www.redeletras.com/rules.play.php";
+	private String link = "https://es.wikihow.com/jugar-Scrabble";
 	
 	/** The inside. */
 	private boolean inside;

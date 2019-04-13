@@ -151,7 +151,7 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 	}
 
 
-	
+	String letter;
 	/**
 	 * Instantiates a new letter GUI.
 	 *
@@ -160,6 +160,7 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 	 */
 
 	public LetterGUI(String letter, int x){
+		this.letter = letter;
 		this.posDeck = x;
 		alphabetFill();
 		alphabetIMGFill();
