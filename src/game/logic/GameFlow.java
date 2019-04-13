@@ -96,7 +96,7 @@ public class GameFlow {
 	 * @param word the word
 	 * @return true, if successful
 	 */
-	private static boolean verifyWord(String word)    {
+	public static boolean verifyWord(String word)    {
 		DictionaryNode current;
 
 		for(current =game.getDictionary().getWordBook().getHead(); current != null; current = current.getNext()) {

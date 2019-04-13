@@ -109,6 +109,7 @@ public class BoardGUI extends JPanel{
 		btnScrabble.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				getWordsLocation();
+				receiveValidation(cliente.msg);	
 			}});
 		//------------------------------------------------------------------------
 		JButton btnConsulta = new JButton();
