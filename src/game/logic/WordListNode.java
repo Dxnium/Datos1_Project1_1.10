@@ -2,7 +2,7 @@ package game.logic;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class WordListNode.
+ * A simple node that takes a String Array type as data. Serves as node for the PlayedWordList Class
  */
 public class WordListNode {
 	

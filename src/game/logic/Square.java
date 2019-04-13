@@ -2,14 +2,14 @@ package game.logic;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Square.
+ * The class square is an abstraction of a scrabble board placement space. 
+ * square objects are used as fillers for the tabletop rows, these objects store a desired LetterTile object and have a set attribute of Integer type
+ * called multiplier. The object then allows for an easy logical operation in which the value of the LetterTile's attribute "score" is increased times the
+ * multiplier value. Additionally the class has a boolean attribute called "activeFlag", which indicates if the multiplier has been used (true for unused, false for used).
  */
 public class Square {
 	
 
-	/** The letter. */
-	private LetterTile letter;
-	
 	/** The multiplier. */
 	private Integer multiplier;
 

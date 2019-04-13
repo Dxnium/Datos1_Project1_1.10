@@ -7,10 +7,10 @@ import java.io.PrintStream;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Player.
+ * The player class has key attributes for game logic, such as the name of the player (graphical identifier), an array "dock" which will serve 
+ * as storage for the tiles that belong to the player, the player score, the amount of tiles currently on the dock array
  */
-public class Player {//The player class has key attributes for game logic, such as the name of the player (graphical identifier), an array dock which will serve 
-							//as storage for the tiles that belong to the player, and the player score.
+public class Player {
 	
 	/** The name. */
 private String name;

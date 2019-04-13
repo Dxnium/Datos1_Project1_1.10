@@ -2,10 +2,10 @@ package game.logic;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class DictionaryNode.
+ * A simple node for the dictionary linked list that stores a string data, serves as node for the DictionaryLinkedList Class.
  */
 public class DictionaryNode {/** The data. */
-// a simple node for the dictionary linked list that stores a string data
+
 	private String data;
 	
 	/** The next. */
@@ -15,7 +15,7 @@ public class DictionaryNode {/** The data. */
 	/**
 	 * Instantiates a new dictionary node.
 	 *
-	 * @param data the data
+	 * @param data String value 
 	 */
 	public DictionaryNode(String data) {
 		this.data=data;
