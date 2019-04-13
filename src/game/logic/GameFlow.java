@@ -272,7 +272,7 @@ public class GameFlow {
 	 * @return the string[][] finalTilesToUse
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public static String[][] playTurn(String [][] allTiles) throws IOException {//class that the client will use to select tiles and positions on the matrix
+	public static String[][] playTurn(String [] allTiles) throws IOException {//class that the client will use to select tiles and positions on the matrix
 //		int index=0;
 //		String[][] tilesToUse= new String[7][3];	
 //		while(index<7) {
