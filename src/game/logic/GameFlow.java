@@ -295,28 +295,34 @@ public class GameFlow {
 //			index++;
 //		}
 		
-		int count=0;
+		
+		
+		
+		
+//		int count=0;
 //		String playerName=tilesToUse[0][0];
-		for(int index2=0;index2!=tilesToUse.length;index2++) {
-			if(tilesToUse[index2][1]!=null) {
-				count++;
-			}
-			
-		}
-		String[][] finalTilesToUse= new String [count][3];
-		for(int index1=0;index1!=tilesToUse.length;index1++) {
-			if(tilesToUse[index1][1]!=null) {
-				finalTilesToUse[index1][0]=tilesToUse[index1][0];
-				finalTilesToUse[index1][1]=tilesToUse[index1][1];
-				finalTilesToUse[index1][2]=tilesToUse[index1][2];
-			}
-		}
-		out.println(Arrays.deepToString(finalTilesToUse));
-		out.println(" ");
-		return finalTilesToUse;
-		
-		
-		
+//		for(int index2=0;index2!=tilesToUse.length;index2++) {
+//			if(tilesToUse[index2][1]!=null) {
+//				count++;
+//			}
+//			
+//		}
+//		String[][] finalTilesToUse= new String [count][3];
+//		for(int index1=0;index1!=tilesToUse.length;index1++) {
+//			if(tilesToUse[index1][1]!=null) {
+//				finalTilesToUse[index1][0]=tilesToUse[index1][0];
+//				finalTilesToUse[index1][1]=tilesToUse[index1][1];
+//				finalTilesToUse[index1][2]=tilesToUse[index1][2];
+//			}
+//		}
+//		out.println(Arrays.deepToString(finalTilesToUse));
+//		out.println(" ");
+//		return finalTilesToUse;
+//		
+//		
+//		
+		System.out.println(Arrays.deepToString(allTiles));
+		return null;
 		}
 	
 		
@@ -339,21 +345,22 @@ public class GameFlow {
 		String action = in.readLine();
 
 		if (action.equals("Jugar")||action.equals("jugar")) {
-			String[][] selectedTiles = playTurn(node);  //DESCOMENTAR PARA LOCAL
-			if(verifyOrientation(selectedTiles).equals("invalid")) {
-				out.println("Posicion de ficha invalida, por favor intente de nuevo");
-				turnHandler(node);
-			}
-			String [][] sortedTiles=sortSelectedTiles(verifyOrientation(selectedTiles),selectedTiles); //DESCOMENTAR PARA LOCAL
-			updateTableTop(sortedTiles,node,verifyOrientation(selectedTiles));
-
-				
-			}else if(action.equals("Pasar")||action.equals("pasar")) {
-				game.setTurn(game.getTurn()+1);
-				turnHandler(node.getNext());
-			}
-		out.println("\n");
-		out.println("&&&&&&&&&&&&&&&&&&");
+////			String[][] selectedTiles = playTurn();  //DESCOMENTAR PARA LOCAL
+//			if(verifyOrientation(selectedTiles).equals("invalid")) {
+//				out.println("Posicion de ficha invalida, por favor intente de nuevo");
+//				turnHandler(node);
+//			}
+//			String [][] sortedTiles=sortSelectedTiles(verifyOrientation(selectedTiles),selectedTiles); //DESCOMENTAR PARA LOCAL
+//			updateTableTop(sortedTiles,node,verifyOrientation(selectedTiles));
+//
+//				
+//			}else if(action.equals("Pasar")||action.equals("pasar")) {
+//				game.setTurn(game.getTurn()+1);
+//				turnHandler(node.getNext());
+//			}
+//		out.println("\n");
+//		out.println("&&&&&&&&&&&&&&&&&&");
+		}
 		}
 	
 	

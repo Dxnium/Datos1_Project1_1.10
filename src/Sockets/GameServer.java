@@ -220,7 +220,9 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 //					System.out.println(">>Lista de posiciones de letra: "+ mensajeRecibido.split(";")[1].split(":")[2]);
 					String data = mensajeRecibido.split(";")[1].substring(1, 90);
 					data = data.replace(" ", "");
+					String [] data1 = data.split(",");
 					System.out.println(">>Lista de posiciones de letra: "+ data);
+					gameFlow.playTurn(data1);
 					
 //					
 //					gameFlow.playTurn(data);
