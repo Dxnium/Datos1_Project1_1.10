@@ -14,6 +14,9 @@ import java.util.Arrays;
 
 import org.json.simple.JSONArray;
 
+import com.twilio.SMS;
+import com.twilio.SMS_Sender;
+
 import JSON.Decode;
 import JSON.Encode;
 import game.logic.GameFlow;
@@ -31,6 +34,7 @@ public class GameServer implements Runnable   {
 	//
 	private myQueue<Socket> clientsQueue = new myQueue<Socket>();
 	
+
 	/** The server. */
 	ServerSocket server;  
 	
@@ -156,6 +160,14 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 		System.out.println("password: "+ this.password);
 		setMensaje(this.password);
 	}
+	
+	if(mensajeRecibido.contains("ExpSMS")) {
+		  System.out.println("Envio SMS");
+		  SMS_Sender EnvSMS = new SMS_Sender();
+		  EnvSMS.setVisible(true);		
+			
+		}
+	
 	//se crea el juego
 		if(mensajeRecibido.contains("startgame")) {
 			System.out.println(">>iniciando juego");
@@ -188,6 +200,8 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 				 
 			}
 		}
+		
+	
 			if(mensajeRecibido.contains("checkTurno")) {
 				
 				System.out.println("gameTurno");
@@ -243,6 +257,7 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 				if(mensajeRecibido.contains("matriz")) {
 						this.ver = true;
 						}
+				
 				
 		}
 	
