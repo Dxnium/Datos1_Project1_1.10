@@ -17,6 +17,7 @@ import java.util.Arrays;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import org.apache.http.client.utils.Punycode;
@@ -227,6 +228,13 @@ public class BoardGUI extends JPanel{
 			}
 		}
 		
+	}
+	public void receiveValidation(Boolean valid){
+		if(valid == true) {
+			JOptionPane.showMessageDialog(this,"Su palabra se encuentra en el diccionario"); 
+		}else {
+			JOptionPane.showMessageDialog(this,"Su palabra no se encuentra en el diccionario");
+		}
 	}
 	
 	/**
