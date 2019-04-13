@@ -4,6 +4,7 @@
     <eAnnotations xmi:id="_6bUYEF2kEemHI4NzGaQ8Pg" source="http://ns.yatta.de/umllab">
       <contents xmi:type="ecore:EAnnotation" xmi:id="_6bYCcF2kEemHI4NzGaQ8Pg" source="codegen">
         <details xmi:id="_6bYpgF2kEemHI4NzGaQ8Pg" key="codegenDirectory" value="/Container/src"/>
+        <details xmi:id="_lomFIF2mEemHI4NzGaQ8Pg" key="AssociatedSourceCode" value="/Container/src/GUI/BoardGUI.java;2922531983/1;/Container/src/GUI/BoardJFrame.java;2605188283/1;/Container/src/game/logic/PlayerLinkedListNode.java;1737158492/1;/Container/src/GUI/Vent_Codigo.java;3955296851/1;/Container/src/GUI/Vent_Datos.java;650815424/1;/Container/src/GUI/Vent_Inicio.java;2416209396/1;/Container/src/GUI/Vent_Jugadores.java;691825193/1;/Container/src/GUI/botonReglas.java;2312930750/1;/Container/src/GameClient/Client.java;1068074037/1;/Container/src/GameClient/MainClient.java;4224642060/1;/Container/src/JSON/Decode.java;2211021220/1;/Container/src/JSON/Encode.java;1153797805/1;/Container/src/Msg/Message.java;4215548287/1;/Container/src/Sockets/Cliente.java;3462774054/1;/Container/src/Sockets/GameServer.java;1725016393/1;/Container/src/com/twilio/SMS.java;437852791/1;/Container/src/com/twilio/SMS_Sender.java;3127921845/1;/Container/src/game/logic/PlayerLinkedList.java;4151878938/1;/Container/src/game/logic/Dictionary.java;3162081684/1;/Container/src/game/logic/DictionaryLinkedList.java;3930649526/1;/Container/src/game/logic/DictionaryNode.java;428984254/1;/Container/src/game/logic/PlayedWordList.java;3621680536/1;/Container/src/game/logic/LetterTile.java;3305370085/1;/Container/src/game/logic/GameFlow.java;3250324270/1;/Container/src/game/logic/Player.java;1192825601/1;/Container/src/game/logic/Board.java;783834570/1;/Container/src/GUI/LetterGUI.java;3219442623/1;/Container/src/game/logic/Square.java;1825766580/1;/Container/src/game/logic/WordListNode.java;2626676037/1;/Container/src/queue/myQueue.java;3385374215/1;"/>
       </contents>
     </eAnnotations>
     <elementImport xmi:id="_7M0tgF2kEemHI4NzGaQ8Pg">
@@ -184,42 +185,15 @@
         </ownedComment>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7kRkM12kEemHI4NzGaQ8Pg" name="arrayData" specification="_7gBWUF2kEemHI4NzGaQ8Pg">
           <ownedParameter xmi:id="_7kRkNF2kEemHI4NzGaQ8Pg" name="obj" type="_7TRTwF2kEemHI4NzGaQ8Pg"/>
-          <ownedParameter xmi:id="_7kRkNV2kEemHI4NzGaQ8Pg" type="_7fVZ0V2kEemHI4NzGaQ8Pg" direction="return"/>
+          <ownedParameter xmi:id="_7kRkNV2kEemHI4NzGaQ8Pg" type="_7fVZ0V2kEemHI4NzGaQ8Pg" direction="return">
+            <name xsi:nil="true"/>
+          </ownedParameter>
           <language>java</language>
           <body>JSONArray array = new JSONArray();&#xD;
 			array.add(obj);&#xD;
 		return array;&#xD;
 	</body>
         </ownedBehavior>
-        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7kSLQF2kEemHI4NzGaQ8Pg" name="main" specification="_7TPekF2kEemHI4NzGaQ8Pg">
-          <ownedParameter xmi:id="_7kSLQV2kEemHI4NzGaQ8Pg" name="args">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7kSLQl2kEemHI4NzGaQ8Pg" value="*"/>
-          </ownedParameter>
-          <language>java</language>
-          <body>Encode datos = new Encode();&#xD;
-	//Crea el arreglo con los datos de la Clase &#xD;
-	JSONArray arr = datos.arrayData(new Message(&quot;Vacia&quot;));&#xD;
-	&#xD;
-	StringWriter out = new StringWriter();//crear un variable de tipo Writer para almacenar el array y poder mostarlo en pantalla &#xD;
-	try {&#xD;
-		arr.writeJSONString(out); //guardar el JSONArray en un string &#xD;
-	} catch (IOException e) {&#xD;
-		e.printStackTrace();&#xD;
-	}&#xD;
-	System.out.println(&quot;*****************ENCODE*****************&quot;);&#xD;
-	System.out.println(out);&#xD;
-	System.out.println(&quot;*****************DECODE*****************&quot;);&#xD;
-	Decode decode = new Decode(out);&#xD;
-	&#xD;
-	</body>
-        </ownedBehavior>
-        <ownedOperation xmi:id="_7TPekF2kEemHI4NzGaQ8Pg" name="main" isStatic="true" method="_7kSLQF2kEemHI4NzGaQ8Pg">
-          <ownedParameter xmi:id="_7TQFoF2kEemHI4NzGaQ8Pg" name="args">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7TQFoV2kEemHI4NzGaQ8Pg" value="*"/>
-          </ownedParameter>
-        </ownedOperation>
         <ownedOperation xmi:id="_7gBWUF2kEemHI4NzGaQ8Pg" name="arrayData" method="_7kRkM12kEemHI4NzGaQ8Pg">
           <ownedParameter xmi:id="_7gBWUV2kEemHI4NzGaQ8Pg" name="obj" type="_7TRTwF2kEemHI4NzGaQ8Pg"/>
           <ownedParameter xmi:id="_7hzfAF2kEemHI4NzGaQ8Pg" type="_7fVZ0V2kEemHI4NzGaQ8Pg" direction="return"/>
@@ -232,7 +206,8 @@
     <packagedElement xmi:type="uml:Package" xmi:id="_7NBh0V2kEemHI4NzGaQ8Pg" name="Msg">
       <packagedElement xmi:type="uml:Class" xmi:id="_7TRTwF2kEemHI4NzGaQ8Pg" name="Message">
         <ownedComment xmi:id="_7k9gtV2kEemHI4NzGaQ8Pg">
-          <body>The Class Message.</body>
+          <body>The Class Message save all messages that are going to be send by the server and client.&#xD;
+.</body>
         </ownedComment>
         <generalization xmi:id="_7h1UMl2kEemHI4NzGaQ8Pg" general="_7gDLgV2kEemHI4NzGaQ8Pg"/>
         <ownedAttribute xmi:id="_7i65UF2kEemHI4NzGaQ8Pg" name="matriz">
@@ -246,6 +221,7 @@
         <interfaceRealization xmi:id="_7hzfAV2kEemHI4NzGaQ8Pg" client="_7TRTwF2kEemHI4NzGaQ8Pg" supplier="_7gDykV2kEemHI4NzGaQ8Pg" contract="_7gDykV2kEemHI4NzGaQ8Pg"/>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7kSyUF2kEemHI4NzGaQ8Pg" name="getMatriz1" specification="_7TSh4F2kEemHI4NzGaQ8Pg">
           <ownedParameter xmi:id="_7kSyUV2kEemHI4NzGaQ8Pg" direction="return">
+            <name xsi:nil="true"/>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7kSyUl2kEemHI4NzGaQ8Pg" value="*"/>
           </ownedParameter>
@@ -286,13 +262,16 @@
           <ownedParameter xmi:id="_7kTZZF2kEemHI4NzGaQ8Pg" name="matriz">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
-          <ownedParameter xmi:id="_7kTZZV2kEemHI4NzGaQ8Pg" type="_7TRTwF2kEemHI4NzGaQ8Pg" direction="return"/>
+          <ownedParameter xmi:id="_7kTZZV2kEemHI4NzGaQ8Pg" type="_7TRTwF2kEemHI4NzGaQ8Pg" direction="return">
+            <name xsi:nil="true"/>
+          </ownedParameter>
           <language>java</language>
           <body>this.matriz = matriz;&#xD;
 	</body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7kUAcF2kEemHI4NzGaQ8Pg" name="getMatriz" specification="_7TZPkF2kEemHI4NzGaQ8Pg">
           <ownedParameter xmi:id="_7kUAcV2kEemHI4NzGaQ8Pg" direction="return">
+            <name xsi:nil="true"/>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
           <language>java</language>
@@ -319,7 +298,7 @@
 			obj.put(&quot;mensaje&quot;, matriz);&#xD;
 			}&#xD;
 		if(matrizJson!=null) {&#xD;
-		obj.put(&quot;MatrizJson&quot;, matrizJson.toJSONString());&#xD;
+			obj.put(&quot;MatrizJson&quot;, matrizJson.toJSONString());&#xD;
 		}&#xD;
 		JSONValue.writeJSONString(obj, out);&#xD;
 &#xD;
@@ -643,26 +622,6 @@
           </ownedComment>
           <ownedParameter xmi:id="_7Tlc0V2kEemHI4NzGaQ8Pg" name="newMsj">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          </ownedParameter>
-        </ownedOperation>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_7Tq8YF2kEemHI4NzGaQ8Pg" name="ClienteMain">
-        <ownedComment xmi:id="_7k_V4V2kEemHI4NzGaQ8Pg">
-          <body>The Class ClienteMain.</body>
-        </ownedComment>
-        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7kWcsF2kEemHI4NzGaQ8Pg" name="main" specification="_7TrjcF2kEemHI4NzGaQ8Pg">
-          <ownedParameter xmi:id="_7kWcsV2kEemHI4NzGaQ8Pg" name="args">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7kWcsl2kEemHI4NzGaQ8Pg" value="*"/>
-          </ownedParameter>
-          <language>java</language>
-          <body>Cliente cliente = new Cliente(&quot;localhost&quot;,&quot;checkTurno,DAniel&quot;);&#xD;
-	</body>
-        </ownedBehavior>
-        <ownedOperation xmi:id="_7TrjcF2kEemHI4NzGaQ8Pg" name="main" isStatic="true" method="_7kWcsF2kEemHI4NzGaQ8Pg">
-          <ownedParameter xmi:id="_7TsKgF2kEemHI4NzGaQ8Pg" name="args">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7TsKgV2kEemHI4NzGaQ8Pg" value="*"/>
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
@@ -998,30 +957,6 @@
           </ownedParameter>
         </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_7UcYcF2kEemHI4NzGaQ8Pg" name="Main">
-        <ownedComment xmi:id="_7k_89V2kEemHI4NzGaQ8Pg">
-          <body>The Class Main.</body>
-        </ownedComment>
-        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7kZgAF2kEemHI4NzGaQ8Pg" name="main" specification="_7UdmkF2kEemHI4NzGaQ8Pg">
-          <ownedParameter xmi:id="_7kZgAV2kEemHI4NzGaQ8Pg" name="args">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7kZgAl2kEemHI4NzGaQ8Pg" value="*"/>
-          </ownedParameter>
-          <language>java</language>
-          <body>//New thread running the Server&#xD;
-		GameServer hilo = new GameServer();&#xD;
-		hilo.password = &quot;dfasidfaisd&quot;;&#xD;
-		//&#xD;
-&#xD;
-	</body>
-        </ownedBehavior>
-        <ownedOperation xmi:id="_7UdmkF2kEemHI4NzGaQ8Pg" name="main" isStatic="true" method="_7kZgAF2kEemHI4NzGaQ8Pg">
-          <ownedParameter xmi:id="_7UdmkV2kEemHI4NzGaQ8Pg" name="args">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7Udmkl2kEemHI4NzGaQ8Pg" value="*"/>
-          </ownedParameter>
-        </ownedOperation>
-      </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_7l7KAV2kEemHI4NzGaQ8Pg" name="" memberEnd="_7l7KAl2kEemHI4NzGaQ8Pg _7i_KwF2kEemHI4NzGaQ8Pg">
         <ownedEnd xmi:id="_7l7KAl2kEemHI4NzGaQ8Pg" name="" type="_7Tc58F2kEemHI4NzGaQ8Pg" association="_7l7KAV2kEemHI4NzGaQ8Pg"/>
       </packagedElement>
@@ -1084,19 +1019,26 @@
           <defaultValue xmi:type="uml:LiteralString" xmi:id="_7ih3wF2kEemHI4NzGaQ8Pg" value="new Message(&quot;&quot;)"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_7iie0F2kEemHI4NzGaQ8Pg" name="encode" visibility="package" type="_7TO3gF2kEemHI4NzGaQ8Pg" association="_7ltHkV2kEemHI4NzGaQ8Pg"/>
+        <ownedAttribute xmi:id="_WAi1YF2qEemHI4NzGaQ8Pg" name="ip" visibility="package">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7kHMIF2kEemHI4NzGaQ8Pg" name="BoardGUI" specification="_7SOx8F2kEemHI4NzGaQ8Pg">
-          <ownedParameter xmi:id="_7kHMIV2kEemHI4NzGaQ8Pg" name="matrix">
+          <ownedParameter xmi:id="_WAl4sF2qEemHI4NzGaQ8Pg" name="matrix">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7kHMIl2kEemHI4NzGaQ8Pg" value="*"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WAl4sV2qEemHI4NzGaQ8Pg" value="*"/>
           </ownedParameter>
-          <ownedParameter xmi:id="_7kHMI12kEemHI4NzGaQ8Pg" name="name">
+          <ownedParameter xmi:id="_WAl4sl2qEemHI4NzGaQ8Pg" name="name">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
-          <ownedParameter xmi:id="_7kHMJF2kEemHI4NzGaQ8Pg" type="_7SFA8F2kEemHI4NzGaQ8Pg" direction="return"/>
+          <ownedParameter xmi:id="_WAl4s12qEemHI4NzGaQ8Pg" type="_7SFA8F2kEemHI4NzGaQ8Pg" direction="return"/>
+          <ownedParameter xmi:id="_WAl4tF2qEemHI4NzGaQ8Pg" name="ip">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
           <language>java</language>
-          <body>this.myName = name;&#xD;
+          <body>this.ip = ip;&#xD;
+		this.myName = name;&#xD;
 		botonReglas reglas = new botonReglas();&#xD;
-		reglas.setBounds(1000,10,174,164);&#xD;
+		reglas.setBounds(1000,0,174,164);&#xD;
 		reglas.setIcon(new ImageIcon(reglasImg));&#xD;
 		this.add(reglas);&#xD;
 &#xD;
@@ -1114,7 +1056,7 @@
 		btnConsulta.addActionListener(new ActionListener() {&#xD;
 			public void actionPerformed(ActionEvent arg0) {&#xD;
 				System.out.println(&quot;consulta&quot;);&#xD;
-				Cliente cliente = new Cliente(&quot;localhost&quot;,&quot;checkTurno,&quot;+ myName);&#xD;
+				Cliente cliente = new Cliente(ip,&quot;checkTurno,&quot;+ myName);&#xD;
 				if(cliente.msg.contains(&quot;MatrizJson&quot;)) {&#xD;
 					StringWriter toJson = new StringWriter();&#xD;
 					toJson = toJson.append(cliente.msg, 0,cliente.msg.length());&#xD;
@@ -1139,22 +1081,6 @@
 		setBounds(0, 0, 1200, 800);&#xD;
 		setLayout(null);&#xD;
 &#xD;
-&#xD;
-&#xD;
-		//		this.letterGUI = new LetterGUI(&quot;A&quot;,1);&#xD;
-		//		lettersList.add(letterGUI);&#xD;
-		//		this.add(letterGUI);&#xD;
-		//		this.letterGUI = new LetterGUI(&quot;B&quot;,2);&#xD;
-		//		lettersList.add(letterGUI);&#xD;
-		//		this.add(letterGUI);&#xD;
-		//		this.letterGUI = new LetterGUI(&quot;C&quot;,3);&#xD;
-		//		lettersList.add(letterGUI);&#xD;
-		//		this.add(letterGUI);&#xD;
-		//		this.letterGUI = new LetterGUI(&quot;D&quot;,4);&#xD;
-		//		lettersList.add(letterGUI);&#xD;
-		//		this.add(letterGUI);&#xD;
-		//		this.letterGUI = new LetterGUI(&quot;RR&quot;,300,450);&#xD;
-		//		this.add(letterGUI);&#xD;
 &#xD;
 	</body>
         </ownedBehavior>
@@ -1191,8 +1117,6 @@
 			System.out.println(Arrays.deepToString(fichas)+out);&#xD;
 			this.cliente = new Cliente(&quot;localhost&quot;, &quot;posicionLetras,&quot;+&quot;;&quot;+out.toString());&#xD;
 			&#xD;
-			//System.out.println(&quot;Objeto: &quot;+lettersList.get(i)+&quot;\n&quot;+&quot;Letra: &quot;+lettersList.get(i).getLetterAsigned()+&quot;\n&quot;+&quot;PosX: &quot;+lettersList.get(i).getX()+&quot;\n&quot;+&quot;PosY: &quot;+lettersList.get(i).getY());&#xD;
-//			System.out.println(&quot;Columna: &quot;+lettersList.get(i).getPosC()+&quot;\n&quot;+&quot;Fila: &quot;+lettersList.get(i).getPosF()+&quot;\n&quot;+&quot;Letra: &quot;+lettersList.get(i).getLetterAsigned()+&quot;\n&quot;+&quot;PosX: &quot;+lettersList.get(i).getX()+&quot;\n&quot;+&quot;PosY: &quot;+lettersList.get(i).getY());&#xD;
 		</body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7kMEoV2kEemHI4NzGaQ8Pg" name="crearTitles" specification="_7STqcF2kEemHI4NzGaQ8Pg">
@@ -1246,11 +1170,11 @@
 							for(int n =0;n&lt;lettersList.size();n++) {&#xD;
 							&#xD;
 								&#xD;
-								if(!lettersList.get(n).getPosC().equals(&quot;19&quot;) &amp;&amp; !lettersList.get(n).getPosF().equals(&quot;19&quot;)) {&#xD;
+								if(!lettersList.get(n).getPosC().equals(&quot;null&quot;) &amp;&amp; !lettersList.get(n).getPosF().equals(&quot;null&quot;)) {&#xD;
 									if(lettersList.get(j).getPosC().equals(lettersList.get(n).getPosC()) &amp;&amp; lettersList.get(j).getPosF().equals(lettersList.get(n).getPosF()) &amp;&amp; j != n) {&#xD;
 										lettersList.get(n).setLocation(lettersList.get(n).getPosInicialX(),lettersList.get(n).getPosInicialY());&#xD;
-										lettersList.get(n).setPosC(&quot;19&quot;);&#xD;
-										lettersList.get(n).setPosF(&quot;19&quot;);&#xD;
+										lettersList.get(n).setPosC(&quot;null&quot;);&#xD;
+										lettersList.get(n).setPosF(&quot;null&quot;);&#xD;
 									}&#xD;
 								}&#xD;
 							}&#xD;
@@ -1309,7 +1233,8 @@
             <body>Instantiates a new boardGUI that contains the game board where you can put tiles.&#xD;
 	 *&#xD;
 	 * @param matrix the matrix&#xD;
-	 * @param name the name</body>
+	 * @param name the name&#xD;
+	 * @param ip</body>
           </ownedComment>
           <ownedParameter xmi:id="_7SPZAF2kEemHI4NzGaQ8Pg" name="matrix">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -1319,6 +1244,9 @@
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
           <ownedParameter xmi:id="_7SROMF2kEemHI4NzGaQ8Pg" type="_7SFA8F2kEemHI4NzGaQ8Pg" direction="return"/>
+          <ownedParameter xmi:id="_WAfLAF2qEemHI4NzGaQ8Pg" name="ip">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:id="_7STDYF2kEemHI4NzGaQ8Pg" name="getWordsLocation" method="_7kMEoF2kEemHI4NzGaQ8Pg">
           <ownedComment xmi:id="_7k5PQl2kEemHI4NzGaQ8Pg">
@@ -1358,13 +1286,20 @@
         <ownedAttribute xmi:id="_7imJMV2kEemHI4NzGaQ8Pg" name="name">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
+        <ownedAttribute xmi:id="_WAiOUF2qEemHI4NzGaQ8Pg" name="ip">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7kMrsl2kEemHI4NzGaQ8Pg" name="BoardJFrame" specification="_7SdbcF2kEemHI4NzGaQ8Pg">
-          <ownedParameter xmi:id="_7kMrs12kEemHI4NzGaQ8Pg" name="name">
+          <ownedParameter xmi:id="_WAlRoF2qEemHI4NzGaQ8Pg" name="name">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
-          <ownedParameter xmi:id="_7kMrtF2kEemHI4NzGaQ8Pg" type="_7Sa_MF2kEemHI4NzGaQ8Pg" direction="return"/>
+          <ownedParameter xmi:id="_WAlRoV2qEemHI4NzGaQ8Pg" type="_7Sa_MF2kEemHI4NzGaQ8Pg" direction="return"/>
+          <ownedParameter xmi:id="_WAlRol2qEemHI4NzGaQ8Pg" name="ip">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
           <language>java</language>
-          <body>setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);&#xD;
+          <body>this.ip = ip;&#xD;
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);&#xD;
 		setTitle(&quot;Scrabble - Juego&quot;);&#xD;
 		setSize(1200, 775);&#xD;
 		setLocationRelativeTo(null);&#xD;
@@ -1372,7 +1307,7 @@
 		setLayout(new BorderLayout());&#xD;
 		initializeTableTop();&#xD;
 		this.name = name;&#xD;
-		BoardGUI board = new BoardGUI(matrix,name);&#xD;
+		BoardGUI board = new BoardGUI(matrix,name,ip);&#xD;
 		&#xD;
 		&#xD;
 		this.add(board);&#xD;
@@ -1421,6 +1356,9 @@
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
           <ownedParameter xmi:id="_7SdbdF2kEemHI4NzGaQ8Pg" type="_7Sa_MF2kEemHI4NzGaQ8Pg" direction="return"/>
+          <ownedParameter xmi:id="_WAej8F2qEemHI4NzGaQ8Pg" name="ip">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:id="_7SeCgF2kEemHI4NzGaQ8Pg" name="initializeTableTop" method="_7kNSwF2kEemHI4NzGaQ8Pg"/>
       </packagedElement>
@@ -1434,7 +1372,9 @@
         <ownedAttribute xmi:id="_7ipzkF2kEemHI4NzGaQ8Pg" name="textField_IP" visibility="private" type="_7flRcV2kEemHI4NzGaQ8Pg" association="_7lwx8F2kEemHI4NzGaQ8Pg"/>
         <ownedAttribute xmi:id="_7iqaoF2kEemHI4NzGaQ8Pg" name="decode" type="_7TL0MF2kEemHI4NzGaQ8Pg" association="_7lxZAV2kEemHI4NzGaQ8Pg"/>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7kN50F2kEemHI4NzGaQ8Pg" name="Vent_Codigo" specification="_7Sl-UF2kEemHI4NzGaQ8Pg">
-          <ownedParameter xmi:id="_7kN50V2kEemHI4NzGaQ8Pg" type="_7SkJIF2kEemHI4NzGaQ8Pg" direction="return"/>
+          <ownedParameter xmi:id="_7kN50V2kEemHI4NzGaQ8Pg" type="_7SkJIF2kEemHI4NzGaQ8Pg" direction="return">
+            <name xsi:nil="true"/>
+          </ownedParameter>
           <language>java</language>
           <body>setTitle(&quot;Scrabble&quot;);&#xD;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);&#xD;
@@ -1474,7 +1414,7 @@
 		&#xD;
 		JButton btnContinuar = new JButton();&#xD;
 		btnContinuar.setIcon(new ImageIcon(&quot;Images\\continuar.png&quot;));&#xD;
-		btnContinuar.setBounds(167, 299, 102, 31);&#xD;
+		btnContinuar.setBounds(169, 270, 106, 38);&#xD;
 		btnContinuar.addActionListener(new ActionListener() {&#xD;
 		public void actionPerformed(ActionEvent arg0) {&#xD;
 			try {&#xD;
@@ -1490,7 +1430,7 @@
 				if (textField_Codigo.getText().equals(decode.datos[0])) {&#xD;
 					Cliente cliente2 = new Cliente(textField_Nombre.getText(), &quot;agregarJugador,&quot;+textField_IP.getText());&#xD;
 					Cliente cliente3 = new Cliente(textField_Nombre.getText(), &quot;playOrder&quot;);&#xD;
-					BoardJFrame boardJF = new BoardJFrame(textField_IP.getText());&#xD;
+					BoardJFrame boardJF = new BoardJFrame(textField_IP.getText(),textField_Nombre.getText());&#xD;
 					boardJF.name= textField_IP.getText();&#xD;
 					boardJF.setVisible(true);&#xD;
 					Vent_Codigo.this.dispose();&#xD;
@@ -1534,7 +1474,9 @@
         <ownedAttribute xmi:id="_7is24V2kEemHI4NzGaQ8Pg" name="decode" type="_7TL0MF2kEemHI4NzGaQ8Pg" association="_7lzOMV2kEemHI4NzGaQ8Pg"/>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7kOg4F2kEemHI4NzGaQ8Pg" name="Vent_Datos" specification="_7fr_IF2kEemHI4NzGaQ8Pg">
           <ownedParameter xmi:id="_7kOg4V2kEemHI4NzGaQ8Pg" name="server" type="_7TsxkF2kEemHI4NzGaQ8Pg"/>
-          <ownedParameter xmi:id="_7kOg4l2kEemHI4NzGaQ8Pg" type="_7SqPwF2kEemHI4NzGaQ8Pg" direction="return"/>
+          <ownedParameter xmi:id="_7kOg4l2kEemHI4NzGaQ8Pg" type="_7SqPwF2kEemHI4NzGaQ8Pg" direction="return">
+            <name xsi:nil="true"/>
+          </ownedParameter>
           <language>java</language>
           <body>this.server = server;&#xD;
 		setTitle(&quot;Scrabble&quot;);&#xD;
@@ -1562,7 +1504,7 @@
 &#xD;
 		JButton btnNewButton = new JButton();&#xD;
 		btnNewButton.setIcon(new ImageIcon(&quot;Images\\continuar.png&quot;));&#xD;
-		btnNewButton.setBounds(161, 194, 89, 23);&#xD;
+		btnNewButton.setBounds(169, 194, 106, 38);&#xD;
 &#xD;
 		btnNewButton.addActionListener(new ActionListener() {&#xD;
 			public void actionPerformed(ActionEvent arg0) {&#xD;
@@ -1571,7 +1513,7 @@
 					System.out.println(!textField.getText().isEmpty());&#xD;
 					if(!textField.getText().isEmpty()) {&#xD;
 						Cliente cliente = new Cliente(&quot;localhost&quot;,&quot;agregarJugador,&quot;+textField.getText());&#xD;
-						BoardJFrame boardJF = new BoardJFrame(textField.getText());&#xD;
+						BoardJFrame boardJF = new BoardJFrame(textField.getText(),&quot;localhost&quot;);&#xD;
 						boardJF.setVisible(true);&#xD;
 						Vent_Datos.this.dispose();&#xD;
 					}&#xD;
@@ -2009,11 +1951,11 @@ and position on matrix of a tile</body>
         </ownedAttribute>
         <ownedAttribute xmi:id="_7jtjgV2kEemHI4NzGaQ8Pg" name="posC" visibility="protected">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <defaultValue xmi:type="uml:LiteralString" xmi:id="_7juKkF2kEemHI4NzGaQ8Pg" value="&quot;19&quot;"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_7juKkF2kEemHI4NzGaQ8Pg" value="&quot;null&quot;"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_7juxoF2kEemHI4NzGaQ8Pg" name="posF" visibility="protected">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <defaultValue xmi:type="uml:LiteralString" xmi:id="_7juxoV2kEemHI4NzGaQ8Pg" value="&quot;19&quot;"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_7juxoV2kEemHI4NzGaQ8Pg" value="&quot;null&quot;"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_7jvYsV2kEemHI4NzGaQ8Pg" name="canBeRepositioned" visibility="protected">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
@@ -2032,6 +1974,7 @@ and position on matrix of a tile</body>
         <interfaceRealization xmi:id="_7iDWoF2kEemHI4NzGaQ8Pg" client="_7WPvQF2kEemHI4NzGaQ8Pg" supplier="_7hCC8F2kEemHI4NzGaQ8Pg" contract="_7hCC8F2kEemHI4NzGaQ8Pg"/>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7krM0l2kEemHI4NzGaQ8Pg" name="getPosInicialX" specification="_7WSykF2kEemHI4NzGaQ8Pg">
           <ownedParameter xmi:id="_7krM012kEemHI4NzGaQ8Pg" direction="return">
+            <name xsi:nil="true"/>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </ownedParameter>
           <language>java</language>
@@ -2048,6 +1991,7 @@ and position on matrix of a tile</body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7ksa8F2kEemHI4NzGaQ8Pg" name="getPosInicialY" specification="_7WUAsF2kEemHI4NzGaQ8Pg">
           <ownedParameter xmi:id="_7ksa8V2kEemHI4NzGaQ8Pg" direction="return">
+            <name xsi:nil="true"/>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </ownedParameter>
           <language>java</language>
@@ -2064,6 +2008,7 @@ and position on matrix of a tile</body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7ktpEF2kEemHI4NzGaQ8Pg" name="getPosC" specification="_7WVO0F2kEemHI4NzGaQ8Pg">
           <ownedParameter xmi:id="_7ktpEV2kEemHI4NzGaQ8Pg" direction="return">
+            <name xsi:nil="true"/>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
           <language>java</language>
@@ -2080,6 +2025,7 @@ and position on matrix of a tile</body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7kuQIF2kEemHI4NzGaQ8Pg" name="getPosF" specification="_7WWc8F2kEemHI4NzGaQ8Pg">
           <ownedParameter xmi:id="_7kuQIV2kEemHI4NzGaQ8Pg" direction="return">
+            <name xsi:nil="true"/>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
           <language>java</language>
@@ -2109,7 +2055,9 @@ and position on matrix of a tile</body>
           <ownedParameter xmi:id="_7ku3Ml2kEemHI4NzGaQ8Pg" name="x">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </ownedParameter>
-          <ownedParameter xmi:id="_7ku3M12kEemHI4NzGaQ8Pg" type="_7WPvQF2kEemHI4NzGaQ8Pg" direction="return"/>
+          <ownedParameter xmi:id="_7ku3M12kEemHI4NzGaQ8Pg" type="_7WPvQF2kEemHI4NzGaQ8Pg" direction="return">
+            <name xsi:nil="true"/>
+          </ownedParameter>
           <language>java</language>
           <body>this.posDeck = x;&#xD;
 		alphabetFill();&#xD;
@@ -2119,7 +2067,7 @@ and position on matrix of a tile</body>
 &#xD;
 			if(letter.equals(alphabet.get(i))) {&#xD;
 				setIcon(alphabetIMG.get(alphabet.indexOf(alphabet.get(i))));&#xD;
-				setBounds(700+((x*50)), 100, 50, 50);&#xD;
+				setBounds(700+((x*50)), 400, 50, 50);&#xD;
 				this.setPosInicialX(this.getX());&#xD;
 				this.setPosInicialY(this.getY());&#xD;
 &#xD;
@@ -2140,7 +2088,9 @@ and position on matrix of a tile</body>
           <ownedParameter xmi:id="_7ku3N12kEemHI4NzGaQ8Pg" name="posY">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
           </ownedParameter>
-          <ownedParameter xmi:id="_7ku3OF2kEemHI4NzGaQ8Pg" type="_7WPvQF2kEemHI4NzGaQ8Pg" direction="return"/>
+          <ownedParameter xmi:id="_7ku3OF2kEemHI4NzGaQ8Pg" type="_7WPvQF2kEemHI4NzGaQ8Pg" direction="return">
+            <name xsi:nil="true"/>
+          </ownedParameter>
           <language>java</language>
           <body>this.canBeRepositioned = false;&#xD;
 		alphabetFill();&#xD;
@@ -2153,8 +2103,7 @@ and position on matrix of a tile</body>
 				setBounds(posX, posY, 50, 50);&#xD;
 				this.setPosC(Integer.toString(posY/50));&#xD;
 				this.setPosF(Integer.toString(posX/50));&#xD;
-				//Shape rect2 = new Rectangle(posX, posY,50,50);&#xD;
-				//fichasPosList.add(rect2);&#xD;
+				&#xD;
 &#xD;
 			}&#xD;
 		}&#xD;
@@ -3171,6 +3120,7 @@ the Board Class, this class does all the logical verifications and is in charge 
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
             </ownedParameter>
             <ownedParameter xmi:id="_7kip8l2kEemHI4NzGaQ8Pg" direction="return">
+              <name xsi:nil="true"/>
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
             </ownedParameter>
             <language>java</language>
@@ -3187,10 +3137,11 @@ the Board Class, this class does all the logical verifications and is in charge 
 	</body>
           </ownedBehavior>
           <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7kip812kEemHI4NzGaQ8Pg" name="randomTileGenerator" specification="_7VSF8F2kEemHI4NzGaQ8Pg">
-            <ownedParameter xmi:id="_7kip9F2kEemHI4NzGaQ8Pg" type="_7VDccF2kEemHI4NzGaQ8Pg" direction="return"/>
+            <ownedParameter xmi:id="_7kip9F2kEemHI4NzGaQ8Pg" type="_7VDccF2kEemHI4NzGaQ8Pg" direction="return">
+              <name xsi:nil="true"/>
+            </ownedParameter>
             <language>java</language>
-            <body>//Method that generates a random letter tile, taking into consideration the amount&#xD;
-		int positionCounter=0;									// of tiles per letter, the tiles bigger in amount have a bigger chance of dropping																					&#xD;
+            <body>int positionCounter=0;																													&#xD;
 		int index=0;																			&#xD;
 		int randomNum = ThreadLocalRandom.current().nextInt(1, game.getDeckSize()+1);&#xD;
 		while(positionCounter&lt;randomNum) {&#xD;
@@ -3240,6 +3191,7 @@ the Board Class, this class does all the logical verifications and is in charge 
           </ownedBehavior>
           <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7kjRAV2kEemHI4NzGaQ8Pg" name="sendTiles" specification="_7VUiMV2kEemHI4NzGaQ8Pg">
             <ownedParameter xmi:id="_7kjRAl2kEemHI4NzGaQ8Pg" direction="return">
+              <name xsi:nil="true"/>
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
               <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7kjRA12kEemHI4NzGaQ8Pg" value="*"/>
             </ownedParameter>
@@ -3336,6 +3288,7 @@ the Board Class, this class does all the logical verifications and is in charge 
           <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7kj4El2kEemHI4NzGaQ8Pg" name="playTurn" specification="_7gqPgF2kEemHI4NzGaQ8Pg">
             <ownedParameter xmi:id="_7kj4E12kEemHI4NzGaQ8Pg" name="node" type="_7SgewF2kEemHI4NzGaQ8Pg"/>
             <ownedParameter xmi:id="_7kj4FF2kEemHI4NzGaQ8Pg" direction="return">
+              <name xsi:nil="true"/>
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
               <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7kj4FV2kEemHI4NzGaQ8Pg" value="*"/>
             </ownedParameter>
@@ -3389,9 +3342,7 @@ the Board Class, this class does all the logical verifications and is in charge 
           <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7kj4Fl2kEemHI4NzGaQ8Pg" name="turnHandler" specification="_7gq2kF2kEemHI4NzGaQ8Pg">
             <ownedParameter xmi:id="_7kj4F12kEemHI4NzGaQ8Pg" name="node" type="_7SgewF2kEemHI4NzGaQ8Pg"/>
             <language>java</language>
-            <body>//class that server will use to manage the turns&#xD;
-&#xD;
-		out.println(&quot;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&quot;);&#xD;
+            <body>out.println(&quot;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&quot;);&#xD;
 		out.print( &quot;Turno de:&quot;+ node.getData().getName());&#xD;
 		out.println(&quot;\n&quot;);&#xD;
 		out.println(&quot;Sus fichas son:&quot;);&#xD;
@@ -3427,13 +3378,13 @@ the Board Class, this class does all the logical verifications and is in charge 
               <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7kkfI12kEemHI4NzGaQ8Pg" value="*"/>
             </ownedParameter>
             <ownedParameter xmi:id="_7kkfJF2kEemHI4NzGaQ8Pg" direction="return">
+              <name xsi:nil="true"/>
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
               <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7kkfJV2kEemHI4NzGaQ8Pg" value="*"/>
             </ownedParameter>
             <language>java</language>
-            <body>//sorts tiles to play accordingly to the word orientation, uses bubblesort.&#xD;
-		int element=0;																							  //if the word is vertical, sorts ascendantly using the row number &#xD;
-		int length = selectedTiles.length; 																	 //if the word is horizontal, sorts ascendantly using the column number&#xD;
+            <body>int element=0;																						 &#xD;
+		int length = selectedTiles.length; 																	 &#xD;
 		String[] temp = null;&#xD;
 		if (orientation.equals(&quot;vertical&quot;)) {&#xD;
 			element=1;&#xD;
@@ -3461,11 +3412,11 @@ the Board Class, this class does all the logical verifications and is in charge 
               <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7kkfKF2kEemHI4NzGaQ8Pg" value="*"/>
             </ownedParameter>
             <ownedParameter xmi:id="_7kkfKV2kEemHI4NzGaQ8Pg" direction="return">
+              <name xsi:nil="true"/>
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
             </ownedParameter>
             <language>java</language>
-            <body>//determines the orientation of a word on the matrix(vertical, horizontal), else, determines invalid position&#xD;
-		String orientation = null;&#xD;
+            <body>String orientation = null;&#xD;
 		int index=0;&#xD;
 		boolean vertical=false;&#xD;
 		boolean horizontal=false;&#xD;
@@ -3554,9 +3505,6 @@ the Board Class, this class does all the logical verifications and is in charge 
 			&#xD;
 		}&#xD;
 		printTableTop();&#xD;
-//		int firstX=Integer.parseInt(sortedTiles[0][1]);&#xD;
-//		int firstY=Integer.parseInt(sortedTiles[0][2]);&#xD;
-//		checkNewWord(sortedTiles,firstX,firstY,node,orientation);&#xD;
 		for(int element=0;element!=sortedTiles.length;element++) {&#xD;
 			String[] horizontal=checkNewWord(sortedTiles,Integer.parseInt(sortedTiles[element][1]),Integer.parseInt(sortedTiles[element][2]),node,&quot;horizontal&quot;);&#xD;
 			String[] vertical=checkNewWord(sortedTiles,Integer.parseInt(sortedTiles[element][1]),Integer.parseInt(sortedTiles[element][2]),node,&quot;vertical&quot;);&#xD;
@@ -3582,6 +3530,7 @@ the Board Class, this class does all the logical verifications and is in charge 
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
             </ownedParameter>
             <ownedParameter xmi:id="_7kltR12kEemHI4NzGaQ8Pg" direction="return">
+              <name xsi:nil="true"/>
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
               <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7kltSF2kEemHI4NzGaQ8Pg" value="*"/>
             </ownedParameter>
@@ -3662,6 +3611,7 @@ the Board Class, this class does all the logical verifications and is in charge 
               <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7kmUVl2kEemHI4NzGaQ8Pg" value="*"/>
             </ownedParameter>
             <ownedParameter xmi:id="_7kmUV12kEemHI4NzGaQ8Pg" direction="return">
+              <name xsi:nil="true"/>
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
             </ownedParameter>
             <language>java</language>
@@ -3813,6 +3763,7 @@ the Board Class, this class does all the logical verifications and is in charge 
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
             </ownedParameter>
             <ownedParameter xmi:id="_7knieV2kEemHI4NzGaQ8Pg" direction="return">
+              <name xsi:nil="true"/>
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
             </ownedParameter>
             <language>java</language>
@@ -3906,26 +3857,15 @@ the Board Class, this class does all the logical verifications and is in charge 
           </ownedOperation>
           <ownedOperation xmi:id="_7VSF8F2kEemHI4NzGaQ8Pg" name="randomTileGenerator" visibility="private" isStatic="true" method="_7kip812kEemHI4NzGaQ8Pg">
             <ownedComment xmi:id="_7lEOYF2kEemHI4NzGaQ8Pg">
-              <body>Random tile generator.&#xD;
+              <body>Random tile generator uses a random number generator to select a random tile from the game deck, taking into consideration the amount&#xD;
+	 * of tiles per letter, the tiles bigger in amount have a bigger chance of dropping&#xD;
 	 *&#xD;
 	 * @return the letter tile</body>
             </ownedComment>
             <ownedParameter xmi:id="_7goaUF2kEemHI4NzGaQ8Pg" type="_7VDccF2kEemHI4NzGaQ8Pg" direction="return"/>
           </ownedOperation>
-          <ownedOperation xmi:id="_7VStAF2kEemHI4NzGaQ8Pg" name="iniciar" visibility="private" isStatic="true" method="_7kip9V2kEemHI4NzGaQ8Pg" raisedException="_7fOFEV2kEemHI4NzGaQ8Pg">
-            <ownedComment xmi:id="_7lEOYV2kEemHI4NzGaQ8Pg">
-              <body>Iniciar.&#xD;
-	 *&#xD;
-	 * @throws IOException Signals that an I/O exception has occurred.</body>
-            </ownedComment>
-          </ownedOperation>
-          <ownedOperation xmi:id="_7VTUEF2kEemHI4NzGaQ8Pg" name="matchStarter" visibility="private" isStatic="true" method="_7kip9l2kEemHI4NzGaQ8Pg" raisedException="_7fOFEV2kEemHI4NzGaQ8Pg">
-            <ownedComment xmi:id="_7lEOYl2kEemHI4NzGaQ8Pg">
-              <body>Match starter.&#xD;
-	 *&#xD;
-	 * @throws IOException Signals that an I/O exception has occurred.</body>
-            </ownedComment>
-          </ownedOperation>
+          <ownedOperation xmi:id="_7VStAF2kEemHI4NzGaQ8Pg" name="iniciar" visibility="private" isStatic="true" method="_7kip9V2kEemHI4NzGaQ8Pg" raisedException="_7fOFEV2kEemHI4NzGaQ8Pg"/>
+          <ownedOperation xmi:id="_7VTUEF2kEemHI4NzGaQ8Pg" name="matchStarter" visibility="private" isStatic="true" method="_7kip9l2kEemHI4NzGaQ8Pg" raisedException="_7fOFEV2kEemHI4NzGaQ8Pg"/>
           <ownedOperation xmi:id="_7VUiMF2kEemHI4NzGaQ8Pg" name="dealTiles" isStatic="true" method="_7kjRAF2kEemHI4NzGaQ8Pg">
             <ownedComment xmi:id="_7lEOY12kEemHI4NzGaQ8Pg">
               <body>Deal tiles.</body>
@@ -3933,7 +3873,7 @@ the Board Class, this class does all the logical verifications and is in charge 
           </ownedOperation>
           <ownedOperation xmi:id="_7VUiMV2kEemHI4NzGaQ8Pg" name="sendTiles" isStatic="true" method="_7kjRAV2kEemHI4NzGaQ8Pg">
             <ownedComment xmi:id="_7lEOZF2kEemHI4NzGaQ8Pg">
-              <body>Send tiles.&#xD;
+              <body>returns the tiles on a specific player dock, used for data transfer to client &#xD;
 	 *&#xD;
 	 * @return the string[][]</body>
             </ownedComment>
@@ -3943,18 +3883,20 @@ the Board Class, this class does all the logical verifications and is in charge 
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:id="_7VWXYF2kEemHI4NzGaQ8Pg" name="playOrder" isStatic="true" method="_7kjRBl2kEemHI4NzGaQ8Pg">
-            <ownedComment xmi:id="_7lEOZl2kEemHI4NzGaQ8Pg">
-              <body>Play order.</body>
+            <ownedComment xmi:id="_0OvHwF2pEemHI4NzGaQ8Pg">
+              <body>Play order draws a random tile per player, then uses selection sort to sort the array from lesser to greater string value</body>
             </ownedComment>
           </ownedOperation>
           <ownedOperation xmi:id="_7VW-cF2kEemHI4NzGaQ8Pg" name="selectionSort" visibility="private" isStatic="true" method="_7kjRB12kEemHI4NzGaQ8Pg">
-            <ownedComment xmi:id="_7lEOZ12kEemHI4NzGaQ8Pg">
-              <body>Selection sort.</body>
+            <ownedComment xmi:id="_0OvHwV2pEemHI4NzGaQ8Pg">
+              <body>Selection sort, classic selection sort algorithm applied to the player circular linked list, sorts the nodes from lesser string value to greater string value</body>
             </ownedComment>
           </ownedOperation>
           <ownedOperation xmi:id="_7VYzoF2kEemHI4NzGaQ8Pg" name="sortSelectedTiles" visibility="private" isStatic="true" method="_7kkfIF2kEemHI4NzGaQ8Pg">
             <ownedComment xmi:id="_7lE1cV2kEemHI4NzGaQ8Pg">
-              <body>Sort selected tiles.&#xD;
+              <body>Sort selected tiles sorts tiles to play accordingly to the word orientation, uses bubblesort&#xD;
+	 *if the word is vertical, sorts ascendantly using the row number&#xD;
+	 *if the word is horizontal, sorts ascendantly using the column number&#xD;
 	 *&#xD;
 	 * @param orientation the orientation&#xD;
 	 * @param selectedTiles the selected tiles&#xD;
@@ -3974,7 +3916,7 @@ the Board Class, this class does all the logical verifications and is in charge 
           </ownedOperation>
           <ownedOperation xmi:id="_7VbP4F2kEemHI4NzGaQ8Pg" name="verifyOrientation" visibility="private" isStatic="true" method="_7kkfJl2kEemHI4NzGaQ8Pg">
             <ownedComment xmi:id="_7lE1cl2kEemHI4NzGaQ8Pg">
-              <body>Verify orientation.&#xD;
+              <body>Verify orientation determines the orientation of a word on the matrix(vertical, horizontal), else, determines invalid position&#xD;
 	 *&#xD;
 	 * @param selectedTiles the selected tiles&#xD;
 	 * @return the string</body>
@@ -3989,7 +3931,7 @@ the Board Class, this class does all the logical verifications and is in charge 
           </ownedOperation>
           <ownedOperation xmi:id="_7VfhUF2kEemHI4NzGaQ8Pg" name="checkNewPlacement" visibility="private" isStatic="true" method="_7kmUVF2kEemHI4NzGaQ8Pg">
             <ownedComment xmi:id="_7lFcgV2kEemHI4NzGaQ8Pg">
-              <body>Check new placement.&#xD;
+              <body>Check new placement makes sure that no tile isn't connected to another tile played on the current turn or in a previous one&#xD;
 	 *&#xD;
 	 * @param sortedTiles the sorted tiles&#xD;
 	 * @return true, if successful</body>
@@ -4004,7 +3946,7 @@ the Board Class, this class does all the logical verifications and is in charge 
           </ownedOperation>
           <ownedOperation xmi:id="_7Vh9kF2kEemHI4NzGaQ8Pg" name="erasePlacedTiles" visibility="private" isStatic="true" method="_7km7ZF2kEemHI4NzGaQ8Pg">
             <ownedComment xmi:id="_7lFcg12kEemHI4NzGaQ8Pg">
-              <body>Erase placed tiles.&#xD;
+              <body>Erase placed tiles erases the placed tiles in the tabletop matrix&#xD;
 	 *&#xD;
 	 * @param sortedTiles the sorted tiles</body>
             </ownedComment>
@@ -4013,33 +3955,23 @@ the Board Class, this class does all the logical verifications and is in charge 
               <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7VikoF2kEemHI4NzGaQ8Pg" value="*"/>
             </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:id="_7VjywF2kEemHI4NzGaQ8Pg" name="printTableTop" visibility="private" isStatic="true" method="_7koJgF2kEemHI4NzGaQ8Pg">
-            <ownedComment xmi:id="_7lFchl2kEemHI4NzGaQ8Pg">
-              <body>Prints the table top.</body>
-            </ownedComment>
-          </ownedOperation>
+          <ownedOperation xmi:id="_7VjywF2kEemHI4NzGaQ8Pg" name="printTableTop" visibility="private" isStatic="true" method="_7koJgF2kEemHI4NzGaQ8Pg"/>
           <ownedOperation xmi:id="_7gpBYF2kEemHI4NzGaQ8Pg" name="refillTiles" visibility="private" isStatic="true" method="_7kjRBF2kEemHI4NzGaQ8Pg">
             <ownedComment xmi:id="_7lEOZV2kEemHI4NzGaQ8Pg">
-              <body>Refill tiles.&#xD;
+              <body>Refill tiles needed in the player dock until it fills completely&#xD;
 	 *&#xD;
 	 * @param node the node</body>
             </ownedComment>
             <ownedParameter xmi:id="_7gpBYV2kEemHI4NzGaQ8Pg" name="node" type="_7SgewF2kEemHI4NzGaQ8Pg"/>
           </ownedOperation>
           <ownedOperation xmi:id="_7gpocF2kEemHI4NzGaQ8Pg" name="printPlayerDock" isStatic="true" method="_7kj4EF2kEemHI4NzGaQ8Pg">
-            <ownedComment xmi:id="_7lEOaF2kEemHI4NzGaQ8Pg">
-              <body>Prints the player dock.&#xD;
-	 *&#xD;
-	 * @param node the node</body>
-            </ownedComment>
             <ownedParameter xmi:id="_7gpocV2kEemHI4NzGaQ8Pg" name="node" type="_7SgewF2kEemHI4NzGaQ8Pg"/>
           </ownedOperation>
           <ownedOperation xmi:id="_7gqPgF2kEemHI4NzGaQ8Pg" name="playTurn" isStatic="true" method="_7kj4El2kEemHI4NzGaQ8Pg" raisedException="_7fOFEV2kEemHI4NzGaQ8Pg">
             <ownedComment xmi:id="_7lEOaV2kEemHI4NzGaQ8Pg">
-              <body>Play turn.&#xD;
-	 *&#xD;
+              <body>Play turn takes two dimensional matrix that has the tiles to be used and null sublists and creates a new array that contains only the tiles to be used&#xD;
 	 * @param tilesToUse the tiles to use&#xD;
-	 * @return the string[][]&#xD;
+	 * @return the string[][] finalTilesToUse&#xD;
 	 * @throws IOException Signals that an I/O exception has occurred.</body>
             </ownedComment>
             <ownedParameter xmi:id="_7gqPgV2kEemHI4NzGaQ8Pg" name="node" type="_7SgewF2kEemHI4NzGaQ8Pg"/>
@@ -4050,7 +3982,7 @@ the Board Class, this class does all the logical verifications and is in charge 
           </ownedOperation>
           <ownedOperation xmi:id="_7gq2kF2kEemHI4NzGaQ8Pg" name="turnHandler" isStatic="true" method="_7kj4Fl2kEemHI4NzGaQ8Pg" raisedException="_7fOFEV2kEemHI4NzGaQ8Pg">
             <ownedComment xmi:id="_7lE1cF2kEemHI4NzGaQ8Pg">
-              <body>Turn handler.&#xD;
+              <body>Turn handler method that server uses to manage the turns and related game logic algorithms&#xD;
 	 *&#xD;
 	 * @param node the node&#xD;
 	 * @throws IOException Signals that an I/O exception has occurred.</body>
@@ -4058,14 +3990,6 @@ the Board Class, this class does all the logical verifications and is in charge 
             <ownedParameter xmi:id="_7gq2kV2kEemHI4NzGaQ8Pg" name="node" type="_7SgewF2kEemHI4NzGaQ8Pg"/>
           </ownedOperation>
           <ownedOperation xmi:id="_7grdoF2kEemHI4NzGaQ8Pg" name="updateTableTop" visibility="private" isStatic="true" method="_7klGMF2kEemHI4NzGaQ8Pg" raisedException="_7fOFEV2kEemHI4NzGaQ8Pg">
-            <ownedComment xmi:id="_7lE1c12kEemHI4NzGaQ8Pg">
-              <body>Update table top.&#xD;
-	 *&#xD;
-	 * @param sortedTiles the sorted tiles&#xD;
-	 * @param node the node&#xD;
-	 * @param orientation the orientation&#xD;
-	 * @throws IOException Signals that an I/O exception has occurred.</body>
-            </ownedComment>
             <ownedParameter xmi:id="_7grdoV2kEemHI4NzGaQ8Pg" name="sortedTiles">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
               <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7gsEsl2kEemHI4NzGaQ8Pg" value="*"/>
@@ -4077,7 +4001,7 @@ the Board Class, this class does all the logical verifications and is in charge 
           </ownedOperation>
           <ownedOperation xmi:id="_7gtS0F2kEemHI4NzGaQ8Pg" name="placeNewWord" visibility="private" isStatic="true" method="_7klGNV2kEemHI4NzGaQ8Pg" raisedException="_7fOFEV2kEemHI4NzGaQ8Pg">
             <ownedComment xmi:id="_7lE1dF2kEemHI4NzGaQ8Pg">
-              <body>Place new word.&#xD;
+              <body>Place new word places the tiles used by the player on the tabletop&#xD;
 	 *&#xD;
 	 * @param sortedTiles the sorted tiles&#xD;
 	 * @param node the node&#xD;
@@ -4095,7 +4019,7 @@ the Board Class, this class does all the logical verifications and is in charge 
           </ownedOperation>
           <ownedOperation xmi:id="_7gvIAF2kEemHI4NzGaQ8Pg" name="checkNewWord" visibility="private" isStatic="true" method="_7kltQF2kEemHI4NzGaQ8Pg" raisedException="_7fOFEV2kEemHI4NzGaQ8Pg">
             <ownedComment xmi:id="_7lE1dV2kEemHI4NzGaQ8Pg">
-              <body>Check new word.&#xD;
+              <body>Check new word concatenates the strings of the placed tiles and forms words, it obtains the scores with applied multipliers, returns an array with both of these data&#xD;
 	 *&#xD;
 	 * @param sortedTiles the sorted tiles&#xD;
 	 * @param x the x&#xD;
@@ -4126,7 +4050,7 @@ the Board Class, this class does all the logical verifications and is in charge 
           </ownedOperation>
           <ownedOperation xmi:id="_7gw9MF2kEemHI4NzGaQ8Pg" name="processPlayedWords" visibility="private" isStatic="true" method="_7kmUUF2kEemHI4NzGaQ8Pg" raisedException="_7fOFEV2kEemHI4NzGaQ8Pg">
             <ownedComment xmi:id="_7lFcgF2kEemHI4NzGaQ8Pg">
-              <body>Process played words.&#xD;
+              <body>Process played words checks the words created or modified on a single turn, if all words are valid then the move is correct&#xD;
 	 *&#xD;
 	 * @param sortedTiles the sorted tiles&#xD;
 	 * @param node the node&#xD;
@@ -4140,7 +4064,7 @@ the Board Class, this class does all the logical verifications and is in charge 
           </ownedOperation>
           <ownedOperation xmi:id="_7gyLUF2kEemHI4NzGaQ8Pg" name="placeFirstWord" visibility="private" isStatic="true" method="_7km7YF2kEemHI4NzGaQ8Pg" raisedException="_7fOFEV2kEemHI4NzGaQ8Pg">
             <ownedComment xmi:id="_7lFcgl2kEemHI4NzGaQ8Pg">
-              <body>Place first word.&#xD;
+              <body>Place first word places the first word on the matrix &#xD;
 	 *&#xD;
 	 * @param node the node&#xD;
 	 * @param sortedTiles the sorted tiles&#xD;
@@ -4154,7 +4078,7 @@ the Board Class, this class does all the logical verifications and is in charge 
           </ownedOperation>
           <ownedOperation xmi:id="_7gzZcF2kEemHI4NzGaQ8Pg" name="eraseUsedTiles" visibility="private" isStatic="true" method="_7knicF2kEemHI4NzGaQ8Pg">
             <ownedComment xmi:id="_7lFchF2kEemHI4NzGaQ8Pg">
-              <body>Erase used tiles.&#xD;
+              <body>Erase used tiles erase the tiles used by the player from the player dock&#xD;
 	 *&#xD;
 	 * @param sortedTiles the sorted tiles&#xD;
 	 * @param node the node</body>
@@ -4167,7 +4091,7 @@ the Board Class, this class does all the logical verifications and is in charge 
           </ownedOperation>
           <ownedOperation xmi:id="_7g0nkF2kEemHI4NzGaQ8Pg" name="checkFirstWord" visibility="private" isStatic="true" method="_7knidF2kEemHI4NzGaQ8Pg" raisedException="_7fOFEV2kEemHI4NzGaQ8Pg">
             <ownedComment xmi:id="_7lFchV2kEemHI4NzGaQ8Pg">
-              <body>Check first word.&#xD;
+              <body>Check first word takes in consideration the special validations of this specific case, used to verify if the actions of the player are valid&#xD;
 	 *&#xD;
 	 * @param sortedTiles the sorted tiles&#xD;
 	 * @param node the node&#xD;
@@ -5085,7 +5009,7 @@ multiplier value. Additionally the class has a boolean attribute called &quot;ac
     <packagedElement xmi:type="uml:Package" xmi:id="_7Otj4F2kEemHI4NzGaQ8Pg" name="queue">
       <packagedElement xmi:type="uml:Class" xmi:id="_7W0XAF2kEemHI4NzGaQ8Pg" name="myQueue">
         <ownedComment xmi:id="_7lJt9l2kEemHI4NzGaQ8Pg">
-          <body>The Class myQueue.&#xD;
+          <body>The Class myQueue is queue uss for cientes connects .&#xD;
  *&#xD;
 @param &lt;E> the element type</body>
         </ownedComment>
@@ -5099,13 +5023,16 @@ multiplier value. Additionally the class has a boolean attribute called &quot;ac
 	  </body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7k090F2kEemHI4NzGaQ8Pg" name="dequeue" specification="_7W3aUF2kEemHI4NzGaQ8Pg">
-          <ownedParameter xmi:id="_7k090V2kEemHI4NzGaQ8Pg" type="_7iRZEF2kEemHI4NzGaQ8Pg" direction="return"/>
+          <ownedParameter xmi:id="_7k090V2kEemHI4NzGaQ8Pg" type="_7iRZEF2kEemHI4NzGaQ8Pg" direction="return">
+            <name xsi:nil="true"/>
+          </ownedParameter>
           <language>java</language>
           <body>return list.poll();&#xD;
 	  </body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7k090l2kEemHI4NzGaQ8Pg" name="hasItems" specification="_7W4BYF2kEemHI4NzGaQ8Pg">
           <ownedParameter xmi:id="_7k09012kEemHI4NzGaQ8Pg" direction="return">
+            <name xsi:nil="true"/>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
           </ownedParameter>
           <language>java</language>
@@ -5114,6 +5041,7 @@ multiplier value. Additionally the class has a boolean attribute called &quot;ac
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7k1k4F2kEemHI4NzGaQ8Pg" name="size" specification="_7W4ocV2kEemHI4NzGaQ8Pg">
           <ownedParameter xmi:id="_7k1k4V2kEemHI4NzGaQ8Pg" direction="return">
+            <name xsi:nil="true"/>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </ownedParameter>
           <language>java</language>
@@ -5149,7 +5077,7 @@ multiplier value. Additionally the class has a boolean attribute called &quot;ac
           <ownedComment xmi:id="_7lJt-l2kEemHI4NzGaQ8Pg">
             <body>Size.&#xD;
   	 *&#xD;
-  	 * @return the int</body>
+  	 * @return the int of the size</body>
           </ownedComment>
           <ownedParameter xmi:id="_7W5PgF2kEemHI4NzGaQ8Pg" direction="return">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
@@ -5159,7 +5087,7 @@ multiplier value. Additionally the class has a boolean attribute called &quot;ac
           <ownedComment xmi:id="_7lKVAF2kEemHI4NzGaQ8Pg">
             <body>Adds the items.&#xD;
   	 *&#xD;
-  	 * @param q the q</body>
+  	 *]</body>
           </ownedComment>
           <ownedParameter xmi:id="_7hKl0l2kEemHI4NzGaQ8Pg" name="q" type="_7W0XAF2kEemHI4NzGaQ8Pg"/>
         </ownedOperation>
@@ -5354,7 +5282,7 @@ multiplier value. Additionally the class has a boolean attribute called &quot;ac
   </UMLLabProfile:Annotations>
   <UMLLabProfile:Reference xmi:id="_7iSnMF2kEemHI4NzGaQ8Pg" base_Element="_7iRZEF2kEemHI4NzGaQ8Pg"/>
   <UMLLabProfile:LegacyStyledElement xmi:id="_7ibKEF2kEemHI4NzGaQ8Pg" base_Element="_7iZ78F2kEemHI4NzGaQ8Pg"/>
-  <UMLLabProfile:Array xmi:id="_7ibxJF2kEemHI4NzGaQ8Pg" base_Element="_7ibKE12kEemHI4NzGaQ8Pg"/>
+  <UMLLabProfile:Array xmi:id="_7ibxJF2kEemHI4NzGaQ8Pg" dimensions="1" base_Element="_7ibKE12kEemHI4NzGaQ8Pg"/>
   <UMLLabProfile:LegacyStyledElement xmi:id="_7ibxJl2kEemHI4NzGaQ8Pg" base_Element="_7ibKE12kEemHI4NzGaQ8Pg"/>
   <UMLLabProfile:Array xmi:id="_7icYM12kEemHI4NzGaQ8Pg" dimensions="2" base_Element="_7icYMF2kEemHI4NzGaQ8Pg"/>
   <UMLLabProfile:LegacyStyledElement xmi:id="_7ic_QF2kEemHI4NzGaQ8Pg" base_Element="_7icYMF2kEemHI4NzGaQ8Pg"/>
@@ -5472,7 +5400,9 @@ multiplier value. Additionally the class has a boolean attribute called &quot;ac
   <UMLLabProfile:Generics xmi:id="_7j4ioF2kEemHI4NzGaQ8Pg" genericsValue="E" base_Element="_7j3UgF2kEemHI4NzGaQ8Pg"/>
   <UMLLabProfile:LegacyStyledElement xmi:id="_7j5JsF2kEemHI4NzGaQ8Pg" base_Element="_7j3UgF2kEemHI4NzGaQ8Pg"/>
   <uml:OpaqueBehavior xmi:id="_7khb0F2kEemHI4NzGaQ8Pg" name="getGame" specification="_7jbPoF2kEemHI4NzGaQ8Pg">
-    <ownedParameter xmi:id="_7kiC4F2kEemHI4NzGaQ8Pg" type="_7WAesF2kEemHI4NzGaQ8Pg" direction="return"/>
+    <ownedParameter xmi:id="_7kiC4F2kEemHI4NzGaQ8Pg" type="_7WAesF2kEemHI4NzGaQ8Pg" direction="return">
+      <name xsi:nil="true"/>
+    </ownedParameter>
     <language>java</language>
     <body>return game;&#xD;
 	</body>
@@ -5537,4 +5467,6 @@ multiplier value. Additionally the class has a boolean attribute called &quot;ac
   <UMLLabProfile:Reference xmi:id="_7mVZsF2kEemHI4NzGaQ8Pg" base_Element="_7mUyoF2kEemHI4NzGaQ8Pg"/>
   <UMLLabProfile:Reference xmi:id="_7mWAwF2kEemHI4NzGaQ8Pg" base_Element="_7mVZsV2kEemHI4NzGaQ8Pg"/>
   <UMLLabProfile:Reference xmi:id="_7mWn0F2kEemHI4NzGaQ8Pg" base_Element="_7mWAwV2kEemHI4NzGaQ8Pg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_WAiOUV2qEemHI4NzGaQ8Pg" base_Element="_WAiOUF2qEemHI4NzGaQ8Pg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_WAjccF2qEemHI4NzGaQ8Pg" base_Element="_WAi1YF2qEemHI4NzGaQ8Pg"/>
 </xmi:XMI>
