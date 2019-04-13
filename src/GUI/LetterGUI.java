@@ -168,7 +168,7 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 
 			if(letter.equals(alphabet.get(i))) {
 				setIcon(alphabetIMG.get(alphabet.indexOf(alphabet.get(i))));
-				setBounds(700+((x*50)), 400, 50, 50);
+				setBounds(700+((x*50)), 250, 50, 50);
 				this.setPosInicialX(this.getX());
 				this.setPosInicialY(this.getY());
 
