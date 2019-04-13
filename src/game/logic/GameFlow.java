@@ -11,6 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JFrame;
 
+import com.sun.corba.se.impl.orbutil.graph.Node;
 import com.twilio.SMS;
 
 
@@ -145,7 +146,6 @@ public class GameFlow {
 	private static void matchStarter() throws IOException {
 		playOrder();
 		dealTiles();
-		turnHandler(game.getPlayerList().getHead());
 	}
 	
 
@@ -273,34 +273,10 @@ public class GameFlow {
 	/**
 	 * Play turn takes two dimensional matrix that has the tiles to be used and null sublists and creates a new array that contains only the tiles to be used
 	 * @param tilesToUse the tiles to use
-	 * @return the string[][] finalTilesToUse
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public static String[][] playTurn(String [] allTiles) throws IOException {//class that the client will use to select tiles and positions on the matrix
-//		int index=0;
-//		String[][] tilesToUse= new String[7][3];	
-//		while(index<7) {
-//			out.println("Cual ficha desea usar");
-//			String selection = in.readLine();
-//			out.println("En que posicion desea colocarla?");
-//			out.println("Fila:");									
-//			String positionX=in.readLine();
-//			out.println("Columna:");							
-//			String positionY=in.readLine();
-//			tilesToUse[index][0]=selection;
-//			tilesToUse[index][1]=positionX;
-//			tilesToUse[index][2]=positionY;
-//			out.println("Desea poner otra ficha?   (Y/N)");
-//			String decision=in.readLine();
-//			if(decision.equals("N")||decision.equals("n")) {
-//				break;
-//			}
-//			
-//			index++;
-//		}
-		
-		
-		String playerName=allTiles[0];
+	public static void playTurn(String [] allTiles) throws IOException {//class that the client will use to select tiles and positions on the matrix
+			
 		String[][] tilesToUse= new String[7][3];
 		int count=0;
 		int subindex=1;
@@ -328,51 +304,41 @@ public class GameFlow {
 		out.println(Arrays.deepToString(tilesToUse));
 		out.println(counter + "contador");
 		String[][] finalTilesToUse= new String [counter][3];
-		for(int index2=0;index2!=counter;index2++) {
+		int x=0;
+		for(int index2=0;index2!=tilesToUse.length;index2++) {
 			out.println(index2);
-			out.println("clase: "+tilesToUse[index2][1].getClass());
 			if(!tilesToUse[index2][1].equals("null")) {
-				finalTilesToUse[index2][0]=tilesToUse[index2][0];
-				finalTilesToUse[index2][1]=tilesToUse[index2][1];
-				finalTilesToUse[index2][2]=tilesToUse[index2][2];	
+				finalTilesToUse[x][0]=tilesToUse[index2][0];
+				finalTilesToUse[x][1]=tilesToUse[index2][1];
+				finalTilesToUse[x][2]=tilesToUse[index2][2];
+				x++;
 			}
 		}
-		out.println("AAAAA");
 		out.println(Arrays.deepToString(finalTilesToUse));
 		out.println(" ");
-//		return finalTilesToUse;
-
-		return null;
-		
+		verifyOrientation(finalTilesToUse);	
 		}
 	
 		
 	
+
+
 	/**
 	 * Turn handler method that server uses to manage the turns and related game logic algorithms
+	 * @param orientation 
+	 * @param selectedTiles 
 	 *
 	 * @param node the node
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public static void turnHandler(PlayerLinkedListNode node) throws IOException{
+	public static void turnHandler(String orientation, String[][] selectedTiles) throws IOException{
 
-		out.println("&&&&&&&&&&&&&&&&&&");
-		out.print( "Turno de:"+ node.getData().getName());
-		out.println("\n");
-		out.println("Sus fichas son:");
-		printPlayerDock(node);
-		out.println("¿Que desea hacer?"+"\n"+"1.Jugar"+"\n"+"2.Pasar");
-
-		String action = in.readLine();
-
-		if (action.equals("Jugar")||action.equals("jugar")) {
-////			String[][] selectedTiles = playTurn();  //DESCOMENTAR PARA LOCAL
-//			if(verifyOrientation(selectedTiles).equals("invalid")) {
-//				out.println("Posicion de ficha invalida, por favor intente de nuevo");
-//				turnHandler(node);
-//			}
-//			String [][] sortedTiles=sortSelectedTiles(verifyOrientation(selectedTiles),selectedTiles); //DESCOMENTAR PARA LOCAL
-//			updateTableTop(sortedTiles,node,verifyOrientation(selectedTiles));
+			if(orientation.equals("invalid")) {
+				out.println("Posicion de ficha invalida, por favor intente de nuevo");
+				//DEVOLVER A CLIENTE
+				}
+			String [][] sortedTiles=sortSelectedTiles(verifyOrientation(selectedTiles),selectedTiles);
+			updateTableTop(sortedTiles,verifyOrientation(selectedTiles));
 //
 //				
 //			}else if(action.equals("Pasar")||action.equals("pasar")) {
@@ -382,7 +348,7 @@ public class GameFlow {
 //		out.println("\n");
 //		out.println("&&&&&&&&&&&&&&&&&&");
 		}
-		}
+		
 	
 	
 
@@ -467,14 +433,14 @@ public class GameFlow {
 		if(vertical==false&&horizontal==false&&single==false) {
 			orientation="invalid";
 		}
-		return orientation;
+		return turnHandler(orientation,selectedTiles);
 	}
 		
-	private static void updateTableTop(String[][] sortedTiles,PlayerLinkedListNode node, String orientation) throws IOException {
+	private static void updateTableTop(String[][] sortedTiles, String orientation) throws IOException {
 		printTableTop();
 		if( game.getTurn()==0) {
-			if(checkFirstWord(sortedTiles,node,orientation)==true) {
-				placeFirstWord(node,sortedTiles);
+			if(checkFirstWord(sortedTiles,orientation)==true) {
+				placeFirstWord(sortedTiles);
 			}else{
 				turnHandler(node);
 			}
@@ -586,18 +552,33 @@ public class GameFlow {
 	private static void processPlayedWords(String[][] sortedTiles,PlayerLinkedListNode node) throws IOException {
 	
 		game.getPlayedWords().removeDuplicates();
+		boolean valid=true;
 		int index=0;
+		int points=0;
 		WordListNode current= game.getPlayedWords().getHead();
 		while(index<game.getPlayedWords().getLength()) {
-			out.println(Arrays.deepToString(current.getData()));
+			if (verifyWord(current.getData()[0])) {
+				valid=true;
+				points=points+Integer.parseInt(current.getData()[1]);
+			}else {
+				valid=false;
+				break;
+			}
 			current=current.getNext();
 			index++;
 		}
-		eraseUsedTiles(sortedTiles,node);
-		refillTiles(node);
-		game.setTurn(game.getTurn()+1);
-		game.getPlayedWords().setHead(null);
-		turnHandler(node.getNext());
+		if(valid==true) {
+			node.getData().setScore(node.getData().getScore()+points);
+			eraseUsedTiles(sortedTiles,node);
+			refillTiles(node);
+			game.setTurn(game.getTurn()+1);
+			game.getPlayedWords().setHead(null);
+			turnHandler(node.getNext());
+		}else {
+			erasePlacedTiles(sortedTiles);
+			turnHandler(node);
+		}
+		
 	}
 
 	/**
@@ -755,7 +736,7 @@ public class GameFlow {
 	 * @return true, if successful
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	private static boolean checkFirstWord(String[][] sortedTiles, PlayerLinkedListNode node, String orientation) throws IOException {
+	private static boolean checkFirstWord(String[][] sortedTiles, String orientation) throws IOException {
 		boolean check=false;
 		if(sortedTiles.length>=2) {
 			if((sortedTiles[0][1].equals("7")&&sortedTiles[0][2].equals("7"))||(sortedTiles[1][1].equals("7")&&sortedTiles[sortedTiles.length-1][2].equals("7"))) {
