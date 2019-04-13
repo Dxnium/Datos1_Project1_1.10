@@ -24,6 +24,7 @@ import JSON.Decode;
 import JSON.Encode;
 import Msg.Message;
 import Sockets.Cliente;
+import javax.swing.JLabel;
 
 
 
@@ -124,7 +125,18 @@ public class BoardGUI extends JPanel{
 		setVisible(true);
 		setBounds(0, 0, 1200, 800);
 		setLayout(null);
+		
+		JButton btnBExperto = new JButton("SMS Experto");
+		btnBExperto.setEnabled(true);
+		btnBExperto.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnBExperto.setBounds(1000, 310, 167, 59);
+		btnBExperto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Cliente cliente = new Cliente(ip,"ExpSMS");
 
+	    	}});
+		add(btnBExperto);	
+		
 
 	}
 	
@@ -273,5 +285,4 @@ public class BoardGUI extends JPanel{
 		}
 
 	}
-
 }
