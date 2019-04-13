@@ -33,7 +33,6 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 	/**  Row where the tile was placed. */
 	protected String posF = "null";
 
-	
 
 	
 	/**  Indicates if the tile can be repositioned. */
