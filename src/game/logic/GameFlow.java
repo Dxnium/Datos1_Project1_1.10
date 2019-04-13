@@ -272,28 +272,29 @@ public class GameFlow {
 	 * @return the string[][] finalTilesToUse
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public static String[][] playTurn(PlayerLinkedListNode node) throws IOException {//class that the client will use to select tiles and positions on the matrix
-		int index=0;
-		String[][] tilesToUse= new String[7][3];	
-		while(index<7) {
-			out.println("Cual ficha desea usar");
-			String selection = in.readLine();
-			out.println("En que posicion desea colocarla?");
-			out.println("Fila:");									
-			String positionX=in.readLine();
-			out.println("Columna:");							
-			String positionY=in.readLine();
-			tilesToUse[index][0]=selection;
-			tilesToUse[index][1]=positionX;
-			tilesToUse[index][2]=positionY;
-			out.println("Desea poner otra ficha?   (Y/N)");
-			String decision=in.readLine();
-			if(decision.equals("N")||decision.equals("n")) {
-				break;
-			}
-			
-			index++;
-		}
+	public static String[][] playTurn(String [][] allTiles) throws IOException {//class that the client will use to select tiles and positions on the matrix
+//		int index=0;
+//		String[][] tilesToUse= new String[7][3];	
+//		while(index<7) {
+//			out.println("Cual ficha desea usar");
+//			String selection = in.readLine();
+//			out.println("En que posicion desea colocarla?");
+//			out.println("Fila:");									
+//			String positionX=in.readLine();
+//			out.println("Columna:");							
+//			String positionY=in.readLine();
+//			tilesToUse[index][0]=selection;
+//			tilesToUse[index][1]=positionX;
+//			tilesToUse[index][2]=positionY;
+//			out.println("Desea poner otra ficha?   (Y/N)");
+//			String decision=in.readLine();
+//			if(decision.equals("N")||decision.equals("n")) {
+//				break;
+//			}
+//			
+//			index++;
+//		}
+		
 		int count=0;
 //		String playerName=tilesToUse[0][0];
 		for(int index2=0;index2!=tilesToUse.length;index2++) {
