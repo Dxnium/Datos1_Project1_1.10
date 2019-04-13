@@ -267,7 +267,7 @@ public class GameFlow {
 	
 	
 	/**
-	 * Play turn takes two dimensional matrix that has the tiles to be used and null sublists and creates a new array that contains only the tiles to be useds
+	 * Play turn takes two dimensional matrix that has the tiles to be used and null sublists and creates a new array that contains only the tiles to be used
 	 * @param tilesToUse the tiles to use
 	 * @return the string[][] finalTilesToUse
 	 * @throws IOException Signals that an I/O exception has occurred.
@@ -321,12 +321,12 @@ public class GameFlow {
 		
 	
 	/**
-	 * Turn handler.
+	 * Turn handler method that server uses to manage the turns and related game logic algorithms
 	 *
 	 * @param node the node
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public static void turnHandler(PlayerLinkedListNode node) throws IOException{//class that server will use to manage the turns
+	public static void turnHandler(PlayerLinkedListNode node) throws IOException{
 
 		out.println("&&&&&&&&&&&&&&&&&&");
 		out.print( "Turno de:"+ node.getData().getName());
@@ -358,15 +358,17 @@ public class GameFlow {
 	
 
 	/**
-	 * Sort selected tiles.
+	 * Sort selected tiles sorts tiles to play accordingly to the word orientation, uses bubblesort
+	 *if the word is vertical, sorts ascendantly using the row number
+	 *if the word is horizontal, sorts ascendantly using the column number
 	 *
 	 * @param orientation the orientation
 	 * @param selectedTiles the selected tiles
 	 * @return the string[][]
 	 */
-	private static String[][] sortSelectedTiles(String orientation,String[][] selectedTiles) {//sorts tiles to play accordingly to the word orientation, uses bubblesort.
-		int element=0;																							  //if the word is vertical, sorts ascendantly using the row number 
-		int length = selectedTiles.length; 																	 //if the word is horizontal, sorts ascendantly using the column number
+	private static String[][] sortSelectedTiles(String orientation,String[][] selectedTiles) {
+		int element=0;																						 
+		int length = selectedTiles.length; 																	 
 		String[] temp = null;
 		if (orientation.equals("vertical")) {
 			element=1;
@@ -391,12 +393,12 @@ public class GameFlow {
 	
 	
 	/**
-	 * Verify orientation.
+	 * Verify orientation determines the orientation of a word on the matrix(vertical, horizontal), else, determines invalid position
 	 *
 	 * @param selectedTiles the selected tiles
 	 * @return the string
 	 */
-	private static String verifyOrientation(String[][] selectedTiles) {//determines the orientation of a word on the matrix(vertical, horizontal), else, determines invalid position
+	private static String verifyOrientation(String[][] selectedTiles) {
 		String orientation = null;
 		int index=0;
 		boolean vertical=false;
@@ -581,7 +583,7 @@ public class GameFlow {
 	}
 
 	/**
-	 * Check new placement.
+	 * Check new placement makes sure that no tile isn't connected to another tile played on the current turn or in a previous one
 	 *
 	 * @param sortedTiles the sorted tiles
 	 * @return true, if successful
@@ -660,7 +662,7 @@ public class GameFlow {
 	}
 
 	/**
-	 * Place first word.
+	 * Place first word places the first word on the matrix 
 	 *
 	 * @param node the node
 	 * @param sortedTiles the sorted tiles
@@ -700,7 +702,7 @@ public class GameFlow {
 	}
 
 	/**
-	 * Erase placed tiles.
+	 * Erase placed tiles erases the placed tiles in the tabletop matrix
 	 *
 	 * @param sortedTiles the sorted tiles
 	 */
@@ -713,7 +715,7 @@ public class GameFlow {
 	}
 
 	/**
-	 * Erase used tiles.
+	 * Erase used tiles erase the tiles used by the player from the player dock
 	 *
 	 * @param sortedTiles the sorted tiles
 	 * @param node the node
@@ -727,7 +729,7 @@ public class GameFlow {
 	}
 
 	/**
-	 * Check first word.
+	 * Check first word takes in consideration the special validations of this specific case, used to verify if the actions of the player are valid
 	 *
 	 * @param sortedTiles the sorted tiles
 	 * @param node the node
@@ -778,10 +780,7 @@ public class GameFlow {
 	
 
 	
-	
-	/**
-	 * Prints the table top.
-	 */
+
 	private static void printTableTop() {
 		for (int i = 0; i < game.getTableTop().length; i++) {
 		    for (int j = 0; j < game.getTableTop()[i].length; j++) {
