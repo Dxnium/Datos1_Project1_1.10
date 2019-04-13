@@ -70,7 +70,7 @@ public class Vent_Datos extends JFrame {
 
 		JButton btnNewButton = new JButton();
 		btnNewButton.setIcon(new ImageIcon("Images\\continuar.png"));
-		btnNewButton.setBounds(161, 194, 89, 23);
+		btnNewButton.setBounds(169, 194, 106, 38);
 
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

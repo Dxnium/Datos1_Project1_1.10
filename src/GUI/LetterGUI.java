@@ -28,10 +28,10 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 	private String letterAssigned;
 	
 	/**  Column where the tile was placed. */
-	protected String posC = "19";
+	protected String posC = "null";
 	
 	/**  Row where the tile was placed. */
-	protected String posF = "19";
+	protected String posF = "null";
 
 	
 
@@ -168,7 +168,7 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 
 			if(letter.equals(alphabet.get(i))) {
 				setIcon(alphabetIMG.get(alphabet.indexOf(alphabet.get(i))));
-				setBounds(700+((x*50)), 100, 50, 50);
+				setBounds(700+((x*50)), 400, 50, 50);
 				this.setPosInicialX(this.getX());
 				this.setPosInicialY(this.getY());
 

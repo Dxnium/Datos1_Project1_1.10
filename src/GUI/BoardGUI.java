@@ -33,13 +33,13 @@ import Sockets.Cliente;
  */
 public class BoardGUI extends JPanel{
 	
-	/** The my name. */
+	/** The myName is the player's name*/
 	public String myName;
 	
 	/** An array of strings that contains letters of the player's deck */
 	String[] titles;
 	
-	/** The matrix that contains the multiplier of the */
+	/** The matrix that contains the multiplier of the game board */
 	String[][] matrix;
 	
 	/** An instantiation of letterGUI class. */
@@ -59,10 +59,10 @@ public class BoardGUI extends JPanel{
 
 
 	
-	/** The cliente. */
+	/** The cliente is instantiation of the class cliente. */
 	Cliente cliente;
 	
-	/** The msg. */
+	/** The msg is the message that will be sent. */
 	Message msg = new Message("");
 	
 	/** The encode. */
@@ -78,7 +78,7 @@ public class BoardGUI extends JPanel{
 	public BoardGUI(String[][] matrix,String name){
 		this.myName = name;
 		botonReglas reglas = new botonReglas();
-		reglas.setBounds(1000,10,174,164);
+		reglas.setBounds(1000,0,174,164);
 		reglas.setIcon(new ImageIcon(reglasImg));
 		this.add(reglas);
 
@@ -233,11 +233,11 @@ public class BoardGUI extends JPanel{
 							for(int n =0;n<lettersList.size();n++) {
 							
 								
-								if(!lettersList.get(n).getPosC().equals("19") && !lettersList.get(n).getPosF().equals("19")) {
+								if(!lettersList.get(n).getPosC().equals("null") && !lettersList.get(n).getPosF().equals("null")) {
 									if(lettersList.get(j).getPosC().equals(lettersList.get(n).getPosC()) && lettersList.get(j).getPosF().equals(lettersList.get(n).getPosF()) && j != n) {
 										lettersList.get(n).setLocation(lettersList.get(n).getPosInicialX(),lettersList.get(n).getPosInicialY());
-										lettersList.get(n).setPosC("19");
-										lettersList.get(n).setPosF("19");
+										lettersList.get(n).setPosC("null");
+										lettersList.get(n).setPosF("null");
 									}
 								}
 							}
