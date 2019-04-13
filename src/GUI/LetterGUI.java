@@ -28,10 +28,10 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 	private String letterAssigned;
 	
 	/**  Column where the tile was placed. */
-	protected String posC = "19";
+	protected String posC = "null";
 	
 	/**  Row where the tile was placed. */
-	protected String posF = "19";
+	protected String posF = "null";
 
 
 	
