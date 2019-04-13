@@ -277,7 +277,7 @@ public class BoardGUI extends JPanel{
 							
 								
 								if(!lettersList.get(n).getPosC().equals("null") && !lettersList.get(n).getPosF().equals("null")) {
-									if(lettersList.get(j).getPosC().equals(lettersList.get(n).getPosC()) && lettersList.get(j).getPosF().equals(lettersList.get(n).getPosF()) && j != n) {
+									if(lettersList.get(j).getPosC().equals(lettersList.get(n).getPosC()) && lettersList.get(j).getPosF().equals(lettersList.get(n).getPosF()) && j != n && lettersList.get(n).canBeRepositioned == true ) {
 										lettersList.get(n).setLocation(lettersList.get(n).getPosInicialX(),lettersList.get(n).getPosInicialY());
 										lettersList.get(n).setPosC("null");
 										lettersList.get(n).setPosF("null");

@@ -217,16 +217,16 @@ public class LetterGUI extends JLabel implements MouseMotionListener,MouseListen
 			
 			setLocation(this.getX()+e.getX()-this.getWidth()/2,this.getY()+e.getY()-this.getHeight()/2);
 		}
-		if(this.getX() <= 0 ){
+		if(this.getX() <= 0 && this.canBeRepositioned == true){
 			setLocation(0,this.getY()+e.getY()-this.getHeight()/2);
 		}
-		if(this.getY() <= 0) {
+		if(this.getY() <= 0 && this.canBeRepositioned == true) {
 			setLocation(this.getX()+e.getX()-this.getWidth()/2,0);
 		}
-		if(this.getX() >= 1100) {
+		if(this.getX() >= 1100 && this.canBeRepositioned == true) {
 			setLocation(1100,this.getY()+e.getY()-this.getHeight()/2);
 		}
-		if( this.getY() >= 800) {
+		if( this.getY() >= 800 && this.canBeRepositioned == true) {
 			setLocation(this.getX()+e.getX()-this.getWidth()/2,800);
 		}
 		
