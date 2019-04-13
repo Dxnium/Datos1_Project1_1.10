@@ -49,6 +49,11 @@ public class Decode {
 					System.out.println(">>MatrizJson: "+Jsonmatriz + "\t");
 					this.titles = Jsonmatriz;
 					System.out.println(Jsonmatriz.split(","));
+				}if(juego.containsKey("MatrizJson")) {
+					String Jsonmatriz = juego.get("MatrizJson").toString();
+					System.out.println(">>MatrizJson: "+Jsonmatriz + "\t");
+					this.titles = Jsonmatriz;
+					System.out.println(Jsonmatriz.split(","));
 				}
 				
 
