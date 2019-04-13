@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class myQueue.
+ * The Class myQueue is queue uss for cientes connects .
  *
  * @param <E> the element type
  */
@@ -43,7 +43,7 @@ public class myQueue<E> {
 	  /**
   	 * Size.
   	 *
-  	 * @return the int
+  	 * @return the int of the size 
   	 */
   	public int size() {
 	    return list.size();
@@ -52,7 +52,7 @@ public class myQueue<E> {
 	  /**
   	 * Adds the items.
   	 *
-  	 * @param q the q
+  	 *]
   	 */
   	public void addItems(myQueue<? extends E> q) {
 	    while (q.hasItems())
