@@ -182,7 +182,7 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 				
 				System.out.println("gameTurno");
 				GameUpdate(mensajeRecibido);
-				if(gameFlow.getGame().getPlayerList().getHead().getData().getName().toLowerCase().equals(decode.datos[1].toLowerCase())) {
+//				if(gameFlow.getGame().getPlayerList().getHead().getData().getName().toLowerCase().equals(decode.datos[1].toLowerCase())) {
 					System.out.println("turno de jugador: "+decode.datos[1]);
 					System.out.println(Arrays.deepToString(myMatriz(decode.datos[1])));
 					if(myMatriz(decode.datos[1]) != null) {
@@ -191,7 +191,7 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 						setMensaje("");
 					}
 					}
-				}if(mensajeRecibido.contains("posicionLetras")) {
+				if(mensajeRecibido.contains("posicionLetras")) {
 					System.out.println(">>posicionletras");
 //					String[][] mensaje = new String[8][3];
 //					GameUpdate(mensajeRecibido.split(";")[1]);

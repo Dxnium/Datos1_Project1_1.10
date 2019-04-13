@@ -321,7 +321,7 @@ public class GameFlow {
 //		
 //		
 //		
-		System.out.println(Arrays.deepToString(allTiles));
+		System.out.println("letra: "+Arrays.deepToString(allTiles));
 		return null;
 		}
 	
