@@ -26,7 +26,6 @@ import JSON.Decode;
 import JSON.Encode;
 import Msg.Message;
 import Sockets.Cliente;
-import javax.swing.JLabel;
 
 
 
@@ -110,10 +109,15 @@ public class BoardGUI extends JPanel{
 				getWordsLocation();
 			}});
 		//------------------------------------------------------------------------
-		JButton btnConsulta = new JButton("Consulta");
+		JButton btnConsulta = new JButton();
 		btnConsulta.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnConsulta.setBounds(1000, 400, 102, 31);
+		btnConsulta.setBounds(990, 400, 86, 72);
+		btnConsulta.setIcon(new ImageIcon("Images\\consulta.png"));
+		btnConsulta.setFocusPainted(false);
+		btnConsulta.setContentAreaFilled(false);
+		btnConsulta.setBorderPainted(false);
 		btnConsulta.addActionListener(new ActionListener() {
+		
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("consulta");
 				Cliente cliente = new Cliente(ip,"checkTurno,"+ myName);
@@ -129,9 +133,11 @@ public class BoardGUI extends JPanel{
 				if(matrizJuegotmp!=matrizJuego) {
 					matrizJuego = matrizJuegotmp;
 					System.out.println("cambio matriz de juego: "+matrizJuegotmp);
+					crearTitlesdeServer(matrizJuego.split(","));
 				}
 				}ver = true;
-			}});
+			}
+});
 		this.add(btnConsulta);
 		//--------------------------------------------------------------------------
 		this.add(btnScrabble);
@@ -148,19 +154,24 @@ public class BoardGUI extends JPanel{
 		setBounds(0, 0, 1200, 800);
 		setLayout(null);
 		
-		JButton btnBExperto = new JButton("SMS Experto");
+		JButton btnBExperto = new JButton();
 		btnBExperto.setEnabled(true);
 		btnBExperto.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnBExperto.setBounds(1000, 310, 167, 59);
+		btnBExperto.setBounds(1090, 400, 86, 72);
+		btnBExperto.setIcon(new ImageIcon("Images\\experto.png"));
+		btnBExperto.setFocusPainted(false);
+		btnBExperto.setContentAreaFilled(false);
+		btnBExperto.setBorderPainted(false);
 		btnBExperto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Cliente cliente = new Cliente(ip,"ExpSMS");
 
 	    	}});
 		add(btnBExperto);	
-		
+	
 
 	}
+	
 	
 	/**
 	 * Gets the words location on the screen and on the matrix.
@@ -172,7 +183,7 @@ public class BoardGUI extends JPanel{
 		int tmp = 0;
 		for(int i = 1; i < 22 ;i+=3) {
 				System.out.println(i);
-				fichas[i] = Integer.toString(lettersList.get(tmp).posDeck);
+				fichas[i] = lettersList.get(tmp).getLetterAssigned();
 				fichas[i+1] = lettersList.get(tmp).posF;
 				fichas[i+2] = lettersList.get(tmp).getPosC();
 				tmp++;
@@ -200,6 +211,17 @@ public class BoardGUI extends JPanel{
 			this.cliente = new Cliente("localhost", "posicionLetras,"+";"+Arrays.deepToString(fichas));
 			
 		}
+//	[fagaga,O,7,8,R,7,7,A,7,9,A,null,null,A,null,null,Ñ,null,null,D,null,null]
+	private void crearTitlesdeServer(String[] array) {
+		for(int i = 1; i < 22 ;i+=3) {
+			if(!array[i+1].contains("null")) {
+			this.letterGUI = new LetterGUI(array[i],Integer.parseInt(array[i+2])*50,Integer.parseInt(array[i+1])*50);
+			lettersList.add(letterGUI);
+			this.add(letterGUI);
+			}
+		}
+		
+	}
 	
 	/**
 	 * CrearTitles subtract of a json message the letter that will be assigned to the tile.
@@ -249,12 +271,13 @@ public class BoardGUI extends JPanel{
 						lettersList.get(p).setLocation((f*50),(c*50));
 						lettersList.get(p).setPosC(Integer.toString(f));
 						lettersList.get(p).setPosF(Integer.toString(c));
+						
 						for(int j= 0;j<lettersList.size();j++) {
 							for(int n =0;n<lettersList.size();n++) {
 							
 								
 								if(!lettersList.get(n).getPosC().equals("null") && !lettersList.get(n).getPosF().equals("null")) {
-									if(lettersList.get(j).getPosC().equals(lettersList.get(n).getPosC()) && lettersList.get(j).getPosF().equals(lettersList.get(n).getPosF()) && j != n) {
+									if(lettersList.get(j).getPosC().equals(lettersList.get(n).getPosC()) && lettersList.get(j).getPosF().equals(lettersList.get(n).getPosF()) && j != n && lettersList.get(n).canBeRepositioned == true ) {
 										lettersList.get(n).setLocation(lettersList.get(n).getPosInicialX(),lettersList.get(n).getPosInicialY());
 										lettersList.get(n).setPosC("null");
 										lettersList.get(n).setPosF("null");
@@ -307,4 +330,5 @@ public class BoardGUI extends JPanel{
 		}
 
 	}
+
 }
