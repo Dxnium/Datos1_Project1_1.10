@@ -35,6 +35,8 @@ public class BoardGUI extends JPanel{
 	
 	/** The myName is the player's name*/
 	public String myName;
+	/** ip of server*/
+	String ip;
 	
 	/** An array of strings that contains letters of the player's deck */
 	String[] titles;
@@ -73,9 +75,11 @@ public class BoardGUI extends JPanel{
 	 *
 	 * @param matrix the matrix
 	 * @param name the name
+	 * @param ip 
 	 */
 
-	public BoardGUI(String[][] matrix,String name){
+	public BoardGUI(String[][] matrix,String name, String ip){
+		this.ip = ip;
 		this.myName = name;
 		botonReglas reglas = new botonReglas();
 		reglas.setBounds(1000,0,174,164);
@@ -96,7 +100,7 @@ public class BoardGUI extends JPanel{
 		btnConsulta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("consulta");
-				Cliente cliente = new Cliente("localhost","checkTurno,"+ myName);
+				Cliente cliente = new Cliente(ip,"checkTurno,"+ myName);
 				if(cliente.msg.contains("MatrizJson")) {
 					StringWriter toJson = new StringWriter();
 					toJson = toJson.append(cliente.msg, 0,cliente.msg.length());

@@ -2,10 +2,10 @@ package game.logic;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class PlayerLinkedListNode.
+ * A simple node that takes a Player object as data, serves as node for the PlayerLinkedList Class
  */
 public class PlayerLinkedListNode {/** The data. */
-//node that takes a player object as data
+
 	private Player data;
 	
 	/** The next. */

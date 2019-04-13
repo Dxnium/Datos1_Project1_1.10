@@ -29,6 +29,9 @@ public class BoardJFrame extends JFrame {
 	
 	/** The name. */
 	public String name;
+	
+	/** The name. */
+	public String ip;
 
 	
 	/**
@@ -36,7 +39,8 @@ public class BoardJFrame extends JFrame {
 	 *
 	 * @param name the name
 	 */
-	public BoardJFrame(String name) {
+	public BoardJFrame(String name,String ip) {
+		this.ip = ip;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Scrabble - Juego");
 		setSize(1200, 775);
@@ -45,7 +49,7 @@ public class BoardJFrame extends JFrame {
 		setLayout(new BorderLayout());
 		initializeTableTop();
 		this.name = name;
-		BoardGUI board = new BoardGUI(matrix,name);
+		BoardGUI board = new BoardGUI(matrix,name,ip);
 		
 		
 		this.add(board);

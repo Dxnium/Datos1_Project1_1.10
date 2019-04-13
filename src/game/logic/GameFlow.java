@@ -16,7 +16,8 @@ import javax.swing.JFrame;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class GameFlow.
+ * Class that manages the logical methods that allow the execution of the game, contains an attribute called game, which initializes an instance of
+ * the Board Class, this class does all the logical verifications and is in charge of sending feedback to the clients.
  */
 public class GameFlow {
 
@@ -49,29 +50,11 @@ public class GameFlow {
 		GameFlow.game = game;
 	}
 
-	/**
-	 * The main method.
-	 *
-	 * @param args the arguments
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
+
 	public static void main(String[] args) throws IOException {
-		
-		
-		game.initializeTableTop();
-		System.out.println("----------------------------------------");
-		game.getDictionary().generateDictionaryBook();
-		System.out.println("----------------------------------------");
 		game.InitializeDeck();
-		System.out.println("----------------------------------------");
-//		JFrame f = new JFrame("Scrabble");
-//		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		BoardGUI board = new BoardGUI(game.getTableTop());
-//		f.add(board);
-//		f.setSize(1200, 800);
-//		f.setVisible(true);
-		//promptGameStart();
-		//game.generateGameCode();
+		game.initializeTableTop();
+		game.getDictionary().generateDictionaryBook();
 		iniciar();
 		
 		
@@ -79,33 +62,11 @@ public class GameFlow {
 		
 
 	}
+	
 
 	/**
-	 * Prompt game start.
-	 *
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public static void promptGameStart() throws IOException{
-		System.out.println("----------------------------------------");
-		System.out.println("----------------------------------------");
-		out.println("Bienvenido a Scrabble");
-		out.println("desea iniciar un nuevo juego?");
-		out.println("Y/N?");
-		String input = in.readLine();
-		if (input.equals("Y")||                    input.equals("y")) {
-			out.println("La partida puede tener un maximo de cuatro jugadores y un minimo de dos para poder empezar");
-			//playerCreation();
-		}else if(input.equals("N")||input.equals("n")) {
-			out.println("hasta luego!");
-
-		}
-
-
-	}
-
-
-	/**
-	 * Player creation.
+	 * Player creation method, receives a string parameter that will serve as the name of the new player. The player will be created only if
+	 * the amount of current connected clients is less than the maximum number of connections allowed.
 	 *
 	 * @param name the name
 	 * @throws IOException Signals that an I/O exception has occurred.
@@ -125,7 +86,7 @@ public class GameFlow {
 
 	
 	/**
-	 * Verify word.
+	 * the method Verify word travels through the dictionary, comparing string values until it finds the string in the given parameter or reaches the end of the list
 	 *
 	 * @param word the word
 	 * @return true, if successful
@@ -323,30 +284,30 @@ public class GameFlow {
 	 * @return the string[][]
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public static String[][] playTurn(String[][] tilesToUse) throws IOException {//class that the client will use to select tiles and positions on the matrix
-//		int index=0;
-//		String[][] tilesToUse= new String[7][3];	
-//		while(index<7) {
-//			out.println("Cual ficha desea usar");
-//			String selection = in.readLine();
-//			out.println("En que posicion desea colocarla?");
-//			out.println("Fila:");									
-//			String positionX=in.readLine();
-//			out.println("Columna:");							NO BORRAR DESCOMENTAR PARA LOCAL
-//			String positionY=in.readLine();
-//			tilesToUse[index][0]=selection;
-//			tilesToUse[index][1]=positionX;
-//			tilesToUse[index][2]=positionY;
-//			out.println("Desea poner otra ficha?   (Y/N)");
-//			String decision=in.readLine();
-//			if(decision.equals("N")||decision.equals("n")) {
-//				break;
-//			}
-//			
-//			index++;
-//		}
+	public static String[][] playTurn(PlayerLinkedListNode node) throws IOException {//class that the client will use to select tiles and positions on the matrix
+		int index=0;
+		String[][] tilesToUse= new String[7][3];	
+		while(index<7) {
+			out.println("Cual ficha desea usar");
+			String selection = in.readLine();
+			out.println("En que posicion desea colocarla?");
+			out.println("Fila:");									
+			String positionX=in.readLine();
+			out.println("Columna:");							
+			String positionY=in.readLine();
+			tilesToUse[index][0]=selection;
+			tilesToUse[index][1]=positionX;
+			tilesToUse[index][2]=positionY;
+			out.println("Desea poner otra ficha?   (Y/N)");
+			String decision=in.readLine();
+			if(decision.equals("N")||decision.equals("n")) {
+				break;
+			}
+			
+			index++;
+		}
 		int count=0;
-		//String playerName=tilesToUse[0][0];
+//		String playerName=tilesToUse[0][0];
 		for(int index2=0;index2!=tilesToUse.length;index2++) {
 			if(tilesToUse[index2][1]!=null) {
 				count++;
@@ -389,13 +350,13 @@ public class GameFlow {
 		String action = in.readLine();
 
 		if (action.equals("Jugar")||action.equals("jugar")) {
-			//String[][] selectedTiles = playTurn(node);  DESCOMENTAR PARA LOCAL
-//			if(verifyOrientation(selectedTiles).equals("invalid")) {
-//				out.println("Posicion de ficha invalida, por favor intente de nuevo");
-//				turnHandler(node);
-//			}
-//			String [][] sortedTiles=sortSelectedTiles(verifyOrientation(selectedTiles),selectedTiles); DESCOMENTAR PARA LOCAL
-//			updateTableTop(sortedTiles,node,verifyOrientation(selectedTiles));
+			String[][] selectedTiles = playTurn(node);  //DESCOMENTAR PARA LOCAL
+			if(verifyOrientation(selectedTiles).equals("invalid")) {
+				out.println("Posicion de ficha invalida, por favor intente de nuevo");
+				turnHandler(node);
+			}
+			String [][] sortedTiles=sortSelectedTiles(verifyOrientation(selectedTiles),selectedTiles); //DESCOMENTAR PARA LOCAL
+			updateTableTop(sortedTiles,node,verifyOrientation(selectedTiles));
 
 				
 			}else if(action.equals("Pasar")||action.equals("pasar")) {
@@ -616,13 +577,6 @@ public class GameFlow {
 	 */
 	private static void processPlayedWords(String[][] sortedTiles,PlayerLinkedListNode node) throws IOException {
 	
-//		for(WordListNode wordNode=game.getPlayedWords().getHead();wordNode.getNext()!=null;wordNode=wordNode.getNext()) {
-//			for(WordListNode wordNode2=wordNode.getNext();wordNode2.getNext()!=null;wordNode2=wordNode2.getNext()) {
-//				if((wordNode.getData()[0].equals(wordNode2.getNext().getData()[0])&&(wordNode.getData()[1].equals(wordNode2.getNext().getData()[1])))){
-//					wordNode2.setNext(wordNode2.getNext());
-//				}
-			//}
-		//}	
 		game.getPlayedWords().removeDuplicates();
 		int index=0;
 		WordListNode current= game.getPlayedWords().getHead();

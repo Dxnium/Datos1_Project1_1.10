@@ -2,19 +2,20 @@ package game.logic;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class DictionaryLinkedList.
- */
-public class DictionaryLinkedList {// a simple linked list that takes dictionary nodes
+ * The Class DictionaryLinkedList is an implementation of a simple linked list that takes Dictionary Nodes, it contains the basic methods of a linked list implementation
+ */ 
+public class DictionaryLinkedList {
 	
 	/** The head. */
 DictionaryNode head;
 
 		/**
 		 * Append.
+		 * Appends a new Dictionary node at the end of the list
 		 *
-		 * @param data the data
+		 * @param data of DictionaryNode type
 		 */
-		public void append (String data) {//adds a node at the end of the list
+		public void append (String data) {
 			if (head == null) {
 				this.head = new DictionaryNode (data);
 				return;
@@ -31,10 +32,12 @@ DictionaryNode head;
 
 		/**
 		 * Erase data.
-		 *
-		 * @param data the data
+		 * Erases a specific node of the list given a search criteria of String type.
+		 *The data parameter is compared to each of the strings contained on the DictionaryNodes of the list
+		 *and stops referencing the node that matches the criteria.
+		 * @param data of DictionaryNode type
 		 */
-		public void eraseData(String data) {//erases a node using a search criteria
+		public void eraseData(String data) {
 			if (head == null) return;
 			if (head.getData()==data) {
 				this.setHead(head.getNext());
