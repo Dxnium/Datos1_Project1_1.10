@@ -316,7 +316,11 @@ public class GameFlow {
 		}
 		out.println(Arrays.deepToString(finalTilesToUse));
 		out.println(" ");
-		verifyOrientation(finalTilesToUse);	
+		String word="";
+		for(int letter=0;letter!=finalTilesToUse.length;letter++) {
+			word=word+finalTilesToUse[letter][0].toLowerCase();
+		}	
+		out.println(word);
 		}
 	
 		
@@ -433,7 +437,7 @@ public class GameFlow {
 		if(vertical==false&&horizontal==false&&single==false) {
 			orientation="invalid";
 		}
-		return turnHandler(orientation,selectedTiles);
+		return sortSelectedTiles(orientation,selectedTiles);
 	}
 		
 	private static void updateTableTop(String[][] sortedTiles, String orientation) throws IOException {
