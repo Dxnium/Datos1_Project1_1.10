@@ -17,6 +17,7 @@ import java.util.Arrays;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import org.apache.http.client.utils.Punycode;
@@ -73,6 +74,7 @@ public class BoardGUI extends JPanel{
 	/** The encode. */
 	Encode encode;
 	Boolean ver= false;
+	String[] titlestmp;
 
 	/**
 	 * Instantiates a new boardGUI that contains the game board where you can put tiles.
@@ -126,7 +128,12 @@ public class BoardGUI extends JPanel{
 					toJson = toJson.append(cliente.msg, 0,cliente.msg.length());
 					Decode decode = new Decode(toJson);
 					titles = decode.titles.split(",");
-					crearTitles(titles);
+					if(titles != titlestmp) {
+						titlestmp = titles;
+						crearTitles(titles);
+					}
+					
+					
 				}if(ver) {	
 				Cliente cliente1 = new Cliente(ip,"matriz");
 				String matrizJuegotmp = cliente1.mensaje;
@@ -221,6 +228,13 @@ public class BoardGUI extends JPanel{
 			}
 		}
 		
+	}
+	public void receiveValidation(Boolean valid){
+		if(valid == true) {
+			JOptionPane.showMessageDialog(this,"Su palabra se encuentra en el diccionario"); 
+		}else {
+			JOptionPane.showMessageDialog(this,"Su palabra no se encuentra en el diccionario");
+		}
 	}
 	
 	/**
