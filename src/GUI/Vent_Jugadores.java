@@ -23,24 +23,24 @@ import javax.swing.JButton;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Vent_Jugadores.
+ * The Class Vent_Jugadores is a window where you can obtain the code that will allow other player to join your game and indicate the amount of player.
  */
 public class Vent_Jugadores extends JFrame implements ActionListener {
 
-	/** The content pane. */
+	/** The contentPane is where all the graphical components will be located. */
 	private JPanel contentPane;
 	
-	/** The Codigo invitacion. */
+	/** The CodigoInvitacion is a text field where you can see code generated. */
 	private JTextField CodigoInvitacion;
 	
-	/** The numero jugadores. */
+	/** The numeroJugadores indicates the amount of player. */
 	public int numeroJugadores;
 	
-	/** The codigo juego. */
+	/** The codigoJuego is an string of the random code. */
 	public String codigoJuego;
 
 	/**
-	 * Instantiates a new vent jugadores.
+	 * Instantiates a new VentJ_ugadores.
 	 */
 	public Vent_Jugadores() {
 		
@@ -131,7 +131,7 @@ public class Vent_Jugadores extends JFrame implements ActionListener {
 	}
 	
 	/**
-	 * Generate game code.
+	 * Generate game code from a archive txt called characters.
 	 *
 	 * @return the string
 	 * @throws IOException Signals that an I/O exception has occurred.

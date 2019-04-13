@@ -30,17 +30,17 @@ import java.awt.event.ActionEvent;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Vent_Inicio es la ventana
+ * The Class Vent_Inicio is first window that will appear and it is where you choose creating a new game o join a game.
  */
 public class Vent_Inicio extends JFrame {
 
-	/** The content pane. */
+	/** The contentPane is the main JPanel that contains all the buttons and the background image. */
 	private JPanel contentPane;
 
-	/** The content pane 2. */
+	/** The contentPane2 contains a button. */
 	private JPanel contentPane2;
 	
-	/** The content pane 3. */
+	/** The contentPane3 contains a button. */
 	private JPanel contentPane3;
 
 
@@ -49,14 +49,14 @@ public class Vent_Inicio extends JFrame {
 	/** The active. */
 	private boolean active = true;
 	
-	/** The Xsize. */
+	/** The Xsize is the width of the screen. */
 	private int Xsize = 1200;
 	
-	/** The Ysize. */
+	/** The Ysize is the height of the screen. */
 	private int Ysize = 775;
 	
 	/**
-	 * Instantiates a new vent inicio.
+	 * Instantiates a new vent_Inicio.
 	 */
 	public Vent_Inicio() {
 		setTitle("Scrabble");

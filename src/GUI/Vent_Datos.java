@@ -43,7 +43,7 @@ public class Vent_Datos extends JFrame {
 	
 
 	/**
-	 * Instantiates a new vent datos.
+	 * Instantiates a new Vent_Datos.
 	 *
 	 * @param server the server
 	 * @throws UnknownHostException the unknown host exception
