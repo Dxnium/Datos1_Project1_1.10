@@ -11,6 +11,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JFrame;
 
+import com.twilio.SMS;
+
 
 
 
@@ -29,6 +31,8 @@ public class GameFlow {
 	
 	/** The game. */
 	private static Board game = new Board();
+	
+	SMS ExpSMS = new SMS();
 	
 
 

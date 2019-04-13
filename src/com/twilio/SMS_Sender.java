@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import GUI.Vent_Inicio;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
@@ -32,7 +35,7 @@ public class SMS_Sender extends JFrame {
 	 *
 	 * @param args the arguments
 	 */
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -43,11 +46,11 @@ public class SMS_Sender extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
-	 */
+	 */ 
 	@SuppressWarnings("rawtypes")
 	public SMS_Sender() {
 		
@@ -87,6 +90,7 @@ public class SMS_Sender extends JFrame {
 			    System.out.println(Mensaje.getText());
 			    System.out.println(ListaTel.getSelectedItem());	
 		        msgSMS.EnvioSMS(Mensaje.getText(), (String)ListaTel.getSelectedItem());
+		        SMS_Sender.this.dispose();
 
 		    }
 		});

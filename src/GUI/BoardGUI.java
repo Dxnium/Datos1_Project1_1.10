@@ -26,6 +26,7 @@ import JSON.Decode;
 import JSON.Encode;
 import Msg.Message;
 import Sockets.Cliente;
+import javax.swing.JLabel;
 
 
 
@@ -72,6 +73,7 @@ public class BoardGUI extends JPanel{
 	
 	/** The encode. */
 	Encode encode;
+	Boolean ver= false;
 
 	/**
 	 * Instantiates a new boardGUI that contains the game board where you can put tiles.
@@ -121,13 +123,14 @@ public class BoardGUI extends JPanel{
 					Decode decode = new Decode(toJson);
 					titles = decode.titles.split(",");
 					crearTitles(titles);
-				}	
-//				Cliente cliente1 = new Cliente(ip,"matriz");
-//				String matrizJuegotmp = cliente1.msjDatos.matriz;
-//				if(matrizJuegotmp==matrizJuego) {
-//					
-//				}
-				
+				}if(ver) {	
+				Cliente cliente1 = new Cliente(ip,"matriz");
+				String matrizJuegotmp = cliente1.mensaje;
+				if(matrizJuegotmp!=matrizJuego) {
+					matrizJuego = matrizJuegotmp;
+					System.out.println("cambio matriz de juego: "+matrizJuegotmp);
+				}
+				}ver = true;
 			}});
 		this.add(btnConsulta);
 		//--------------------------------------------------------------------------
@@ -144,7 +147,18 @@ public class BoardGUI extends JPanel{
 		setVisible(true);
 		setBounds(0, 0, 1200, 800);
 		setLayout(null);
+		
+		JButton btnBExperto = new JButton("SMS Experto");
+		btnBExperto.setEnabled(true);
+		btnBExperto.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnBExperto.setBounds(1000, 310, 167, 59);
+		btnBExperto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Cliente cliente = new Cliente(ip,"ExpSMS");
 
+	    	}});
+		add(btnBExperto);	
+		
 
 	}
 	
@@ -293,5 +307,4 @@ public class BoardGUI extends JPanel{
 		}
 
 	}
-
 }

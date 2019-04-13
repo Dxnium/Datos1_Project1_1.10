@@ -43,7 +43,7 @@ public class Cliente {
 	
 	/** The nombre. */
 	String nombre = "";
-	
+	public String mensaje;
 	/** The msj datos. */
 	public Message msjDatos = new Message("vacio");
 	
@@ -55,6 +55,7 @@ public class Cliente {
 	 */
 	//constructor que envia el password para verificar la conexcion con el server
 	public Cliente(String address,String mensaje1) {
+		
 		setMensaje(mensaje1);
 		this.address = address;
 		try {
@@ -73,6 +74,7 @@ public class Cliente {
 			
 			//leer mensaje
 			msg = entradaDatos.readUTF();
+			this.mensaje = msg;
 			System.out.println(msg);
 //			GameUpdate(msg);
 		

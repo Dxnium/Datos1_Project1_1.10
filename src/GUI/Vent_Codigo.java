@@ -74,6 +74,10 @@ public class Vent_Codigo extends JFrame {
 		contentPane.add(textField_IP);
 		textField_IP.setColumns(10);
 		
+		JLabel lblDigiteElNombre = new JLabel("Digite el nombre de jugador");
+		lblDigiteElNombre.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblDigiteElNombre.setBounds(81, 189, 281, 26);
+		contentPane.add(lblDigiteElNombre);
 		
 		JButton btnContinuar = new JButton();
 		btnContinuar.setIcon(new ImageIcon("Images\\continuar.png"));
@@ -91,9 +95,9 @@ public class Vent_Codigo extends JFrame {
 				Decode decode = new Decode(toJson);
 				System.out.println(decode.datos[0]);
 				if (textField_Codigo.getText().equals(decode.datos[0])) {
-					Cliente cliente2 = new Cliente(textField_Nombre.getText(), "agregarJugador,"+textField_IP.getText());
+					Cliente cliente2 = new Cliente(textField_Nombre.getText(), "agregarJugador,"+textField_IP.getText().toLowerCase());
 					Cliente cliente3 = new Cliente(textField_Nombre.getText(), "playOrder");
-					BoardJFrame boardJF = new BoardJFrame(textField_IP.getText(),textField_Nombre.getText());
+					BoardJFrame boardJF = new BoardJFrame(textField_IP.getText().toLowerCase(),textField_Nombre.getText());
 					boardJF.name= textField_IP.getText();
 					boardJF.setVisible(true);
 					Vent_Codigo.this.dispose();
@@ -110,9 +114,6 @@ public class Vent_Codigo extends JFrame {
 		
 		contentPane.add(btnContinuar);
 		
-		JLabel lblDigiteElNombre = new JLabel("Digite el nombre de jugador");
-		lblDigiteElNombre.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblDigiteElNombre.setBounds(81, 189, 281, 26);
-		contentPane.add(lblDigiteElNombre);
+		
 	}
 }
