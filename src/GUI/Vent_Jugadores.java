@@ -42,6 +42,7 @@ public class Vent_Jugadores extends JFrame implements ActionListener {
 	/**
 	 * Instantiates a new VentJ_ugadores.
 	 */
+	
 	public Vent_Jugadores() {
 
 		setTitle("Scrabble");
@@ -56,8 +57,10 @@ public class Vent_Jugadores extends JFrame implements ActionListener {
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblNewLabel.setBounds(53, 21, 353, 38);
 		contentPane.add(lblNewLabel);
-
+		JRadioButton N3 = new JRadioButton("3");
 		JRadioButton N2 = new JRadioButton("2");
+		JRadioButton N4 = new JRadioButton("4");
+		
 		N2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		N2.setBounds(134, 82, 38, 23);
 
@@ -66,13 +69,13 @@ public class Vent_Jugadores extends JFrame implements ActionListener {
 
 		contentPane.add(N2);
 
-		JRadioButton N3 = new JRadioButton("3");
+		
 		N3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		N3.setBounds(213, 82, 38, 23);
 
 		contentPane.add(N3);
 
-		JRadioButton N4 = new JRadioButton("4");
+		
 		N4.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		N4.setBounds(281, 82, 38, 23);
 		N2.setActionCommand("2");
@@ -125,12 +128,14 @@ public class Vent_Jugadores extends JFrame implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent e) {
 		numeroJugadores = Integer.parseInt(e.getActionCommand());
+	
 		try {
 			CodigoInvitacion.setText( generateGameCode());
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		
 
 
 	}

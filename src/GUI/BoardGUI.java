@@ -249,6 +249,7 @@ public class BoardGUI extends JPanel{
 						lettersList.get(p).setLocation((f*50),(c*50));
 						lettersList.get(p).setPosC(Integer.toString(f));
 						lettersList.get(p).setPosF(Integer.toString(c));
+						
 						for(int j= 0;j<lettersList.size();j++) {
 							for(int n =0;n<lettersList.size();n++) {
 							
