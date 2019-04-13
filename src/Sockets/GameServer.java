@@ -10,6 +10,7 @@ import java.io.Writer;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.json.simple.JSONArray;
@@ -17,6 +18,7 @@ import org.json.simple.JSONArray;
 import com.twilio.SMS;
 import com.twilio.SMS_Sender;
 
+import GUI.LetterGUI;
 import JSON.Decode;
 import JSON.Encode;
 import game.logic.GameFlow;
@@ -51,6 +53,8 @@ public class GameServer implements Runnable   {
 	
 	/** The port. */
 	final int port = 5555;
+	
+	boolean verify = false;
 	
 	/** The password random requested for conetion. */
 	public String password = "none";
@@ -126,6 +130,11 @@ public class GameServer implements Runnable   {
 						salida.writeUTF(this.matrizJuego);
 						salida.flush();
 						this.ver = false;
+					}
+					if(verify) {
+						salida.writeUTF("true");
+						salida.flush();
+						this.verify = false;
 					}else {
 					salida.writeUTF(GetJMensaje().toString());
 					salida.flush();
@@ -249,10 +258,29 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 					String [] data1 = data.split(",");
 					this.matrizJuego = data;
 					System.out.println(">>Lista de posiciones de letra: "+ data);
-					gameFlow.playTurn(data1);
-					
+//					gameFlow.playTurn(data1);
+					ArrayList<Integer> list = new ArrayList<Integer>();
+					String palabra="";
+					for(int i = 1; i < 22 ;i+=3) {
+						if(!data1[i+1].contains("null")) {
+							list.add(Integer.parseInt(data1[i+2]));
+							}
+					}list.sort(null);
+					System.out.println(list.toString());
+					for(int i = 0; i < list.size() ;i++) {
+						for(int j = 1; j < 22 ;j+=3) {
+							if(!data1[j+1].contains("null")) {
+								if(Integer.parseInt(data1[j+2]) == list.get(i)  ){
+									palabra += data1[j];
+							}
+						}
+					}
+						
 //					
 //					gameFlow.playTurn(data);
+				}palabra = palabra.toLowerCase();
+					System.out.println(palabra);
+					 this.verify = gameFlow.verifyWord(palabra);
 				}
 				if(mensajeRecibido.contains("matriz")) {
 						this.ver = true;

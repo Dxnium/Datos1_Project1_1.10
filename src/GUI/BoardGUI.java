@@ -109,6 +109,7 @@ public class BoardGUI extends JPanel{
 		btnScrabble.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				getWordsLocation();
+				receiveValidation(cliente.msg);	
 			}});
 		//------------------------------------------------------------------------
 		JButton btnConsulta = new JButton();
@@ -229,8 +230,8 @@ public class BoardGUI extends JPanel{
 		}
 		
 	}
-	public void receiveValidation(Boolean valid){
-		if(valid == true) {
+	public void receiveValidation(String valid){
+		if(valid.equals("true")) {
 			JOptionPane.showMessageDialog(this,"Su palabra se encuentra en el diccionario"); 
 		}else {
 			JOptionPane.showMessageDialog(this,"Su palabra no se encuentra en el diccionario");
@@ -346,3 +347,4 @@ public class BoardGUI extends JPanel{
 	}
 
 }
+
