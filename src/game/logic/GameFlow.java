@@ -441,14 +441,6 @@ public class GameFlow {
 		return orientation;
 	}
 		
-	/**
-	 * Update table top.
-	 *
-	 * @param sortedTiles the sorted tiles
-	 * @param node the node
-	 * @param orientation the orientation
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
 	private static void updateTableTop(String[][] sortedTiles,PlayerLinkedListNode node, String orientation) throws IOException {
 		printTableTop();
 		if( game.getTurn()==0) {
@@ -465,7 +457,7 @@ public class GameFlow {
 	}
 
 	/**
-	 * Place new word.
+	 * Place new word places the tiles used by the player on the tabletop
 	 *
 	 * @param sortedTiles the sorted tiles
 	 * @param node the node
@@ -486,9 +478,6 @@ public class GameFlow {
 			
 		}
 		printTableTop();
-//		int firstX=Integer.parseInt(sortedTiles[0][1]);
-//		int firstY=Integer.parseInt(sortedTiles[0][2]);
-//		checkNewWord(sortedTiles,firstX,firstY,node,orientation);
 		for(int element=0;element!=sortedTiles.length;element++) {
 			String[] horizontal=checkNewWord(sortedTiles,Integer.parseInt(sortedTiles[element][1]),Integer.parseInt(sortedTiles[element][2]),node,"horizontal");
 			String[] vertical=checkNewWord(sortedTiles,Integer.parseInt(sortedTiles[element][1]),Integer.parseInt(sortedTiles[element][2]),node,"vertical");
@@ -499,7 +488,7 @@ public class GameFlow {
 	}
 
 	/**
-	 * Check new word.
+	 * Check new word concatenates the strings of the placed tiles and forms words, it obtains the scores with applied multipliers, returns an array with both of these data
 	 *
 	 * @param sortedTiles the sorted tiles
 	 * @param x the x
@@ -559,7 +548,7 @@ public class GameFlow {
 	}
 
 	/**
-	 * Process played words.
+	 * Process played words checks the words created or modified on a single turn, if all words are valid then the move is correct
 	 *
 	 * @param sortedTiles the sorted tiles
 	 * @param node the node
