@@ -134,16 +134,16 @@ public class BoardGUI extends JPanel{
 	 * @return the words location
 	 */
 	public void getWordsLocation() {
-		String[][] fichas = new String[8][3];
-		for(int i = 1; i < 8 ;i++) {
-			if(lettersList.get(i).getPosF()!=null) {
+		String[] fichas = new String[22];
+		int tmp = 0;
+		for(int i = 1; i < 22 ;i+=3) {
 				System.out.println(i);
-				fichas[i][0] = Integer.toString(lettersList.get(i).posDeck);
-				fichas[i][1] = lettersList.get(i).posF;
-				fichas[i][2] = lettersList.get(i).getPosC();
+				fichas[i] = Integer.toString(lettersList.get(tmp).posDeck);
+				fichas[i+1] = lettersList.get(tmp).posF;
+				fichas[i+2] = lettersList.get(tmp).getPosC();
+				tmp++;
 			}
-			}
-			fichas[0][0] = this.myName;
+			fichas[0] = this.myName;
 			System.out.println(Arrays.deepToString(fichas));
 			this.msg.setMatrizdoble(fichas);
 //			StringBuilder builder = new StringBuilder();
@@ -162,8 +162,8 @@ public class BoardGUI extends JPanel{
 				e.printStackTrace();
 				
 			}
-			System.out.println(Arrays.deepToString(fichas)+out);
-			this.cliente = new Cliente("localhost", "posicionLetras,"+";"+out.toString());
+			System.out.println("sysout: "+out);
+			this.cliente = new Cliente("localhost", "posicionLetras,"+";"+Arrays.deepToString(fichas));
 			
 		}
 	

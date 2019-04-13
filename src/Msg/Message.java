@@ -61,16 +61,17 @@ public class Message extends Observable implements JSONStreamAware {
 	 * @param matriz1 the new matrizdoble
 	 */
 	@SuppressWarnings("unchecked")
-	public void setMatrizdoble(String[][] matriz1) {
+	public void setMatrizdoble(String[] matriz1) {
+		JSONObject obj = new JSONObject();
 		System.out.println("MatrizDOble");
 		JSONArray list = new JSONArray();
-		for(String[] i : matriz1) {
-			for(String j : i) {
-				list.add(j);
+		for(String i : matriz1) {
+			obj.put("data", i);
+			list.add(obj);
 			}
 		this.matrizJson = list;
 	}
-	}
+	
 
 	/**
 	 * Instantiates a new message.
