@@ -296,33 +296,47 @@ public class GameFlow {
 //		}
 		
 		
+		String playerName=allTiles[0];
+		String[][] tilesToUse= new String[7][3];
+		int count=0;
+		int subindex=1;
+		for(int index=0;index!=7;index++) {
+			String[] subarray=new String[3];
+			while(count<3) {
+				subarray[count]=allTiles[subindex];
+				subindex++;
+				count++;
+			}
+			tilesToUse[index]=subarray;
+			count=0;
+		}
+			
 		
 		
-		
-//		int count=0;
-//		String playerName=tilesToUse[0][0];
+		int counter=0;
+		for(int index1=0;index1!=tilesToUse.length;index1++) {
+			if(tilesToUse[index1][1].equals("null")) {
+				counter++;
+			}
+			
+		}
+		out.println(counter + "contador");
+//		String[][] finalTilesToUse= new String [counter][3];
 //		for(int index2=0;index2!=tilesToUse.length;index2++) {
-//			if(tilesToUse[index2][1]!=null) {
-//				count++;
-//			}
-//			
-//		}
-//		String[][] finalTilesToUse= new String [count][3];
-//		for(int index1=0;index1!=tilesToUse.length;index1++) {
-//			if(tilesToUse[index1][1]!=null) {
-//				finalTilesToUse[index1][0]=tilesToUse[index1][0];
-//				finalTilesToUse[index1][1]=tilesToUse[index1][1];
-//				finalTilesToUse[index1][2]=tilesToUse[index1][2];
+//			if(tilesToUse[index2][1].equals("null")) {
+//				out.println("ignore");
+//			}else {
+//				finalTilesToUse[index2][0]=tilesToUse[index2][0];
+//				finalTilesToUse[index2][1]=tilesToUse[index2][1];
+//				finalTilesToUse[index2][2]=tilesToUse[index2][2];
 //			}
 //		}
+//		out.println("AAAAA");
 //		out.println(Arrays.deepToString(finalTilesToUse));
 //		out.println(" ");
 //		return finalTilesToUse;
-//		
-//		
-//		
-		System.out.println(Arrays.deepToString(allTiles));
 		return null;
+		
 		}
 	
 		
