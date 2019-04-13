@@ -29,13 +29,13 @@ public class Vent_Jugadores extends JFrame implements ActionListener {
 
 	/** The contentPane is where all the graphical components will be located. */
 	private JPanel contentPane;
-	
+
 	/** The CodigoInvitacion is a text field where you can see code generated. */
 	private JTextField CodigoInvitacion;
-	
+
 	/** The numeroJugadores indicates the amount of player. */
 	public int numeroJugadores;
-	
+
 	/** The codigoJuego is an string of the random code. */
 	public String codigoJuego;
 
@@ -43,7 +43,7 @@ public class Vent_Jugadores extends JFrame implements ActionListener {
 	 * Instantiates a new VentJ_ugadores.
 	 */
 	public Vent_Jugadores() {
-		
+
 		setTitle("Scrabble");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -51,46 +51,51 @@ public class Vent_Jugadores extends JFrame implements ActionListener {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblNewLabel = new JLabel("Ingresa la cantidad de jugadores");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblNewLabel.setBounds(53, 21, 353, 38);
 		contentPane.add(lblNewLabel);
-		
+
 		JRadioButton N2 = new JRadioButton("2");
 		N2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		N2.setBounds(134, 82, 38, 23);
-		N2.setActionCommand("2");
+
+
+
+
 		contentPane.add(N2);
-		
+
 		JRadioButton N3 = new JRadioButton("3");
 		N3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		N3.setBounds(213, 82, 38, 23);
-		N3.setActionCommand("3");
+
 		contentPane.add(N3);
-		
+
 		JRadioButton N4 = new JRadioButton("4");
 		N4.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		N4.setBounds(281, 82, 38, 23);
+		N2.setActionCommand("2");
+		N3.setActionCommand("3");
 		N4.setActionCommand("4");
 		contentPane.add(N4);
-		
+
 		N2.addActionListener(this);
 		N3.addActionListener(this);
 		N4.addActionListener(this);		
-		
+
 		CodigoInvitacion = new JTextField();
 		CodigoInvitacion.setEditable(false);
 		CodigoInvitacion.setToolTipText("C\u00F3digo de Invitaci\u00F3n");
 		CodigoInvitacion.setBounds(169, 146, 106, 28);
 		contentPane.add(CodigoInvitacion);
 		CodigoInvitacion.setColumns(10);
-		
+
 		JButton btnContinuar = new JButton();
 		btnContinuar.setIcon(new ImageIcon("Images\\continuar.png"));
 		btnContinuar.setBounds(169, 194, 106, 38);
 		btnContinuar.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent arg0) {
 				GameServer server = new GameServer();
 				server.password = CodigoInvitacion.getText();
 				Cliente cliente = new Cliente("localhost","startgame,"+Integer.toString(numeroJugadores));
@@ -103,33 +108,33 @@ public class Vent_Jugadores extends JFrame implements ActionListener {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-								
+
 			}
 		});
 		contentPane.add(btnContinuar);
-		
+
 		JLabel lblCdigoDeInvitacin = new JLabel("C\u00F3digo de Invitaci\u00F3n");
 		lblCdigoDeInvitacin.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblCdigoDeInvitacin.setBounds(169, 121, 119, 14);
 		contentPane.add(lblCdigoDeInvitacin);
 	}
-	
-	
+
+
 	/* (non-Javadoc)
 	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
 	public void actionPerformed(ActionEvent e) {
-		   numeroJugadores = Integer.parseInt(e.getActionCommand());
-			try {
-				CodigoInvitacion.setText( generateGameCode());
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			
-		
+		numeroJugadores = Integer.parseInt(e.getActionCommand());
+		try {
+			CodigoInvitacion.setText( generateGameCode());
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+
 	}
-	
+
 	/**
 	 * Generate game code from a archive txt called characters.
 	 *
@@ -167,7 +172,7 @@ public class Vent_Jugadores extends JFrame implements ActionListener {
 		System.out.println(GameCode);
 		return GameCode;
 	}
-	
+
 }
 
 
