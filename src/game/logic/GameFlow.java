@@ -315,25 +315,27 @@ public class GameFlow {
 		
 		int counter=0;
 		for(int index1=0;index1!=tilesToUse.length;index1++) {
-			if(tilesToUse[index1][1].equals("null")) {
+			if(!tilesToUse[index1][1].equals("null")) {
 				counter++;
 			}
 			
 		}
+		
+		out.println(Arrays.deepToString(tilesToUse));
 		out.println(counter + "contador");
-//		String[][] finalTilesToUse= new String [counter][3];
-//		for(int index2=0;index2!=tilesToUse.length;index2++) {
-//			if(tilesToUse[index2][1].equals("null")) {
-//				out.println("ignore");
-//			}else {
-//				finalTilesToUse[index2][0]=tilesToUse[index2][0];
-//				finalTilesToUse[index2][1]=tilesToUse[index2][1];
-//				finalTilesToUse[index2][2]=tilesToUse[index2][2];
-//			}
-//		}
-//		out.println("AAAAA");
-//		out.println(Arrays.deepToString(finalTilesToUse));
-//		out.println(" ");
+		String[][] finalTilesToUse= new String [counter][3];
+		for(int index2=0;index2!=counter;index2++) {
+			out.println(index2);
+			out.println("clase: "+tilesToUse[index2][1].getClass());
+			if(!tilesToUse[index2][1].equals("null")) {
+				finalTilesToUse[index2][0]=tilesToUse[index2][0];
+				finalTilesToUse[index2][1]=tilesToUse[index2][1];
+				finalTilesToUse[index2][2]=tilesToUse[index2][2];	
+			}
+		}
+		out.println("AAAAA");
+		out.println(Arrays.deepToString(finalTilesToUse));
+		out.println(" ");
 //		return finalTilesToUse;
 
 		return null;
