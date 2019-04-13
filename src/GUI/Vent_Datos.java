@@ -70,7 +70,7 @@ public class Vent_Datos extends JFrame {
 
 		JButton btnNewButton = new JButton();
 		btnNewButton.setIcon(new ImageIcon("Images\\continuar.png"));
-		btnNewButton.setBounds(161, 194, 89, 23);
+		btnNewButton.setBounds(169, 194, 106, 38);
 
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -79,7 +79,7 @@ public class Vent_Datos extends JFrame {
 					System.out.println(!textField.getText().isEmpty());
 					if(!textField.getText().isEmpty()) {
 						Cliente cliente = new Cliente("localhost","agregarJugador,"+textField.getText());
-						BoardJFrame boardJF = new BoardJFrame(textField.getText());
+						BoardJFrame boardJF = new BoardJFrame(textField.getText(),"localhost");
 						boardJF.setVisible(true);
 						Vent_Datos.this.dispose();
 					}

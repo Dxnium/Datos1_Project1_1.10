@@ -17,17 +17,18 @@ import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Message.
+ * The Class Message save all messages that are going to be send by the server and client.
+ * .
  */
 public class Message extends Observable implements JSONStreamAware {
 	
-	/** The matriz. */
+	/** The matriz with the command and single messages. */
 	public String matriz;
 	
-	/** The matriz 1. */
+	/** The matriz1 matriz of array with the position of the titles. */
 	public String[][] matriz1;
 	
-	/** The matriz json. */
+	/** matriz with positions of titles . */
 	JSONArray matrizJson;
 	
 	/**
@@ -41,7 +42,7 @@ public class Message extends Observable implements JSONStreamAware {
 	}
 
 	/**
-	 * Sets the matriz 1.
+	 * Sets the Matriz of Jsonarrays to message.
 	 *
 	 * @param matriz1 the new matriz 1
 	 */
@@ -55,7 +56,7 @@ public class Message extends Observable implements JSONStreamAware {
 	}
 	
 	/**
-	 * Sets the matrizdoble.
+	 * Sets the matrizdoble matriz with jsonobject.
 	 *
 	 * @param matriz1 the new matrizdoble
 	 */
@@ -103,7 +104,7 @@ public class Message extends Observable implements JSONStreamAware {
 	}
 
 	/* (non-Javadoc)
-	 * @see org.json.simple.JSONStreamAware#writeJSONString(java.io.Writer)
+	 * Creates a the JSONObject that takes 
 	 */
 	@Override
 	public void writeJSONString(Writer out) throws IOException {
@@ -112,7 +113,7 @@ public class Message extends Observable implements JSONStreamAware {
 			obj.put("mensaje", matriz);
 			}
 		if(matrizJson!=null) {
-		obj.put("MatrizJson", matrizJson.toJSONString());
+			obj.put("MatrizJson", matrizJson.toJSONString());
 		}
 		JSONValue.writeJSONString(obj, out);
 

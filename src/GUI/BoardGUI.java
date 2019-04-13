@@ -33,13 +33,15 @@ import Sockets.Cliente;
  */
 public class BoardGUI extends JPanel{
 	
-	/** The my name. */
+	/** The myName is the player's name*/
 	public String myName;
+	/** ip of server*/
+	String ip;
 	
 	/** An array of strings that contains letters of the player's deck */
 	String[] titles;
 	
-	/** The matrix that contains the multiplier of the */
+	/** The matrix that contains the multiplier of the game board */
 	String[][] matrix;
 	
 	/** An instantiation of letterGUI class. */
@@ -59,10 +61,10 @@ public class BoardGUI extends JPanel{
 
 
 	
-	/** The cliente. */
+	/** The cliente is instantiation of the class cliente. */
 	Cliente cliente;
 	
-	/** The msg. */
+	/** The msg is the message that will be sent. */
 	Message msg = new Message("");
 	
 	/** The encode. */
@@ -73,12 +75,14 @@ public class BoardGUI extends JPanel{
 	 *
 	 * @param matrix the matrix
 	 * @param name the name
+	 * @param ip 
 	 */
 
-	public BoardGUI(String[][] matrix,String name){
+	public BoardGUI(String[][] matrix,String name, String ip){
+		this.ip = ip;
 		this.myName = name;
 		botonReglas reglas = new botonReglas();
-		reglas.setBounds(1000,10,174,164);
+		reglas.setBounds(1000,0,174,164);
 		reglas.setIcon(new ImageIcon(reglasImg));
 		this.add(reglas);
 
@@ -96,7 +100,7 @@ public class BoardGUI extends JPanel{
 		btnConsulta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("consulta");
-				Cliente cliente = new Cliente("localhost","checkTurno,"+ myName);
+				Cliente cliente = new Cliente(ip,"checkTurno,"+ myName);
 				if(cliente.msg.contains("MatrizJson")) {
 					StringWriter toJson = new StringWriter();
 					toJson = toJson.append(cliente.msg, 0,cliente.msg.length());
@@ -121,22 +125,6 @@ public class BoardGUI extends JPanel{
 		setBounds(0, 0, 1200, 800);
 		setLayout(null);
 
-
-
-		//		this.letterGUI = new LetterGUI("A",1);
-		//		lettersList.add(letterGUI);
-		//		this.add(letterGUI);
-		//		this.letterGUI = new LetterGUI("B",2);
-		//		lettersList.add(letterGUI);
-		//		this.add(letterGUI);
-		//		this.letterGUI = new LetterGUI("C",3);
-		//		lettersList.add(letterGUI);
-		//		this.add(letterGUI);
-		//		this.letterGUI = new LetterGUI("D",4);
-		//		lettersList.add(letterGUI);
-		//		this.add(letterGUI);
-		//		this.letterGUI = new LetterGUI("RR",300,450);
-		//		this.add(letterGUI);
 
 	}
 	
@@ -177,8 +165,6 @@ public class BoardGUI extends JPanel{
 			System.out.println(Arrays.deepToString(fichas)+out);
 			this.cliente = new Cliente("localhost", "posicionLetras,"+";"+out.toString());
 			
-			//System.out.println("Objeto: "+lettersList.get(i)+"\n"+"Letra: "+lettersList.get(i).getLetterAsigned()+"\n"+"PosX: "+lettersList.get(i).getX()+"\n"+"PosY: "+lettersList.get(i).getY());
-//			System.out.println("Columna: "+lettersList.get(i).getPosC()+"\n"+"Fila: "+lettersList.get(i).getPosF()+"\n"+"Letra: "+lettersList.get(i).getLetterAsigned()+"\n"+"PosX: "+lettersList.get(i).getX()+"\n"+"PosY: "+lettersList.get(i).getY());
 		}
 	
 	/**
@@ -233,11 +219,11 @@ public class BoardGUI extends JPanel{
 							for(int n =0;n<lettersList.size();n++) {
 							
 								
-								if(!lettersList.get(n).getPosC().equals("19") && !lettersList.get(n).getPosF().equals("19")) {
+								if(!lettersList.get(n).getPosC().equals("null") && !lettersList.get(n).getPosF().equals("null")) {
 									if(lettersList.get(j).getPosC().equals(lettersList.get(n).getPosC()) && lettersList.get(j).getPosF().equals(lettersList.get(n).getPosF()) && j != n) {
 										lettersList.get(n).setLocation(lettersList.get(n).getPosInicialX(),lettersList.get(n).getPosInicialY());
-										lettersList.get(n).setPosC("19");
-										lettersList.get(n).setPosF("19");
+										lettersList.get(n).setPosC("null");
+										lettersList.get(n).setPosF("null");
 									}
 								}
 							}

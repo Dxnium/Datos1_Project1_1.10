@@ -77,7 +77,7 @@ public class Vent_Codigo extends JFrame {
 		
 		JButton btnContinuar = new JButton();
 		btnContinuar.setIcon(new ImageIcon("Images\\continuar.png"));
-		btnContinuar.setBounds(167, 299, 102, 31);
+		btnContinuar.setBounds(169, 194, 106, 38);
 		btnContinuar.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			try {
@@ -93,7 +93,7 @@ public class Vent_Codigo extends JFrame {
 				if (textField_Codigo.getText().equals(decode.datos[0])) {
 					Cliente cliente2 = new Cliente(textField_Nombre.getText(), "agregarJugador,"+textField_IP.getText());
 					Cliente cliente3 = new Cliente(textField_Nombre.getText(), "playOrder");
-					BoardJFrame boardJF = new BoardJFrame(textField_IP.getText());
+					BoardJFrame boardJF = new BoardJFrame(textField_IP.getText(),textField_Nombre.getText());
 					boardJF.name= textField_IP.getText();
 					boardJF.setVisible(true);
 					Vent_Codigo.this.dispose();
