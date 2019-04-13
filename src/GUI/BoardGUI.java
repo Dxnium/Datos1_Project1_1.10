@@ -229,8 +229,8 @@ public class BoardGUI extends JPanel{
 		}
 		
 	}
-	public void receiveValidation(Boolean valid){
-		if(valid == true) {
+	public void receiveValidation(String valid){
+		if(valid.equals("true")) {
 			JOptionPane.showMessageDialog(this,"Su palabra se encuentra en el diccionario"); 
 		}else {
 			JOptionPane.showMessageDialog(this,"Su palabra no se encuentra en el diccionario");
