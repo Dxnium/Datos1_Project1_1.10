@@ -273,9 +273,10 @@ public class GameFlow {
 	/**
 	 * Play turn takes two dimensional matrix that has the tiles to be used and null sublists and creates a new array that contains only the tiles to be used
 	 * @param tilesToUse the tiles to use
+	 * @return 
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public static void playTurn(String [] allTiles) throws IOException {//class that the client will use to select tiles and positions on the matrix
+	public static boolean playTurn(String [] allTiles) throws IOException {//class that the client will use to select tiles and positions on the matrix
 			
 		String[][] tilesToUse= new String[7][3];
 		int count=0;
@@ -321,6 +322,7 @@ public class GameFlow {
 			word=word+finalTilesToUse[letter][0].toLowerCase();
 		}	
 		out.println(word);
+		 return verifyWord(word);//return
 		}
 	
 		
