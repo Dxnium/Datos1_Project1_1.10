@@ -106,12 +106,13 @@ public class GameFlow {
 
 
 	/**
-	 * Random tile generator.
+	 * Random tile generator uses a random number generator to select a random tile from the game deck, taking into consideration the amount
+	 * of tiles per letter, the tiles bigger in amount have a bigger chance of dropping
 	 *
 	 * @return the letter tile
 	 */
-	private static  LetterTile randomTileGenerator() {//Method that generates a random letter tile, taking into consideration the amount
-		int positionCounter=0;									// of tiles per letter, the tiles bigger in amount have a bigger chance of dropping																					
+	private static  LetterTile randomTileGenerator() {
+		int positionCounter=0;																													
 		int index=0;																			
 		int randomNum = ThreadLocalRandom.current().nextInt(1, game.getDeckSize()+1);
 		while(positionCounter<randomNum) {
@@ -127,11 +128,7 @@ public class GameFlow {
 
 	}
 	
-	/**
-	 * Iniciar.
-	 *
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
+
 	private static void iniciar() throws IOException {
 		Player jugador1 =new Player("kevin");
 		Player jugador2 =new Player("erick");
@@ -140,11 +137,7 @@ public class GameFlow {
 		matchStarter();
 	}
 	
-	/**
-	 * Match starter.
-	 *
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
+
 	private static void matchStarter() throws IOException {
 		playOrder();
 		dealTiles();
@@ -171,7 +164,7 @@ public class GameFlow {
 	}
 		
 	/**
-	 * Send tiles.
+	 * returns the tiles on a specific player dock, used for data transfer to client 
 	 *
 	 * @return the string[][]
 	 */
@@ -195,7 +188,7 @@ public class GameFlow {
 	}
 	
 	/**
-	 * Refill tiles.
+	 * Refill tiles needed in the player dock until it fills completely
 	 *
 	 * @param node the node
 	 */
@@ -209,7 +202,7 @@ public class GameFlow {
 
 
 	/**
-	 * Play order.
+	 * Play order draws a random tile per player, then uses selection sort to sort the array from lesser to greater string value
 	 */
 	public static void playOrder() {
 		int count=0;
@@ -230,7 +223,7 @@ public class GameFlow {
 	}
 
 	/**
-	 * Selection sort.
+	 * Selection sort, classic selection sort algorithm applied to the player circular linked list, sorts the nodes from lesser string value to greater string value
 	 */
 	private static void selectionSort() {
 		int x=0;
@@ -265,11 +258,7 @@ public class GameFlow {
 
 	}
 	
-	/**
-	 * Prints the player dock.
-	 *
-	 * @param node the node
-	 */
+
 	public static void printPlayerDock(PlayerLinkedListNode node) {
 		for(int x=0;x<7;x++) {
 			out.print(node.getData().getDock()[x].getLetter()+" ");
@@ -278,10 +267,9 @@ public class GameFlow {
 	
 	
 	/**
-	 * Play turn.
-	 *
+	 * Play turn takes two dimensional matrix that has the tiles to be used and null sublists and creates a new array that contains only the tiles to be useds
 	 * @param tilesToUse the tiles to use
-	 * @return the string[][]
+	 * @return the string[][] finalTilesToUse
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public static String[][] playTurn(PlayerLinkedListNode node) throws IOException {//class that the client will use to select tiles and positions on the matrix
