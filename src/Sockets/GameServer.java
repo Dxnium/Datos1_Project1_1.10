@@ -227,8 +227,10 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 //						
 //			}
 //					System.out.println(">>Lista de posiciones de letra: "+ mensajeRecibido.split(";")[1].split(":")[2]);
-					String data = mensajeRecibido.split(";")[1].substring(1, 90);
+					String data = mensajeRecibido.split(";")[1].replace("]", "");
+					data =  data.replace("}", "").replace("[","");
 					data = data.replace(" ", "");
+					data = data.substring(0, data.length()-1);
 					String [] data1 = data.split(",");
 					this.matrizJuego = data;
 					System.out.println(">>Lista de posiciones de letra: "+ data);
