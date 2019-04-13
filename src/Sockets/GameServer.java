@@ -118,6 +118,7 @@ public class GameServer implements Runnable   {
 					System.out.println(">>Enviando update al cliente");
 					System.out.println("hola44");
 					if(ver) {
+						System.out.println(matrizJuego);
 						salida.writeUTF(this.matrizJuego);
 						salida.flush();
 						this.ver = false;

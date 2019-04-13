@@ -72,6 +72,7 @@ public class BoardGUI extends JPanel{
 	
 	/** The encode. */
 	Encode encode;
+	Boolean ver= false;
 
 	/**
 	 * Instantiates a new boardGUI that contains the game board where you can put tiles.
@@ -121,13 +122,14 @@ public class BoardGUI extends JPanel{
 					Decode decode = new Decode(toJson);
 					titles = decode.titles.split(",");
 					crearTitles(titles);
-				}	
-//				Cliente cliente1 = new Cliente(ip,"matriz");
-//				String matrizJuegotmp = cliente1.msjDatos.matriz;
-//				if(matrizJuegotmp==matrizJuego) {
-//					
-//				}
-				
+				}if(ver) {	
+				Cliente cliente1 = new Cliente(ip,"matriz");
+				String matrizJuegotmp = cliente1.mensaje;
+				if(matrizJuegotmp!=matrizJuego) {
+					matrizJuego = matrizJuegotmp;
+					System.out.println("cambio matriz de juego: "+matrizJuegotmp);
+				}
+				}ver = true;
 			}});
 		this.add(btnConsulta);
 		//--------------------------------------------------------------------------
