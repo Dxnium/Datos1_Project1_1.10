@@ -47,6 +47,8 @@ public class GameServer implements Runnable   {
 	/** The decode. */
 	Decode decode;
 	
+	String matrizJuego;
+	
 	/** The port. */
 	final int port = 5555;
 	
@@ -68,6 +70,7 @@ public class GameServer implements Runnable   {
 	/** The str. */
 	public String str;
 	
+	Boolean ver = false;
 	
 	 /**
  	 * Instantiates a new game server in other thread.
@@ -118,8 +121,14 @@ public class GameServer implements Runnable   {
 					//Confirmacion de conexion con mensaje 
 					System.out.println(">>Enviando update al cliente");
 					System.out.println("hola44");
+					if(ver) {
+						salida.writeUTF(this.matrizJuego);
+						salida.flush();
+						this.ver = false;
+					}else {
 					salida.writeUTF(GetJMensaje().toString());
 					salida.flush();
+					}
 					this.verfication = true;
 					
 				
@@ -232,15 +241,21 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 //						
 //			}
 //					System.out.println(">>Lista de posiciones de letra: "+ mensajeRecibido.split(";")[1].split(":")[2]);
-					String data = mensajeRecibido.split(";")[1].substring(1, 90);
+					String data = mensajeRecibido.split(";")[1].replace("]", "");
+					data =  data.replace("}", "").replace("[","");
 					data = data.replace(" ", "");
+					data = data.substring(0, data.length()-1);
 					String [] data1 = data.split(",");
+					this.matrizJuego = data;
 					System.out.println(">>Lista de posiciones de letra: "+ data);
 					gameFlow.playTurn(data1);
 					
 //					
 //					gameFlow.playTurn(data);
-				}		
+				}
+				if(mensajeRecibido.contains("matriz")) {
+						this.ver = true;
+						}
 				
 				
 		}

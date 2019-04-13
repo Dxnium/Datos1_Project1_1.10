@@ -16,8 +16,10 @@ import java.util.Arrays;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.apache.http.client.utils.Punycode;
 import org.json.simple.JSONArray;
 
 import JSON.Decode;
@@ -56,7 +58,8 @@ public class BoardGUI extends JPanel{
 	
 	/** The reglasImg contains an ImageIcon. */
 	Image reglasImg = new ImageIcon("Images\\botonAyuda.png").getImage();
-
+	
+	String matrizJuego;
 
 
 
@@ -86,6 +89,17 @@ public class BoardGUI extends JPanel{
 		reglas.setBounds(1000,0,174,164);
 		reglas.setIcon(new ImageIcon(reglasImg));
 		this.add(reglas);
+		
+		JLabel  nameL = new JLabel("Jugador: "+this.myName);
+		nameL.setFont(new Font("Tahoma", Font.BOLD, 16));
+		nameL.setBounds(750,0,300,50);
+		this.add(nameL);
+		
+		JLabel  puntuacion = new JLabel();
+		puntuacion.setBounds(750,10,50,100);
+		puntuacion.setFont(new Font("Tahoma", Font.BOLD, 16));
+		puntuacion.setText("0");
+		this.add(puntuacion);
 
 		JButton btnScrabble = new JButton();
 		btnScrabble.setIcon(new ImageIcon("Images\\scrabble.png"));
@@ -108,7 +122,13 @@ public class BoardGUI extends JPanel{
 					Decode decode = new Decode(toJson);
 					titles = decode.titles.split(",");
 					crearTitles(titles);
-				}
+				}	
+//				Cliente cliente1 = new Cliente(ip,"matriz");
+//				String matrizJuegotmp = cliente1.msjDatos.matriz;
+//				if(matrizJuegotmp==matrizJuego) {
+//					
+//				}
+				
 			}});
 		this.add(btnConsulta);
 		//--------------------------------------------------------------------------
