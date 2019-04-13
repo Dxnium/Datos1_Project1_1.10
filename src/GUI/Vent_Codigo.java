@@ -77,7 +77,7 @@ public class Vent_Codigo extends JFrame {
 		
 		JButton btnContinuar = new JButton();
 		btnContinuar.setIcon(new ImageIcon("Images\\continuar.png"));
-		btnContinuar.setBounds(167, 299, 102, 31);
+		btnContinuar.setBounds(169, 194, 106, 38);
 		btnContinuar.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			try {
