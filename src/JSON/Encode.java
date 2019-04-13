@@ -10,15 +10,15 @@ import Msg.Message;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Encode.
+ * The Class Encode takes the instance of Message and encode it into a JSONarray.
  */
 public class Encode {
 	//acceso a los datos (atributos) de la clase 
 	/**
-	 * Array data.
+	 * arrayData the Objetct message recived and creates a Json array with that data.
 	 *
-	 * @param obj the obj
-	 * @return the JSON array
+	 * @param Instances of Message
+	 * @return JSONarray
 	 */
 	//Almacenar en un JSONArray
 	public JSONArray arrayData(Message obj) {
@@ -27,12 +27,7 @@ public class Encode {
 		return array;
 	}
 	
-	/**
-	 * The main method.
-	 *
-	 * @param args the arguments
-	 */
-	//Main de prueba 
+
 	public static void main(String[] args) {
 	Encode datos = new Encode();
 	//Crea el arreglo con los datos de la Clase 
