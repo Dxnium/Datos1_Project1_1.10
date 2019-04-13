@@ -193,8 +193,8 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 					}
 				}if(mensajeRecibido.contains("posicionLetras")) {
 					System.out.println(">>posicionletras");
-					String[][] mensaje = new String[8][3];
-					GameUpdate(mensajeRecibido);
+//					String[][] mensaje = new String[8][3];
+//					GameUpdate(mensajeRecibido.split(";")[1]);
 					
 //					String data = "";
 //					for(int i = 1; i < 25 ;i+=3) {
@@ -217,7 +217,10 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 //					}
 //						
 //			}
-					System.out.println(">>Lista de posiciones de letra: "+ mensajeRecibido.split(";")[1].split(":")[2]);
+//					System.out.println(">>Lista de posiciones de letra: "+ mensajeRecibido.split(";")[1].split(":")[2]);
+					String data = mensajeRecibido.split(";")[1].substring(1, 90);
+					data = data.replace(" ", "");
+					System.out.println(">>Lista de posiciones de letra: "+ data);
 					
 //					
 //					gameFlow.playTurn(data);
