@@ -2,11 +2,12 @@ package game.logic;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class LetterTile.
+ * Class that will be used as a game tile, contains a string attribute with a letter, the score linked to that letter and the amount of 
+ * tiles of the same kind available as arguments
  */
 public class LetterTile {/** The letter. */
-//Class that will be used as a game tile, contains a string attribute with a letter, the score linked to that letter and the amount of
-	private String letter;//tiles of the same kind available
+//
+	private String letter;//
 	
 	/** The score. */
 	private int score;

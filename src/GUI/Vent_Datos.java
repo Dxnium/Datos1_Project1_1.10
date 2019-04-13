@@ -20,14 +20,14 @@ import Sockets.GameServer;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Vent_Datos.
+ * The Class Vent_Datos is where you can put your player's name.
  */
 public class Vent_Datos extends JFrame {
 
-	/** The content pane. */
+	/** The content pane is the JPanel where all the graphical components. */
 	private JPanel contentPane;
 	
-	/** The text field. */
+	/** The textField is for the player´s name. */
 	private JTextField textField;
 	
 	/** The server. */
@@ -38,7 +38,7 @@ public class Vent_Datos extends JFrame {
 	
 
 	/**
-	 * Instantiates a new vent datos.
+	 * Instantiates a new Vent_Datos.
 	 *
 	 * @param server the server
 	 * @throws UnknownHostException the unknown host exception

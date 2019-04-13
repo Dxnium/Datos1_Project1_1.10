@@ -2,10 +2,12 @@ package game.logic;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class PlayerLinkedList.
+ * A circular  linked list that will store nodes of PlayerLinkedListNodes type that contain player objects as data.
+ * The list is used as a player queue for turn management purposes.
+ * has the basic methods implemented on a simple linked list.
  */
 public class PlayerLinkedList {/** The head. */
-// A circular  linked list that will store nodes that use player objects as data, will be used for a player queue
+ 
 	PlayerLinkedListNode head;
 	
 	/** The tail. */

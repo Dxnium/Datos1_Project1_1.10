@@ -82,7 +82,7 @@ public class BoardGUI extends JPanel{
 		this.ip = ip;
 		this.myName = name;
 		botonReglas reglas = new botonReglas();
-		reglas.setBounds(1000,10,167,59);
+		reglas.setBounds(1000,10,174,164);
 		reglas.setIcon(new ImageIcon(reglasImg));
 		this.add(reglas);
 

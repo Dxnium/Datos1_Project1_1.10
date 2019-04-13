@@ -2,7 +2,7 @@ package game.logic;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class PlayedWordList.
+ * Implementation of a simple linked list that is used to store and select specific words formed by a Player on any given turn for later verification
  */
 public class PlayedWordList {
 	
@@ -19,10 +19,11 @@ public class PlayedWordList {
 
 	/**
 	 * Append.
+	 * Appends a WordListNode with the data value at the end of the linked list
 	 *
-	 * @param data the data
+	 * @param data  of String array type
 	 */
-	public void append (String[] data) {//adds a node at the end of the list
+	public void append (String[] data) {
 		if (head == null) {
 			if(data[0].length()>1) {
 				this.head = new WordListNode (data);
@@ -46,7 +47,7 @@ public class PlayedWordList {
 
 
 	/**
-	 * Removes the duplicates.
+	 * Removes the duplicates nodes present in the linked list
 	 */
 	void removeDuplicates() { 
         WordListNode ptr1 = null, ptr2 = null, dup = null; 
@@ -60,15 +61,15 @@ public class PlayedWordList {
                 of the elements */
             while (ptr2.next != null) { 
   
-                /* If duplicate then delete it */
+                /* If duplicate values exist then delete it */
                 if (ptr1.data[0].equals(ptr2.next.data[0])) { 
   
-                    /* sequence of steps is important here */
+                    
                     dup = ptr2.next; 
                     ptr2.next = ptr2.next.next; 
                     this.length=length-1;
                     System.gc(); 
-                } else /* This is tricky */ { 
+                } else { 
                     ptr2 = ptr2.next; 
                 } 
             } 

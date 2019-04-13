@@ -19,24 +19,24 @@ import Sockets.Cliente;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Vent_Codigo.
+ * The Class Vent_Codigo is the window where you indicate a player inserts the code for joining a game, the player name and the ip address .
  */
 public class Vent_Codigo extends JFrame {
 
-	/** The content pane. */
+	/** The contentPane is where all the graphical components will be */
 	private JPanel contentPane;
 	
-	/** The text field codigo. */
+	/** The text field for adding the code for  joining a game*/
 	private JTextField textField_Codigo;
 	
-	/** The text field IP. */
+	/** The text_field_IP is where you can insert your IP */
 	private JTextField textField_IP;
 	
 	/** The decode. */
 	public Decode decode; 
 	
 	/**
-	 * Instantiates a new vent codigo.
+	 * Instantiates a new Vent_Codigo.
 	 */
 	public Vent_Codigo() {
 		setTitle("Scrabble");

@@ -35,9 +35,11 @@ private DictionaryLinkedList wordBook = new DictionaryLinkedList();
 
 	/**
 	 * Generate dictionary book.
+	 * this method parses the Dictionary.txt file containing the valid words to use and appends one DictionaryLinkedListNode
+	 *  that contains a single word on its data attribute to the linked list on the attribute wordBook of this class.
 	 */
-	public void generateDictionaryBook(){//this method parses the .txt file containing the valid words to use and appends one DictionaryLinkedListNode
-		BufferedReader reader = null;//that contains a single word on its data attribute to the linked list on the attribute wordBook of this class.
+	public void generateDictionaryBook(){
+		BufferedReader reader = null;
 		try {
 			reader= new BufferedReader(new FileReader("Dictionary.txt"));
 

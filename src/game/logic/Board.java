@@ -8,10 +8,22 @@ import java.util.concurrent.ThreadLocalRandom;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Board.
+ * The board Class is a class that aims to manage the rest of the logic related Classes proper to the game, its main function is to initialize all the
+ *classes and elements needed to start a game.
+ *Contain the following attributes:
+ * <p>tableTop: A 15x15 two dimensional matrix that take Square type objects.</p>
+ * <p>gameCode: A String value that serves as identifier for the board instance</p>
+ * <p>playerList: An instance of the PlayerLinkedList Class</p>
+ * <p>deck: An Array that contains all the LetterTile objects that will be used for the game</p>
+ * <p>dictionary: An instance of the Dictionary</p>
+ * <p>turn: An int value that is used as the turn number</p>
+ * <p>maxPlayers: An integer value that represents the maximum amount of players that can play on an specific instance of the Board Class</p>
+ *<p>deckSize: An integer value that's initialized on 100, represents the amount of tiles that are not yet distributed to the players, decreases with each turn</p>
+ *<p>currentConnection: An integer value that represents the amount of players connected to the game  by the specific instance of the Board Class.
+ *<p>playedWords: An instance of the PlayerWordList Class</p>
  */
-public class Board {/** The game code. */
-//Manages most of the board related methods
+public class Board {
+	/** The game code. */
 	private String gameCode;
 	
 	/** The table top. */
@@ -83,7 +95,7 @@ public class Board {/** The game code. */
 	 *
 	 * @return the dictionary
 	 */
-	//GETTERS AND SETTERS
+
 	public Dictionary getDictionary() {
 		return dictionary;
 	}
@@ -181,10 +193,6 @@ public class Board {/** The game code. */
 		this.playedWords = playedWords;
 	}
 	
-	//GAME LOGIC METHODS
-	
-	
-	
 	
 	/**
 	 * Gets the turn.
@@ -206,9 +214,11 @@ public class Board {/** The game code. */
 	
 	/**
 	 * Initialize table top.
+	 * Reads from the TableTop.txt file that exists on the project root and parses it, the document contains the board multiplier values and places them
+	 * on a Square object that's positioned on the matrix contained in the tableTop attribute.
 	 */
-	public void initializeTableTop() {//reads from a .txt file on project root, parses a document that contains the board multiplier values and places them
-		BufferedReader reader = null;//on a Square object thats positioned on the matrix contained in the tableTop attribute
+	public void initializeTableTop() {
+		BufferedReader reader = null;
 		try {
 			reader= new BufferedReader(new FileReader("TableTop.txt"));
 
@@ -241,9 +251,12 @@ public class Board {/** The game code. */
 
 	/**
 	 * Initialize deck.
+	 * Parses the LetterTiles.txt file that exist on the project root folder, the document contains the letters that will be used to create letter tiles
+	 * the points that each letter tile yields in game and the amount of letter tiles available for each specific letter. Stores all the created letter tiles
+	 * in the deck attribute of this class
 	 */
-	public void InitializeDeck(){//this method parses the .txt file containing the valid words to use and appends one DictionaryLinkedListNode
-		BufferedReader reader = null;//that contains a single word on its data attribute to the linked list on the attribute wordBook of this class.
+	public void InitializeDeck(){
+		BufferedReader reader = null;
 		try {
 			reader= new BufferedReader(new FileReader("LetterTiles.txt"));
 			
