@@ -262,7 +262,7 @@ public class GameServer implements Runnable   {
 			ArrayList<Integer> list = new ArrayList<Integer>();
 			ArrayList<Integer> list2 = new ArrayList<Integer>();
 			String palabra="";
-			String palabra2="";
+			
 			for(int i = 1; i < 22 ;i+=3) {
 				if(!data1[i+1].contains("null")) {
 					list.add(Integer.parseInt(data1[i+2]));
@@ -278,119 +278,120 @@ public class GameServer implements Runnable   {
 					}
 				}
 			}
-//		for(int x = 1; x < 22 ;x+=3) {
-//			if(!data1[x+2].contains("null")) {
-//				System.out.println(data1[x+2]);
-//				list2.add(Integer.parseInt(data1[x+1]));
-//			}
-//		}list2.sort(null);
-//		System.out.println(list2.toString());
-//		for(int x = 0; x < list2.size() ;x++) {
-//			for(int y = 2; y < 22 ;y+=3) {
-//				if(!data1[y+1].contains("null")) {
-//					System.out.println(data1[y+1]+"esto");
-//					if(Integer.parseInt(data1[y+1]) == list2.get(x)  ){
-//						palabra2 += data1[y];
-//					}
-//				}
-//			}
+			String palabra2="";
+			for(int x = 1; x < 22 ;x+=3) {
+				if(!data1[x+2].contains("null")) {
+					list2.add( Integer.parseInt(data1[x+1]));
+					System.out.println("ARRAYLIST :"+list2.toString());
+				}
+			}list2.sort(null);
+			System.out.println(list2.toString());
+			for(int x = 0; x < list2.size() ;x++) {
+				for(int y = 1; y < 22 ;y+=3) {
+					if(!data1[y+1].contains("null")) {
+						if(Integer.parseInt(data1[y+1]) == list2.get(x)  ){
+							System.out.println(data1[y]);
+							palabra2 += data1[y];
+						}
+					}
+				}
 
 
 
-			//					
-			//					gameFlow.playTurn(data);
-//		}
-		palabra = palabra.toLowerCase();
-		System.out.println(palabra);
-		this.verify = GameFlow.verifyWord(palabra)||GameFlow.verifyWord(palabra2);
-	}
-	if(mensajeRecibido.contains("matriz")) {
-		this.ver = true;
-	}
-
-
-}
-
-/**
- * Mymatriz search the speficic matrizLetras for a player with the name given.
- *
- * @param name of player to search matriz titles
- * @return the string[]
- */
-public String[] myMatriz(String name) {
-	for(String[]i:this.matrizLetras) {
-		System.out.println(Arrays.deepToString(i));
-		if(i[0].toLowerCase().equals(name)) {
-			return i;
+			}
+			palabra = palabra.toLowerCase();
+			palabra2 = palabra2.toLowerCase();
+			System.out.println(palabra);
+			System.out.println(palabra2);
+			this.verify = GameFlow.verifyWord(palabra)||GameFlow.verifyWord(palabra2);
 		}
-	}
-	return this.matrizLetras[0];
-}
+		if(mensajeRecibido.contains("matriz")) {
+			this.ver = true;
+		}
 
-
-
-
-
-
-
-/**
- * GetJmensaje, provided the msj to send in Json encoding.
- *
- * @return the writer
- */
-private Writer GetJMensaje() {
-	Encode datos = new Encode();
-	//Crea el arreglo con los datos de la Clase 
-	JSONArray arr = datos.arrayData(msjDatos);
-	Writer out = new StringWriter();//crear un variable de tipo Writer para almacenar el array y poder mostarlo en pantalla 
-	try {
-		arr.writeJSONString(out); //guardar el JSONArray en un string 
-	} catch (IOException e) {
-		e.printStackTrace();
 
 	}
-	return out;
-}
 
-/**
- * Sets the mensaje.
- *
- * @param newMsj the new Mensaje to send
- */
-public void setMensaje(String newMsj) {
-	this.msjDatos.setMatriz(newMsj);
-
-}
-
-/**
- * Sets the matriz of titles.
- *
- * @param matriz1 the new mensaje 1
- */
-public void setMensaje1(String[] matriz1) {
-	this.msjDatos.setMatriz("");
-	this.msjDatos.setMatriz1(matriz1);
-
-}
+	/**
+	 * Mymatriz search the speficic matrizLetras for a player with the name given.
+	 *
+	 * @param name of player to search matriz titles
+	 * @return the string[]
+	 */
+	public String[] myMatriz(String name) {
+		for(String[]i:this.matrizLetras) {
+			System.out.println(Arrays.deepToString(i));
+			if(i[0].toLowerCase().equals(name)) {
+				return i;
+			}
+		}
+		return this.matrizLetras[0];
+	}
 
 
 
 
-/**
- * Game update.
- *Decode the information given by the client 
- *
- * @param msg the msg
- * @throws IOException Signals that an I/O exception has occurred.
- */
-private void GameUpdate(String msg) throws IOException {
-	StringWriter toJson = new StringWriter();
-	toJson = toJson.append(msg, 0, msg.length());
-	System.out.println(toJson.toString());
-	this.decode = new Decode(toJson);
 
 
-}
+
+	/**
+	 * GetJmensaje, provided the msj to send in Json encoding.
+	 *
+	 * @return the writer
+	 */
+	private Writer GetJMensaje() {
+		Encode datos = new Encode();
+		//Crea el arreglo con los datos de la Clase 
+		JSONArray arr = datos.arrayData(msjDatos);
+		Writer out = new StringWriter();//crear un variable de tipo Writer para almacenar el array y poder mostarlo en pantalla 
+		try {
+			arr.writeJSONString(out); //guardar el JSONArray en un string 
+		} catch (IOException e) {
+			e.printStackTrace();
+
+		}
+		return out;
+	}
+
+	/**
+	 * Sets the mensaje.
+	 *
+	 * @param newMsj the new Mensaje to send
+	 */
+	public void setMensaje(String newMsj) {
+		this.msjDatos.setMatriz(newMsj);
+
+	}
+
+	/**
+	 * Sets the matriz of titles.
+	 *
+	 * @param matriz1 the new mensaje 1
+	 */
+	public void setMensaje1(String[] matriz1) {
+		this.msjDatos.setMatriz("");
+		this.msjDatos.setMatriz1(matriz1);
+
+	}
+
+
+
+
+	/**
+	 * Game update.
+	 *Decode the information given by the client 
+	 *
+	 * @param msg the msg
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	private void GameUpdate(String msg) throws IOException {
+		StringWriter toJson = new StringWriter();
+		toJson = toJson.append(msg, 0, msg.length());
+		System.out.println(toJson.toString());
+		this.decode = new Decode(toJson);
+
+
+	}
 
 }
 
