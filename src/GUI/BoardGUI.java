@@ -346,3 +346,4 @@ public class BoardGUI extends JPanel{
 	}
 
 }
+

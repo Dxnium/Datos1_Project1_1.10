@@ -249,7 +249,7 @@ private void reponseClient(String mensajeRecibido) throws IOException {
 					String [] data1 = data.split(",");
 					this.matrizJuego = data;
 					System.out.println(">>Lista de posiciones de letra: "+ data);
-					gameFlow.playTurn(data1);
+//					gameFlow.playTurn(data1);
 					
 //					
 //					gameFlow.playTurn(data);
