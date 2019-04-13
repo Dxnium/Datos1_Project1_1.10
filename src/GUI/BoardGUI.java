@@ -55,7 +55,8 @@ public class BoardGUI extends JPanel{
 	
 	/** The reglasImg contains an ImageIcon. */
 	Image reglasImg = new ImageIcon("Images\\botonAyuda.png").getImage();
-
+	
+	String matrizJuego;
 
 
 
@@ -107,7 +108,13 @@ public class BoardGUI extends JPanel{
 					Decode decode = new Decode(toJson);
 					titles = decode.titles.split(",");
 					crearTitles(titles);
-				}
+				}	
+//				Cliente cliente1 = new Cliente(ip,"matriz");
+//				String matrizJuegotmp = cliente1.msjDatos.matriz;
+//				if(matrizJuegotmp==matrizJuego) {
+//					
+//				}
+				
 			}});
 		this.add(btnConsulta);
 		//--------------------------------------------------------------------------
